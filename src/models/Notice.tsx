@@ -27,4 +27,6 @@ const NoticeSchema: Schema<Notice> = new Schema(
 );
 
 // Exporting the model
-export const NoticeModel = model<Notice>("Notice", NoticeSchema);
+const NoticeModel = (mongoose.models.Notice as mongoose.Model<Notice>) || (mongoose.model<Notice>('Noitce', NoticeSchema));
+
+export default NoticeModel;

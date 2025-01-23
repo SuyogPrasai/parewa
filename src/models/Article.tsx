@@ -31,4 +31,6 @@ const ArticleSchema: Schema<Article> = new Schema(
 );
 
 // Exporting the model
-export const ArticleModel = model<Article>("Article", ArticleSchema);
+const ArticleModel = (mongoose.models.Article as mongoose.Model<Article>) || (mongoose.model<Article>('Article', ArticleSchema));
+
+export default ArticleModel;

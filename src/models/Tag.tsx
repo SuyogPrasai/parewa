@@ -18,4 +18,6 @@ const TagSchema: Schema<Tag> = new Schema(
   );
   
   // Exporting the model
-export const TagModel = model<Tag>("Tag", TagSchema);
+const TagModel = (mongoose.models.Tag as mongoose.Model<Tag>) || (mongoose.model<Tag>('Tag', TagSchema));
+
+export default TagModel;

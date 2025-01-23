@@ -17,4 +17,6 @@ const PositionSchema: Schema<Position> = new Schema(
 );
 
 // Exporting the model
-export const PositionModel = model<Position>("Position", PositionSchema);
+const PositionModel = (mongoose.models.Position as mongoose.Model<Position>) || (mongoose.model<Position>('Position', PositionSchema));
+
+export default PositionModel;
