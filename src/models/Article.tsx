@@ -1,8 +1,8 @@
 import mongoose, { Schema, model, Document } from "mongoose";
-import { User } from "./User";
 
 // Defining the interface for the Article model
 export interface Article extends Document {
+  id: string;
   title: string;
   content: string;
   publishedIn: Date;
@@ -11,11 +11,13 @@ export interface Article extends Document {
   authorID: string; // Reference to User ID
   editorID: string; // Reference to User ID
   approvedByID: string; // Reference to User ID
+  voteCount: Number;
 }
 
 // Defining the Article schema
 const ArticleSchema: Schema<Article> = new Schema(
   {
+    id: { type: String, required: true, trim: true }, // Reference to the wordpressd database for this
     title: { type: String, required: true, trim: true },
     content: { type: String, required: true },
     publishedIn: { type: Date, required: true },
@@ -24,6 +26,7 @@ const ArticleSchema: Schema<Article> = new Schema(
     authorID: { type: String, ref: "User", required: true }, // User ID reference
     editorID: { type: String, ref: "User" }, // User ID reference
     approvedByID: { type: String, ref: "User" }, // User ID reference
+    voteCount: { type: Number, default: 0 },
   },
   {
     timestamps: true, // Adds createdAt and updatedAt fields automatically

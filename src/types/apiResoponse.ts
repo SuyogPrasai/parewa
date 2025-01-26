@@ -1,4 +1,4 @@
 export interface ApiResponse {
-    date: Date;
-    response: String;
+    status: boolean;
+    message: String;
 }
