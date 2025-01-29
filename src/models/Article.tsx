@@ -6,12 +6,13 @@ export interface Article extends Document {
   title: string;
   content: string;
   publishedIn: Date;
-  documents: string[]; // Paths to documents
+  documents?: string[]; // Paths to documents
   featuredImage: string; // Path to the featured image
   authorID: string; // Reference to User ID
-  editorID: string; // Reference to User ID
-  approvedByID: string; // Reference to User ID
-  voteCount: Number;
+  voteCount?: Number;
+  postTags: string[];
+  modifiedIn?: Date;
+  trashed?: boolean;
 }
 
 // Defining the Article schema
@@ -21,12 +22,13 @@ const ArticleSchema: Schema<Article> = new Schema(
     title: { type: String, required: true, trim: true },
     content: { type: String, required: true },
     publishedIn: { type: Date, required: true },
-    documents: [{ type: String }], // Array of document paths
+    documents: [{ type: String , required: false}], // Array of document paths
     featuredImage: { type: String, required: true }, // Path to the featured image
     authorID: { type: String, ref: "User", required: true }, // User ID reference
-    editorID: { type: String, ref: "User" }, // User ID reference
-    approvedByID: { type: String, ref: "User" }, // User ID reference
     voteCount: { type: Number, default: 0 },
+    postTags: [{ type: String}],
+    modifiedIn: { type: Date },
+    trashed: { type: Boolean, default: false },
   },
   {
     timestamps: true, // Adds createdAt and updatedAt fields automatically
