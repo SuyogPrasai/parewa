@@ -1,0 +1,40 @@
+import { NextResponse } from "next/server";
+import { sendVerificationEmail } from "@/helpers/SendVerificationEmail";
+import OtpModel from "@/models/Otp";
+import dbConnect from "@/lib/dbConnnect";
+
+export async function POST(req: Request) {
+  dbConnect(); // Ensure DB connection
+  try {
+
+    const { email } = await req.json();
+
+    if (!email) {
+      return NextResponse.json({ error: "Email is required." }, { status: 400 });
+    }
+
+    // Generate 6-digit OTP
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+    // Set OTP expiration (5 minutes from now)
+    const expiresAt = new Date();
+    expiresAt.setMinutes(expiresAt.getMinutes() + 5);
+
+    // Delete any existing OTPs for this email
+    await OtpModel.deleteMany({ email });
+
+    // Save new OTP in DB
+    await OtpModel.create({ email, code: otp, expiresAt });
+
+    // Send email
+    const emailResponse = await sendVerificationEmail(email, otp);
+    if (!emailResponse.success) {
+      return NextResponse.json({ error: "Failed to send OTP. Try again." }, { status: 500 });
+    }
+
+    return NextResponse.json({ message: "OTP sent successfully." });
+  } catch (error: any) {
+    console.error(`Error sending OTP: ${error.message}`);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+  }
+}

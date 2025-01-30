@@ -1,13 +1,13 @@
 import mongoose, { Schema, model, Document } from "mongoose";
 
 // Defining the interface for the Tag model
-export interface Tag {
+export interface UserTag {
     name: String;
     color: String;
 }
 
-// Defining the Tag schema
-const TagSchema: Schema<Tag> = new Schema(
+// Defining the UserTag schema
+const UserTagSchema: Schema<UserTag> = new Schema(
     {
       name: { type: String, required: true, trim: true },
       color: { type: String, required: true },
@@ -18,6 +18,6 @@ const TagSchema: Schema<Tag> = new Schema(
   );
   
   // Exporting the model
-const TagModel = (mongoose.models.Tag as mongoose.Model<Tag>) || (mongoose.model<Tag>('Tag', TagSchema));
+const UserTagModel = (mongoose.models.UserTag as mongoose.Model<UserTag>) || (mongoose.model<UserTag>('UserTag', UserTagSchema));
 
-export default TagModel;
+export default UserTagModel;

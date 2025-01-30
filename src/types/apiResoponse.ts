@@ -1,4 +1,4 @@
 export interface ApiResponse {
-    status: boolean;
+    success: boolean;
     message: String;
 }

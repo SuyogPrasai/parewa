@@ -6,7 +6,6 @@ export interface Article extends Document {
   title: string;
   content?: string;
   publishedIn: Date;
-  documents?: string[]; // Paths to documents
   featuredImage?: string; // Path to the featured image
   authorID: string; // Reference to User ID
   voteCount?: Number;
@@ -22,7 +21,6 @@ const ArticleSchema: Schema<Article> = new Schema(
     title: { type: String, required: true, trim: true },
     content: { type: String, required: false },
     publishedIn: { type: Date, required: true },
-    documents: [{ type: String , required: false}], // Array of document paths
     featuredImage: { type: String, required: false }, // Path to the featured image
     authorID: { type: String, ref: "User", required: true }, // User ID reference
     voteCount: { type: Number, default: 0 },
