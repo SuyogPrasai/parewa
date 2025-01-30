@@ -15,7 +15,7 @@ export const dbConnect = async (): Promise<void> => {
 
   try {
     // Use environment variable or default value for MongoDB URI
-    const mongoUri = process.env.MONGODBURI;
+    const mongoUri = process.env.MONGODB_URI;
     if (!mongoUri) {
       throw new Error("MongoDB connection URI is not defined in environment variables.");
     }

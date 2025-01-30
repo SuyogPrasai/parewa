@@ -37,6 +37,6 @@ const UserSchema: Schema<User> = new Schema(
 );
 
 // Exporting the model
-const UserModel = (mongoose.models.User as mongoose.Model<User>) || (mongoose.model<User>('Article', UserSchema));
+const UserModel = (mongoose.models.User as mongoose.Model<User>) || (mongoose.model<User>('User', UserSchema));
 
 export default UserModel;

@@ -4,10 +4,10 @@ import mongoose, { Schema, model, Document } from "mongoose";
 export interface Article extends Document {
   id: string;
   title: string;
-  content: string;
+  content?: string;
   publishedIn: Date;
   documents?: string[]; // Paths to documents
-  featuredImage: string; // Path to the featured image
+  featuredImage?: string; // Path to the featured image
   authorID: string; // Reference to User ID
   voteCount?: Number;
   postTags: string[];
@@ -18,12 +18,12 @@ export interface Article extends Document {
 // Defining the Article schema
 const ArticleSchema: Schema<Article> = new Schema(
   {
-    id: { type: String, required: true, trim: true }, // Reference to the wordpressd database for this
+    id: { type: String, required: true, trim: true, unique: true }, // Reference to the wordpressd database for this
     title: { type: String, required: true, trim: true },
-    content: { type: String, required: true },
+    content: { type: String, required: false },
     publishedIn: { type: Date, required: true },
     documents: [{ type: String , required: false}], // Array of document paths
-    featuredImage: { type: String, required: true }, // Path to the featured image
+    featuredImage: { type: String, required: false }, // Path to the featured image
     authorID: { type: String, ref: "User", required: true }, // User ID reference
     voteCount: { type: Number, default: 0 },
     postTags: [{ type: String}],
