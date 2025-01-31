@@ -18,9 +18,9 @@ export interface User extends Document {
 // Defining the User schema
 const UserSchema: Schema<User> = new Schema(
   {
-    username: { type: String, required: true, unique: true, trim: true },
-    name: { type: String, required: true, trim: true },
-    email: { type: String, required: true, unique: true, trim: true },
+    username: { type: String, required: true, unique: true, trim: true, lowercase: true  },
+    name: { type: String, required: true, trim: true, lowercase: true },
+    email: { type: String, required: true, unique: true, trim: true, lowercase: true  },
     UsertagIDS: [{ type: String, ref: "Tag" }], // Array of tag IDs, references the Tag model
     password: { type: String, required: true }, // Hashed password
     roleID: { type: String, ref: "Role", required: true }, // Role ID, references the Role model
