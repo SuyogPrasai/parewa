@@ -37,7 +37,6 @@ export async function POST(request: NextRequest) {
 
         // Fetch author ID
         let author_id: string = ""; // Declare author_id at the top
-
         if (author !== "") {
             const user = await UserModel.findOne({ username: author });
             if (!user) {
@@ -53,7 +52,7 @@ export async function POST(request: NextRequest) {
 
 
         // Handle events
-        // console.log(event)
+        console.log(event)
         switch (event) {
             case "modified":
                 await handleModifiedEvent(type, id, { title, content, featured_image, tags, modified, author_id });
@@ -78,6 +77,22 @@ export async function POST(request: NextRequest) {
                 console.log(`Post Trashed with ID: ${id}`);
                 return NextResponse.json(
                     { success: true, message: `${type} Trashed with ID: ${id}` },
+                    { status: 200 }
+                );
+                break;
+            case "deleted":
+                await handleDeletedEvent(type, id);
+                console.log(`Post Deleted with ID: ${id}`);
+                return NextResponse.json(
+                    { success: true, message: `${type} Deleted with ID: ${id}` },
+                    { status: 200 }
+                );
+                break;
+            case "post_restore":
+                await handlePostRestoreEvent(type, id);
+                console.log(`Post Restored with ID: ${id}`);
+                return NextResponse.json(
+                    { success: true, message: `${type} Restored with ID: ${id}` },
                     { status: 200 }
                 );
                 break;
@@ -142,6 +157,28 @@ async function handlePublishedEvent(type: string, id: string, data: any) {
 
 async function handleTrashedEvent(type: string, id: string) {
     const updateFields = { trashed: true };
+
+    if (type === "article") {
+        const article = await ArticleModel.findOneAndUpdate({ id }, updateFields);
+        if (!article) throw new Error("Failed to find the Article");
+    } else if (type === "news") {
+        const notice = await NoticeModel.findOneAndUpdate({ id }, updateFields);
+        if (!notice) throw new Error("Failed to find the Notice");
+    }
+}
+
+async function handleDeletedEvent(type: string, id: string) {
+    if (type === "article") {
+        const article = await ArticleModel.findOneAndDelete({ id });
+        if (!article) throw new Error("Failed to find the Article");
+    } else if (type === "news") {
+        const notice = await NoticeModel.findOneAndDelete({ id });
+        if (!notice) throw new Error("Failed to find the Notice");
+    }
+}
+
+async function handlePostRestoreEvent(type: string, id: string) {
+    const updateFields = { trashed: false };
 
     if (type === "article") {
         const article = await ArticleModel.findOneAndUpdate({ id }, updateFields);

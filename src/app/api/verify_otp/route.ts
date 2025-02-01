@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/dbConnnect";
 import OtpModel from "@/models/Otp";
-import { verifySchema } from "@/schemas/verifySchema";
+import { otpSchema } from "@/schemas/otpSchema";
+import { updateSignUpSession } from "@/lib/session"
 
 export async function POST(req: Request) {
-	dbConnect(); // Ensure DB connection
+	await dbConnect(); // Ensure DB connection
 	try {
 
 		const { email, otp } = await req.json();
@@ -14,7 +15,7 @@ export async function POST(req: Request) {
 			return NextResponse.json({ error: "Email and OTP are required." }, { status: 400 });
 		}
 
-		const result = verifySchema.safeParse({ otp });
+		const result = otpSchema.safeParse({ otp });
 		if (!result.success) {
 			const otpErrors = result.error.format().otp?._errors || [];
 			console.log(result.error.format());
@@ -50,6 +51,8 @@ export async function POST(req: Request) {
 		}
 		storedOtp.deleteOne();
 		console.log("OTP verified successfully!");
+		// Cookie stuff
+		await updateSignUpSession({ verify_otp: true});
 		return NextResponse.json({ message: "OTP verified successfully!" });
 	} catch (error: any) {
 		console.error(`Error verifying OTP: ${error.message}`);

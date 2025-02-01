@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 
 import dbConnect from "@/lib/dbConnnect";
 import UserModel from "@/models/User";
+import { emailVerifySchema } from "@/schemas/emailVerifySchema";
 
 export const authOptions: NextAuthOptions = {
     providers: [

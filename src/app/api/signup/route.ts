@@ -5,9 +5,10 @@ import dbConnect from "@/lib/dbConnnect";
 import UserModel from "@/models/User";
 import { emailVerifySchema } from "@/schemas/emailVerifySchema";
 import { setPasswordSchema } from "@/schemas/setPasswordSchema";
+import { updateSignUpSession, deleteSignUpSession } from "@/lib/session"
 
 export async function POST(request: NextRequest) {
-	dbConnect(); // Ensure DB connection
+	await dbConnect(); // Ensure DB connection
 
 	try {
 		let { email, password, confirm_password } = await request.json();
@@ -66,6 +67,9 @@ export async function POST(request: NextRequest) {
 			);
 		}
 
+		await updateSignUpSession({ set_password: true});
+		await deleteSignUpSession();
+		
 		console.log("User updated successfully");
 		return NextResponse.json(
 			{ success: true, message: "User updated successfully" },

@@ -5,7 +5,7 @@ import OtpModel from "@/models/Otp";
 import dbConnect from "@/lib/dbConnnect";
 
 export async function POST(req: Request) {
-  dbConnect(); // Ensure DB connection
+  await dbConnect(); // Ensure DB connection
   try {
 
     const { email } = await req.json();

@@ -1,16 +1,14 @@
 import { z } from 'zod';
 
 export const setPasswordSchema = z.object({
-    password: z.string().min(2,{message: "Should be minimum 6 character"}),
-    confirm_password: z.string().min(2,{message: "Should be minimum 6 character"})
+    password: z.string()
+        .min(6, { message: "Password must be at least 6 characters long" }),
+    confirm_password: z.string()
+        .min(6, { message: "Confirm password must be at least 6 characters long" }),
 }).refine(
-    (values) => {
-      return values.password === values.confirm_password;
-    },
+    (data) => data.password === data.confirm_password,
     {
-      message: "Passwords must match!",
-      path: ["confirmPassword"],
+        message: "Passwords must match!",
+        path: ["confirm_password"], 
     }
-  );
-
-
+);
