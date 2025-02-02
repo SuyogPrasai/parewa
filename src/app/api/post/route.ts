@@ -15,8 +15,6 @@ export async function POST(request: NextRequest) {
 
         // Authorization Check
         if (SENT_API_KEY !== API_KEY) {
-            console.log(SENT_API_KEY)
-            console.log(API_KEY)
             console.log("Unauthorized Access: API keys do not match");
             return NextResponse.json(
                 { success: false, message: "Unauthorized Access: API keys do not match" },
@@ -36,8 +34,8 @@ export async function POST(request: NextRequest) {
         // console.log(shit);
 
         // Fetch author ID
-        let author_id: string = ""; // Declare author_id at the top
         if (author !== "") {
+            let author_id: string = ""; // Declare author_id at the top
             const user = await UserModel.findOne({ username: author });
             if (!user) {
                 console.log(author);
@@ -50,9 +48,7 @@ export async function POST(request: NextRequest) {
             author_id = user._id as string; // Assign the ID if the user exists
         }
 
-
         // Handle events
-        console.log(event)
         switch (event) {
             case "modified":
                 await handleModifiedEvent(type, id, { title, content, featured_image, tags, modified, author_id });

@@ -12,7 +12,6 @@ export interface User extends Document {
   rollNumber?: number; // Optional
   articleIDS: string[]; // Array of article IDs
   isVerified: Boolean;
-  createdAt: Date; // Automatically added by timestamps
 }
 
 // Defining the User schema

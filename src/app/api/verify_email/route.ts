@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
+import { z } from "zod";
 
 import dbConnect from "@/lib/dbConnnect";
 import UserModel from "@/models/User";
-import { z } from "zod";
+import { extractRollAndName } from "@/helpers/extractNameAndEmail";
+
 import { emailVerifySchema } from "@/schemas/emailVerifySchema";
 import { deleteSignUpSession, createSignUpSession, updateSignUpSession } from "@/lib/session"
 
@@ -12,8 +14,6 @@ export async function GET(req: Request) {
 	try {
 		const { searchParams } = new URL(req.url);
 		let email = searchParams.get("email");
-
-
 
 		if (!email) {
 			console.log("Email is required.");
@@ -35,32 +35,51 @@ export async function GET(req: Request) {
 				{ status: 400 });
 		}
 
-
-		// Check if user exists
+		// Extract roll and name from email
+		const result = extractRollAndName(email);
 		const user = await UserModel.findOne({ email });
 
-		if (!user) {
-			console.log("Email not found in the database. Contact Admin.");
-			return NextResponse.json(
-				{ success: false, message: "Email not found in the database. Contact Admin." },
-				{ status: 400 }
-			);
-		}
+		if (!result) {
+			if (user) {
+				if (user.isVerified) {
+					return NextResponse.json(
+						{ success: false, message: "Email is already verified and cannot be used for sign-up." },
+						{ status: 400 }
+					);
+				}
+			} else {
+				return NextResponse.json(
+					{ success: false, message: "No user found with such an email, contact Admin" },
+					{ status: 400 }
+				);
+			}
+		} else {
+			const { roll, name } = result;
+			const username = roll + name;
 
-		if (user.isVerified) {
-			console.log("Email is already verified and cannot be used for sign-up.");
-			return NextResponse.json(
-				{ success: false, message: "Email is already verified and cannot be used for sign-up." },
-				{ status: 400 }
-			);
-		}
+			if (user) {
+				if (user.isVerified) {
+					return NextResponse.json(
+						{ success: false, message: "Email is already verified and cannot be used for sign-up." },
+						{ status: 400 }
+					);
+				}
+			}
 
-		console.log("Email is available for sign-up.");
+			const existingUser = await UserModel.findOne({ rollNumber: roll });
+
+			if (existingUser) {
+				return NextResponse.json(
+					{ success: false, message: "A user with this roll number exists. Check your email." },
+					{ status: 400 }
+				);
+			}
+		}
 		// Cookie logic
 		await deleteSignUpSession(); // Deleting any existing signp sessions
 		await createSignUpSession(email);
-		await updateSignUpSession({ verify_email: true});
-		
+		await updateSignUpSession({ verify_email: true });
+
 		return NextResponse.json(
 			{ success: true, message: "Email is available for sign-up." },
 			{ status: 200 }

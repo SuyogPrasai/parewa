@@ -3,9 +3,11 @@ import bcrypt from "bcryptjs";
 
 import dbConnect from "@/lib/dbConnnect";
 import UserModel from "@/models/User";
+import { updateSignUpSession, deleteSignUpSession } from "@/lib/session"
+import { extractRollAndName } from "@/helpers/extractNameAndEmail";
+
 import { emailVerifySchema } from "@/schemas/emailVerifySchema";
 import { setPasswordSchema } from "@/schemas/setPasswordSchema";
-import { updateSignUpSession, deleteSignUpSession } from "@/lib/session"
 
 export async function POST(request: NextRequest) {
 	await dbConnect(); // Ensure DB connection
@@ -50,26 +52,52 @@ export async function POST(request: NextRequest) {
 				{ status: 400 });
 		}
 
-
 		const hashedPassword = await bcrypt.hash(password, 10);
 
-		const updatedUser = await UserModel.findOneAndUpdate(
-			{ email },
-			{ password: hashedPassword, isVerified: true },
-			{ new: true } // Return the updated document
-		);
-
-		if (!updatedUser) {
-			console.log("User not found");
-			return NextResponse.json(
-				{ success: false, message: "User not found" },
-				{ status: 404 }
+		const user = await UserModel.findOne({ email })
+		if (user) {
+			const updatedUser = await UserModel.findOneAndUpdate(
+				{ email },
+				{ password: hashedPassword, isVerified: true },
+				{ new: true } // Return the updated document
 			);
+		
+			if (!updatedUser) {
+				console.log("User not found");
+				return NextResponse.json(
+					{ success: false, message: "User not found" },
+					{ status: 404 }
+				);
+			}
+		} else {
+			const result = extractRollAndName(email);
+			
+			if (!result) {
+				return NextResponse.json(
+					{ success: false, message: "Invalid email sent!" },
+					{ status: 400 }
+				);
+			}
+		
+			const { roll, name } = result;
+			const username = roll + name;
+		
+			const newUser = await UserModel.create({
+				username,
+				name,
+				email,
+				UsertagIDS: [], 
+				password: hashedPassword,
+				roleID: "student", 
+				rollNumber: roll,
+				articleIDS: [],
+				isVerified: true,
+			});
 		}
 
-		await updateSignUpSession({ set_password: true});
+		await updateSignUpSession({ set_password: true });
 		await deleteSignUpSession();
-		
+
 		console.log("User updated successfully");
 		return NextResponse.json(
 			{ success: true, message: "User updated successfully" },

@@ -2,22 +2,25 @@
 
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios, { AxiosError } from "axios";
+
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { useDebounceValue } from "usehooks-ts";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
-import { emailVerifySchema } from "@/schemas/emailVerifySchema";
-import axios, { AxiosError } from "axios";
-import { ApiResponse } from "@/types/apiResoponse";
-import { cn } from "@/lib/utils";
+
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Loader2 } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Loader2 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+
+import { ApiResponse } from "@/types/apiResoponse";
+import { emailVerifySchema } from "@/schemas/emailVerifySchema";
+
 
 function Page() {
   const [emailMessage, setEmailMessage] = useState("");
@@ -125,17 +128,18 @@ function Page() {
                     </Button>
                     <div className="text-center text-sm">
                       Already Verified?{" "}
-                      <a href="#" className="underline underline-offset-4">
-                        Sign in
-                      </a>
+                      <Link href="/signin" className="underline underline-offset-4"> Sign in</Link>
+
                     </div>
                   </div>
                 </form>
               </Form>
               <div className="relative hidden bg-muted md:block">
-                <img
-                  src="https://th.bing.com/th/id/R.c00f334b388f3afbb5ca099ef74d80f0?rik=sQ4MvmvGWllbnA&pid=ImgRaw&r=0"
+                <Image
+                  src="/auth_background.jpg"
                   alt="Image"
+                  width={500}
+                  height={500}
                   className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
                 />
               </div>

@@ -2,7 +2,6 @@ import mongoose, { Schema, model, Document } from "mongoose";
 
 // Defining the interface for the Position model
 export interface Position extends Document {
-  _id: string; // Custom ID as a string
   name: string;
 }
 

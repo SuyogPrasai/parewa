@@ -1,20 +1,18 @@
 'use client';
 
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSeparator,
-  InputOTPSlot,
-} from "@/components/ui/input-otp";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
+
 import { useParams, useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
-import axios from "axios";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+
+import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot} from "@/components/ui/input-otp";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+
 import { otpSchema } from "@/schemas/otpSchema";
 
 export default function OTPPage() {
@@ -22,19 +20,16 @@ export default function OTPPage() {
   const params = useParams<{ email: string }>();
   const router = useRouter();
 
-  // ✅ React Hook Form Setup
+  // React Hook Form Setup
   const form = useForm<z.infer<typeof otpSchema>>({
     resolver: zodResolver(otpSchema),
     defaultValues: { otp: "" },
   });
 
-  // ✅ Form Submission Handler
+  // Form Submission Handler
   const handleSubmit = async (data: z.infer<typeof otpSchema>) => {
     try {
       const email = decodeURIComponent(params.email); // Decode email if URL-encoded
-      console.log("Email Sent:", email);
-      console.log("OTP Sent:", data.otp);
-
       const response = await axios.post('/api/verify_otp', { email, otp: data.otp });
 
       toast({
@@ -66,7 +61,7 @@ export default function OTPPage() {
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="flex flex-col gap-2">
-              {/* ✅ OTP Input Field */}
+              {/* OTP Input Field */}
               <FormField
                 control={form.control}
                 name="otp"
@@ -77,9 +72,9 @@ export default function OTPPage() {
                         <InputOTP
                           maxLength={6}
                           className="flex justify-center"
-                          value={field.value} // ✅ Connects value to form
+                          value={field.value} //  Connects value to form
                           onChange={(value) => {
-                            field.onChange(value); // ✅ Updates form state
+                            field.onChange(value); //  Updates form state
                             console.log("Current OTP Input:", value); // Debugging log
                           }}
                         >
@@ -100,12 +95,12 @@ export default function OTPPage() {
                         </InputOTP>
                       </div>
                     </FormControl>
-                    <FormMessage /> {/* ✅ Displays validation errors */}
+                    <FormMessage /> {/* Displays validation errors */}
                   </FormItem>
                 )}
               />
 
-              {/* ✅ Submit Button */}
+              {/* Submit Button */}
               <CardFooter className="flex flex-col gap-2 mt-3">
                 <Button className="w-full" type="submit" disabled={form.formState.isSubmitting}>
                   {form.formState.isSubmitting ? "Verifying..." : "Verify OTP"}

@@ -4,7 +4,6 @@ import bcrypt from "bcryptjs";
 
 import dbConnect from "@/lib/dbConnnect";
 import UserModel from "@/models/User";
-import { emailVerifySchema } from "@/schemas/emailVerifySchema";
 
 export const authOptions: NextAuthOptions = {
     providers: [
@@ -63,7 +62,6 @@ export const authOptions: NextAuthOptions = {
         async jwt({ token, user }) {
             if (user) {
                 token._id = user._id?.toString();
-                token.isVerified = user.isVerified;
                 token.username = user.username;
             }
             return token;
@@ -71,7 +69,6 @@ export const authOptions: NextAuthOptions = {
         async session({ session, token }) {
             if (token) {
                 session.user._id = token._id;
-                session.user.isVerified = token.isVerified;
                 session.user.username = token.username;
             }
             return session;

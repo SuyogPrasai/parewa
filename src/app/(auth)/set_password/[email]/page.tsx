@@ -1,37 +1,28 @@
 'use client'
 
-import { useState } from "react";
-import { useParams } from "next/navigation";
 import axios from "axios";
-import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { setPasswordSchema } from "@/schemas/setPasswordSchema";
+import { useState } from "react";
+import { useParams } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { setPasswordSchema } from "@/schemas/setPasswordSchema";
 
 function Page() {
     const params = useParams<{ email: string }>();
     const email = decodeURIComponent(params.email);
+
     const { toast } = useToast();
+    const router = useRouter();
+    
     const [isConfirming, setIsConfirming] = useState(false);
 
     const form = useForm<z.infer<typeof setPasswordSchema>>({
@@ -56,7 +47,13 @@ function Page() {
                 description: "Account successfully created!",
                 variant: "default",
             });
-
+            toast({
+                title: "Log In",
+                description: "You can login to your account now",
+                variant: "default",
+            });
+            // Redirect to login page
+            router.replace('/signin')
         } catch (error: any) {
             toast({
                 title: "Error",
