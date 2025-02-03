@@ -44,7 +44,7 @@ export default function RootLayout({
                 <div className="flex items-center gap-2 px-4">
                   <SidebarTrigger className="-ml-1" />
                   <Separator orientation="vertical" className="h-8" />                </div>
-                  <p className="text-xl font-bold">Parewa</p>
+                  <p className="text-xl font-bold text-center">परेवा</p>
               </header>
               <main className="w-full h-full px-5">
                 {children}
