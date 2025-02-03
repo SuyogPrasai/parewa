@@ -33,7 +33,7 @@ export async function middleware(request: NextRequest) {
 
     // Ensure email matches the session
     if (!email || email !== emailParam) {
-      return NextResponse.redirect(new URL("/", request.url));
+      return NextResponse.redirect(new URL("/home", request.url));
     }
 
     // Redirect users who haven't verified email
@@ -52,7 +52,7 @@ export async function middleware(request: NextRequest) {
 
   // Redirect authenticated users away from auth pages
   if (token && ["/signin", "/signup", "/verify_email", "/verify_otp"].some(path => pathname.startsWith(path))) {
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL("/home", request.url));
   }
 
   // Redirect unauthenticated users away from protected pages

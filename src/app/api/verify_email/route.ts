@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import { z } from "zod";
 
 import dbConnect from "@/lib/dbConnnect";
@@ -8,7 +8,7 @@ import { extractRollAndName } from "@/helpers/extractNameAndEmail";
 import { emailVerifySchema } from "@/schemas/emailVerifySchema";
 import { deleteSignUpSession, createSignUpSession, updateSignUpSession } from "@/lib/session"
 
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
 	await dbConnect(); // Ensure DB connection
 
 	try {
