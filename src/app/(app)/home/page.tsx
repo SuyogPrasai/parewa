@@ -2,6 +2,9 @@
 
 import { CarouselHome } from "@/components/app-carousel";
 import { Navbar } from "@/components/app-navbar";
+import MainSection from "@/components/app-main-section";
+import { Separator } from "@/components/ui/separator";
+import ArticlesSection from "@/components/app-article-section";
 
 export default function Page() {
   const slides = [
@@ -11,7 +14,18 @@ export default function Page() {
   return (
     <>
       <CarouselHome slides={slides} />
+      <Separator orientation="horizontal" className="" /> 
       <Navbar />
+      <Separator orientation="horizontal" className="" /> 
+      <MainSection />
+      <Separator orientation="horizontal" className="" /> 
+      <ArticlesSection />
+      <Separator orientation="horizontal" className="" /> 
+      <ArticlesSection />
+      <Separator orientation="horizontal" className="" /> 
+      <ArticlesSection />
+      <Separator orientation="horizontal" className="" /> 
+
     </>
   );
 }

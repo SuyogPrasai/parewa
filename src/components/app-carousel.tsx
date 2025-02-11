@@ -26,7 +26,7 @@ interface CarouselHomeProps {
 
 // Slide component for reusability
 const SlideContent: React.FC<Slide> = ({ image, title, author }) => (
-  <Card className="overflow-hidden w-full h-[50vh] md:h-[65vh] relative">
+  <Card className="overflow-hidden w-full h-[50vh] md:h-[45vh] relative">
     <CardContent className="p-0 w-full h-full relative">
       {/* Background Image */}
       <div
@@ -50,7 +50,7 @@ export function CarouselHome({ slides }: CarouselHomeProps) {
   return (
     <Carousel
       plugins={[autoplayPlugin.current]}
-      className="w-full h-[50vh] md:h-[65vh]"
+      className="w-full h-[50vh] md:h-[45vh] mb-3"
       onMouseEnter={autoplayPlugin.current.stop}
       onMouseLeave={autoplayPlugin.current.reset}
     >

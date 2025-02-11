@@ -79,6 +79,29 @@ body {
   }
 }
 
+/* Add glassmorphism effect */
+.side-calendar-glass {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Modern calendar overrides */
+.rdp {
+  --rdp-cell-size: 40px;
+  --rdp-accent-color: #3b82f6;
+  --rdp-background-color: #bfdbfe;
+}
+
+@media (prefers-color-scheme: dark) {
+  .side-calendar-glass {
+    background: rgba(30, 30, 30, 0.9);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
