@@ -46,61 +46,62 @@ export async function POST(request: NextRequest) {
                 );
             }
             author_id = user._id as string; // Assign the ID if the user exists
+
+            // Handle events
+            switch (event) {
+                case "modified":
+                    await handleModifiedEvent(type, id, { title, content, featured_image, tags, modified, author_id });
+                    console.log(`Post Modified with ID: ${id}`);
+                    return NextResponse.json(
+                        { success: true, message: `${type} Modified with ID: ${id}` },
+                        { status: 200 }
+                    );
+                    break;
+
+                case "published":
+                    await handlePublishedEvent(type, id, { title, content, date, featured_image, tags, modified, author_id });
+                    console.log(`Post Published with ID: ${id}`);
+                    return NextResponse.json(
+                        { success: true, message: `${type} Published with ID: ${id}` },
+                        { status: 200 }
+                    );
+                    break;
+
+                case "trashed":
+                    await handleTrashedEvent(type, id);
+                    console.log(`Post Trashed with ID: ${id}`);
+                    return NextResponse.json(
+                        { success: true, message: `${type} Trashed with ID: ${id}` },
+                        { status: 200 }
+                    );
+                    break;
+                case "deleted":
+                    await handleDeletedEvent(type, id);
+                    console.log(`Post Deleted with ID: ${id}`);
+                    return NextResponse.json(
+                        { success: true, message: `${type} Deleted with ID: ${id}` },
+                        { status: 200 }
+                    );
+                    break;
+                case "post_restore":
+                    await handlePostRestoreEvent(type, id);
+                    console.log(`Post Restored with ID: ${id}`);
+                    return NextResponse.json(
+                        { success: true, message: `${type} Restored with ID: ${id}` },
+                        { status: 200 }
+                    );
+                    break;
+
+                default:
+                    console.log("Invalid Event Received: " + event);
+                    return NextResponse.json(
+                        { success: false, message: "Invalid Event Received: " + event },
+                        { status: 400 }
+                    );
+                    break;
+            }
         }
 
-        // Handle events
-        switch (event) {
-            case "modified":
-                await handleModifiedEvent(type, id, { title, content, featured_image, tags, modified, author_id });
-                console.log(`Post Modified with ID: ${id}`);
-                return NextResponse.json(
-                    { success: true, message: `${type} Modified with ID: ${id}` },
-                    { status: 200 }
-                );
-                break;
-
-            case "published":
-                await handlePublishedEvent(type, id, { title, content, date, featured_image, tags, modified, author_id });
-                console.log(`Post Published with ID: ${id}`);
-                return NextResponse.json(
-                    { success: true, message: `${type} Published with ID: ${id}` },
-                    { status: 200 }
-                );
-                break;
-
-            case "trashed":
-                await handleTrashedEvent(type, id);
-                console.log(`Post Trashed with ID: ${id}`);
-                return NextResponse.json(
-                    { success: true, message: `${type} Trashed with ID: ${id}` },
-                    { status: 200 }
-                );
-                break;
-            case "deleted":
-                await handleDeletedEvent(type, id);
-                console.log(`Post Deleted with ID: ${id}`);
-                return NextResponse.json(
-                    { success: true, message: `${type} Deleted with ID: ${id}` },
-                    { status: 200 }
-                );
-                break;
-            case "post_restore":
-                await handlePostRestoreEvent(type, id);
-                console.log(`Post Restored with ID: ${id}`);
-                return NextResponse.json(
-                    { success: true, message: `${type} Restored with ID: ${id}` },
-                    { status: 200 }
-                );
-                break;
-
-            default:
-                console.log("Invalid Event Received: " + event);
-                return NextResponse.json(
-                    { success: false, message: "Invalid Event Received: " + event },
-                    { status: 400 }
-                );
-                break;
-        }
     } catch (error: any) {
         console.error("Failed to handle the POST request:", error);
         return NextResponse.json(

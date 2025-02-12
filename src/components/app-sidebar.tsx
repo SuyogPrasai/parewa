@@ -41,16 +41,6 @@ const data = {
       logo: GalleryVerticalEnd,
       plan: "Parewa",
     },
-    {
-      name: "Teachers",
-      logo: AudioWaveform,
-      plan: "Parewa ",
-    },
-    {
-      name: "Clubs",
-      logo: Command,
-      plan: "Parewa",
-    },
   ],
   navMain: [
     {
@@ -60,34 +50,23 @@ const data = {
       isActive: true,
       items: [
         {
-          title: "Latest",
+          title: "General",
           url: "#",
         },
         {
-          title: "Important",
+          title: "Departments",
           url: "#",
         },
         {
-          title: "History",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Soicals",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Instagram",
+          title: "School",
           url: "#",
         },
         {
-          title: "Facebook",
+          title: "Council",
           url: "#",
         },
         {
-          title: "Youtube",
+          title: "Clubs",
           url: "#",
         },
       ],
@@ -137,17 +116,22 @@ const data = {
   ],
   projects: [
     {
-      name: "Arts",
+      name: "Literature",
       url: "#",
       icon: Frame,
     },
     {
-      name: "Culture",
+      name: "Economy",
+      url: "#",
+      icon: Frame,
+    },
+    {
+      name: "Politics",
       url: "#",
       icon: PieChart,
     },
     {
-      name: "Politics",
+      name: "Science and Technology",
       url: "#",
       icon: Map,
     },

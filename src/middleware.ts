@@ -11,19 +11,15 @@ export async function middleware(request: NextRequest) {
 
   const token = await getToken({ req: request });
 
-
+  // TODOs refactor the todos and code this shit
 
   // If session does not exist, redirect to email verification
   if (["/set_password", "/verify_otp"].some(path => pathname.startsWith(path))) {
     // Retrieve session cookie
     const cookieStore = await cookies();
-    console.log("cookie store", cookieStore)
     const _cookie = cookieStore.get("signup-session")?.value; // Assuming "session" is the cookie name
     const session = _cookie ? await decrypt(_cookie) : null;
 
-    console.log("Middleware Debug:");
-    console.log("Token:", token);
-    console.log("Session:", session);
     if (!session) {
       console.log("session dont exist")
       return NextResponse.redirect(new URL("/signup", request.url));
@@ -34,7 +30,7 @@ export async function middleware(request: NextRequest) {
     // Ensure email matches the session
     if (!email || email !== emailParam) {
       return NextResponse.redirect(new URL("/home", request.url));
-    }
+    } // TODO: what is this and why are we doing it?
 
     // Redirect users who haven't verified email
     if (pathname.startsWith("/verify_otp/") && !verify_email) {
@@ -51,12 +47,14 @@ export async function middleware(request: NextRequest) {
 
 
   // Redirect authenticated users away from auth pages
-  if (token && ["/signin", "/signup", "/verify_email", "/verify_otp"].some(path => pathname.startsWith(path))) {
+  // TODO Redirect logged in users to the home page
+  if (token && ["/", "/signin", "/signup", "/verify_email", "/verify_otp"].some(path => pathname.startsWith(path))) {
     return NextResponse.redirect(new URL("/home", request.url));
   }
 
   // Redirect unauthenticated users away from protected pages
-  if (!token && ["/account", "/dashboard"].some(path => pathname.startsWith(path))) {
+  if (!token && ["/home"].some(path => pathname.startsWith(path))) {
+    
     return NextResponse.redirect(new URL("/signin", request.url));
   }
 
@@ -66,12 +64,12 @@ export async function middleware(request: NextRequest) {
 // Define paths that should trigger the middleware
 export const config = {
   matcher: [
+    "/",
     "/signin",
     "/signup",
     "/verify_email",
     "/verify_otp/:email*",
     "/set_password/:email*",
     "/account",
-    "/dashboard",
   ],
 };
