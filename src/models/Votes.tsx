@@ -5,12 +5,13 @@ import mongoose, { Schema, model, Document } from "mongoose";
  */
 export type VoteValue = 1 | -1;
 
-
 export interface Vote extends Document {
   userID: string;
   articleID?: string;
   noticeID?: string;
-  vote: VoteValue;
+  postType: string;
+  upVotes: string[]; // Fixed casing to match schema
+  downVotes: string[];
 }
 
 /**
@@ -19,13 +20,11 @@ export interface Vote extends Document {
 const VoteSchema: Schema<Vote> = new Schema(
   {
     userID: { type: String, required: true },
-    articleID: { type: String, required: false },
-    noticeID: { type: String, required: false },
-    vote: { 
-      type: Number, 
-      required: true, 
-      enum: [1, -1], // Restrict to valid vote values
-    },
+    articleID: { type: String },
+    noticeID: { type: String },
+    postType: { type: String, required: true },
+    upVotes: { type: [String], default: [] }, // Fixed casing and added default
+    downVotes: { type: [String], default: [] }, // Added default
   },
   {
     timestamps: true, // Automatically adds createdAt and updatedAt fields
@@ -34,7 +33,6 @@ const VoteSchema: Schema<Vote> = new Schema(
 
 /**
  * Mongoose model for the Vote schema.
- * Ensures only one instance of the model is created and reused if it already exists.
  */
 const VoteModel = mongoose.models.Vote || model<Vote>("Vote", VoteSchema);
 

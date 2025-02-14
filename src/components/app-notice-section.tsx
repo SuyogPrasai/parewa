@@ -10,6 +10,8 @@ interface Notice {
   publishedIn: string;
   postTags: string[];
   voteCount: number;
+  username: string;
+  trashed: boolean;
 }
 
 export default function NoticeSection() {
@@ -21,7 +23,8 @@ export default function NoticeSection() {
       .get("/api/get_home_news") // Adjust based on your API route
       .then((response) => {
         if (response.data.success) {
-          setNotices(response.data.notices);
+          // Set notices, ensuring only non-trashed ones (API already does this, but just in case)
+          setNotices(response.data.notices.filter((notice: Notice) => !notice.trashed));
         }
       })
       .catch((error) => console.error("Error fetching notices:", error))
@@ -29,7 +32,7 @@ export default function NoticeSection() {
   }, []);
 
   return (
-    <div className="lg:w-[80vw],mx-0 md:mx-0 sm:mx-auto w-full max-w-2xl flex flex-col items-center gap-4 ">
+    <div className="lg:w-[80vw] mx-0 md:mx-0 sm:mx-auto w-full max-w-2xl flex flex-col items-center gap-4">
       {loading ? (
         Array.from({ length: 4 }).map((_, index) => (
           <Skeleton key={index} className="w-full h-28 rounded-lg" />
@@ -41,7 +44,7 @@ export default function NoticeSection() {
             title={notice.title}
             description={notice.content.replace(/<\/?[^>]+(>|$)/g, "")} // Strip HTML tags
             timestamp={new Date(notice.publishedIn).toLocaleString()}
-            username="Unknown" // Replace with real username if available
+            username={notice.username} // Correctly added username field
             tags={notice.postTags}
             initialVotes={notice.voteCount}
           />

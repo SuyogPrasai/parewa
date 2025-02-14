@@ -1,74 +1,61 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
-  AudioWaveform,
   BookOpen,
-  Bot,
-  Command,
   Frame,
   GalleryVerticalEnd,
   Map,
   PieChart,
   Settings2,
   SquareTerminal,
-} from "lucide-react"
+} from "lucide-react";
 
-import { useSession } from "next-auth/react"
+import { useSession } from "next-auth/react";
 
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
+import { NavMain } from "@/components/nav-main";
+import { NavProjects } from "@/components/nav-projects";
+import { NavUser } from "@/components/nav-user";
+import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
-// This is sample data.
-const data = {
-  user: {
-    name: "6229suyog",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
-  teams: [
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { data: session } = useSession();
+
+  // Extract user info from session
+  const user = session?.user || {
+    name: "Guest",
+    email: "guest@example.com",
+    avatar: "/avatars/default.jpg",
+  };
+
+  // Sample teams and navigation items (can be extended from session if available)
+  const teams = [
     {
       name: "General",
       logo: GalleryVerticalEnd,
       plan: "Parewa",
     },
-  ],
-  navMain: [
+  ];
+
+  const navMain = [
     {
       title: "Notices",
       url: "#",
       icon: SquareTerminal,
       isActive: true,
       items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Departments",
-          url: "#",
-        },
-        {
-          title: "School",
-          url: "#",
-        },
-        {
-          title: "Council",
-          url: "#",
-        },
-        {
-          title: "Clubs",
-          url: "#",
-        },
+        { title: "General", url: "#" },
+        { title: "Departments", url: "#" },
+        { title: "School", url: "#" },
+        { title: "Council", url: "#" },
+        { title: "Clubs", url: "#" },
       ],
     },
     {
@@ -76,22 +63,10 @@ const data = {
       url: "#",
       icon: BookOpen,
       items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
+        { title: "Introduction", url: "#" },
+        { title: "Get Started", url: "#" },
+        { title: "Tutorials", url: "#" },
+        { title: "Changelog", url: "#" },
       ],
     },
     {
@@ -99,59 +74,33 @@ const data = {
       url: "#",
       icon: Settings2,
       items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Account",
-          url: "#",
-        },
-        {
-          title: "Terms",
-          url: "#",
-        },
+        { title: "General", url: "#" },
+        { title: "Account", url: "#" },
+        { title: "Terms", url: "#" },
       ],
     },
-  ],
-  projects: [
-    {
-      name: "Literature",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Economy",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Politics",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Science and Technology",
-      url: "#",
-      icon: Map,
-    },
-  ],
-}
+  ];
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const projects = [
+    { name: "Literature", url: "#", icon: Frame },
+    { name: "Economy", url: "#", icon: Frame },
+    { name: "Politics", url: "#", icon: PieChart },
+    { name: "Science and Technology", url: "#", icon: Map },
+  ];
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <TeamSwitcher teams={teams} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        <NavMain items={navMain} />
+        <NavProjects projects={projects} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }
