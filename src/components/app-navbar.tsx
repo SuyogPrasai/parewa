@@ -24,7 +24,7 @@ const Navbar = () => {
 
               <NavigationMenuItem>
                 <NavigationMenuLink href="#" className={navigationMenuTriggerStyle()}>
-                  General
+                  Genera
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
