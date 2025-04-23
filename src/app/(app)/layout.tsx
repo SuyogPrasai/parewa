@@ -5,6 +5,9 @@ import "../globals.css";
 import AuthProvider from "@/context/AuthProvider";
 
 import { Toaster } from "@/components/ui/toaster";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Sun, Moon } from "lucide-react"
 
 import { AppSidebar } from "@/components/app-sidebar"
 import {
@@ -42,9 +45,16 @@ export default function RootLayout({
             <SidebarInset>
               <header className="flex h-20 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
                 <div className="flex items-center gap-2 px-4">
-                  <SidebarTrigger className="-ml-1" />
-                  <Separator orientation="vertical" className="h-8" />                </div>
+                  <SidebarTrigger className="-ml-1" />          
+                </div>
+                <div className="flex cloumn justify-between w-full">
                   <p className="text-xl font-bold text-center">परेवा</p>
+                  <div className="flex column mx-[2em] gap-3">
+                    <Input className="w-[20em]" type="text" placeholder="Search </>"/>
+                    <Button variant="secondary">Theme Toggle</Button>
+                  </div>
+                </div>
+
               </header>
               <main className="w-full h-full px-5">
                 {children}
