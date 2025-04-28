@@ -9,6 +9,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
+  // ccawa
 } from "@/components/ui/navigation-menu";
 
 const Navbar = () => {
@@ -23,7 +24,7 @@ const Navbar = () => {
 
               <NavigationMenuItem>
                 <NavigationMenuLink href="#" className={navigationMenuTriggerStyle()}>
-                  General
+                  Genera
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>

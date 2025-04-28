@@ -1,8 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { Calendar } from "@/components/ui/calendar";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { format } from "date-fns";
+import { Calendar } from "@/components/ui/calendar"; // Import Calendar component
 
 interface CalendarEvent {
   title: string;
@@ -14,15 +14,18 @@ const SideCalendar = () => {
   const [date, setDate] = useState<Date>(new Date());
   const [events, setEvents] = useState<CalendarEvent[]>([]);
 
+  // Fetch events for the selected date
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch('/api/events');
+        const formattedDate = format(date, 'yyyy-MM-dd');  // Format the date to yyyy-MM-dd
+        const response = await fetch(`http://localhost:5000/events?date=${formattedDate}`);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();
-        setEvents(data.map((event: any) => ({
-          ...event,
-          date: new Date(event.date),
+        setEvents(data.events.map((event: any) => ({
+          title: event.title,
+          description: event.description,
+          date: new Date(event.start_date),
         })));
       } catch (error) {
         console.error("Error fetching events:", error);
@@ -30,13 +33,7 @@ const SideCalendar = () => {
     };
 
     fetchEvents();
-  }, []);
-
-  const filteredEvents = events.filter(event => {
-    const eventDate = new Date(event.date);
-    return eventDate.getFullYear() === date.getFullYear() &&
-           eventDate.getMonth() === date.getMonth();
-  });
+  }, [date]);  // Re-fetch events whenever the selected date changes
 
   return (
     <Card className="bg-background shadow-lg border-border/50">
@@ -48,21 +45,21 @@ const SideCalendar = () => {
         </div>
       </CardHeader>
 
-      <CardContent className="space-y-4 md:space-y-2  justify-center lg:space-y-6 px-4 flex flex-col md:flex-row lg:flex-col ">
+      <CardContent className="space-y-4 md:space-y-2 justify-center lg:space-y-6 px-4 flex flex-col md:flex-row lg:flex-col">
         <div className="rounded-lg border p-2 shadow-sm max-w-[275px]">
           <Calendar
             mode="single"
             selected={date}
-            onSelect={(day) => day && setDate(day)}
+            onSelect={(day) => day && setDate(day)} // Use onSelect instead of onDaySelect
             className="rounded-md"
           />
         </div>
 
         <div className="md:p-4 w-full">
           <h3 className="text-lg font-semibold text-center px-8 lg:text-left md:text-left">Events</h3>
-          <div className=" max-h-[500px] overflow-y-auto pr-2">
-            {filteredEvents.length > 0 ? (
-              filteredEvents.map((event) => (
+          <div className="max-h-[500px] overflow-y-auto pr-2">
+            {events.length > 0 ? (
+              events.map((event) => (
                 <Card key={`${event.date.getTime()}-${event.title}`} 
                       className="group hover:bg-accent/50 transition-colors shadow-sm">
                   <CardHeader className="p-3">
