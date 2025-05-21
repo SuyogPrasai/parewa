@@ -14,23 +14,23 @@ const SideCalendar = () => {
   const [date, setDate] = useState<Date>(new Date());
   const [events, setEvents] = useState<CalendarEvent[]>([]);
 
-  useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const response = await fetch('/api/events');
-        // if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const data = await response.json();
-        setEvents(data.map((event: any) => ({
-          ...event,
-          date: new Date(event.date),
-        })));
-      } catch (error) {
-        console.error("Error fetching events:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchEvents = async () => {
+  //     try {
+  //       const response = await fetch('/api/events');
+  //       // if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+  //       const data = await response.json();
+  //       setEvents(data.map((event: any) => ({
+  //         ...event,
+  //         date: new Date(event.date),
+  //       })));
+  //     } catch (error) {
+  //       console.error("Error fetching events:", error);
+  //     }
+  //   };
 
-    fetchEvents();
-  }, []);
+  //   fetchEvents();
+  // }, []);
 
   const filteredEvents = events.filter(event => {
     const eventDate = new Date(event.date);

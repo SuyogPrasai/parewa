@@ -34,9 +34,10 @@ export async function GET(request: NextRequest) {
               as: "article",
               in: {
                 title: "$$article.title",
-                content: "$$article.content",
-                createdAt: "$$article.createdAt",
+                subtitle: "$$article.content",
                 author: "$$article.author",
+                image: "$$article.featuredImage",
+                link: "$$article._id",
                 // Add other fields here if needed
               },
             },
@@ -50,9 +51,10 @@ export async function GET(request: NextRequest) {
       category: category.category,
       articles: category.articles.map((article: any) => ({
         title: article.title,
-        content: article.content ? extractFirst15Words(article.content) : "No content available",
-        createdAt: article.createdAt,
+        subtitle: article.content ? extractFirst15Words(article.content) : "No content available",
+        image: article.image,
         author: article.author,
+        link: `/p/${article.link}`,
       }))
     }));
 

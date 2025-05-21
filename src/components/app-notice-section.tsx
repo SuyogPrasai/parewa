@@ -20,7 +20,7 @@ export default function NoticeSection() {
 
   useEffect(() => {
     axios
-      .get("/api/get_home_news") // Adjust based on your API route
+      .get("/api/get_news") // Adjust based on your API route
       .then((response) => {
         if (response.data.success) {
           // Set notices, ensuring only non-trashed ones (API already does this, but just in case)
