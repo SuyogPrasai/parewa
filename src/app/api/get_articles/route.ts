@@ -51,7 +51,7 @@ export async function GET(request: NextRequest) {
       category: category.category,
       articles: category.articles.map((article: any) => ({
         title: article.title,
-        subtitle: article.content ? extractFirst15Words(article.content) : "No content available",
+        subtitle: article.subtitle ? extractFirst15Words(article.subtitle) + "..." : "No content available",
         image: article.image,
         author: article.author,
         link: `/p/${article.link}`,

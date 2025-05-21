@@ -16,7 +16,7 @@ import { useSession } from "next-auth/react";
 import { NavMain } from "@/components/nav-main";
 import { NavProjects } from "@/components/nav-projects";
 import { NavUser } from "@/components/nav-user";
-import { TeamSwitcher } from "@/components/team-switcher";
+
 import {
   Sidebar,
   SidebarContent,
@@ -35,48 +35,20 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     avatar: "/avatars/default.jpg",
   };
 
-  // Sample teams and navigation items (can be extended from session if available)
-  const teams = [
-    {
-      name: "General",
-      logo: GalleryVerticalEnd,
-      plan: "Parewa",
-    },
-  ];
+
 
   const navMain = [
-    {
-      title: "Notices",
-      url: "#",
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        { title: "General", url: "#" },
-        { title: "Departments", url: "#" },
-        { title: "School", url: "#" },
-        { title: "Council", url: "#" },
-        { title: "Clubs", url: "#" },
-      ],
-    },
+
     {
       title: "Documentation",
       url: "#",
       icon: BookOpen,
+      isActive: true,
       items: [
         { title: "Introduction", url: "#" },
         { title: "Get Started", url: "#" },
         { title: "Tutorials", url: "#" },
         { title: "Changelog", url: "#" },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        { title: "General", url: "#" },
-        { title: "Account", url: "#" },
-        { title: "Terms", url: "#" },
       ],
     },
   ];
@@ -91,7 +63,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={teams} />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={navMain} />

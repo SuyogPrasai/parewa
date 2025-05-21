@@ -1,8 +1,8 @@
 export type Article = {
+    title: string;
+    subtitle: string;
     link: string;
     image: string;
-    title: string;
-    subtitle?: string;
     author: string;
 };
 

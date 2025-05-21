@@ -22,8 +22,8 @@ export async function POST(request: NextRequest) {
         }
 
         let post_object = {} as PostObject;
-
         const requestBody = await request.json();
+        console.log(requestBody);
         if (requestBody['type'] === "news") {
             post_object = {
                 id: requestBody['id'],
@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
                 tags: requestBody['tags'],
                 event: requestBody['event'],
                 featured_image: requestBody['featured_image'],
-                author: requestBody['author'] ? requestBody['author'] : 'Anonymous',
+                author: requestBody['author_name'] ? requestBody['author_name'] : 'Anonymous',
                 category: requestBody['category']
             };
         

@@ -1,14 +1,15 @@
 'use client';
 
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
 import { CarouselHome } from '@/components/app-carousel';
 import { Navbar } from '@/components/app-navbar';
-import MainSection from '@/components/app-main-section';
 import { Separator } from '@/components/ui/separator';
+import MainSection from '@/components/app-main-section';
 import ArticlesSection from '@/components/app-article-section';
 import { ArticlesSectionProps, Article } from '@/types/articleSection';
 
-import axios from 'axios';
-import { useEffect, useState } from 'react';
 
 export default function Page() {
   const slides = [
