@@ -1,13 +1,15 @@
 import dbConnect from "@/lib/dbConnnect";
+
 import { NextResponse, NextRequest } from "next/server";
 import NoticeModel from "@/models/Notice";
 import UserModel, { User } from "@/models/User"; // Assuming you have a User model
+
 import { Types } from "mongoose"; // Import Mongoose types
 
 export async function GET(request: NextRequest) {
     await dbConnect();
+
     const { searchParams } = new URL(request.url);
-    let type = searchParams.get("type");
 
     try {
         const notices = await NoticeModel.aggregate([
@@ -17,7 +19,7 @@ export async function GET(request: NextRequest) {
         ]);
 
         // Fetch usernames for notices
-        const userIds = notices.map((notice: { authorID: Types.ObjectId }) => notice.authorID);
+        const userIds = notices.map((notice: { publisherID: Types.ObjectId }) => notice.publisherID);
         const users = await UserModel.find(
             { _id: { $in: userIds } },
             { _id: 1, username: 1 }
@@ -31,7 +33,7 @@ export async function GET(request: NextRequest) {
         const transformedNotices = notices.map((notice: any) => ({
             ...notice,
             content: summarizeText(notice.content), // Summarize description
-            username: userMap[notice.authorID.toString()] || "Unknown" // Get username
+            username: userMap[notice.publisherID.toString()] || "Unknown" // Get username
         }));
 
         return NextResponse.json(
