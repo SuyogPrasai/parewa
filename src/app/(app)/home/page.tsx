@@ -8,8 +8,10 @@ import { Navbar } from '@/components/app-navbar';
 import { Separator } from '@/components/ui/separator';
 import MainSection from '@/components/app-main-section';
 import ArticlesSection from '@/components/app-article-section';
-import { ArticlesSectionProps, Article } from '@/types/articleSection';
+import { ArticlesSectionProps, Article } from '@/types/articleSection'; // Ensure Article is imported if used elsewhere
+import { NewsletterSignup } from '@/components/app-newsletter-section';
 
+import React from 'react';
 
 export default function Page() {
   const slides = [
@@ -29,7 +31,7 @@ export default function Page() {
       })
       .catch((error) => console.error('Error fetching articles:', error))
       .finally(() => setLoading(false));
-  }, []); // Empty dependency array to run once on mount
+  }, []);
 
   return (
     <>
@@ -39,16 +41,26 @@ export default function Page() {
       <Separator orientation="horizontal" className="" />
       <MainSection />
       <Separator orientation="horizontal" className="" />
+
       {loading ? (
         <p className="container mx-auto my-10 px-4 sm:px-6 lg:px-8">Loading articles...</p>
       ) : articlesData.length === 0 ? (
         <p className="container mx-auto my-10 px-4 sm:px-6 lg:px-8">No articles available.</p>
       ) : (
         articlesData.map((section, index) => (
-          <div key={section.category || index}>
-            <ArticlesSection category={section.category} articles={section.articles} />
-            <Separator orientation="horizontal" className="" />
-          </div>
+          <React.Fragment key={section.category || index}> {/* Use React.Fragment for multiple top-level elements */}
+            {/* Render NewsletterSignup after the first section (index 0), if desired */}
+            {index === 1 && ( // Changed from index === 1 to index === 0 to place it after the first ArticleSection
+              <div className="flex justify-center items-center py-10 px-4">
+                <NewsletterSignup articles={section.articles}/>
+              </div>
+            )}
+
+            <div>
+              <ArticlesSection category={section.category} articles={section.articles} />
+              <Separator orientation="horizontal" className="" />
+            </div>
+          </React.Fragment>
         ))
       )}
     </>
