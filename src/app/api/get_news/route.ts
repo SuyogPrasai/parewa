@@ -6,6 +6,8 @@ import { Types } from "mongoose"; // Import Mongoose types
 
 export async function GET(request: NextRequest) {
     await dbConnect();
+    const { searchParams } = new URL(request.url);
+    let type = searchParams.get("type");
 
     try {
         const notices = await NoticeModel.aggregate([

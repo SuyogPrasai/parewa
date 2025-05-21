@@ -7,11 +7,12 @@ export interface Notice extends Document {
   content?: string;
   publishedIn: Date;
   featuredImage?: string; // Path to the featured image
-  authorID: string; // Reference to User ID
+  publisherID: string; // Reference to User ID
   voteCount: Number;
   postTags: string[]; 
   modifiedIn?: Date; 
   trashed?: boolean;
+  category: string;
 }
 
 // Defining the Notice schema
@@ -22,11 +23,12 @@ const NoticeSchema: Schema<Notice> = new Schema(
     content: { type: String, required: false },
     publishedIn: { type: Date, required: true },
     featuredImage: { type: String, required: false }, // Path to the featured image
-    authorID: { type: String, ref: "User", required: true }, // User ID reference
+    publisherID: { type: String, ref: "User", required: true }, // User ID reference
     voteCount: { type: Number, default: 0 },
     postTags: [{ type: String}],
     modifiedIn: { type: Date },
     trashed: { type: Boolean, default: false },
+    category: { type: String, required: true },
   },
   {
     timestamps: true, // Adds createdAt and updatedAt fields automatically

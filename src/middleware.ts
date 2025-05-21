@@ -45,6 +45,9 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  if (["/"].some(path => pathname.startsWith(path))) {
+    return NextResponse.redirect(new URL("/home", request.url));
+  }
 
   // Redirect authenticated users away from auth pages
   // TODO Redirect logged in users to the home page
