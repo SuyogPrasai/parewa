@@ -56,7 +56,7 @@ export default function RootLayout({
                     <SidebarTrigger className="mr-2" />
                     <p className="text-xl font-sans md:text-4xl font-bold">परेवा_</p>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="hidden items-center gap-3 md:flex">
                     <Input
                       className="w-[20em] bg-white bg-opacity-20 border-none placeholder-gray-300 text-black"
                       type="text"

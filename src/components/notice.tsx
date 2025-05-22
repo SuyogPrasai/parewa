@@ -40,7 +40,7 @@ export function NoticeCard({
   };
 
   return (
-    <Card className="w-full p-4 bg-background shadow-sm hover:shadow-md transition-shadow mb-3">
+    <Card className="w-[100%] p-4 bg-background shadow-sm hover:shadow-md transition-shadow mb-3">
       <div className="flex justify-between items-start gap-3">
         <div className="flex-1">
           <div className="flex justify-between items-center mb-1">

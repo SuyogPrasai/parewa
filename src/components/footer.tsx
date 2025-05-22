@@ -90,7 +90,7 @@ export default function Footer() {
                 </button>
               </div>
             </div>
-            <p className="text-xs text-gray-300 ">
+            <p className="text-xs text-gray-300 mt-2 sm:mt-0 ">
               By subscribing, you agree to our <a href="#" className="underline hover:text-white">Privacy Policy</a>
             </p>
           </div>
