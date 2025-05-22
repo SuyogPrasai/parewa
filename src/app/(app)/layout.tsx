@@ -24,6 +24,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import Footer from "@/components/footer";
 
 import { CarouselHome } from "@/components/app-carousel";
 
@@ -61,7 +62,7 @@ export default function RootLayout({
               <main className="w-full h-full px-5">
                 {children}
               </main>
-
+          <Footer />
           <Toaster />
         </body>
       </AuthProvider>

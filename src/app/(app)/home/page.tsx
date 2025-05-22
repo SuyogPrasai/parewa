@@ -11,7 +11,7 @@ import ArticlesSection from '@/components/app-article-section';
 import { ArticlesSectionProps, Article } from '@/types/articleSection'; // Ensure Article is imported if used elsewhere
 import { NewsletterSignup } from '@/components/app-newsletter-section';
 import Footer from '@/components/footer';
-
+import Image from 'next/image';
 
 import React from 'react';
 
@@ -35,9 +35,48 @@ export default function Page() {
 
   return (
     <>
-      
+
       <Navbar />
       <Separator orientation="horizontal" className="" />
+      <div className="min-w-[150px]">
+        <Image
+          src="/lightning.png"
+          alt="Eagle Logo"
+          width={150}
+          height={150}
+          className="object-contain absolute left-[5%] top-[60%] w-[20%] z-[-1]"
+        />
+      </div>
+   
+      <div className="min-w-[150px]">
+        <Image
+          src="/bolt.png"
+          alt="Eagle Logo"
+          width={150}
+          height={150}
+          className="object-contain absolute right-[5%] top-[300%] w-[20%] z-[-1]"
+        />
+      </div>
+
+      <div className="min-w-[150px]">
+        <Image
+          src="/eagle_image.png"
+          alt="Eagle Logo"
+          width={150}
+          height={150}
+          className="object-contain absolute right-[5%] top-[125%] w-[20%]"
+        />
+      </div>
+      <div className="min-w-[150px]">
+        <Image
+          src="/lightning.png"
+          alt="Eagle Logo"
+          width={150}
+          height={150}
+          className="object-contain rotate-180 absolute left-[5%] top-[470%] w-[20%] z-[-1]"
+
+        />
+      </div>
       <MainSection />
       <Separator orientation="horizontal" className="" />
 
@@ -63,7 +102,7 @@ export default function Page() {
         ))
       )}
 
-      <Footer />
+
     </>
   );
 }

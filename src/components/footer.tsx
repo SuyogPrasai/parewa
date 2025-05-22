@@ -1,23 +1,25 @@
 import Link from "next/link";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input"; // Assuming these are still used elsewhere or for styling reference
+import { Button } from "@/components/ui/button"; // Assuming these are still used elsewhere or for styling reference
 import { Instagram, Facebook, X, Linkedin } from 'lucide-react';
 
 // ---
 // Helper Components
 // ---
 
-const SocialIcon = ({ Icon }) => (
-  <Icon size={18} className="cursor-pointer hover:text-gray-600" />
+const SocialIcon = ({ Icon, href }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer">
+    <Icon size={24} className="cursor-pointer text-gray-300 hover:text-white transition-colors duration-200" />
+  </a>
 );
 
 const FooterLinkSection = ({ title, links }) => (
   <div>
-    <h3 className="text-sm font-semibold mb-5">{title}</h3>
-    <ul className="space-y-3 text-sm text-gray-500">
+    <h3 className="text-base font-semibold mb-4 text-white">{title}</h3>
+    <ul className="space-y-2 text-sm text-gray-300">
       {links.map((link, index) => (
         <li key={index}>
-          <Link href={link.href}>{link.text}</Link>
+          <Link href={link.href} className="hover:text-white transition-colors duration-200">{link.text}</Link>
         </li>
       ))}
     </ul>
@@ -31,67 +33,74 @@ const FooterLinkSection = ({ title, links }) => (
 const companyLinks = [
   { href: "#", text: "About" },
   { href: "#", text: "Team" },
-  { href: "#", "text": "Blog" },
+  { href: "#", text: "Blog" },
   { href: "#", text: "Careers" },
   { href: "#", text: "Contact" },
 ];
 
 const socialIcons = [
-  Instagram,
-  Facebook,
-  X,
-  Linkedin,
+  { Icon: Instagram, href: "https://instagram.com" },
+  { Icon: Facebook, href: "https://facebook.com" },
+  { Icon: X, href: "https://x.com" },
+  { Icon: Linkedin, href: "https://linkedin.com" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-white dark:bg-gray-900 pt-16 pb-5 px-6 md:px-12 m-0">
-      <div className="max-w-6xl mx-auto flex flex-col justify-around">
-        <div className="flex justify-left ">
-          {/* Logo and Description */}
-          <div className="w-[40%]">
-            <h2 className="text-sm font-bold mb-4">PAREWA</h2>
-            <p className="text-sm text-gray-500 mt-2">
-              A collection of 100+ responsive HTML templates for your startup business or side project.
-            </p>
-            <div className="flex gap-6 mt-6 mb-10">
-              {socialIcons.map((Icon, index) => (
-                <SocialIcon key={index} Icon={Icon} />
-              ))}
+    <footer className="bg-gray-900 text-gray-300 py-16 px-4 sm:px-6 md:px-8 lg:px-12">
+      <div className="max-w-7xl mx-auto">
+        {/* Main Footer Content */}
+        <div className="flex flex-col mx-auto max-w-screen-lg">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            {/* Logo and Description */}
+            <div className="md:col-span-1">
+              <h2 className="text-xl font-bold mb-4 text-white">PAREWA</h2>
+              <p className="text-sm text-gray-300 mb-6">
+                A collection of 100+ responsive HTML templates for your startup business or side project.
+              </p>
+              <div className="flex gap-4">
+                {socialIcons.map(({ Icon, href }, index) => (
+                  <SocialIcon key={index} Icon={Icon} href={href} />
+                ))}
+              </div>
+            </div>
+
+            {/* Link Sections */}
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 md:col-span-2">
+              <FooterLinkSection title="Company" links={companyLinks} />
+              <FooterLinkSection title="Resources" links={companyLinks} />
+              <FooterLinkSection title="Support" links={companyLinks} />
+              <FooterLinkSection title="Legal" links={companyLinks} />
             </div>
           </div>
 
-          <div className="flex gap-20">
-            {/* Reusing FooterLinkSection for each company link column */}
-            <FooterLinkSection title="Company" links={companyLinks} />
-            <FooterLinkSection title="Company" links={companyLinks} />
-            <FooterLinkSection title="Company" links={companyLinks} />
-            <FooterLinkSection title="Company" links={companyLinks} />
+          {/* Newsletter */}
+          <div className="mt-4 border-gray-700">
+            <h3 className="text-base font-semibold mb-4 text-white">Newsletter</h3>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <p className="text-sm text-gray-300 mb-2 sm:mb-0">Subscribe to our newsletter for updates.</p>
+              <div className="flex w-full sm:max-w-xs">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="flex-grow rounded-l-md rounded-r-none text-sm bg-gray-800 text-gray-100 border border-gray-700 focus:border-white transition-colors duration-200 py-2 px-3"
+                />
+                <button className="bg-indigo-600 text-white rounded-l-none rounded-r-md text-sm whitespace-nowrap hover:bg-indigo-500 transition-colors duration-200 px-4 py-2">
+                  Subscribe
+                </button>
+              </div>
+            </div>
+            <p className="text-xs text-gray-300 ">
+              By subscribing, you agree to our <a href="#" className="underline hover:text-white">Privacy Policy</a>
+            </p>
           </div>
         </div>
 
-        {/* Newsletter */}
-        <div className="w-[80%]">
-          <h3 className="text-sm font-semibold mb-5">Newsletter</h3>
-          <p className="text-sm text-gray-500 mb-3">Subscribe to our newsletter</p>
-          <div className="flex w-[50%] mt-4">
-            <Input
-              type="email"
-              placeholder="Email"
-              className="flex-grow rounded-l-md rounded-r-none text-sm"
-            />
-            <Button className="bg-black text-white rounded-l-none rounded-r-md text-sm whitespace-nowrap">Subscribe</Button>
-          </div>
-          <p className="text-xs text-gray-500 mt-2">
-            By submitting, you agree to our <Link href="#" className="underline">Privacy Policy</Link>
-          </p>
+        {/* Bottom Footer */}
+        <div className="mt-10 border-t border-gray-700 pt-6 text-center text-gray-400 text-xs">
+          <p>PAREWA © {new Date().getFullYear()} All rights reserved</p>
+          <p>6229 Suyog</p>
         </div>
-      </div>
-
-      {/* Bottom Footer */}
-      <div className="mt-10 border-t pt-6 text-center text-gray-500 text-xs">
-        <p>PAREWA © All rights reserved</p>
-        <p>6229 Suyog</p>
       </div>
     </footer>
   );
