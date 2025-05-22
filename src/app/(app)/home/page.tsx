@@ -65,15 +65,13 @@ export default function Page() {
           </React.Fragment>
         ))
       )}
-         <div className="min-w-[150px]">
         <Image
           src="/lightning - reversed.png"
           alt="Eagle Logo"
           width={150}
           height={150}
-          className="object-contain absolute bottom-0 left-[3%] w-[20%]"
+          className="object-contain absolute bottom-0 left-[3%] w-[20%] min-w-[250px] max-w-[300px]"
         />
-      </div>
 
     </div>
 

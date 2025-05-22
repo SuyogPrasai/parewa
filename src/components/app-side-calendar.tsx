@@ -44,15 +44,15 @@ const SideCalendar = () => {
 
       <Card className="bg-background shadow-lg border-border/50 relative z-1">
         <CardHeader className="pb-2 px-4 pt-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold">
-              {format(date, 'MMMM yyyy')}
+          <div className="flex items-center justify-center md:justify-between">
+            <h2 className="text-lg font-semibold px-2">
+              {format(date, 'dd MMMM yyyy')}
             </h2>
           </div>
         </CardHeader>
 
         <CardContent className="space-y-4 md:space-y-2  justify-center lg:space-y-6 px-4 flex flex-col md:flex-row lg:flex-col ">
-          <div className="rounded-lg border p-2 shadow-sm max-w-[275px]">
+          <div className="rounded-lg border p-2 shadow-sm max-w-[275px] mx-auto lg:mb-0 mb-5">
             <Calendar
               mode="single"
               selected={date}
@@ -96,7 +96,11 @@ const SideCalendar = () => {
           alt="Eagle Logo"
           width={150}
           height={150}
-          className="object-contain absolute right-[-50%] bottom-[-10%] w-[100%] z-[1]"
+          className="object-contain absolute 
+             md:bottom-0 md:right-0 md:w-[25%]
+             xl:right-[-50%] xl:bottom-[-10%] xl:w-[100%]  
+             min-w-[200px] max-w-[300px] z-[1] md:block
+             hidden"
         />
       </div>
     </div>

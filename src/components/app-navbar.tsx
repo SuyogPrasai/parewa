@@ -17,7 +17,7 @@ import Image from "next/image";
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("General"); // State to track active link
 
-  const handleLinkClick = (linkName) => {
+  const handleLinkClick = (linkName: string) => {
     setActiveLink(linkName);
   };
 
@@ -36,9 +36,9 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="hidden bg-white mx-auto lg:block shadow-sm">
+    <div className="absolute top-0 right-0 bg-white mx-auto lg:relative lg:block shadow-sm">
       <div className="container mx-auto px-4 relative">
-        <nav className="flex items-center justify-center">
+        <nav className="flex lg:flex-row items-center justify-center">
           {/* Desktop Navigation */}
           <div className="flex justify-center">
             <NavigationMenu className="hidden lg:flex">
@@ -71,7 +71,7 @@ const Navbar = () => {
           </div>
 
           {/* About and Contact Buttons */}
-          <div className="flex space-x-0 h-[60px] items-center ml-10">
+          <div className="hidden lg:flex space-x-0 h-[60px] items-center ml-10">
             {" "}
             {/* Align with nav items' height */}
             <div
@@ -115,7 +115,7 @@ const Navbar = () => {
           alt="Eagle Logo"
           width={150}
           height={150}
-          className="object-contain absolute left-[5%] top-0 w-[20%]"
+          className="hidden lg:block object-contain absolute left-[5%] top-0 w-[20%]"
         />
       </div>
     </div>

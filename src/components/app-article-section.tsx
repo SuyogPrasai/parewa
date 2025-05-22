@@ -61,7 +61,7 @@ function MainArticleCard({ article }: { article: Article }) {
 
 function SideArticleCard({ article }: { article: Article }) {
   return (
-    <Card className="h-full relative overflow-hidden hover:shadow-md transition-shadow duration-200 rounded-lg">
+    <Card className="h-full relative overflow-hidden hover:shadow-md transition-shadow duration-200 rounded-lg z-10">
       <Link href={article.link} className="flex flex-col md:flex-row h-full">
         <div className="relative w-full md:w-40 flex-shrink-0">
           <Image src={article.image} alt={article.title} fill className="object-cover" />

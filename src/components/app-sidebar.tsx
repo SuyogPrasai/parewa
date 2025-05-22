@@ -43,6 +43,7 @@ const finalNavItems = [
   { title: "ABOUT", url: "#" },
   { title: "DOCUMENTATION", url: "#" },
   { title: "WAYS TO CONTRIBUTE", url: "#" },
+  { title: "REPORT A BUG", url: "#" },
   { title: "JOBS", url: "#" },
   { title: "CREDITS", url: "#" },
 ];
