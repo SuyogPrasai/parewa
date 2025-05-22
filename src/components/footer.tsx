@@ -1,70 +1,122 @@
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { Instagram, Facebook, X, Linkedin } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-white dark:bg-gray-900 py-12 px-6 md:px-12">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* Logo and Description */}
-        <div>
-          <h2 className="text-xl font-bold">Shadcnblocks</h2>
-          <p className="text-gray-500 mt-2">
-            A collection of 100+ responsive HTML templates for your startup business or side project.
-          </p>
-          {/* Social Icons */}
-          <div className="flex gap-4 mt-4">
-            <FaInstagram className="text-xl cursor-pointer hover:text-gray-600" />
-            <FaFacebook className="text-xl cursor-pointer hover:text-gray-600" />
-            <FaTwitter className="text-xl cursor-pointer hover:text-gray-600" />
-            <FaLinkedin className="text-xl cursor-pointer hover:text-gray-600" />
+    // Increased vertical padding (py-16 from py-12) for more overall space
+    <footer className="bg-white dark:bg-gray-900 pt-16 pb-5 px-6 md:px-12 m-0">
+      {/* Adjusted grid gaps: gap-y-10 for mobile stacking, md:gap-x-12 for desktop column separation */}
+
+      <div className="max-w-6xl mx-auto flex flex-col justify-around">
+        <div className="flex justify-left ">
+          {/* Logo and Description */}
+          <div className="w-[40%]">
+            {/* Increased bottom margin for the title */}
+            <h2 className="text-sm font-bold mb-4">PAREWA</h2>
+            {/* Adjusted top margin for description */}
+            <p className="text-sm text-gray-500 mt-2">
+              A collection of 100+ responsive HTML templates for your startup business or side project.
+            </p>
+            {/* Increased gap between social icons and added more top margin */}
+            <div className="flex gap-6 mt-6 mb-10">
+              <Instagram size={18} className="cursor-pointer hover:text-gray-600" />
+              <Facebook size={18} className="cursor-pointer hover:text-gray-600" />
+              <X size={18} className="cursor-pointer hover:text-gray-600" />
+              <Linkedin size={18} className="cursor-pointer hover:text-gray-600" />
+            </div>
           </div>
-        </div>
 
-        {/* Product Links */}
-        <div>
-          <h3 className="font-semibold mb-4">Product</h3>
-          <ul className="space-y-2 text-gray-500">
-            <li><Link href="#">Overview</Link></li>
-            <li><Link href="#">Pricing</Link></li>
-            <li><Link href="#">Marketplace</Link></li>
-            <li><Link href="#">Features</Link></li>
-            <li><Link href="#">Integrations</Link></li>
-            <li><Link href="#">Marketing</Link></li>
-          </ul>
-        </div>
+          <div className="flex gap-20">
 
-        {/* Company Links */}
-        <div>
-          <h3 className="font-semibold mb-4">Company</h3>
-          <ul className="space-y-2 text-gray-500">
-            <li><Link href="#">About</Link></li>
-            <li><Link href="#">Team</Link></li>
-            <li><Link href="#">Blog</Link></li>
-            <li><Link href="#">Careers</Link></li>
-            <li><Link href="#">Contact</Link></li>
-          </ul>
+            {/* Company Links */}
+            <div>
+              {/* Increased bottom margin for the section title */}
+              <h3 className="text-sm font-semibold mb-5">Company</h3>
+              {/* Increased vertical space between list items */}
+              <ul className="space-y-3 text-sm text-gray-500">
+                <li><Link href="#">About</Link></li>
+                <li><Link href="#">Team</Link></li>
+                <li><Link href="#">Blog</Link></li>
+                <li><Link href="#">Careers</Link></li>
+                <li><Link href="#">Contact</Link></li>
+              </ul>
+            </div>
+            {/* Company Links */}
+            <div>
+              {/* Increased bottom margin for the section title */}
+              <h3 className="text-sm font-semibold mb-5">Company</h3>
+              {/* Increased vertical space between list items */}
+              <ul className="space-y-3 text-sm text-gray-500">
+                <li><Link href="#">About</Link></li>
+                <li><Link href="#">Team</Link></li>
+                <li><Link href="#">Blog</Link></li>
+                <li><Link href="#">Careers</Link></li>
+                <li><Link href="#">Contact</Link></li>
+              </ul>
+            </div>
+            {/* Company Links */}
+            <div>
+              {/* Increased bottom margin for the section title */}
+              <h3 className="text-sm font-semibold mb-5">Company</h3>
+              {/* Increased vertical space between list items */}
+              <ul className="space-y-3 text-sm text-gray-500">
+                <li><Link href="#">About</Link></li>
+                <li><Link href="#">Team</Link></li>
+                <li><Link href="#">Blog</Link></li>
+                <li><Link href="#">Careers</Link></li>
+                <li><Link href="#">Contact</Link></li>
+              </ul>
+            </div>
+            {/* Company Links */}
+            <div>
+              {/* Increased bottom margin for the section title */}
+              <h3 className="text-sm font-semibold mb-5">Company</h3>
+              {/* Increased vertical space between list items */}
+              <ul className="space-y-3 text-sm text-gray-500">
+                <li><Link href="#">About</Link></li>
+                <li><Link href="#">Team</Link></li>
+                <li><Link href="#">Blog</Link></li>
+                <li><Link href="#">Careers</Link></li>
+                <li><Link href="#">Contact</Link></li>
+              </ul>
+            </div>
+          </div>
         </div>
 
         {/* Newsletter */}
-        <div>
-          <h3 className="font-semibold mb-4">Newsletter</h3>
-          <p className="text-gray-500">Subscribe to our newsletter</p>
-          <div className="flex mt-4">
-            <Input type="email" placeholder="Email" className="rounded-l-md" />
-            <Button className="bg-black text-white rounded-r-md">Subscribe</Button>
+        <div className="w-[80%]">
+          {/* Increased bottom margin for the section title */}
+          <h3 className="text-sm font-semibold mb-5">Newsletter</h3>
+          {/* Added bottom margin for the description */}
+          <p className="text-sm text-gray-500 mb-3">Subscribe to our newsletter</p>
+          {/* Ensured container takes full width, added top margin */}
+          <div className="flex w-[50%] mt-4">
+            {/* Added flex-grow to make the Input take all available space */}
+            {/* Adjusted rounding for seamless look with the button */}
+            <Input
+              type="email"
+              placeholder="Email"
+              className="flex-grow rounded-l-md rounded-r-none text-sm"
+            />
+            {/* Adjusted rounding for seamless look with the input */}
+            <Button className="bg-black text-white rounded-l-none rounded-r-md text-sm whitespace-nowrap">Subscribe</Button>
           </div>
+          {/* Kept existing spacing for privacy policy text */}
           <p className="text-xs text-gray-500 mt-2">
             By submitting, you agree to our <Link href="#" className="underline">Privacy Policy</Link>
           </p>
         </div>
+
+
       </div>
 
       {/* Bottom Footer */}
-      <div className="mt-8 border-t pt-4 text-center text-gray-500 text-sm">
-        <p>Shadcnblocks © All rights reserved</p>
-        <p>Made with ❤️ by Shadcnblocks</p>
+      {/* Increased top margin and padding for more separation from the main content */}
+      <div className="mt-10 border-t pt-6 text-center text-gray-500 text-xs">
+        <p>PAREWA © All rights reserved</p>
+        <p>6229 Suyog</p>
       </div>
     </footer>
   );

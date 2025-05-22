@@ -10,6 +10,7 @@ import MainSection from '@/components/app-main-section';
 import ArticlesSection from '@/components/app-article-section';
 import { ArticlesSectionProps, Article } from '@/types/articleSection'; // Ensure Article is imported if used elsewhere
 import { NewsletterSignup } from '@/components/app-newsletter-section';
+import Footer from '@/components/footer';
 
 import React from 'react';
 
@@ -63,6 +64,8 @@ export default function Page() {
           </React.Fragment>
         ))
       )}
+
+      <Footer />
     </>
   );
 }
