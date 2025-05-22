@@ -13,7 +13,7 @@ export default function ArticlesSection({ category, articles }: ArticlesSectionP
   }
 
   return (
-    <section className="container mx-auto my-10 px-4 sm:px-6 lg:px-8">
+    <section className="container mx-auto my-10 px-4 sm:px-6 lg:px-8 max-w-[1150px]">
       <h2 className="text-2xl font-bold mb-6 md:text-3xl text-gray-900">{category}</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-6">

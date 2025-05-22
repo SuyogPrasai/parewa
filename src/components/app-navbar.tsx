@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { MenuIcon } from "lucide-react";
 import {
   NavigationMenu,
@@ -12,43 +13,98 @@ import {
 } from "@/components/ui/navigation-menu";
 
 const Navbar = () => {
+  const [activeLink, setActiveLink] = useState("General"); // State to track active link
+
+  const handleLinkClick = (linkName) => {
+    setActiveLink(linkName);
+  };
+
+  // Define custom colors that resemble the image
+  const mintColor = "rgb(59, 130, 246)"; // A teal/mint color for active and contact button
+  const lightMintColor = "rgb(204, 218, 232)"; // A lighter mint for the about button
+
+  // Define your navigation links in an array
+  const navLinks = [
+    { name: "General", href: "#" },
+    { name: "Sports", href: "#" },
+    { name: "Academics", href: "#" },
+    { name: "Arts", href: "#" },
+    { name: "Tech", href: "#" },
+    // You can add more links here as needed
+  ];
 
   return (
-    <div className="hidden bg-white py-4  lg:block">
-      <div className="container mx-auto px-4">
+    <div className="hidden bg-white mx-auto lg:block shadow-sm">
+      <div className="container mx-auto px-4 relative">
         <nav className="flex items-center justify-center">
           {/* Desktop Navigation */}
-          <NavigationMenu className="hidden lg:flex">
-            <NavigationMenuList className="flex space-x-6">
+          <div className="flex justify-center">
+            <NavigationMenu className="hidden lg:flex">
+              <NavigationMenuList className="flex space-x-0">
+                {/* Iterate over your navigation links */}
+                {navLinks.map((link) => (
+                  <NavigationMenuItem key={link.name}>
+                    <NavigationMenuLink
+                      className="py-2 px-6 flex items-center justify-center text-black text-lg font-bold hover:cursor-pointer" // Base styles
+                      style={{
+                        backgroundColor:
+                          activeLink === link.name ? mintColor : "white",
+                        color: activeLink === link.name ? "white" : "black",
+                        minWidth: "100px", // Ensure consistent width if needed
+                        height: "60px", // Adjust height to match the image's blocky look
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        letterSpacing: "0.05em", // Adjust letter spacing to match the image
+                        fontFamily: "monospace, sans-serif", // Or a custom font
+                      }}
+                      onClick={() => handleLinkClick(link.name)}
+                    >
+                      {link.name}
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
 
-              <NavigationMenuItem>
-                <NavigationMenuLink href="#" className={navigationMenuTriggerStyle()}>
-                  General
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink href="#" className={navigationMenuTriggerStyle()}>
-                  Departments
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink href="#" className={navigationMenuTriggerStyle()}>
-                  School
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink href="#" className={navigationMenuTriggerStyle()}>
-                  Council
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink href="#" className={navigationMenuTriggerStyle()}>
-                  Clubs
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-
+          {/* About and Contact Buttons */}
+          <div className="flex space-x-0 h-[60px] items-center ml-10">
+            {" "}
+            {/* Align with nav items' height */}
+            <div
+              className="py-2 px-6 flex items-center justify-center hover:cursor-pointer text-black text-lg font-bold"
+              style={{
+                backgroundColor: lightMintColor,
+                color: "black",
+                minWidth: "100px",
+                height: "60px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                letterSpacing: "0.05em",
+                fontFamily: "monospace, sans-serif",
+              }}
+            >
+              ABOUT
+            </div>
+            <div
+              className="py-2 px-6 flex items-center justify-center hover:cursor-pointer text-white text-lg font-bold"
+              style={{
+                backgroundColor: mintColor,
+                color: "white",
+                minWidth: "100px",
+                height: "60px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                letterSpacing: "0.05em",
+                fontFamily: "monospace, sans-serif",
+              }}
+            >
+              Contact
+            </div>
+          </div>
         </nav>
       </div>
     </div>

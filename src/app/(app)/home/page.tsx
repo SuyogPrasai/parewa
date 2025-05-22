@@ -12,12 +12,11 @@ import { ArticlesSectionProps, Article } from '@/types/articleSection'; // Ensur
 import { NewsletterSignup } from '@/components/app-newsletter-section';
 import Footer from '@/components/footer';
 
+
 import React from 'react';
 
 export default function Page() {
-  const slides = [
-    { id: 1, image: '/carousel_background_2.jpg', title: 'Sadness is but a wall between two gardens.', author: 'Kahlil Gibran' },
-  ];
+
 
   const [articlesData, setArticlesData] = useState<ArticlesSectionProps[]>([]);
   const [loading, setLoading] = useState(true);
@@ -36,8 +35,7 @@ export default function Page() {
 
   return (
     <>
-      <CarouselHome slides={slides} />
-      <Separator orientation="horizontal" className="" />
+      
       <Navbar />
       <Separator orientation="horizontal" className="" />
       <MainSection />
@@ -53,7 +51,7 @@ export default function Page() {
             {/* Render NewsletterSignup after the first section (index 0), if desired */}
             {index === 1 && ( // Changed from index === 1 to index === 0 to place it after the first ArticleSection
               <div className="flex justify-center items-center py-10 px-4">
-                <NewsletterSignup articles={section.articles}/>
+                <NewsletterSignup articles={section.articles} />
               </div>
             )}
 
