@@ -33,7 +33,7 @@ export default function ArticlesSection({ category, articles }: ArticlesSectionP
 
 function MainArticleCard({ article }: { article: Article }) {
   return (
-    <article className="md:col-span-2">
+    <article className="md:col-span-2 z-10">
       <Card className="h-full hover:shadow-lg transition-shadow duration-200 rounded-lg overflow-hidden">
         <Link href={article.link} className="block relative h-56 md:h-72 lg:h-80">
           <Image
@@ -61,7 +61,7 @@ function MainArticleCard({ article }: { article: Article }) {
 
 function SideArticleCard({ article }: { article: Article }) {
   return (
-    <Card className="h-full overflow-hidden hover:shadow-md transition-shadow duration-200 rounded-lg">
+    <Card className="h-full relative overflow-hidden hover:shadow-md transition-shadow duration-200 rounded-lg">
       <Link href={article.link} className="flex flex-col md:flex-row h-full">
         <div className="relative w-full md:w-40 flex-shrink-0">
           <Image src={article.image} alt={article.title} fill className="object-cover" />

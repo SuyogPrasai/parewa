@@ -12,6 +12,8 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
+import Image from "next/image";
+
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("General"); // State to track active link
 
@@ -106,6 +108,15 @@ const Navbar = () => {
             </div>
           </div>
         </nav>
+      </div>
+      <div className="min-w-[150px] relative">
+        <Image
+          src="/lightning.png"
+          alt="Eagle Logo"
+          width={150}
+          height={150}
+          className="object-contain absolute left-[5%] top-0 w-[20%]"
+        />
       </div>
     </div>
   );

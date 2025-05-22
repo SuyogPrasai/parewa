@@ -46,7 +46,8 @@ export default function RootLayout({
     <html lang="en">
       <AuthProvider>
         <body className="">
-          <SidebarProvider>
+          
+          <SidebarProvider defaultOpen={false}>
             <AppSidebar />
             <SidebarInset>
               {/* Header - positioned absolutely over the carousel */}

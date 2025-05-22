@@ -47,7 +47,7 @@ const socialIcons = [
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-16 px-4 sm:px-6 md:px-8 lg:px-12">
+    <footer className="relative bg-gray-900 text-gray-300 py-16 px-4 sm:px-6 md:px-8 lg:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
         <div className="flex flex-col mx-auto max-w-screen-lg">
