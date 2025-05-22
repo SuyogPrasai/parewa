@@ -36,13 +36,13 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="absolute top-0 right-0 bg-white mx-auto lg:relative lg:block shadow-sm">
+    <div className=" bg-white mx-auto lg:relative lg:block shadow-sm">
       <div className="container mx-auto px-4 relative">
         <nav className="flex lg:flex-row items-center justify-center">
           {/* Desktop Navigation */}
           <div className="flex justify-center">
-            <NavigationMenu className="hidden lg:flex">
-              <NavigationMenuList className="flex space-x-0">
+            <NavigationMenu className="lg:flex">
+              <NavigationMenuList className="flex md:flex-row md:mt-0 mt-5 flex-col space-x-0">
                 {/* Iterate over your navigation links */}
                 {navLinks.map((link) => (
                   <NavigationMenuItem key={link.name}>
@@ -115,7 +115,7 @@ const Navbar = () => {
           alt="Eagle Logo"
           width={150}
           height={150}
-          className="hidden lg:block object-contain absolute left-[5%] top-0 w-[20%]"
+          className="hidden lg:block object-contain absolute left-[5%] top-0 w-[20%] max-w-[300px] 3xl:right-none"
         />
       </div>
     </div>
