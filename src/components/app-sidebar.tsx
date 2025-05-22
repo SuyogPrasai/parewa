@@ -1,77 +1,70 @@
-"use client";
-
-import * as React from "react";
-import {
-  BookOpen,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
-  PieChart,
-  Settings2,
-  SquareTerminal,
-} from "lucide-react";
-
-import { useSession } from "next-auth/react";
-
-import { NavMain } from "@/components/nav-main";
-import { NavProjects } from "@/components/nav-projects";
-import { NavUser } from "@/components/nav-user";
+import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
 
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarRail,
-} from "@/components/ui/sidebar";
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "@/components/ui/sidebar"
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { data: session } = useSession();
+import { SidebarTrigger } from "@/components/ui/sidebar"
 
-  // Extract user info from session
-  const user = session?.user || {
-    name: "Guest",
-    email: "guest@example.com",
-    avatar: "/avatars/default.jpg",
-  };
+// Menu items.
+const items = [
+  {
+    title: "Home",
+    url: "#",
+    icon: Home,
+  },
+  {
+    title: "Inbox",
+    url: "#",
+    icon: Inbox,
+  },
+  {
+    title: "Calendar",
+    url: "#",
+    icon: Calendar,
+  },
+  {
+    title: "Search",
+    url: "#",
+    icon: Search,
+  },
+  {
+    title: "Settings",
+    url: "#",
+    icon: Settings,
+  },
+]
 
-
-
-  const navMain = [
-
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      isActive: true,
-      items: [
-        { title: "Introduction", url: "#" },
-        { title: "Get Started", url: "#" },
-        { title: "Tutorials", url: "#" },
-        { title: "Changelog", url: "#" },
-      ],
-    },
-  ];
-
-  const projects = [
-    { name: "Literature", url: "#", icon: Frame },
-    { name: "Economy", url: "#", icon: Frame },
-    { name: "Politics", url: "#", icon: PieChart },
-    { name: "Science and Technology", url: "#", icon: Map },
-  ];
-
+export function AppSidebar() {
   return (
-    <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader>
-      </SidebarHeader>
+    <Sidebar variant="sidebar" collapsible="offcanvas">
       <SidebarContent>
-        <NavMain items={navMain} />
-        <NavProjects projects={projects} />
+        <SidebarTrigger sidebarVariant="opened"/>
+        <SidebarGroup>
+          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {items.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <a href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>
-        <NavUser user={user} />
-      </SidebarFooter>
-      <SidebarRail />
     </Sidebar>
-  );
+  )
 }

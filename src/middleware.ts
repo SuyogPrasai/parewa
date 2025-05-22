@@ -45,7 +45,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  if (["/"].some(path => pathname.startsWith(path))) {
+  if (pathname == "/") {
     return NextResponse.redirect(new URL("/home", request.url));
   }
 
