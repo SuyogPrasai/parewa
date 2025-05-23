@@ -3,7 +3,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-import { CarouselHome } from '@/components/app-carousel';
 import { Navbar } from '@/components/app-navbar';
 import { Separator } from '@/components/ui/separator';
 import MainSection from '@/components/app-main-section';
@@ -11,7 +10,6 @@ import ArticlesSection from '@/components/app-article-section';
 // Make sure both types are correctly defined in articleSection.ts
 import { ArticlesSectionProps, Article } from '@/types/articleSection';
 import { NewsletterSignup } from '@/components/app-newsletter-section';
-import Footer from '@/components/footer';
 import Image from 'next/image';
 
 import React from 'react';
@@ -88,7 +86,7 @@ export default function Page() {
                     articlesData.map((section, index) => (
                         <React.Fragment key={section.category || `section-${index}`}>
                             {/* Render NewsletterSignup after the first section (index 0) of the main articles */}
-                            {index === 0 && (
+                            {index === 1 && (
                                 <div className="flex flex-col justify-center items-center pt-10 px-4">
                                     {/* Pass topArticlesData DIRECTLY, no need for flatMap */}
                                     <NewsletterSignup articles={topArticlesData} />

@@ -13,7 +13,7 @@ export default function ArticlesSection({ category, articles }: ArticlesSectionP
   }
 
   return (
-    <section className="container mx-auto my-10 px-4 sm:px-6 lg:px-8 max-w-[1150px]">
+    <section className="container mx-auto my-10 px-4 sm:px-6 lg:px-8 max-w-[1350px]">
       <h2 className="text-2xl font-bold mb-6 md:text-3xl text-gray-900">{category}</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-6">
@@ -47,12 +47,12 @@ function MainArticleCard({ article }: { article: Article }) {
         </Link>
         <CardContent className="p-6 bg-white">
           <h3 className="text-lg font-bold mb-2 md:text-xl">
-            <Link href={article.link} className="hover:text-primary-block transition-colors duration-200">
+            <Link href={article.link} className="hover:text-primary-block transition-colors duration-20 font-roboto text-xl">
               {article.title}
             </Link>
           </h3>
           {article.subtitle && <p className="text-sm text-gray-600 mb-2">{article.subtitle}</p>}
-          <span className="text-primary-block text-sm font-medium">{article.author}</span>
+          <span className="text-primary-block text-sm  font-mono tracking-widest">{article.author}</span>
         </CardContent>
       </Card>
     </article>
@@ -68,10 +68,10 @@ function SideArticleCard({ article }: { article: Article }) {
         </div>
         <CardContent className="px-4 pt-4 flex-1 bg-white">
           <div className="relative bg-black w-[70%] rounded-lg h-[0.15rem] mb-2"></div>
-          <h3 className="text-sm font-bold  hover:text-primary-block transition-colors duration-200">
+            <h3 className="text-lg leading-tight font-bold hover:text-primary-block transition-colors duration-200 font-roboto w-[80%]">
             {article.title}
           </h3>
-          <span className="text-primary-block text-xs font-medium">{article.author}</span>
+          <span className="text-primary-block text-xs font-medium font-mono tracking-widest">{article.author}</span>
         </CardContent>
       </Link>
     </Card>

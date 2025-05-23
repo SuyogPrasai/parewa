@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 
 import AuthProvider from "@/context/AuthProvider";
@@ -17,6 +16,14 @@ import {
 import { AppSidebar } from "@/components/app-sidebar";
 import Footer from "@/components/footer";
 import { CarouselHome } from "@/components/app-carousel";
+
+import { Roboto } from "next/font/google";
+
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: '900',
+  variable: '--font-roboto',
+});
 
 export const metadata: Metadata = {
   title: "परेवा_ - Your Source for Notices, Articles & News",
@@ -37,8 +44,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AuthProvider>
-        <body className="">
-          
+        <body className="{roboto.variable}">
+
           <SidebarProvider defaultOpen={false}>
             <AppSidebar />
             <SidebarInset>
