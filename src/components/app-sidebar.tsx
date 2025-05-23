@@ -43,8 +43,8 @@ const finalNavItems = [
   { title: "ABOUT", url: "#" },
   { title: "DOCUMENTATION", url: "#" },
   { title: "WAYS TO CONTRIBUTE", url: "#" },
-  { title: "REPORT A BUG", url: "#" },
-  { title: "JOBS", url: "#" },
+  { title: "REPORT A BUG", url: "https://forms.gle/VXgj3fueCRhwsrye8" },
+  { title: "JOBS", url: "https://forms.gle/cybYghNXgoumfKfP6" },
   { title: "CREDITS", url: "#" },
 ];
 
@@ -97,7 +97,7 @@ export function AppSidebar() {
                 {finalNavItems.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild>
-                      <a href={item.url} className="font-mono text-md">
+                      <a href={item.url} className="font-mono text-md" target="_blank">
                         <span>{item.title}</span>
                       </a>
                     </SidebarMenuButton>

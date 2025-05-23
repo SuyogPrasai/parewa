@@ -19,6 +19,7 @@ export default function Page() {
 
 
   const [articlesData, setArticlesData] = useState<ArticlesSectionProps[]>([]);
+  const [topArticlesData, setTopArticlesData] = useState<ArticlesSectionProps[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -32,39 +33,55 @@ export default function Page() {
       .catch((error) => console.error('Error fetching articles:', error))
       .finally(() => setLoading(false));
   }, []);
+  useEffect(() => {
+    axios
+      .get('/api/top_articles')
+      .then((response) => {
+        if (response.data.success) {
+          setTopArticlesData(response.data.articles || []);
+        }
+      })
+      .catch((error) => console.error('Error fetching articles:', error))
+      .finally(() => setLoading(false));
+  }, []);
+
 
   return (
     <>
-    <div className="relative">
+      <div className="relative">
 
-      <Navbar />
-      <Separator orientation="horizontal" className="" />
-   
+        <Navbar />
+        <Separator orientation="horizontal" className="" />
 
-      <MainSection />
-      <Separator orientation="horizontal" className="" />
 
-      {loading ? (
-        <p className="container mx-auto my-10 px-4 sm:px-6 lg:px-8">Loading articles...</p>
-      ) : articlesData.length === 0 ? (
-        <p className="container mx-auto my-10 px-4 sm:px-6 lg:px-8">No articles available.</p>
-      ) : (
-        articlesData.map((section, index) => (
-          <React.Fragment key={section.category || index}> {/* Use React.Fragment for multiple top-level elements */}
-            {/* Render NewsletterSignup after the first section (index 0), if desired */}
-            {index === 1 && ( // Changed from index === 1 to index === 0 to place it after the first ArticleSection
-              <div className="flex justify-center items-center py-10 px-4">
-                <NewsletterSignup articles={section.articles} />
+        <MainSection />
+        <Separator orientation="horizontal" className="" />
+
+        {loading ? (
+          <p className="container mx-auto my-10 px-4 sm:px-6 lg:px-8">Loading articles...</p>
+        ) : articlesData.length === 0 ? (
+          <p className="container mx-auto my-10 px-4 sm:px-6 lg:px-8">No articles available.</p>
+        ) : (
+          articlesData.map((section, index) => (
+            <React.Fragment key={section.category || index}> {/* Use React.Fragment for multiple top-level elements */}
+              {/* Render NewsletterSignup after the first section (index 0), if desired */}
+              {index === 1 && ( // Changed from index === 1 to index === 0 to place it after the first ArticleSection
+                <div className="flex flex-col justify-center items-center pt-10 px-4">
+                  <NewsletterSignup articles={topArticlesData} />
+                  <Separator orientation="horizontal" className="" />
+
+                  
+                </div>
+
+              )}
+
+              <div>
+                <ArticlesSection category={section.category} articles={section.articles} />
+                <Separator orientation="horizontal" className="" />
               </div>
-            )}
-
-            <div>
-              <ArticlesSection category={section.category} articles={section.articles} />
-              <Separator orientation="horizontal" className="" />
-            </div>
-          </React.Fragment>
-        ))
-      )}
+            </React.Fragment>
+          ))
+        )}
         <Image
           src="/lightning - reversed.png"
           alt="Eagle Logo"
@@ -73,7 +90,7 @@ export default function Page() {
           className="object-contain absolute bottom-0 left-[3%] w-[20%] min-w-[250px] max-w-[300px]"
         />
 
-    </div>
+      </div>
 
     </>
   );
