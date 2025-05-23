@@ -65,7 +65,7 @@ export default function RootLayout({
                     />
                     <a
                       href="/signup"
-                      className="bg-blue-600 text-white py-1 px-4 rounded-md font-medium font-mono text-lg tracking-wide hover:bg-blue-700"
+                      className="bg-primary-high_bright text-white py-1 px-4 rounded-md font-medium font-mono text-lg tracking-wide hover:bg-primary"
                     >
                       Sign Up
                     </a>

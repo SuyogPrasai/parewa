@@ -21,10 +21,6 @@ const Navbar = () => {
     setActiveLink(linkName);
   };
 
-  // Define custom colors that resemble the image
-  const mintColor = "rgb(59, 130, 246)"; // A teal/mint color for active and contact button
-  const lightMintColor = "rgb(204, 218, 232)"; // A lighter mint for the about button
-
   // Define your navigation links in an array
   const navLinks = [
     { name: "General", href: "#" },
@@ -32,33 +28,33 @@ const Navbar = () => {
     { name: "Academics", href: "#" },
     { name: "Arts", href: "#" },
     { name: "Tech", href: "#" },
-    // You can add more links here as needed
   ];
 
   return (
-    <div className=" bg-white mx-auto lg:relative lg:block shadow-sm">
+    <div className="bg-white mx-auto lg:relative lg:block shadow-sm">
       <div className="container mx-auto px-4 relative">
         <nav className="flex lg:flex-row items-center justify-center">
           {/* Desktop Navigation */}
           <div className="flex justify-center">
             <NavigationMenu className="lg:flex">
               <NavigationMenuList className="flex md:flex-row md:mt-0 mt-5 flex-col space-x-0">
-                {/* Iterate over your navigation links */}
                 {navLinks.map((link) => (
                   <NavigationMenuItem key={link.name}>
                     <NavigationMenuLink
-                      className="py-2 px-6 flex items-center justify-center text-black text-lg font-bold hover:cursor-pointer" // Base styles
+                      className="py-2 px-6 flex items-center justify-center text-black text-lg font-bold hover:cursor-pointer"
                       style={{
                         backgroundColor:
-                          activeLink === link.name ? mintColor : "white",
+                          activeLink === link.name
+                            ? "hsl(var(--primary-high-bright))"
+                            : "white",
                         color: activeLink === link.name ? "white" : "black",
-                        minWidth: "100px", // Ensure consistent width if needed
-                        height: "60px", // Adjust height to match the image's blocky look
+                        minWidth: "100px",
+                        height: "60px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        letterSpacing: "0.05em", // Adjust letter spacing to match the image
-                        fontFamily: "monospace, sans-serif", // Or a custom font
+                        letterSpacing: "0.05em",
+                        fontFamily: "monospace, sans-serif",
                       }}
                       onClick={() => handleLinkClick(link.name)}
                     >
@@ -72,12 +68,10 @@ const Navbar = () => {
 
           {/* About and Contact Buttons */}
           <div className="hidden lg:flex space-x-0 h-[60px] items-center ml-10">
-            {" "}
-            {/* Align with nav items' height */}
             <div
               className="py-2 px-6 flex items-center justify-center hover:cursor-pointer text-black text-lg font-bold"
               style={{
-                backgroundColor: lightMintColor,
+                backgroundColor: "hsl(var(--primary-low-bright))",
                 color: "black",
                 minWidth: "100px",
                 height: "60px",
@@ -93,7 +87,7 @@ const Navbar = () => {
             <div
               className="py-2 px-6 flex items-center justify-center hover:cursor-pointer text-white text-lg font-bold"
               style={{
-                backgroundColor: mintColor,
+                backgroundColor: "hsl(var(--primary-high-bright))",
                 color: "white",
                 minWidth: "100px",
                 height: "60px",

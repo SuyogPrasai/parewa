@@ -73,7 +73,7 @@ export function AppSidebar() {
             </SidebarMenu>
             <Separator className="bg-black h-[0.0125rem]" />
             <div className="my-4 w-[75%]">
-              <button className="bg-blue-500 text-white py-2 px-4 w-full flex items-center justify-center font-sans font-bold">
+              <button className="bg-primary text-white py-2 px-4 w-full flex items-center justify-center font-sans font-bold">
                 SUPPORT US <span className="ml-2 text-lg">→</span>
               </button>
             </div>

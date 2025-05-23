@@ -47,7 +47,7 @@ const socialIcons = [
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gray-900 text-gray-300 py-16 px-4 sm:px-6 md:px-8 lg:px-12">
+    <footer className="relative bg-secondary-background text-gray-300 py-16 px-4 sm:px-6 md:px-8 lg:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
         <div className="flex flex-col mx-auto max-w-screen-lg">
@@ -85,7 +85,7 @@ export default function Footer() {
                   placeholder="Enter your email"
                   className="flex-grow rounded-l-md rounded-r-none text-sm bg-gray-800 text-gray-100 border border-gray-700 focus:border-white transition-colors duration-200 py-2 px-3"
                 />
-                <button className="bg-indigo-600 text-white rounded-l-none rounded-r-md text-sm whitespace-nowrap hover:bg-indigo-500 transition-colors duration-200 px-4 py-2">
+                <button className="bg-primary-block text-white rounded-l-none rounded-r-md text-sm whitespace-nowrap hover:bg-light-dark transition-colors duration-200 px-4 py-2">
                   Subscribe
                 </button>
               </div>

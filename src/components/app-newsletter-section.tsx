@@ -65,11 +65,10 @@ export function NewsletterSignup({ articles }: { articles: Article[] }) {
                 </div>
                 <Card className="relative lg:max-w-sm b/g-white text-gray-800 p-10 rounded-none mt-10 lg:mt-0">
                     <CardHeader className="p-0 mb-6">
-                        <div className="text-blue-600 text-lg font-semibold">PAREWA NOTICE SYSTEM</div>
                         <CardTitle className="text-gray-900 text-3xl font-extrabold leading-tight mt-2">
                             Join the Newsletter
                         </CardTitle>
-                        <CardDescription className="text-blue-500 text-xl font-bold mt-2">
+                        <CardDescription className="text-primary-high_bright text-xl font-bold mt-2">
                             Original reporting.<br />Fearless journalism.<br />Delivered to you.
                         </CardDescription>
                     </CardHeader>
@@ -86,12 +85,12 @@ export function NewsletterSignup({ articles }: { articles: Article[] }) {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     disabled={isLoading}
-                                    className="w-full h-12 p-7 border-blue-300 text-black placeholder-gray-400 bg-white rounded-none focus:ring-2 focus:ring-blue-500 text-base border"
+                                    className="w-full h-12 p-7 border-light text-black placeholder-gray-400 bg-white rounded-none focus:ring-2 focus:ring-primary-light_dark text-base border"
                                 />
                             </div>
                             <Button
                                 type="submit"
-                                className="w-full h-12 p-7 border border-blue-300 bg-white flex justify-start text-blue-300 font-bold text-lg rounded-none hover:bg-white transition disabled:opacity-50"
+                                className="w-full h-12 p-7 border border-primary-high_bright bg-white flex justify-start text-primary-high_bright font-bold text-lg rounded-none hover:bg-white transition disabled:opacity-50"
                                 disabled={isLoading}
                             >
                                 {isLoading ? (
@@ -107,34 +106,34 @@ export function NewsletterSignup({ articles }: { articles: Article[] }) {
                         </form>
                         {message && (
                             <p
-                                className={`mt-4 text-center text-sm font-medium ${message.includes("Thank you") ? "text-blue-600" : "text-red-600"}`}
+                                className={`mt-4 text-center text-sm font-medium ${message.includes("Thank you") ? "text-primary-block" : "text-red-600"}`}
                             >
                                 {message}
                             </p>
                         )}
-                        <p className="text-xs mt-6 text-left mx-auto text-gray-600 w-[95%] ml-5">
-                            By signing up, I agree to receive emails from The Intercept and to the{' '}
+                        <p className="text-xs mt-6 text-left mx-auto text-gray-600 w-[95%] ml-3">
+                            By signing up, I agree to receive emails from Parewa and to the{' '}
                             <a
                                 href="#"
-                                className="underline font-bold text-blue-600 hover:text-blue-800"
+                                className="underline font-bold text-primary-block hover:text-primary-dark"
                             >
                                 Privacy Policy
                             </a>{' '}and{' '}
                             <a
                                 href="#"
-                                className="underline font-bold text-blue-600 hover:text-blue-800"
+                                className="underline font-bold text-primary-block hover:text-primary-dark"
                             >
                                 Terms of Use
                             </a>.
                         </p>
                     </CardContent>
                     {/* Decorative Borders - Changed to a darker blue/gray */}
-                    <div className="absolute top-0 left-0 w-3 z-10 h-[calc(100%-60px)] bg-blue-500 shadow-lg" />
-                    <div className="absolute top-0 left-0 h-3 w-[15%] bg-blue-500 shadow-lg" />
-                    <div className="absolute top-0 right-0 h-3 w-[15%] bg-blue-500 shadow-lg" />
-                    <div className="absolute bottom-[50px] right-0 h-3 w-[10%] bg-blue-500 shadow-lg" />
-                    <div className="absolute bottom-[50px] left-0 h-3 w-[10%] bg-blue-500 shadow-lg" />
-                    <div className="absolute top-0 right-0 w-3 z-10 h-[calc(100%-60px)] bg-blue-500 shadow-lg" />
+                    <div className="absolute top-0 left-0 w-3 z-10 h-[calc(100%-60px)] bg-primary-high_bright shadow-lg" />
+                    <div className="absolute top-0 left-0 h-3 w-[15%] bg-primary-high_bright shadow-lg" />
+                    <div className="absolute top-0 right-0 h-3 w-[15%] bg-primary-high_bright shadow-lg" />
+                    <div className="absolute bottom-[50px] right-0 h-3 w-[10%] bg-primary-high_bright shadow-lg" />
+                    <div className="absolute bottom-[50px] left-0 h-3 w-[10%] bg-primary-high_bright shadow-lg" />
+                    <div className="absolute top-0 right-0 w-3 z-10 h-[calc(100%-60px)] bg-primary-high_bright shadow-lg" />
                 </Card>
             </div>
         </>
@@ -151,10 +150,10 @@ function SideArticleCard({ article, rank }: { article: Article; rank: number }) 
                 </div>
                 <CardContent className="px-4 pt-4 flex-1 bg-white relative">
                     <div className="relative bg-black w-[40%] rounded-lg h-[0.15rem] mb-2"></div>
-                    <h3 className="text-sm font-bold hover:text-blue-600 transition-colors duration-200">
+                    <h3 className="text-sm font-bold hover:text-primary-block transition-colors duration-200">
                         {article.title}
                     </h3>
-                    <span className="text-blue-600 text-xs font-medium">{article.author}</span>
+                    <span className="text-primary-block text-xs font-medium">{article.author}</span>
                 </CardContent>
             </Link>
             <div className={`flex items-center bg-[#ffffff] justify-center right-10 bottom-0 absolute w-16 bg-white-500 font-mono text-xl ${rank === 1 ? 'text-red-500' : rank === 2 ? 'text-orange-500' : rank === 3 ? 'text-green-500' : 'text-[#232323]'}`}>

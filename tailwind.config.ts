@@ -22,11 +22,22 @@ export default {
   			},
   			primary: {
   				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
+  				foreground: 'hsl(var(--primary-foreground))',
+				accent: 'hsl(var(--primary-accent))',
+				highlight: 'hsl(var(--primary-highlight))',
+				block: 'hsl(var(--primary-block))',
+				dark: 'hsl(var(--primary-dark))',
+				light: 'hsl(var(--primary-light))',
+				light_dark: 'hsl(var(--primary-light-dark))',
+				placeholder: 'hsl(var(--primary-placeholder))',
+
+				high_bright: 'hsl(var(--primary-high-bright))',
+				low_bright: 'hsl(var(--primary-low-bright))',
   			},
   			secondary: {
   				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
+  				foreground: 'hsl(var(--secondary-foreground))',
+  				background: 'hsl(var(--secondary-background))',
   			},
   			muted: {
   				DEFAULT: 'hsl(var(--muted))',
@@ -43,13 +54,6 @@ export default {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
-  			chart: {
-  				'1': 'hsl(var(--chart-1))',
-  				'2': 'hsl(var(--chart-2))',
-  				'3': 'hsl(var(--chart-3))',
-  				'4': 'hsl(var(--chart-4))',
-  				'5': 'hsl(var(--chart-5))'
-  			},
   			sidebar: {
   				DEFAULT: 'hsl(var(--sidebar-background))',
   				foreground: 'hsl(var(--sidebar-foreground))',
