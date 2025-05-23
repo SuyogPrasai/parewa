@@ -1,3 +1,4 @@
+import { Bebas_Neue } from "next/font/google";
 import type { Config } from "tailwindcss";
 
 export default {
@@ -94,6 +95,9 @@ export default {
   		},
 		fontFamily: {
 			roboto: ['var(--font-roboto)', 'sans-serif'],
+			oswald: ['var(--font-oswald)', 'sans-serif'],
+			bebas_neue: ['var(--font-bebas_neue)', 'sans-serif'],
+			
 		}
   	}
   },

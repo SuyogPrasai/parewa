@@ -47,8 +47,8 @@ export function NewsletterSignup({ articles }: { articles: Article[] }) {
     return (
         <>
             <div className="flex flex-col lg:flex-row relative items-center">
-                <div className="flex flex-col gap-6">
-                    <div className="text-black text-2xl font-bold font-sans pr-5">ARTICLE RANKINGS FOR THE MONTH </div>
+                <div className="flex flex-col gap-6 lg:mr-5">
+                    <div className="text-black text-3xl font-bold pr-5 font-oswald">Article Rankings for the Month </div>
                     <div className="flex flex-col lg:flex-row">
                         <div className="flex flex-col gap-6 mb-5 lg:mb-0">
                             {articles.slice(0, 3).map((article, index) => (

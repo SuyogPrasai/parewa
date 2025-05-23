@@ -36,8 +36,8 @@ const SlideContent: React.FC<Slide> = ({ image, title, author }) => (
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-50" />
       {/* Text Content */}
-      <div className="lg:ml-10 absolute bottom-4 left-4 md:bottom-10 md:left-12 max-w-2xl text-white space-y-2">
-        <h1 className="text-xl md:text-3xl lg:text-5xl font-bold leading-tight">{title.toUpperCase()}</h1>
+      <div className="lg:ml-10 absolute bottom-4 left-4 md:bottom-10 md:left-12 max-w-3xl text-white space-y-2">
+        <h1 className="text-xl md:text-3xl lg:text-7xl font-bold leading-tight font-bebas_neue">{title.toUpperCase()}</h1>
         <p className="text-xs md:text-sm lg:text-base italic text-primary">{author}</p>
       </div>
     </CardContent>

@@ -17,12 +17,24 @@ import { AppSidebar } from "@/components/app-sidebar";
 import Footer from "@/components/footer";
 import { CarouselHome } from "@/components/app-carousel";
 
-import { Roboto } from "next/font/google";
+import { Roboto, Oswald, Bebas_Neue} from "next/font/google";
 
 const roboto = Roboto({
   subsets: ['latin'],
-  weight: '900',
+  weight: '700',
   variable: '--font-roboto',
+});
+
+const oswald = Oswald({
+  subsets: ['latin'],
+  weight: '700',
+  variable: '--font-oswald',
+});
+
+const bebas_neue = Bebas_Neue({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-bebas_neue',
 });
 
 export const metadata: Metadata = {
@@ -31,9 +43,9 @@ export const metadata: Metadata = {
 };
 
 const slides = [
-  { id: 1, image: '/carousel_background_2.jpg', title: 'Sadness is but a wall between two gardens.', author: 'Kahlil Gibran' },
-  { id: 2, image: '/carousel_background_2.jpg', title: 'Sadness is but a wall between two gardens.', author: 'Kahlil Gibran' },
-  { id: 3, image: '/carousel_background_2.jpg', title: 'Sadness is but a wall between two gardens.', author: 'Kahlil Gibran' },
+  { id: 1, image: '/carousel_background_2.jpg', title: 'Sadness is but a wall between two gardens', author: 'Kahlil Gibran' },
+  { id: 2, image: '/carousel_background_2.jpg', title: 'Sadness is but a wall between two gardens', author: 'Kahlil Gibran' },
+  { id: 3, image: '/carousel_background_2.jpg', title: 'Sadness is but a wall between two gardens', author: 'Kahlil Gibran' },
 ];
 
 export default function RootLayout({
@@ -44,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AuthProvider>
-        <body className="{roboto.variable}">
+        <body className={`${roboto.variable} ${oswald.variable} ${bebas_neue.variable}`}>
 
           <SidebarProvider defaultOpen={false}>
             <AppSidebar />
