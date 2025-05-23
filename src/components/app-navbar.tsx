@@ -1,15 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { MenuIcon } from "lucide-react";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
 import Image from "next/image";

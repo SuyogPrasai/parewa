@@ -1,7 +1,6 @@
 'use client'
 import NoticeSection from "./app-notice-section";
 import SideCalendar from "./app-side-calendar";
-import Image from "next/image";
 
 export default function MainSection() {
   return (

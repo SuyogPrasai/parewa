@@ -1,4 +1,4 @@
-import mongoose, { Schema, model, Document } from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
 /**
  * Represents the possible values for a vote: 1 for upvote, -1 for downvote.
@@ -34,6 +34,6 @@ const VoteSchema: Schema<Vote> = new Schema(
 /**
  * Mongoose model for the Vote schema.
  */
-const VoteModel = mongoose.models.Vote || model<Vote>("Vote", VoteSchema);
+const VoteModel = mongoose.models.Vote || (mongoose.model<Vote>("Vote", VoteSchema));
 
 export default VoteModel;

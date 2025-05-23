@@ -30,7 +30,6 @@ export default function OTPPage() {
   const handleSubmit = async (data: z.infer<typeof otpSchema>) => {
     try {
       const email = decodeURIComponent(params.email); // Decode email if URL-encoded
-      const response = await axios.post('/api/verify_otp', { email, otp: data.otp });
 
       toast({
         title: "Success",

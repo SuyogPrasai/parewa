@@ -1,4 +1,4 @@
-import mongoose, { Schema, model, Document } from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
 export interface Newsletter extends Document {
     email: string;

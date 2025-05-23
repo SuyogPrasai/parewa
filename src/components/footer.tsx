@@ -1,19 +1,27 @@
 import Link from "next/link";
-import { Input } from "@/components/ui/input"; // Assuming these are still used elsewhere or for styling reference
-import { Button } from "@/components/ui/button"; // Assuming these are still used elsewhere or for styling reference
 import { Instagram, Facebook, X, Linkedin } from 'lucide-react';
 
 // ---
 // Helper Components
 // ---
 
-const SocialIcon = ({ Icon, href }) => (
+type SocialIconProps = {
+  Icon: React.ComponentType<{ size?: number; className?: string }>;
+  href: string;
+};
+
+const SocialIcon = ({ Icon, href }: SocialIconProps) => (
   <a href={href} target="_blank" rel="noopener noreferrer">
     <Icon size={24} className="cursor-pointer text-gray-300 hover:text-white transition-colors duration-200" />
   </a>
 );
 
-const FooterLinkSection = ({ title, links }) => (
+type FooterLinkSectionProps = {
+  title: string;
+  links: { href: string; text: string }[];
+};
+
+const FooterLinkSection = ({ title, links }: FooterLinkSectionProps) => (
   <div>
     <h3 className="text-base font-semibold mb-4 text-white">{title}</h3>
     <ul className="space-y-2 text-sm text-gray-300">

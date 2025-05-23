@@ -45,7 +45,7 @@ const SlideContent: React.FC<Slide> = ({ image, title, author }) => (
 );
 
 export function CarouselHome({ slides }: CarouselHomeProps) {
-  const autoplayPlugin = React.useRef(Autoplay({ delay: 3000, stopOnInteraction: true }));
+  const autoplayPlugin = React.useRef(Autoplay({ delay: 10000, stopOnInteraction: true }));
 
   return (
     <Carousel

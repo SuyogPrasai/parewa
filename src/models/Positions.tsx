@@ -1,4 +1,4 @@
-import mongoose, { Schema, model, Document } from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
 // Defining the interface for the Position model
 export interface Position extends Document {

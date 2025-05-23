@@ -1,16 +1,10 @@
 import {
-  Calendar,
-  Home,
-  Inbox,
-  Search,
-  Settings,
   X,
   Facebook, // Import Facebook icon
   Twitter, // Import Twitter icon (often represented by the 'X' logo now)
   Youtube, // Import Youtube icon
   Instagram, // Import Instagram icon
   Linkedin, // Import LinkedIn icon
-  Globe, // A general globe or link icon for others
   MoreHorizontal, // For the '...' or general "more" if you don't have a specific icon
 } from "lucide-react";
 
@@ -43,7 +37,7 @@ const finalNavItems = [
   { title: "ABOUT", url: "#" },
   { title: "DOCUMENTATION", url: "#" },
   { title: "WAYS TO CONTRIBUTE", url: "#" },
-  { title: "REPORT A BUG", url: "https://forms.gle/VXgj3fueCRhwsrye8" },
+  { title: "REPORT A BUG", url: "https://forms.gle/e7LWQa73WBmnsiDS8" },
   { title: "JOBS", url: "https://forms.gle/cybYghNXgoumfKfP6" },
   { title: "CREDITS", url: "#" },
 ];

@@ -6,17 +6,7 @@ import AuthProvider from "@/context/AuthProvider";
 
 import { Toaster } from "@/components/ui/toaster";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Sun, Moon } from "lucide-react";
 
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
@@ -29,12 +19,14 @@ import Footer from "@/components/footer";
 import { CarouselHome } from "@/components/app-carousel";
 
 export const metadata: Metadata = {
-  title: "Parewa | 6000E +2 CS",
+  title: "परेवा_ - Your Source for Notices, Articles & News",
   description: "Parewa is a media platform developed and managed by the students of BNKS",
 };
 
 const slides = [
   { id: 1, image: '/carousel_background_2.jpg', title: 'Sadness is but a wall between two gardens.', author: 'Kahlil Gibran' },
+  { id: 2, image: '/carousel_background_2.jpg', title: 'Sadness is but a wall between two gardens.', author: 'Kahlil Gibran' },
+  { id: 3, image: '/carousel_background_2.jpg', title: 'Sadness is but a wall between two gardens.', author: 'Kahlil Gibran' },
 ];
 
 export default function RootLayout({

@@ -1,5 +1,4 @@
 import { NextResponse, NextRequest } from "next/server";
-import { z } from "zod";
 
 import dbConnect from "@/lib/dbConnnect";
 import UserModel from "@/models/User";
@@ -55,8 +54,6 @@ export async function GET(req: NextRequest) {
 			}
 		} else {
 			const { roll, name } = result;
-			const username = roll + name;
-
 			if (user) {
 				if (user.isVerified) {
 					return NextResponse.json(

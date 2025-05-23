@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { Article } from "@/types/articleSection";
 import Link from "next/link";
 import Image from "next/image";
-import { Award } from "lucide-react";
 
 import {
     Card,
