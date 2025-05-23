@@ -58,32 +58,30 @@ export default function Footer() {
     <footer className="relative bg-secondary-background text-gray-300 py-16 px-4 sm:px-6 md:px-8 lg:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
-        <div className="flex flex-col mx-auto max-w-screen-lg">
+        <div className="flex flex-col mx-auto max-w-screen-lg"> {/* Removed justify-center here */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-            {/* Logo and Description */}
+            {/* Logo and Description - occupies 1 column on small screens, 1 on medium+ */}
             <div className="md:col-span-1">
               <h2 className="text-xl font-bold mb-4 text-white">PAREWA</h2>
               <p className="text-sm text-gray-300 mb-6">
                 A collection of 100+ responsive HTML templates for your startup business or side project.
               </p>
-              <div className="flex gap-4">
+              <div className="flex gap-4 ">
                 {socialIcons.map(({ Icon, href }, index) => (
                   <SocialIcon key={index} Icon={Icon} href={href} />
                 ))}
               </div>
             </div>
 
-            {/* Link Sections */}
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 md:col-span-2">
+            {/* Link Sections - occupies 2 columns on medium+ screens, side by side */}
+            <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:ml-20  font-mono"> {/* Changed to grid for better control */}
               <FooterLinkSection title="Company" links={companyLinks} />
               <FooterLinkSection title="Resources" links={companyLinks} />
-              <FooterLinkSection title="Support" links={companyLinks} />
-              <FooterLinkSection title="Legal" links={companyLinks} />
             </div>
           </div>
 
-          {/* Newsletter */}
-          <div className="mt-4 border-gray-700">
+          {/* Newsletter - Full width at the bottom of the main content section */}
+          <div className="mt-4 border-t border-gray-700 pt-8"> {/* Added top border and padding */}
             <h3 className="text-base font-semibold mb-4 text-white">Newsletter</h3>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <p className="text-sm text-gray-300 mb-2 sm:mb-0">Subscribe to our newsletter for updates.</p>
