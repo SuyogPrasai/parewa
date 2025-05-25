@@ -11,6 +11,7 @@ import ArticlesSection from '@/components/app-article-section';
 import { ArticlesSectionProps, Article } from '@/types/articleSection';
 import { NewsletterSignup } from '@/components/app-newsletter-section';
 import Image from 'next/image';
+import Notice from '@/types/noitce';
 
 import React from 'react';
 
@@ -66,15 +67,39 @@ export default function Page() {
             .finally(() => setLoadingTopArticles(false));
     }, []);
 
+    const [notices, setNotices] = useState<Notice[]>([]);
+
+    useEffect(() => {
+        axios
+            .get("/api/get_news?category=General")
+            .then((response) => {
+                if (response.data.success) {
+                    setNotices(response.data.notices.filter((notice: Notice) => !notice.trashed));
+                }
+            })
+            .catch((error) => console.error("Error fetching notices:", error));
+    }, []);
+
+    const updateNotices = (heading: string) => {
+        axios
+            .get("/api/get_news?category=" + heading)
+            .then((response) => {
+                if (response.data.success) {
+                    setNotices(response.data.notices.filter((notice: Notice) => !notice.trashed));
+                }
+            })
+            .catch((error) => console.error("Error fetching notices:", error));
+    }
+
     const isLoading = loadingArticles || loadingTopArticles;
 
     return (
         <>
             <div className="relative">
-                <Navbar />
+                <Navbar header_click={updateNotices} />
                 <Separator orientation="horizontal" className="" />
 
-                <MainSection />
+                <MainSection notices={notices} />
                 <Separator orientation="horizontal" className="" />
 
                 {isLoading ? (
@@ -104,7 +129,7 @@ export default function Page() {
 
                 {/* This block is important if articlesData is empty but topArticlesData has content */}
                 {!isLoading && articlesData.length === 0 && topArticlesData.length > 0 && (
-                     <div className="flex flex-col justify-center items-center pt-10 px-4">
+                    <div className="flex flex-col justify-center items-center pt-10 px-4">
                         <NewsletterSignup articles={topArticlesData} />
                         <Separator orientation="horizontal" className="my-10" />
                     </div>

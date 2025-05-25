@@ -10,20 +10,21 @@ import {
 
 import Image from "next/image";
 
-const Navbar = () => {
+function Navbar({ header_click }: any) {
   const [activeLink, setActiveLink] = useState("General"); // State to track active link
 
   const handleLinkClick = (linkName: string) => {
     setActiveLink(linkName);
+    header_click(linkName);
   };
 
   // Define your navigation links in an array
   const navLinks = [
     { name: "General", href: "#" },
-    { name: "Sports", href: "#" },
-    { name: "Academics", href: "#" },
-    { name: "Arts", href: "#" },
-    { name: "Tech", href: "#" },
+    { name: "Departments", href: "#" },
+    { name: "School", href: "#" },
+    { name: "Council", href: "#" },
+    { name: "Clubs", href: "#" },
   ];
 
   return (

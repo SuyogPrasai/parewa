@@ -10,13 +10,34 @@ export async function GET(request: NextRequest) {
     await dbConnect();
 
     const { searchParams } = new URL(request.url);
+    let category_ = searchParams.get("category");
+
+    if (!category_) {
+        console.log("Category is required.");
+        return NextResponse.json({ success: false, message: "Category is required" }, { status: 400 });
+    }
+
+    const notice = await NoticeModel.findOne({ category: category_ });
+    if (!notice) {
+        return NextResponse.json(
+            { success: false, message: "Category Does Not Exist" },
+            { status: 200 }
+        );
+    }
 
     try {
         const notices = await NoticeModel.aggregate([
-            { $match: { trashed: false } }, // Filter out trashed notices
+            { $match: { trashed: false, category: category_ } }, // Filter out trashed notices
             { $sort: { createdAt: -1 } },   // Sort by latest createdAt
             { $limit: 4 }                   // Get only 4 latest notices
         ]);
+
+        if (notices.length === 0) {
+            return NextResponse.json(
+                { success: true, message: "No notices found" },
+                { status: 200 }
+            );
+        }
 
         // Fetch usernames for notices
         const userIds = notices.map((notice: { publisherID: Types.ObjectId }) => notice.publisherID);

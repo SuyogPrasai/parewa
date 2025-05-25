@@ -1,31 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { NoticeCard } from "./notice";
+import Notice from "@/types/noitce";
 
-interface Notice {
-  _id: string;
-  title: string;
-  content: string;
-  publishedIn: string;
-  postTags: string[];
-  voteCount: number;
-  username: string;
-  trashed: boolean;
-}
-
-export default function NoticeSection() {
-  const [notices, setNotices] = useState<Notice[]>([]);
-
-  useEffect(() => {
-    axios
-      .get("/api/get_news")
-      .then((response) => {
-        if (response.data.success) {
-          setNotices(response.data.notices.filter((notice: Notice) => !notice.trashed));
-        }
-      })
-      .catch((error) => console.error("Error fetching notices:", error));
-  }, []);
+export default function NoticeSection({ notices } : { notices: Notice[] }) {
 
   return (
     <div className="lg:w-[80vw] mx-0  md:mx-auto lg:mx-0 w-full max-w-2xl flex flex-col items-center gap-4">
