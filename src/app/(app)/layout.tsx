@@ -15,9 +15,10 @@ import {
 
 import { AppSidebar } from "@/components/app-sidebar";
 import Footer from "@/components/footer";
+import PreloaderWrapper from "@/components/preloader-wrapper";
 import { CarouselHome } from "@/components/app-carousel";
 
-import { Roboto, Oswald, Bebas_Neue} from "next/font/google";
+import { Roboto, Oswald, Bebas_Neue } from "next/font/google";
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -55,45 +56,36 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+
       <AuthProvider>
         <body className={`${roboto.variable} ${oswald.variable} ${bebas_neue.variable}`}>
+          <PreloaderWrapper>
 
-          <SidebarProvider defaultOpen={false}>
-            <AppSidebar />
-            <SidebarInset>
-              {/* Header - positioned absolutely over the carousel */}
-              <header className="absolute top-0 left-0 w-full z-20 flex h-20 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
-                <div className="flex items-center justify-between w-full p-6 bg-opacity-30 text-white">
-                  <div className="flex items-center gap-2">
-                    <SidebarTrigger className="mr-2" />
-                    <p className="text-xl font-sans md:text-4xl font-bold">परेवा_</p>
-                  </div>
-                  <div className="hidden items-center gap-3 md:flex">
-                    <Input
-                      className="w-[20em] bg-white bg-opacity-20 border-none placeholder-gray-300 text-black"
-                      type="text"
-                      placeholder="Search </>"
-                    />
-                    <a
-                      href="/signin"
-                      className="bg-primary-high_bright text-white py-1 px-4 rounded-md font-medium font-mono text-lg tracking-wide hover:bg-primary"
-                    >
-                      Sign In
-                    </a>
-                  </div>
-                </div>
-              </header>
+            <SidebarProvider defaultOpen={false}>
+              <AppSidebar />
+              <SidebarInset>
+                {/* Header - positioned absolutely over the carousel */}
+                <header className="absolute top-0 left-0 w-full z-20 flex h-20 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+                  <div className="flex items-center justify-between w-full p-6 bg-opacity-30 text-white">
+                    <div className="flex items-center gap-2">
+                      <SidebarTrigger className="mr-2" />
+                      <p className="text-xl font-sans md:text-4xl font-bold">परेवा_</p>
+                    </div>
 
-              {/* Carousel - acts as the background */}
-              <CarouselHome slides={slides} />
-              <Separator orientation="horizontal" className="" />
-              <main className="w-full h-full px-5">
-                {children}
-              </main>
-              <Footer />
-              <Toaster />
-            </SidebarInset>
-          </SidebarProvider>
+                  </div>
+                </header>
+
+                {/* Carousel - acts as the background */}
+                <CarouselHome slides={slides} />
+                <Separator orientation="horizontal" className="" />
+                <main className="w-full h-full px-5">
+                  {children}
+                </main>
+                <Footer />
+                <Toaster />
+              </SidebarInset>
+            </SidebarProvider>
+          </PreloaderWrapper>
         </body>
       </AuthProvider>
     </html>

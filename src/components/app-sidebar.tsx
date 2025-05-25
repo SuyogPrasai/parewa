@@ -17,6 +17,8 @@ import {
 } from "@/components/ui/sidebar";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Separator } from "./ui/separator";
+import AuthButton from "@/components/auth-button";
+
 
 const navItems = [
   { title: "GENERAL NEWS", url: "#" },
@@ -85,7 +87,8 @@ export function AppSidebar() {
                 ))}
               </SidebarMenu>
             </div>
-            <Separator className="bg-black h-[0.0125rem]" />
+            <AuthButton />
+            <Separator className="mt-4 bg-black h-[0.0125rem]" />
             <div className="pt-4 mb-2">
               <SidebarMenu>
                 {finalNavItems.map((item) => (
@@ -99,6 +102,7 @@ export function AppSidebar() {
                 ))}
               </SidebarMenu>
             </div>
+            
             {/* Footer section */}
             <div className="mt-6 p-4 border-gray-200">
               <div className="flex items-center gap-4 mb-5">
