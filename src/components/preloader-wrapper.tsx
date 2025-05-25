@@ -85,7 +85,7 @@ const PreloaderWrapper: React.FC<PreloaderWrapperProps> = ({ children }) => {
     // Simulating initial load time
     const timer = setTimeout(() => {
       setInitialLoadComplete(true);
-    }, 500); // Display preloader for at least 500ms on initial load
+    }, 3000); // Display preloader for at least 500ms on initial load
 
     return () => clearTimeout(timer);
   }, []); // Run only once on mount
