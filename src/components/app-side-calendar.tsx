@@ -4,81 +4,63 @@ import { Calendar } from "@/components/ui/calendar";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { format } from "date-fns";
 import Image from 'next/image';
-
-interface CalendarEvent {
-  title: string;
-  date: Date;
-  description: string;
-}
+import axios from 'axios';
+import getFormattedDate from '../helpers/getDateInFormat';
+import { Event } from '@/models/Event';
+import { ScrollArea } from './ui/scroll-area';
 
 const SideCalendar = () => {
   const [date, setDate] = useState<Date>(new Date());
-  const [events, setEvents] = useState<CalendarEvent[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
 
-  // useEffect(() => {
-  //   const fetchEvents = async () => {
-  //     try {
-  //       const response = await fetch('/api/events');
-  //       // if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-  //       const data = await response.json();
-  //       setEvents(data.map((event: any) => ({
-  //         ...event,
-  //         date: new Date(event.date),
-  //       })));
-  //     } catch (error) {
-  //       console.error("Error fetching events:", error);
-  //     }
-  //   };
-
-  //   fetchEvents();
-  // }, []);
-
-  const filteredEvents = events.filter(event => {
-    const eventDate = new Date(event.date);
-    return eventDate.getFullYear() === date.getFullYear() &&
-      eventDate.getMonth() === date.getMonth();
-  });
+  useEffect(() => {
+    const formattedSelectedDate = getFormattedDate(date);
+    axios
+      .get("/api/get_events?date=" + formattedSelectedDate)
+      .then((response) => {
+        if (response.data.success) {
+          setEvents(response.data.events);
+        }
+      })
+      .catch((error) => console.error("Error fetching events:", error));
+  }, [date]);
 
   return (
-    <div className="relative">
+    <Card className="bg-background shadow-lg border-border/50 p-2">
+      <CardHeader className="p-3">
 
-      <Card className="bg-background shadow-lg border-border/50 relative z-1">
-        <CardHeader className="pb-2 px-4 pt-4">
-          <div className="flex items-center justify-center md:justify-between">
-            <h2 className="text-lg font-semibold px-2">
-              {format(date, 'dd MMMM yyyy')}
-            </h2>
-          </div>
-        </CardHeader>
+        <h2 className="text-lg font-semibold px-2">
+          {format(date, 'dd MMMM yyyy')}
+        </h2>
 
-        <CardContent className="space-y-4 md:space-y-2  justify-center lg:space-y-6 px-4 flex flex-col md:flex-row lg:flex-col ">
-          <div className="rounded-lg border p-2 shadow-sm max-w-[275px] mx-auto lg:mb-0 mb-5">
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={(day) => day && setDate(day)}
-              className="rounded-md"
-            />
-          </div>
+      </CardHeader>
 
-          <div className="md:p-4 w-full">
-            <h3 className="text-lg font-semibold text-center px-8 lg:text-left md:text-left">Events</h3>
-            <div className=" max-h-[500px] overflow-y-auto pr-2">
-              {filteredEvents.length > 0 ? (
-                filteredEvents.map((event) => (
-                  <Card key={`${event.date.getTime()}-${event.title}`}
-                    className="group hover:bg-accent/50 transition-colors shadow-sm">
-                    <CardHeader className="p-3">
-                      <CardTitle className="text-sm font-medium">
+      <CardContent className="justify-center flex flex-col md:flex-row lg:flex-col p-2">
+        <div className="rounded-lg border shadow-sm max-w-[275px] mx-auto lg:mb-0 mb-5">
+          <Calendar
+            mode="single"
+            selected={date}
+            onSelect={(day) => day && setDate(day)}
+            className="p-5"
+          />
+        </div>
+
+        <div className="w-full p-2">
+          <h3 className="text-lg font-semibold text-center pb-2 lg:text-left md:text-left mt-5">Events</h3>
+          <div className=" max-h-[500px] overflow-y-auto ">
+            <ScrollArea className="h-[200px] w-[250px] rounded-md p-2">
+              {events.length > 0 ? (
+                events.map((event) => (
+                  <Card
+                    key={`${event.start_date}-${event.title}`}
+                    className="shadow-none mb-2 rounded-none border-none relative flex items-center" // Added flex and items-center
+                  >
+                    <div className="bg-primary h-full w-[2px] absolute left-0 top-0 rounded-2xl"></div> {/* h-full and top-0 */}
+                    <CardHeader className="p-3 pl-5 flex-grow"> {/* Added pl-5 and flex-grow */}
+                      <CardTitle className="text-sm font-medium text-wrap">
                         {event.title}
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="p-3 pt-0 text-sm text-muted-foreground">
-                      <p className="mb-1 line-clamp-2">{event.description}</p>
-                      <time className="text-xs text-muted-foreground/70">
-                        {format(event.date, 'MMM dd, yyyy - hh:mm a')}
-                      </time>
-                    </CardContent>
                   </Card>
                 ))
               ) : (
@@ -86,24 +68,11 @@ const SideCalendar = () => {
                   No events for this month
                 </div>
               )}
-            </div>
+            </ScrollArea>
           </div>
-        </CardContent>
-      </Card>
-      <div className="min-w-[150px]">
-        <Image
-          src="/eagle_image.png"
-          alt="Eagle Logo"
-          width={150}
-          height={150}
-          className="object-contain absolute 
-             md:bottom-0 md:right-0 md:w-[25%]
-             xl:right-[-50%] xl:bottom-[-10%] xl:w-[100%]  
-             min-w-[200px] max-w-[300px] z-[1] md:block
-             hidden"
-        />
-      </div>
-    </div>
+        </div>
+      </CardContent>
+    </Card>
   );
 };
 

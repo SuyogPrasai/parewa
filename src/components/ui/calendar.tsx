@@ -13,6 +13,7 @@ function Calendar({
   className,
   classNames,
   showOutsideDays = true,
+  onDayClick,
   ...props
 }: CalendarProps) {
   return (
