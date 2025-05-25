@@ -90,7 +90,7 @@ export default function Page() {
                                 <div className="flex flex-col justify-center items-center pt-10 px-4">
                                     {/* Pass topArticlesData DIRECTLY, no need for flatMap */}
                                     <NewsletterSignup articles={topArticlesData} />
-                                    <Separator orientation="horizontal" className="my-10" />
+                                    <Separator orientation="horizontal" className="mt-10" />
                                 </div>
                             )}
 
