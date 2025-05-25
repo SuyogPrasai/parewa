@@ -6,12 +6,32 @@ import axios from "axios";
 
 import { useParams, useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 
-import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot} from "@/components/ui/input-otp";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot
+} from "@/components/ui/input-otp";
+
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter
+} from "@/components/ui/card";
+
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage
+} from "@/components/ui/form";
 
 import { otpSchema } from "@/schemas/otpSchema";
 
@@ -20,16 +40,28 @@ export default function OTPPage() {
   const params = useParams<{ email: string }>();
   const router = useRouter();
 
-  // React Hook Form Setup
   const form = useForm<z.infer<typeof otpSchema>>({
     resolver: zodResolver(otpSchema),
     defaultValues: { otp: "" },
   });
 
-  // Form Submission Handler
   const handleSubmit = async (data: z.infer<typeof otpSchema>) => {
     try {
-      const email = decodeURIComponent(params.email); // Decode email if URL-encoded
+      if (!params.email) {
+        toast({
+          title: "Invalid URL",
+          description: "Email parameter is missing.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      const email = decodeURIComponent(params.email);
+
+      await axios.post("/api/verify_otp", {
+        email,
+        otp: data.otp,
+      });
 
       toast({
         title: "Success",
@@ -38,10 +70,10 @@ export default function OTPPage() {
       });
 
       router.replace(`/set_password/${email}`);
-
     } catch (error: any) {
       console.error("Verification Error:", error.response?.data || error);
 
+      console.log(error)
       toast({
         title: "Invalid OTP",
         description: error.response?.data?.message || "Verification failed.",
@@ -55,11 +87,16 @@ export default function OTPPage() {
       <Card className="w-full max-w-sm md:max-w-md bg-background shadow-xl rounded-2xl">
         <CardHeader className="text-center">
           <CardTitle>Enter OTP</CardTitle>
-          <CardDescription>We've sent a code to your email. Please enter it below.</CardDescription>
+          <CardDescription>
+            We've sent a code to your email. Please enter it below.
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSubmit)} className="flex flex-col gap-2">
+            <form
+              onSubmit={form.handleSubmit(handleSubmit)}
+              className="flex flex-col gap-2"
+            >
               {/* OTP Input Field */}
               <FormField
                 control={form.control}
@@ -70,12 +107,11 @@ export default function OTPPage() {
                       <div className="flex justify-center">
                         <InputOTP
                           maxLength={6}
-                          className="flex justify-center"
-                          value={field.value} //  Connects value to form
+                          value={field.value}
                           onChange={(value) => {
-                            field.onChange(value); //  Updates form state
-                            console.log("Current OTP Input:", value); // Debugging log
+                            field.onChange(value);
                           }}
+                          className="flex justify-center"
                         >
                           <InputOTPGroup>
                             <InputOTPSlot index={0} />
@@ -94,18 +130,25 @@ export default function OTPPage() {
                         </InputOTP>
                       </div>
                     </FormControl>
-                    <FormMessage /> {/* Displays validation errors */}
+                    <FormMessage />
                   </FormItem>
                 )}
               />
 
               {/* Submit Button */}
               <CardFooter className="flex flex-col gap-2 mt-3">
-                <Button className="w-full" type="submit" disabled={form.formState.isSubmitting}>
+                <Button
+                  className="w-full bg-foreground hover:bg-foreground-highlight"
+                  type="submit"
+                  disabled={form.formState.isSubmitting}
+                >
                   {form.formState.isSubmitting ? "Verifying..." : "Verify OTP"}
                 </Button>
                 <p className="text-sm text-muted-foreground text-center">
-                  Didn't receive a code? <a href="#" className="text-primary">Resend</a>
+                  Didn't receive a code?{" "}
+                  <a href="#" className="text-foreground">
+                    Resend
+                  </a>
                 </p>
               </CardFooter>
             </form>

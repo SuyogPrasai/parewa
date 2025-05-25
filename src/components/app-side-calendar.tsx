@@ -65,7 +65,7 @@ const SideCalendar = () => {
                 ))
               ) : (
                 <div className="text-center text-sm text-muted-foreground py-4">
-                  No events for this month
+                  No events for this day
                 </div>
               )}
             </ScrollArea>

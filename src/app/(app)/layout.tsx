@@ -75,10 +75,10 @@ export default function RootLayout({
                       placeholder="Search </>"
                     />
                     <a
-                      href="/signup"
+                      href="/signin"
                       className="bg-primary-high_bright text-white py-1 px-4 rounded-md font-medium font-mono text-lg tracking-wide hover:bg-primary"
                     >
-                      Sign Up
+                      Sign In
                     </a>
                   </div>
                 </div>

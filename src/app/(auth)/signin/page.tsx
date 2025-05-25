@@ -111,13 +111,13 @@ function Page() {
                         )}
                       />
                     </div>
-                    <Button type="submit" className="w-full" disabled={loading.submitting}>
+                    <Button type="submit" className="w-full bg-foreground hover:bg-foreground-highlight" disabled={loading.submitting}>
                       {loading.submitting ? (
                         <>
                           <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please wait
                         </>
                       ) : (
-                        "Verify"
+                        "Login"
                       )}
                     </Button>
                     <div className="text-center text-sm">

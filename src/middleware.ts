@@ -26,6 +26,7 @@ export async function middleware(request: NextRequest) {
     }
 
     const { email, verify_email, verify_otp } = session;
+    console.log(email, verify_email, verify_otp)
 
     // Ensure email matches the session
     if (!email || email !== emailParam) {

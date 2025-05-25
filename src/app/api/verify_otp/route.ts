@@ -53,7 +53,7 @@ export async function POST(req: Request) {
 		console.log("OTP verified successfully!");
 		// Cookie stuff
 		await updateSignUpSession({ verify_otp: true});
-		return NextResponse.json({ message: "OTP verified successfully!" });
+		return NextResponse.json({ message: "OTPs verified successfully!" });
 	} catch (error: any) {
 		console.error(`Error verifying OTP: ${error.message}`);
 		return NextResponse.json(

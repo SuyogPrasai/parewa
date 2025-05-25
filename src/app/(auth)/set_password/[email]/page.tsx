@@ -104,7 +104,7 @@ function Page() {
                                         </FormItem>
                                     )}
                                 />
-                                <Button type="submit" className="w-full" disabled={isConfirming}>
+                                <Button type="submit" className="w-full bg-foreground hover:bg-foreground-highlight" disabled={isConfirming}>
                                     {isConfirming ? "Verifying..." : "Confirm"}
                                 </Button>
                             </form>
