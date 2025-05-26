@@ -1,5 +1,4 @@
 import AuthProvider from "@/context/AuthProvider";
-import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
   SidebarProvider,
@@ -7,7 +6,7 @@ import {
 } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Roboto, Oswald, Bebas_Neue } from "next/font/google";
-import Footer from "@/components/footer";
+import Footer from "@/components/collections_footer";
 import "@/app/globals.css";
 
 const roboto = Roboto({
@@ -45,13 +44,12 @@ export default function DashboardLayout({
               {/* Header - positioned absolutely over the carousel */}
               <div className="flex">
 
-                <header className="top-0 left-0 w-full z-20 flex shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12  bg-black max-w-[400px] h-[125px] display-inline">
+                <header className="sticky top-0 left-0 w-full z-20 flex shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 bg-secondary-background max-w-[375px] h-[125px] display-inline">
                   <div className="flex items-center justify-between w-full p-6 bg-opacity-30 text-white">
                     <div className="flex items-center gap-2">
                       <SidebarTrigger className="mr-2" />
                       <p className="text-xl font-sans md:text-4xl font-bold">परेवा_</p>
                     </div>
-
                   </div>
                 </header>
 

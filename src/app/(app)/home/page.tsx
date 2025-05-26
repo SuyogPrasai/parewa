@@ -11,7 +11,7 @@ import ArticlesSection from '@/components/app-article-section';
 import { ArticlesSectionProps, Article } from '@/types/articleSection';
 import { NewsletterSignup } from '@/components/app-newsletter-section';
 import Image from 'next/image';
-import Notice from '@/types/noitce';
+import Notice from '@/types/notice';
 
 import React from 'react';
 

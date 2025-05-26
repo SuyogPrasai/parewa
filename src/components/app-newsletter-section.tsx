@@ -2,8 +2,6 @@
 
 import React, { useState } from "react";
 import { Article } from "@/types/articleSection";
-import Link from "next/link";
-import Image from "next/image";
 
 import {
     Card,
@@ -15,6 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import ArticleRankings from "@/components/app-top-articles";
 
 export function NewsletterSignup({ articles }: { articles: Article[] }) {
     const [email, setEmail] = useState("");
@@ -47,21 +46,7 @@ export function NewsletterSignup({ articles }: { articles: Article[] }) {
     return (
         <>
             <div className="flex flex-col lg:flex-row relative items-center">
-                <div className="flex flex-col gap-6 lg:mr-5">
-                    <div className="text-black text-3xl font-bold pr-5 font-oswald">Article Rankings for the Month </div>
-                    <div className="flex flex-col lg:flex-row">
-                        <div className="flex flex-col gap-6 mb-5 lg:mb-0">
-                            {articles.slice(0, 3).map((article, index) => (
-                                <SideArticleCard key={article.link} article={article} rank={index + 1} />
-                            ))}
-                        </div>
-                        <div className="flex flex-col gap-6">
-                            {articles.slice(3, 6).map((article, index) => (
-                                <SideArticleCard key={article.link} article={article} rank={index + 4} />
-                            ))}
-                        </div>
-                    </div>
-                </div>
+                <ArticleRankings articles={articles} />
                 <Card className="relative lg:max-w-sm b/g-white text-gray-800 p-10 rounded-none mt-10 lg:mt-0">
                     <CardHeader className="p-0 mb-6">
                         <CardTitle className="text-gray-900 text-3xl font-extrabold leading-tight mt-2">
@@ -136,28 +121,5 @@ export function NewsletterSignup({ articles }: { articles: Article[] }) {
                 </Card>
             </div>
         </>
-    );
-}
-
-function SideArticleCard({ article, rank }: { article: Article; rank: number }) {
-    return (
-        <Card className="h-full overflow-hidden relative rounded w-full lg:w-[400px] flex">
-
-            <Link href={article.link} className="flex flex-col md:flex-row h-full flex-1">
-                <div className="relative w-full md:w-[50%] flex-shrink-0">
-                    <Image src={article.image} alt={article.title} fill className="object-cover" />
-                </div>
-                <CardContent className="px-4 pt-4 flex-1 bg-white relative">
-                    <div className="relative bg-black w-[40%] rounded-lg h-[0.15rem] mb-2"></div>
-                    <h3 className="text-sm font-bold hover:text-primary-block transition-colors duration-200">
-                        {article.title}
-                    </h3>
-                    <span className="text-primary-block text-xs font-medium">{article.author}</span>
-                </CardContent>
-            </Link>
-            <div className={`flex items-center bg-[#ffffff] justify-center right-10 bottom-0 absolute w-16 bg-white-500 font-mono text-xl ${rank === 1 ? 'text-red-500' : rank === 2 ? 'text-orange-500' : rank === 3 ? 'text-green-500' : 'text-[#232323]'}`}>
-                {rank.toString().padStart(2, '0')}
-            </div>
-        </Card>
     );
 }

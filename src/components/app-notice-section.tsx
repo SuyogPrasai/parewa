@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NoticeCard } from "./notice";
-import Notice from "@/types/noitce";
+import Notice from "@/types/notice";
 
 export default function NoticeSection({ notices } : { notices: Notice[] }) {
 

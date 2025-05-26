@@ -1,7 +1,7 @@
 'use client'
 import NoticeSection from "./app-notice-section";
 import SideCalendar from "./app-side-calendar";
-import Notice from "../types/noitce";
+import Notice from "../types/notice";
 
 
 export default function MainSection({ notices } : { notices: Notice[] }) {

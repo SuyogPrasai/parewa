@@ -52,7 +52,7 @@ function MainArticleCard({ article }: { article: Article }) {
             </Link>
           </h3>
           {article.subtitle && <p className="text-sm text-gray-600 mb-2">{article.subtitle}</p>}
-          <span className="text-primary-block text-sm  font-mono tracking-widest">{article.author}</span>
+          <span className="text-primary-block text-sm  font-roboto tracking-widest">{article.author}</span>
         </CardContent>
       </Card>
     </article>
@@ -71,7 +71,7 @@ function SideArticleCard({ article }: { article: Article }) {
             <h3 className="text-lg leading-tight font-bold hover:text-primary-block transition-colors duration-200 font-oswald w-[80%]">
             {article.title}
           </h3>
-          <span className="text-primary-block text-xs font-medium font-mono tracking-widest">{article.author}</span>
+          <span className="text-primary-block text-xs font-medium font-roboto tracking-widest">{article.author}</span>
         </CardContent>
       </Link>
     </Card>

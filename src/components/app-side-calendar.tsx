@@ -29,8 +29,8 @@ const SideCalendar = () => {
     <Card className="bg-background shadow-lg border-border/50 p-2">
       <CardHeader className="p-3">
 
-        <h2 className="text-lg font-semibold px-2">
-          {format(date, 'dd MMMM yyyy')}
+        <h2 className="text-lg font-semibold px-2 font-oswald">
+          {format(date, 'dd MMMM, yyyy')}
         </h2>
 
       </CardHeader>
@@ -46,7 +46,7 @@ const SideCalendar = () => {
         </div>
 
         <div className="w-full p-2">
-          <h3 className="text-lg font-semibold text-center pb-2 lg:text-left md:text-left mt-5">Events</h3>
+          <h3 className="text-lg font-semibold text-center pb-2 lg:text-left md:text-left mt-5 font-oswald">Events</h3>
           <div className=" max-h-[500px] overflow-y-auto ">
             <ScrollArea className="h-[200px] w-[250px] rounded-md p-2">
               {events.length > 0 ? (
@@ -57,14 +57,14 @@ const SideCalendar = () => {
                   >
                     <div className="bg-primary h-full w-[2px] absolute left-0 top-0 rounded-2xl"></div> {/* h-full and top-0 */}
                     <CardHeader className="p-3 pl-5 flex-grow"> {/* Added pl-5 and flex-grow */}
-                      <CardTitle className="text-sm font-medium text-wrap">
+                      <CardTitle className="text-sm font-medium text-wrap font-roboto">
                         {event.title}
                       </CardTitle>
                     </CardHeader>
                   </Card>
                 ))
               ) : (
-                <div className="text-center text-sm text-muted-foreground py-4">
+                <div className="text-center text-sm text-muted-foreground py-4 font-roboto">
                   No events for this day
                 </div>
               )}

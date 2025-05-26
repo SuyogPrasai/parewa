@@ -48,7 +48,9 @@ export function NoticeCard({
             <span className="text-xs text-muted-foreground">{timestamp}</span>
           </div>
 
-          <UserHoverCard username={username} />
+          <p className="text-xs text-muted-foreground mb-2 cursor-pointer hover:underline">
+            @{username}
+          </p>
 
           <p className="text-sm text-foreground leading-snug mb-2">{description}</p>
 
@@ -66,9 +68,8 @@ export function NoticeCard({
             variant="ghost"
             size="icon"
             onClick={() => handleVote("up")}
-            className={`h-8 w-8 ${
-              activeVote === "up" ? "text-green-600 bg-green-50" : "text-muted-foreground"
-            }`}
+            className={`h-8 w-8 ${activeVote === "up" ? "text-green-600 bg-green-50" : "text-muted-foreground"
+              }`}
           >
             <ArrowUp className="h-4 w-4" />
           </Button>
@@ -79,9 +80,8 @@ export function NoticeCard({
             variant="ghost"
             size="icon"
             onClick={() => handleVote("down")}
-            className={`h-8 w-8 ${
-              activeVote === "down" ? "text-red-600 bg-red-50" : "text-muted-foreground"
-            }`}
+            className={`h-8 w-8 ${activeVote === "down" ? "text-red-600 bg-red-50" : "text-muted-foreground"
+              }`}
           >
             <ArrowDown className="h-4 w-4" />
           </Button>
