@@ -18,10 +18,11 @@ import {
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Separator } from "./ui/separator";
 import AuthButton from "@/components/auth-button";
+import Link from "next/link";
 
 
 const navItems = [
-  { title: "GENERAL NEWS", url: "#" },
+  { title: "GENERAL NEWS", url: "/notices" },
   { title: "MORE ON SPORTS", url: "#" },
   { title: "ACADEMIA", url: "#" },
   { title: "ARTS & CULTURE", url: "#" },
@@ -53,7 +54,7 @@ export function AppSidebar() {
             <SidebarTrigger sidebarVariant="opened">
               <X className="h-5 w-5 text-gray-500" />
             </SidebarTrigger>
-            <div className="text-2xl font-bold p-5">परेवा_</div>
+            <Link href="/" className="text-2xl font-bold p-5">परेवा_</Link>
           </div>
           <div className="mx-10">
             <SidebarMenu className="mb-4">

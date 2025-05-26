@@ -1,3 +1,13 @@
+import { Navbar } from "@/components/collection-navbar"
+import { Separator } from "@/components/ui/separator"
+
 export default function Page() {
-  return <h1>Hello Next.js!</h1>
+  return (
+    <>
+      <Navbar />
+      <Separator />
+      <h1 className="text-6xl font-oswald mt-5">Notices</h1>
+      <div className="h-[200vh]"></div>
+    </>
+  )
 }

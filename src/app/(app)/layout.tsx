@@ -4,7 +4,6 @@ import "../globals.css";
 import AuthProvider from "@/context/AuthProvider";
 
 import { Toaster } from "@/components/ui/toaster";
-import { Input } from "@/components/ui/input";
 
 import { Separator } from "@/components/ui/separator";
 import {
@@ -59,7 +58,7 @@ export default function RootLayout({
 
       <AuthProvider>
         <body className={`${roboto.variable} ${oswald.variable} ${bebas_neue.variable}`}>
-          <PreloaderWrapper>
+          {/* <PreloaderWrapper> */}
 
             <SidebarProvider defaultOpen={false}>
               <AppSidebar />
@@ -85,7 +84,7 @@ export default function RootLayout({
                 <Toaster />
               </SidebarInset>
             </SidebarProvider>
-          </PreloaderWrapper>
+          {/* </PreloaderWrapper> */}
         </body>
       </AuthProvider>
     </html>

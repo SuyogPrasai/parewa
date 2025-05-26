@@ -29,7 +29,7 @@ body {
     --primary-block: 215 91% 60%; /* Vibrant blue (blue-600) */
     --primary-placeholder: 203 83% 83%; /* Very light blue (blue-200) */
     --primary-high-bright: 215 91% 60%; /* Vibrant blue (same as block) */
-    --primary-low-bright: 209 39% 85%; /* Muted light blue */
+    --primary-low-bright: 60 0% 95%; /* Muted light blue */
 
     /* Secondary and muted colors */
     --secondary: 0 0% 96.1%; /* Light gray */
