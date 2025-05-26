@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useCallback, JSX, useState  } from 'react';
+import { useEffect, useMemo, useCallback, JSX, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import { Navbar } from '@/components/collection-navbar';
@@ -18,6 +18,12 @@ import {
 } from '@/components/ui/pagination';
 import Notice from '@/types/notice';
 import { Article } from '@/types/articleSection';
+import { Input } from '@/components/ui/input';
+import { TagSearch } from '@/components/tag-search';
+import { DatePicker } from '@/components/date-picker';
+import { Search } from 'lucide-react';
+import { useDebounceValue } from "usehooks-ts";
+
 
 const ITEMS_PER_PAGE = 8;
 const MAX_PAGES_TO_SHOW = 5;
@@ -165,27 +171,29 @@ const PaginationControls: React.FC<PaginationControlsProps> = ({
   }, [currentPage, totalPages, onPageChange]);
 
   return (
-    <Pagination className="mt-8">
-      <PaginationContent>
-        <PaginationItem>
-          <PaginationPrevious
-            onClick={() => onPageChange(currentPage - 1)}
-            aria-disabled={currentPage === 1}
-            tabIndex={currentPage === 1 ? -1 : undefined}
-            className={currentPage === 1 ? 'pointer-events-none opacity-50' : 'cursor-pointer'}
-          />
-        </PaginationItem>
-        {renderPaginationLinks()}
-        <PaginationItem>
-          <PaginationNext
-            onClick={() => onPageChange(currentPage + 1)}
-            aria-disabled={currentPage === totalPages}
-            tabIndex={currentPage === totalPages ? -1 : undefined}
-            className={currentPage === totalPages ? 'pointer-events-none opacity-50' : 'cursor-pointer'}
-          />
-        </PaginationItem>
-      </PaginationContent>
-    </Pagination>
+    <>
+      <Pagination className="mt-8">
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious
+              onClick={() => onPageChange(currentPage - 1)}
+              aria-disabled={currentPage === 1}
+              tabIndex={currentPage === 1 ? -1 : undefined}
+              className={currentPage === 1 ? 'pointer-events-none opacity-50' : 'cursor-pointer'}
+            />
+          </PaginationItem>
+          {renderPaginationLinks()}
+          <PaginationItem>
+            <PaginationNext
+              onClick={() => onPageChange(currentPage + 1)}
+              aria-disabled={currentPage === totalPages}
+              tabIndex={currentPage === totalPages ? -1 : undefined}
+              className={currentPage === totalPages ? 'pointer-events-none opacity-50' : 'cursor-pointer'}
+            />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+    </>
   );
 };
 
@@ -207,6 +215,13 @@ export default function NewsPage() {
     [router, searchParams]
   );
 
+  const [search, setSearch] = useState('');
+  const [query] = useDebounceValue(search, 500);
+
+  useEffect(() => {
+      
+  }, [ query ]);
+
   const handlePageChange = useCallback(
     (newPage: number) => {
       const params = new URLSearchParams(searchParams);
@@ -222,7 +237,9 @@ export default function NewsPage() {
       <Navbar header_click={handleCategoryChange} />
       <Separator />
       <h1 className="text-6xl font-oswald mt-5 ml-5">{category}</h1>
+
       <div className="flex flex-col md:flex-row">
+
         <div className="ml-5 my-8 flex-1">
           {isLoading ? (
             <p>Loading notices...</p>
@@ -230,6 +247,20 @@ export default function NewsPage() {
             <p className="text-red-500">{error}</p>
           ) : (
             <>
+              <div className="flex w-[97.5%] mb-2 justify-between py-2 rounded-sm">
+                <div className="relative w-[50%] flex items-center">
+                  <Search className="absolute left-3 h-5 w-5 text-gray-500" />
+                  <Input
+                    value={search}
+                    type="email"
+                    placeholder="Search </>"
+                    className="pl-10 w-full" // Add padding to avoid icon overlap
+                  />
+                </div>                
+                <div className="flex">
+                  <DatePicker />
+                </div>
+              </div>
               <NoticeSection notices={notices} />
               <PaginationControls
                 currentPage={page}
