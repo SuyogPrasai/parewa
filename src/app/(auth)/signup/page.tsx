@@ -35,7 +35,7 @@ function Page() {
   });
 
   const email = form.watch("email");
-  const [debouncedEmail, setValue] = useDebounceValue(email, 500);
+  const [debouncedEmail,] = useDebounceValue(email, 500);
 
   useEffect(() => {
     const checkEmailUnique = async () => {

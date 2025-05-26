@@ -3,7 +3,7 @@ import dbConnect from "@/lib/dbConnnect";
 import ArticleModel from "@/models/Article";
 import extractFirst15Words from "@/helpers/extractFiffteenWords";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     await dbConnect();
 

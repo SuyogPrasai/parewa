@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { format } from "date-fns";
-import Image from 'next/image';
 import axios from 'axios';
 import getFormattedDate from '../helpers/getDateInFormat';
 import { Event } from '@/models/Event';

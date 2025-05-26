@@ -8,7 +8,6 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 
-import Image from "next/image";
 
 function Navbar({ header_click }: any) {
   const [activeLink, setActiveLink] = useState("General"); // State to track active link

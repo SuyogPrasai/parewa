@@ -6,7 +6,7 @@ import axios from "axios";
 
 import { useParams, useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 import {
   InputOTP,
@@ -88,7 +88,7 @@ export default function OTPPage() {
         <CardHeader className="text-center">
           <CardTitle>Enter OTP</CardTitle>
           <CardDescription>
-            We've sent a code to your email. Please enter it below.
+            We&apos;ve sent a code to your email. Please enter it below.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -145,7 +145,7 @@ export default function OTPPage() {
                   {form.formState.isSubmitting ? "Verifying..." : "Verify OTP"}
                 </Button>
                 <p className="text-sm text-muted-foreground text-center">
-                  Didn't receive a code?{" "}
+                  Didn&apos;t receive a code?{" "}
                   <a href="#" className="text-foreground">
                     Resend
                   </a>

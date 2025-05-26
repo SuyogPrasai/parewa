@@ -8,7 +8,7 @@ export interface Notice extends Document {
   publishedIn: Date;
   featuredImage?: string; // Path to the featured image
   publisherID: string; // Reference to User ID
-  voteCount: Number;
+  voteCount: number;
   postTags: string[]; 
   modifiedIn?: Date; 
   trashed?: boolean;

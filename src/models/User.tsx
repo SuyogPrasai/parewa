@@ -11,7 +11,7 @@ export interface User extends Document {
   positionID?: string; // Position ID reference
   rollNumber?: number; // Optional
   articleIDS: string[]; // Array of article IDs
-  isVerified: Boolean;
+  isVerified: boolean;
 }
 
 // Defining the User schema

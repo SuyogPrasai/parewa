@@ -8,9 +8,9 @@ export async function GET(request: NextRequest) {
   await dbConnect();
 
   const { searchParams } = new URL(request.url);
-  let category_ = searchParams.get("category");
-  let page_ = parseInt(searchParams.get("page") || '1', 10);
-  let limit_ = parseInt(searchParams.get("limit") || '8', 10); // Default to 8 items per page
+  const category_ = searchParams.get("category");
+  const page_ = parseInt(searchParams.get("page") || '1', 10);
+  const limit_ = parseInt(searchParams.get("limit") || '8', 10); // Default to 8 items per page
 
   if (!category_) {
     return NextResponse.json({ success: false, message: "Category is required" }, { status: 400 });

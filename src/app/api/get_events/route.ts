@@ -2,15 +2,13 @@ import dbConnect from "@/lib/dbConnnect";
 
 import { NextResponse, NextRequest } from "next/server";
 import EventModel from "@/models/Event";
-import UserModel, { User } from "@/models/User"; // Assuming you have a User model
 
-import { Types } from "mongoose"; // Import Mongoose types
 
 export async function GET(request: NextRequest) {
     await dbConnect();
 
     const { searchParams } = new URL(request.url);
-    let date = searchParams.get("date");
+    const date = searchParams.get("date");
 
     if (!date) {
         console.log("Date is required.");

@@ -1,9 +1,6 @@
 import {
     Card,
     CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
 } from "@/components/ui/card_newsletter";
 import Link from "next/link";
 import { Article } from "@/types/articleSection";

@@ -53,7 +53,7 @@ export async function GET(req: NextRequest) {
 				);
 			}
 		} else {
-			const { roll, name } = result;
+			const { roll,  } = result;
 			if (user) {
 				if (user.isVerified) {
 					return NextResponse.json(
