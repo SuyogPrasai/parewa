@@ -56,14 +56,14 @@ const socialIcons = [
 export default function Footer() {
   return (
     <footer className="relative bg-secondary-background text-gray-300 py-16 px-4 sm:px-6 md:px-8 lg:px-12">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         {/* Main Footer Content */}
         <div className="flex flex-col mx-auto max-w-screen-lg"> {/* Removed justify-center here */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             {/* Logo and Description - occupies 1 column on small screens, 1 on medium+ */}
             <div className="md:col-span-1">
-              <h2 className="text-xl font-bold mb-4 text-white">PAREWA</h2>
-              <p className="text-sm text-gray-300 mb-6">
+              <h2 className="text-4xl font-bold mb-4 font-oswald text-white">PAREWA</h2>
+              <p className="text-sm text-gray-300 mb-6 font-roboto ">
                 A collection of 100+ responsive HTML templates for your startup business or side project.
               </p>
               <div className="flex gap-4 ">
@@ -74,7 +74,7 @@ export default function Footer() {
             </div>
 
             {/* Link Sections - occupies 2 columns on medium+ screens, side by side */}
-            <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:ml-20  font-mono"> {/* Changed to grid for better control */}
+            <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:ml-20  font-roboto text-center"> {/* Changed to grid for better control */}
               <FooterLinkSection title="Company" links={companyLinks} />
               <FooterLinkSection title="Resources" links={companyLinks} />
             </div>
@@ -82,10 +82,10 @@ export default function Footer() {
 
           {/* Newsletter - Full width at the bottom of the main content section */}
           <div className="mt-4 border-t border-gray-700 pt-8"> {/* Added top border and padding */}
-            <h3 className="text-base font-semibold mb-4 text-white">Newsletter</h3>
+            <h3 className="text-xl font-semibold mb-4 text-white font-sans">Newsletter</h3>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <p className="text-sm text-gray-300 mb-2 sm:mb-0">Subscribe to our newsletter for updates.</p>
-              <div className="flex w-full sm:max-w-xs">
+              <div className="flex w-full sm:max-w-xs lg:ml-7">
                 <input
                   type="email"
                   placeholder="Enter your email"

@@ -22,7 +22,7 @@ import { Roboto, Oswald, Bebas_Neue } from "next/font/google";
 
 const roboto = Roboto({
   subsets: ['latin'],
-  weight: '700',
+  weight: '300',
   variable: '--font-roboto',
 });
 
