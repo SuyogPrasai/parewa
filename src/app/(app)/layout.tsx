@@ -18,6 +18,7 @@ import PreloaderWrapper from "@/components/preloader-wrapper";
 import { CarouselHome } from "@/components/app-carousel";
 
 import { Roboto, Oswald, Bebas_Neue } from "next/font/google";
+import Link from "next/link";
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -68,7 +69,9 @@ export default function RootLayout({
                   <div className="flex items-center justify-between w-full p-6 bg-opacity-30 text-white">
                     <div className="flex items-center gap-2">
                       <SidebarTrigger className="mr-2" />
+                      <Link href={"/"}>
                       <p className="text-xl font-sans md:text-4xl font-bold">परेवा_</p>
+                      </Link>
                     </div>
 
                   </div>
