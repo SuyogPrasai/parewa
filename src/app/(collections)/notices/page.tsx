@@ -24,6 +24,7 @@ export default function Page() {
   const [notices, setNotices] = useState<Notice[]>([]);
   const [loadingTopArticles, setLoadingTopArticles] = useState(true);
   const [topArticlesData, setTopArticlesData] = useState<Article[]>([]);
+  const [title, setTitle] = useState('General');
 
   useEffect(() => {
     axios
@@ -58,11 +59,23 @@ export default function Page() {
       .finally(() => setLoadingTopArticles(false));
   }, []);
 
+  const handleCategoryChange = (category: string) => {
+    setTitle(category);
+    axios
+      .get(`/api/get_news?category=${category}`)
+      .then((response) => {
+        if (response.data.success) {
+          setNotices(response.data.notices.filter((notice: Notice) => !notice.trashed));
+        }
+      })
+      .catch((error) => console.error("Error fetching notices:", error));
+  }
+
   return (
     <>
-      <Navbar />
+      <Navbar header_click={handleCategoryChange} />
       <Separator />
-      <h1 className="text-6xl font-oswald mt-5">Notices</h1>
+      <h1 className="text-6xl font-oswald mt-5">{title}</h1>
       <div className="flex">
 
         <div className="ml-5 my-8">
