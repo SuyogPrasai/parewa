@@ -22,11 +22,11 @@ import Link from "next/link";
 
 
 const navItems = [
-  { title: "GENERAL NEWS", url: "/notices" },
-  { title: "MORE ON SPORTS", url: "#" },
-  { title: "ACADEMIA", url: "#" },
-  { title: "ARTS & CULTURE", url: "#" },
-  { title: "TECH AND SCIENCE", url: "#" },
+  { title: "GENERAL NEWS", url: "/notices?category=General" },
+  { title: "DEPARTMENT'S MESSAGE", url: "/notices?category=Departments" },
+  { title: "SCHOOL ADMINISTRATION", url: "/notices?category=School" },
+  { title: "THE STUDENT COUNCIL", url: "/notices?category=Council" },
+  { title: "CLUBS AND EVENTS", url: "/notices?category=Clubs" },
 ];
 
 const secondaryNavItems = [

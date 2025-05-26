@@ -71,7 +71,7 @@ export default function Page() {
 
     useEffect(() => {
         axios
-            .get("/api/get_news?category=General")
+            .get("/api/get_news?category=General&number=4&limit=4")
             .then((response) => {
                 if (response.data.success) {
                     setNotices(response.data.notices.filter((notice: Notice) => !notice.trashed));
@@ -82,7 +82,7 @@ export default function Page() {
 
     const updateNotices = (heading: string) => {
         axios
-            .get("/api/get_news?category=" + heading)
+            .get("/api/get_news?category=" + heading +"&number=4&limit=4")
             .then((response) => {
                 if (response.data.success) {
                     setNotices(response.data.notices.filter((notice: Notice) => !notice.trashed));
