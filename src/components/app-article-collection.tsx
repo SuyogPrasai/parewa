@@ -1,25 +1,33 @@
 import { Article } from "@/types/articleSection";
 import Image from "next/image";
 import Link from "next/link";
-import { Card, CardContent } from "./ui/card";
+import { Card, CardContent } from "./ui/card_newsletter";
 
 // No changes needed for SideArticleCard, it's fine as is.
 function SideArticleCard({ article }: { article: Article }) {
   return (
-    <Card className="h-full relative overflow-hidden hover:shadow-md transition-shadow duration-200 rounded-lg z-10">
-      <Link href={article.link} className="flex flex-col md:flex-row h-full">
-        <div className="relative w-full md:w-40 flex-shrink-0">
+    <Link href="#" className="flex">
+      <Card className="h-full relative overflow-hidden transition-shadow duration-200 z-10 border flex w-full">
+        <div className="relative w-[50%]  flex-shrink-0">
           <Image src={article.image} alt={article.title} fill className="object-cover" />
         </div>
-        <CardContent className="px-4 pt-4 flex-1 bg-white">
-          <div className="relative bg-black w-[70%] rounded-lg h-[0.15rem] mb-2"></div>
-          <h3 className="text-lg leading-tight font-bold hover:text-primary-block transition-colors duration-200 font-oswald w-[80%]">
+
+        <CardContent className=" pt-4 pl-10 pr-4 flex-1 bg-white flex flex-col"> {/* Removed justify-center for more control */}
+
+          <h3 className="text-2xl mb-3 leading-tight font-bold hover:text-primary-block transition-colors duration-200 font-oswald w-[80%] mt-0"> {/* Added mt-0 */}
             {article.title}
           </h3>
-          <span className="text-primary-block text-xs font-medium font-roboto tracking-widest">{article.author}</span>
+
+          {/* If the author name is also too far, ensure it doesn't have unnecessary top margin/padding */}
+          <span className="text-primary-block text-xs font-medium font-roboto tracking-widest mb-2">
+            {article.author}
+          </span>
+          <span className="text-black text-[0.875rem] font-medium font-serif tracking-widest mb-2">
+            {article.subtitle}
+          </span>
         </CardContent>
-      </Link>
-    </Card>
+      </Card>
+    </Link>
   );
 }
 
