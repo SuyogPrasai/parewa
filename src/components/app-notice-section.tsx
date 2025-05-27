@@ -13,7 +13,7 @@ export default function NoticeSection({ notices } : { notices: Notice[] }) {
             title={notice.title}
             description={notice.content.replace(/<\/?[^>]+(>|$)/g, "")}
             timestamp={new Date(notice.publishedIn).toLocaleString()}
-            username={notice.username}
+            username={notice.author}
             tags={notice.postTags}
             initialVotes={notice.voteCount}
           />

@@ -26,20 +26,42 @@ export default function Page() {
     // Fetch main articles (assuming /api/get_articles returns ArticlesSectionProps[])
     useEffect(() => {
         setLoadingArticles(true);
-        axios
-            .get('/api/get_articles')
-            .then((response) => {
-                console.log('Response from /api/get_articles:', response.data);
-                if (response.data.success) {
-                    // Assuming this API returns { success: true, articles: ArticlesSectionProps[] }
-                    setArticlesData(response.data.articles || []);
-                } else {
-                    console.error('API /api/get_articles returned success: false');
-                    setArticlesData([]);
-                }
+
+        const categories = ['Literature', 'Politics', 'Economy'];
+
+        // Map each category to a request
+        const requests = categories.map((category) =>
+            axios.get('/api/get_articles', {
+                params: {
+                    query: '',
+                    category,
+                    tdate: '2023-01-01', // Corrected typo in the date
+                    page: 1,
+                    limit: 4,
+                },
+            })
+        );
+
+        // Wait for all requests to complete
+        Promise.all(requests)
+            .then((responses) => {
+                const formattedArticles = responses.map((response, index) => {
+                    if (response.data.success) {
+                        return {
+                            category: categories[index],
+                            articles: response.data.articles || [],
+                        };
+                    } else {
+                        return {
+                            category: categories[index],
+                            articles: [],
+                        };
+                    }
+                });
+                setArticlesData(formattedArticles);
             })
             .catch((error) => {
-                console.error('Error fetching articles from /api/get_articles:', error);
+                console.error('Error fetching articles:', error);
                 setArticlesData([]);
             })
             .finally(() => setLoadingArticles(false));
@@ -82,7 +104,7 @@ export default function Page() {
 
     const updateNotices = (heading: string) => {
         axios
-            .get("/api/get_news?category=" + heading +"&number=4&limit=4")
+            .get("/api/get_news?category=" + heading + "&number=4&limit=4")
             .then((response) => {
                 if (response.data.success) {
                     setNotices(response.data.notices.filter((notice: Notice) => !notice.trashed));

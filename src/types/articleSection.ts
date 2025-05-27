@@ -1,4 +1,5 @@
 export type Article = {
+    date: Date;
     title: string;
     subtitle: string;
     link: string;

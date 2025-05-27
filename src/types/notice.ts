@@ -5,8 +5,9 @@ export default interface Notice {
   publishedIn: string;
   postTags: string[];
   voteCount: number;
-  username: string;
+  author: string;
   trashed: boolean;
+  link: string;
 }
 
 export interface NoticesResponse {

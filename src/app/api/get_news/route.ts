@@ -86,8 +86,12 @@ export async function GET(request: NextRequest) {
     );
 
     const transformedNotices = notices.map((notice: any) => ({
+      _id: notice._id.toString(),
       title: notice.title,
-      subtitle: summarizeText(notice.content),
+      content: summarizeText(notice.content),
+      publishedIn: notice.publishedIn,
+      postTags: notice.postTags,
+      voteCount: notice.voteCount,
       link: `/notice/${notice._id}`,
       author: userMap[notice.publisherID.toString()] || "Unknown",
     }));
