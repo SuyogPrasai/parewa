@@ -8,3 +8,9 @@ export default interface Notice {
   username: string;
   trashed: boolean;
 }
+
+export interface NoticesResponse {
+  success: boolean;
+  notices: Notice[];
+  totalPages: number;
+}

@@ -5,6 +5,7 @@ import {
 import Link from "next/link";
 import { Article } from "@/types/articleSection";
 
+
 const ArticleRankings = ({ articles }: { articles: Article[] }) => (
     <div className="flex flex-col gap-4 lg:mr-5">
         <h2 className="text-black text-xl font-bold font-oswald">Article Rankings</h2>
@@ -35,5 +36,7 @@ const SideArticleCard = ({ article, rank }: { article: Article; rank: number }) 
         </Link>
     </Card>
 );
+
+
 
 export default ArticleRankings;
