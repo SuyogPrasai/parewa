@@ -30,11 +30,11 @@ const navItems = [
 ];
 
 const secondaryNavItems = [
-  { title: "POLITICS", url: "#" },
-  { title: "ECONOMY", url: "#" },
-  { title: "LITERATURE", url: "#" },
-  { title: "VIDEOS", url: "#" },
-  { title: "DOCUMENTATION", url: "#" },
+  { title: "POLITICS", url: "/articles?category=Literature" },
+  { title: "ECONOMY", url: "/articles?category=Literature" },
+  { title: "LITERATURE", url: "/articles?category=Literature" },
+  { title: "VIDEOS", url: "/articles?category=Literature" },
+  { title: "DOCUMENTATION", url: "/articles?category=Literature" },
 ];
 const finalNavItems = [
   { title: "ABOUT", url: "#" },

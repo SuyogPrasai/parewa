@@ -43,13 +43,12 @@ export default function NewsPage() {
   const { articles, isLoading: isLoadingArticles } = useTopArticles();
 
   const navLinks = [
-    { name: "General", href: "#" },
-    { name: "Departments", href: "#" },
-    { name: "School", href: "#" },
-    { name: "Council", href: "#" },
-    { name: "Clubs", href: "#" },
+    { name: "Politics", href: "#" },
+    { name: "Literature", href: "#" },
+    { name: "Economy", href: "#" },
+    { name: "Culture", href: "#" },
+    { name: "History", href: "#" },
   ];
-
 
   const handleCategoryChange = useCallback(
     (newCategory: string) => {
@@ -100,7 +99,7 @@ export default function NewsPage() {
 
   return (
     <div className="min-h-screen">
-      <Navbar header_click={handleCategoryChange} navLinks={navLinks}/>
+      <Navbar header_click={handleCategoryChange} navLinks={navLinks} />
       <Separator />
       <h1 className="text-6xl font-oswald mt-5 ml-5">{category}</h1>
 

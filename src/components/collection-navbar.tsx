@@ -8,23 +8,20 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 
+import { NavLink } from "@/types/navlinks";
 
-function Navbar({ header_click }: any) {
+interface NavbarProps {
+  header_click: (linkName: string) => void;
+  navLinks: NavLink[];
+}
+
+function Navbar({ header_click, navLinks }: NavbarProps) {
   const [activeLink, setActiveLink] = useState("General"); // State to track active link
 
   const handleLinkClick = (linkName: string) => {
     setActiveLink(linkName);
     header_click(linkName);
   };
-
-  // Define your navigation links in an array
-  const navLinks = [
-    { name: "General", href: "#" },
-    { name: "Departments", href: "#" },
-    { name: "School", href: "#" },
-    { name: "Council", href: "#" },
-    { name: "Clubs", href: "#" },
-  ];
 
   return (
     <div className="bg-white mx-auto lg:relative lg:block shadow-sm">
@@ -34,7 +31,7 @@ function Navbar({ header_click }: any) {
           <div className="flex justify-center">
             <NavigationMenu className="lg:flex">
               <NavigationMenuList className="flex md:flex-row md:mt-0 mt-5 flex-col space-x-0">
-                {navLinks.map((link) => (
+                {navLinks.map((link: NavLink) => (
                   <NavigationMenuItem key={link.name}>
                     <NavigationMenuLink
                       className="py-2 px-6 flex items-center justify-center text-black text-lg font-bold hover:cursor-pointer"
