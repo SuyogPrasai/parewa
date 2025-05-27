@@ -10,24 +10,49 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const category_ = searchParams.get("category");
   const page_ = parseInt(searchParams.get("page") || '1', 10);
-  const limit_ = parseInt(searchParams.get("limit") || '8', 10); // Default to 8 items per page
+  const limit_ = parseInt(searchParams.get("limit") || '8', 10);
+  const query_ = searchParams.get("query");
+  const date_ = searchParams.get("date"); // Get date string, will be null if not present
 
   if (!category_) {
     return NextResponse.json({ success: false, message: "Category is required" }, { status: 400 });
   }
 
   try {
-    // Get total count of notices for the category
-    const totalNotices = await NoticeModel.countDocuments({
+    let matchConditions: any = {
       trashed: false,
       category: category_,
-    });
+    };
+
+    // Add query condition for searching in title or content if query_ exists
+    if (query_) {
+      matchConditions.$or = [
+        { title: { $regex: query_, $options: 'i' } },
+        { content: { $regex: query_, $options: 'i' } },
+      ];
+    }
+
+    // Add date condition ONLY if date_ is provided
+    if (date_) {
+      const selectedDate = new Date(date_);
+      selectedDate.setUTCHours(0, 0, 0, 0); 
+      const nextDay = new Date(selectedDate);
+      nextDay.setUTCDate(selectedDate.getUTCDate() + 1);
+
+      matchConditions.createdAt = {
+        $gte: selectedDate,
+        $lt: nextDay,
+      };
+    }
+
+    // Get total count of notices based on all filters
+    const totalNotices = await NoticeModel.countDocuments(matchConditions);
 
     const totalPages = Math.ceil(totalNotices / limit_);
     const skip = (page_ - 1) * limit_;
 
     const notices = await NoticeModel.aggregate([
-      { $match: { trashed: false, category: category_ } },
+      { $match: matchConditions }, // Use the dynamic match conditions
       { $sort: { createdAt: -1 } },
       { $skip: skip },
       { $limit: limit_ },
@@ -39,7 +64,6 @@ export async function GET(request: NextRequest) {
         { status: 200 }
       );
     } else if (notices.length === 0 && totalNotices > 0) {
-        // This case handles when a page is requested that goes beyond available notices
         return NextResponse.json(
             { success: true, message: "No notices found for this page.", notices: [], totalPages: totalPages, currentPage: page_, totalNotices: totalNotices },
             { status: 200 }
@@ -70,7 +94,7 @@ export async function GET(request: NextRequest) {
     console.error("Error fetching notices from the database:", error);
     return NextResponse.json(
       { success: false, message: "Error fetching notices from the server" },
-      { status: 500 } // Changed status to 500 for server errors
+      { status: 500 }
     );
   }
 }

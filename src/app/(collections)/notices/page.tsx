@@ -2,31 +2,25 @@
 
 import { useEffect, useMemo, useCallback, JSX, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+
 import axios from 'axios';
-import { Navbar } from '@/components/collection-navbar';
-import { Separator } from '@/components/ui/separator';
-import NoticeSection from '@/components/app-notice-section';
-import ArticleRankings from '@/components/app-side-top-articles';
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationEllipsis,
-  PaginationNext,
-  PaginationPrevious,
-} from '@/components/ui/pagination';
+import { Search } from 'lucide-react';
+
 import Notice from '@/types/notice';
 import { Article } from '@/types/articleSection';
+import { ArticlesResponse } from '@/types/articlesResponse';
+import getFormattedDate from '@/helpers/getDateInFormat'; // Assuming this helper exists
+
+import NoticeSection from '@/components/app-notice-section';
+import ArticleRankings from '@/components/app-side-top-articles';
+import { Navbar } from '@/components/collection-navbar';
+import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
-import { TagSearch } from '@/components/tag-search';
 import { DatePicker } from '@/components/date-picker';
-import { Search } from 'lucide-react';
 import { useDebounceValue } from "usehooks-ts";
+import PaginationControls from '@/components/pagination';
 
-
-const ITEMS_PER_PAGE = 8;
-const MAX_PAGES_TO_SHOW = 5;
+import { ITEMS_PER_PAGE, MAX_PAGES_TO_SHOW } from '@/config/site-config';
 
 interface NoticesResponse {
   success: boolean;
@@ -34,12 +28,8 @@ interface NoticesResponse {
   totalPages: number;
 }
 
-interface ArticlesResponse {
-  success: boolean;
-  articles: Article[];
-}
-
-const useNotices = (category: string, page: number) => {
+// Modified useNotices hook to include query and date
+const useNotices = (category: string, page: number, query: string, date: Date | null) => {
   const [notices, setNotices] = useState<Notice[]>([]);
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
@@ -49,8 +39,20 @@ const useNotices = (category: string, page: number) => {
     const fetchNotices = async () => {
       setIsLoading(true);
       try {
+        const params = new URLSearchParams();
+        params.set('category', category);
+        params.set('page', page.toString());
+        params.set('limit', ITEMS_PER_PAGE.toString());
+        if (query) {
+          params.set('query', query);
+        }
+        // Only add date parameter if a date is selected
+        if (date) {
+          params.set('date', getFormattedDate(date)); // Ensure date is formatted correctly for API
+        }
+
         const response = await axios.get<NoticesResponse>(
-          `/api/get_news?category=${category}&page=${page}&limit=${ITEMS_PER_PAGE}`
+          `/api/get_news?${params.toString()}`
         );
         if (response.data.success) {
           setNotices(response.data.notices.filter((notice) => !notice.trashed));
@@ -71,7 +73,7 @@ const useNotices = (category: string, page: number) => {
     };
 
     fetchNotices();
-  }, [category, page]);
+  }, [category, page, query, date]); // Add query and date to dependencies
 
   return { notices, totalPages, isLoading, error };
 };
@@ -107,102 +109,29 @@ const useTopArticles = () => {
   return { articles, isLoading, error };
 };
 
-interface PaginationControlsProps {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
-}
-
-const PaginationControls: React.FC<PaginationControlsProps> = ({
-  currentPage,
-  totalPages,
-  onPageChange,
-}) => {
-  const renderPaginationLinks = useCallback(() => {
-    const links: JSX.Element[] = [];
-    let startPage = Math.max(1, currentPage - Math.floor(MAX_PAGES_TO_SHOW / 2));
-    let endPage = Math.min(totalPages, startPage + MAX_PAGES_TO_SHOW - 1);
-
-    if (endPage - startPage + 1 < MAX_PAGES_TO_SHOW) {
-      startPage = Math.max(1, endPage - MAX_PAGES_TO_SHOW + 1);
-    }
-
-    if (startPage > 1) {
-      links.push(
-        <PaginationItem key="1">
-          <PaginationLink onClick={() => onPageChange(1)} className="cursor-pointer">
-            1
-          </PaginationLink>
-        </PaginationItem>
-      );
-      if (startPage > 2) {
-        links.push(<PaginationItem key="ellipsis-start"><PaginationEllipsis /></PaginationItem>);
-      }
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-      links.push(
-        <PaginationItem key={i}>
-          <PaginationLink
-            onClick={() => onPageChange(i)}
-            isActive={i === currentPage}
-            className="cursor-pointer"
-          >
-            {i}
-          </PaginationLink>
-        </PaginationItem>
-      );
-    }
-
-    if (endPage < totalPages) {
-      if (endPage < totalPages - 1) {
-        links.push(<PaginationItem key="ellipsis-end"><PaginationEllipsis /></PaginationItem>);
-      }
-      links.push(
-        <PaginationItem key={totalPages}>
-          <PaginationLink onClick={() => onPageChange(totalPages)} className="cursor-pointer">
-            {totalPages}
-          </PaginationLink>
-        </PaginationItem>
-      );
-    }
-
-    return links;
-  }, [currentPage, totalPages, onPageChange]);
-
-  return (
-    <>
-      <Pagination className="mt-8">
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious
-              onClick={() => onPageChange(currentPage - 1)}
-              aria-disabled={currentPage === 1}
-              tabIndex={currentPage === 1 ? -1 : undefined}
-              className={currentPage === 1 ? 'pointer-events-none opacity-50' : 'cursor-pointer'}
-            />
-          </PaginationItem>
-          {renderPaginationLinks()}
-          <PaginationItem>
-            <PaginationNext
-              onClick={() => onPageChange(currentPage + 1)}
-              aria-disabled={currentPage === totalPages}
-              tabIndex={currentPage === totalPages ? -1 : undefined}
-              className={currentPage === totalPages ? 'pointer-events-none opacity-50' : 'cursor-pointer'}
-            />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
-    </>
-  );
-};
-
 export default function NewsPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const category = useMemo(() => searchParams.get('category') || 'General', [searchParams]);
   const page = useMemo(() => parseInt(searchParams.get('page') || '1', 10), [searchParams]);
-  const { notices, totalPages, isLoading, error } = useNotices(category, page);
+
+  // Initialize selectedDate from URL or null if not present
+  const initialDate = useMemo(() => {
+    const dateParam = searchParams.get('date');
+    if (dateParam) {
+      const [year, month, day] = dateParam.split('-').map(Number);
+      return new Date(year, month - 1, day); // Month is 0-indexed
+    }
+    return null; // Set to null if no date param is found
+  }, [searchParams]);
+
+  const [selectedDate, setSelectedDate] = useState<Date | null>(initialDate); // Allow null for no date filter
+
+  const [search, setSearch] = useState(searchParams.get('query') || ''); // Initialize search from URL
+  const [debouncedQuery] = useDebounceValue(search, 500);
+
+  // Pass query and selectedDate to useNotices
+  const { notices, totalPages, isLoading, error } = useNotices(category, page, debouncedQuery, selectedDate);
   const { articles, isLoading: isLoadingArticles } = useTopArticles();
 
   const handleCategoryChange = useCallback(
@@ -210,26 +139,46 @@ export default function NewsPage() {
       const params = new URLSearchParams(searchParams);
       params.set('category', newCategory);
       params.set('page', '1');
+      // Reset search and date when category changes, or keep them if desired
+      params.delete('query');
+      params.delete('date'); // Clear date param
       router.push(`?${params.toString()}`);
     },
     [router, searchParams]
   );
 
-  const [search, setSearch] = useState('');
-  const [query] = useDebounceValue(search, 500);
-
   useEffect(() => {
-      
-  }, [ query ]);
+    const params = new URLSearchParams();
+    params.set('category', category);
+    params.set('page', page.toString());
+    if (debouncedQuery) {
+      params.set('query', debouncedQuery);
+    } else {
+      params.delete('query'); // Clean up URL if query is empty
+    }
+    // Only add date to URL if selectedDate is not null
+    if (selectedDate) {
+      params.set('date', getFormattedDate(selectedDate));
+    } else {
+      params.delete('date'); // Clean up URL if date is null
+    }
+    router.push(`?${params.toString()}`);
+  }, [debouncedQuery, router, selectedDate, category, page]);
 
   const handlePageChange = useCallback(
     (newPage: number) => {
       const params = new URLSearchParams(searchParams);
       params.set('category', category);
       params.set('page', newPage.toString());
+      if (debouncedQuery) {
+        params.set('query', debouncedQuery);
+      }
+      if (selectedDate) {
+        params.set('date', getFormattedDate(selectedDate));
+      }
       router.push(`?${params.toString()}`);
     },
-    [router, searchParams, category]
+    [router, searchParams, category, debouncedQuery, selectedDate]
   );
 
   return (
@@ -241,26 +190,28 @@ export default function NewsPage() {
       <div className="flex flex-col md:flex-row">
 
         <div className="ml-5 my-8 flex-1">
+          <div className="flex w-[97.5%] mb-2 justify-between py-2 rounded-sm">
+            <div className="relative w-[50%] flex items-center">
+              <Search className="absolute left-3 h-5 w-5 text-gray-500" />
+              <Input
+                onChange={(e) => setSearch(e.target.value)}
+                type="text"
+                placeholder="Search </>"
+                className="pl-10 w-full"
+                defaultValue={search}
+              />
+            </div>
+            <div className="flex">
+              {/* Pass null to setDate to clear the date filter */}
+              <DatePicker date={selectedDate} setDate={setSelectedDate} />
+            </div>
+          </div>
           {isLoading ? (
             <p>Loading notices...</p>
           ) : error ? (
             <p className="text-red-500">{error}</p>
           ) : (
             <>
-              <div className="flex w-[97.5%] mb-2 justify-between py-2 rounded-sm">
-                <div className="relative w-[50%] flex items-center">
-                  <Search className="absolute left-3 h-5 w-5 text-gray-500" />
-                  <Input
-                    value={search}
-                    type="email"
-                    placeholder="Search </>"
-                    className="pl-10 w-full" // Add padding to avoid icon overlap
-                  />
-                </div>                
-                <div className="flex">
-                  <DatePicker />
-                </div>
-              </div>
               <NoticeSection notices={notices} />
               <PaginationControls
                 currentPage={page}

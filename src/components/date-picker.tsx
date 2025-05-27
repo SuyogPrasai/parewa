@@ -20,8 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-export function DatePicker() {
-  const [date, setDate] = React.useState<Date>()
+export function DatePicker( { date, setDate } : any ) {
 
   return (
     <Popover>
