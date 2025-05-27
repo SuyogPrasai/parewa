@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { Search } from 'lucide-react';
 import getFormattedDate from '@/helpers/getDateInFormat'; // Assuming this helper exists
 import { useTopArticles } from '@/hooks/use-top-articles';
-import { useNotices } from '@/hooks/use-notices';
+import { useArticles } from '@/hooks/use-articles';
 
 import NoticeSection from '@/components/app-notice-section';
 import ArticleRankings from '@/components/app-side-top-articles';
@@ -16,8 +16,9 @@ import { Input } from '@/components/ui/input';
 import { DatePicker } from '@/components/date-picker';
 import { useDebounceValue } from "usehooks-ts";
 import PaginationControls from '@/components/pagination';
+import SideArticleList from '@/components/app-article-collection';
 
-export default function NewsPage() {
+export default function ArticlesPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const category = useMemo(() => searchParams.get('category') || 'General', [searchParams]);
@@ -38,9 +39,9 @@ export default function NewsPage() {
   const [search, setSearch] = useState(searchParams.get('query') || ''); // Initialize search from URL
   const [debouncedQuery] = useDebounceValue(search, 500);
 
-  // Pass query and selectedDate to useNotices
-  const { notices, totalPages, isLoading, error } = useNotices(category, page, debouncedQuery, selectedDate);
-  const { articles, isLoading: isLoadingArticles } = useTopArticles();
+  // Pass query and selectedDate to Articles
+  const { articles, totalPages, isLoading, error } = useArticles(category, page, debouncedQuery, selectedDate);
+  const { articles: articles_, isLoading: isLoadingArticles } = useTopArticles();
 
   const navLinks = [
     { name: "Politics", href: "#" },
@@ -96,7 +97,7 @@ export default function NewsPage() {
     },
     [router, searchParams, category, debouncedQuery, selectedDate]
   );
-
+  console.log( articles)
   return (
     <div className="min-h-screen">
       <Navbar header_click={handleCategoryChange} navLinks={navLinks} />
@@ -123,12 +124,12 @@ export default function NewsPage() {
             </div>
           </div>
           {isLoading ? (
-            <p>Loading notices...</p>
+            <p>Loading articles...</p>
           ) : error ? (
             <p className="text-red-500">{error}</p>
           ) : (
             <>
-              <NoticeSection notices={notices} />
+              <SideArticleList articles={articles} /> {/* Pass articles directly */}
               <PaginationControls
                 currentPage={page}
                 totalPages={totalPages}
@@ -141,7 +142,7 @@ export default function NewsPage() {
           {isLoadingArticles ? (
             <p>Loading articles...</p>
           ) : (
-            <ArticleRankings articles={articles} />
+            <ArticleRankings articles={articles_} />
           )}
         </div>
       </div>

@@ -10,3 +10,9 @@ export interface ArticlesSectionProps {
     category: string;
     articles: Article[];
 }
+
+export interface ArticlesResponse {
+  success: boolean;
+  articles: Article[];
+  totalPages: number;
+}

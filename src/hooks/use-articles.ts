@@ -1,19 +1,20 @@
 import { useState, useEffect } from 'react';
-import Notice from '@/types/notice';
-import { NoticesResponse } from '@/types/notice';
-import { ITEMS_PER_PAGE, MAX_PAGES_TO_SHOW } from '@/config/site-config';
 import axios from 'axios';
+import getFormattedDate from '@/helpers/getDateInFormat';
+import { ArticlesSectionProps } from '@/types/articleSection';
+import { ArticlesResponse } from '@/types/articleSection';
+import { Article } from '@/types/articleSection';
+import { ITEMS_PER_PAGE, MAX_PAGES_TO_SHOW } from '@/config/site-config';
 
-import getFormattedDate from '@/helpers/getDateInFormat'; // Assuming this helper exists
 
-export const useNotices = (category: string, page: number, query: string, date: Date | null) => {
-  const [notices, setNotices] = useState<Notice[]>([]);
+export const useArticles = (category: string, page: number, query: string, date: Date | null) => {
+  const [articles, setArticles] = useState<Article[]>([]);
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchNotices = async () => {
+    const fetchArticles = async () => {
       setIsLoading(true);
       try {
         const params = new URLSearchParams();
@@ -28,29 +29,29 @@ export const useNotices = (category: string, page: number, query: string, date: 
           params.set('date', getFormattedDate(date)); // Ensure date is formatted correctly for API
         }
 
-        const response = await axios.get<NoticesResponse>(
-          `/api/get_news?${params.toString()}`
+        const response = await axios.get<ArticlesResponse>(
+          `/api/get_articles?${params.toString()}`
         );
         if (response.data.success) {
-          setNotices(response.data.notices);
+          setArticles(response.data.articles);
           setTotalPages(response.data.totalPages);
         } else {
-          setNotices([]);
+          setArticles([]);
           setTotalPages(1);
-          setError('Failed to fetch notices');
+          setError('Failed to fetch articles');
         }
       } catch (error) {
-        console.error('Error fetching notices:', error);
-        setNotices([]);
+        console.error('Error fetching articles:', error);
+        setArticles([]);
         setTotalPages(1);
-        setError('Error fetching notices');
+        setError('Error fetching articles');
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchNotices();
+    fetchArticles();
   }, [category, page, query, date]); // Add query and date to dependencies
 
-  return { notices, totalPages, isLoading, error };
+  return { articles, totalPages, isLoading, error };
 };
