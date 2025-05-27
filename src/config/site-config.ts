@@ -26,3 +26,9 @@ export const slides = [
     author: "Kahlil Gibran",
   },
 ];
+
+// Pagination Stuff
+
+
+export const ITEMS_PER_PAGE = 8;
+export const MAX_PAGES_TO_SHOW = 5;
