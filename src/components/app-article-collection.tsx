@@ -16,7 +16,7 @@ function SideArticleCard({ article }: { article: Article }) {
         <CardContent className=" pt-4 pl-10 pr-4 flex-1 bg-white flex flex-col"> {/* Removed justify-center for more control */}
 
           <h3 className="text-2xl mb-3 leading-tight font-bold hover:text-primary-block transition-colors duration-200 font-oswald w-[80%] mt-0"> {/* Added mt-0 */}
-            {article.title}
+            {article.title} 
           </h3>
 
           {/* If the author name is also too far, ensure it doesn't have unnecessary top margin/padding */}
