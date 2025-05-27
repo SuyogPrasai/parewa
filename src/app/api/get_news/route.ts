@@ -92,7 +92,7 @@ export async function GET(request: NextRequest) {
       publishedIn: notice.publishedIn,
       postTags: notice.postTags,
       voteCount: notice.voteCount,
-      link: `/notice/${notice._id}`,
+      link: `/notices/${notice._id}`,
       author: userMap[notice.publisherID.toString()] || "Unknown",
     }));
 

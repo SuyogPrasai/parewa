@@ -8,6 +8,7 @@ export interface Position extends Document {
 // Defining the Position schema
 const PositionSchema: Schema<Position> = new Schema(
   {
+    
     name: { type: String, required: true, trim: true },
   },
   {

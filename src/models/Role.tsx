@@ -1,4 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
+const { v4: uuidv4 } = require('uuid');
 
 // Defining the interface for the Role model
 export interface Role extends Document {

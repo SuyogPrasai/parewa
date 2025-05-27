@@ -86,7 +86,7 @@ export async function GET(request: NextRequest) {
     const transformedArticles = articles.map((article: any) => ({
       title: article.title,
       subtitle: summarizeText(article.content),
-      link: `/article/${article.slug || article._id}`,
+      link: `/articles/?id=${article.slug || article._id}`,
       image: article.featuredImage || "", // adjust if field differs
       author: userMap[article.publisherID.toString()] || "Unknown",
       date: article.createdAt,

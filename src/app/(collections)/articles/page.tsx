@@ -8,7 +8,6 @@ import getFormattedDate from '@/helpers/getDateInFormat'; // Assuming this helpe
 import { useTopArticles } from '@/hooks/use-top-articles';
 import { useArticles } from '@/hooks/use-articles';
 
-import NoticeSection from '@/components/app-notice-section';
 import ArticleRankings from '@/components/app-side-top-articles';
 import { Navbar } from '@/components/collection-navbar';
 import { Separator } from '@/components/ui/separator';
@@ -21,7 +20,7 @@ import SideArticleList from '@/components/app-article-collection';
 export default function ArticlesPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const category = useMemo(() => searchParams.get('category') || 'General', [searchParams]);
+  const category = useMemo(() => searchParams.get('category') || 'Literature', [searchParams]);
   const page = useMemo(() => parseInt(searchParams.get('page') || '1', 10), [searchParams]);
 
   // Initialize selectedDate from URL or null if not present

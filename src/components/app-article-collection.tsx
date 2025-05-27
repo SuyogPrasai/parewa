@@ -6,8 +6,8 @@ import { Card, CardContent } from "./ui/card_newsletter";
 // No changes needed for SideArticleCard, it's fine as is.
 function SideArticleCard({ article }: { article: Article }) {
   return (
-    <Link href="#" className="flex">
-      <Card className="h-full relative overflow-hidden transition-shadow duration-200 z-10 border flex w-full">
+    <Link href={article.link} className="flex">
+      <Card className="h-full relative overflow-hidden transition-shadow duration-200 z-10 flex w-full">
         <div className="relative w-[50%]  flex-shrink-0">
           <Image src={article.image} alt={article.title} fill className="object-cover" />
         </div>
