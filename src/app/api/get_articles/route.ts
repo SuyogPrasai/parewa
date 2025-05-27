@@ -2,73 +2,89 @@ import { NextResponse, NextRequest } from "next/server";
 import dbConnect from "@/lib/dbConnnect";
 import ArticleModel from "@/models/Article";
 import extractFirst15Words from "@/helpers/extractFiffteenWords";
+import UserModel, { User } from "@/models/User";
+import { Types } from "mongoose";
 
-export async function GET() {
+
+export async function GET(request: NextRequest) {
+  await dbConnect();
+
+  const { searchParams } = new URL(request.url);
+  const category_ = searchParams.get("category");
+  const page_ = parseInt(searchParams.get("page") || '1', 10);
+  const limit_ = parseInt(searchParams.get("limit") || '8', 10);
+  const query_ = searchParams.get("query");
+  const date_ = searchParams.get("date"); // Get date string, will be null if not present
+
   try {
-    await dbConnect();
+    let matchConditions: any = {
+      trashed: false,
+      category: category_,
+    };
+
+    // Add query condition for searching in title or content if query_ exists
+    if (query_) {
+      matchConditions.$or = [
+        { title: { $regex: query_, $options: 'i' } },
+        { content: { $regex: query_, $options: 'i' } },
+      ];
+    }
+
+    // Add date condition ONLY if date_ is provided
+    if (date_) {
+      const selectedDate = new Date(date_);
+      selectedDate.setUTCHours(0, 0, 0, 0);
+      const nextDay = new Date(selectedDate);
+      nextDay.setUTCDate(selectedDate.getUTCDate() + 1);
+
+      matchConditions.createdAt = {
+        $gte: selectedDate,
+        $lt: nextDay,
+      };
+    }
+
+    const totalArticles = await ArticleModel.countDocuments(matchConditions);
+
+    const totalPages = Math.ceil(totalArticles / limit_);
+    const skip = (page_ - 1) * limit_;
 
     const articles = await ArticleModel.aggregate([
-      { $match: { trashed: false } }, // Filter out trashed articles
-      { $sort: { createdAt: -1 } }, // Sort by latest createdAt
-      {
-        $group: {
-          _id: "$category", // Group by category field
-          articles: { $push: "$$ROOT" }, // Collect all articles in an array
-        },
-      },
-      {
-        $project: {
-          _id: 0, // Exclude _id field
-          category: "$_id", // Rename _id to category
-          articles: {
-            $slice: ["$articles", 4], // Take only the first 4 articles
-          },
-        },
-      },
-      {
-        $project: {
-          category: 1, // Keep category
-          articles: {
-            $map: {
-              input: "$articles",
-              as: "article",
-              in: {
-                title: "$$article.title",
-                subtitle: "$$article.content",
-                author: "$$article.author",
-                image: "$$article.featuredImage",
-                link: "$$article._id",
-                // Add other fields here if needed
-              },
-            },
-          },
-        },
-      },
+      { $match: matchConditions }, // Use the dynamic match conditions
+      { $sort: { createdAt: -1 } },
+      { $skip: skip },
+      { $limit: limit_ },
     ]);
 
-    // Process articles to extract first 15 words from content
-    const processedArticles = articles.map((category) => ({
-      category: category.category,
-      articles: category.articles.map((article: any) => ({
-        title: article.title,
-        subtitle: article.subtitle ? extractFirst15Words(article.subtitle) + "..." : "No content available",
-        image: article.image,
-        author: article.author,
-        link: `/p/${article.link}`,
-      }))
-    }));
-
-    // Check if articles are empty
-    if (!articles.length) {
-      console.log("No articles found matching the criteria.");
+    if (articles.length === 0 && totalArticles === 0) {
       return NextResponse.json(
-        { success: false, message: "No articles found" },
-        { status: 404 }
+        { success: true, message: "No articles found for this category.", articles: [], totalPages: 0, currentPage: page_, totalArticles: 0 },
+        { status: 200 }
+      );
+    } else if (articles.length === 0 && totalArticles > 0) {
+      return NextResponse.json(
+        { success: true, message: "No articles found for this page.", articles: [], totalPages: totalPages, currentPage: page_, totalArticles: totalArticles },
+        { status: 200 }
       );
     }
 
+    const userIds = articles.map((article: { publisherID: Types.ObjectId }) => article.publisherID);
+    const users = await UserModel.find(
+      { _id: { $in: userIds } },
+      { _id: 1, username: 1 }
+    );
+
+    const userMap: Record<string, string> = Object.fromEntries(
+      users.map((user: User) => [(user._id as Types.ObjectId).toString(), user.username])
+    );
+
+    const transformedArticles = articles.map((article: any) => ({
+      ...article,
+      content: summarizeText(article.content),
+      username: userMap[article.publisherID.toString()] || "Unknown"
+    }));
+
     return NextResponse.json(
-      { success: true, articles: processedArticles },
+      { success: true, articles: transformedArticles, totalPages, currentPage: page_, totalArticles },
       { status: 200 }
     );
   } catch (error: any) {
@@ -82,4 +98,10 @@ export async function GET() {
       { status: 400 }
     );
   }
+}
+
+function summarizeText(htmlString: string): string {
+  const text = htmlString.replace(/<\/?[^>]+(>|$)/g, "").trim();
+  const words = text.split(/\s+/);
+  return words.length > 20 ? words.slice(0, 20).join(" ") + "..." : text;
 }
