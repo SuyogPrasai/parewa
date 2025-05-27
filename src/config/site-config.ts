@@ -6,6 +6,7 @@ export const main_metadata: Metadata = {
   description: "Parewa is a media platform developed and managed by the students of BNKS",
 };
 
+
 export const slides = [
   {
     id: 1,

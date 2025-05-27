@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useCallback, JSX, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-
 import { Search } from 'lucide-react';
 import getFormattedDate from '@/helpers/getDateInFormat'; // Assuming this helper exists
 import { useTopArticles } from '@/hooks/use-top-articles';

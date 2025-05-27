@@ -1,5 +1,3 @@
-// app/layout.tsx
-import type { Metadata } from "next";
 import { ReactNode } from "react";
 import { Roboto, Oswald, Bebas_Neue } from "next/font/google";
 import "../globals.css";
@@ -38,6 +36,8 @@ const bebas_neue = Bebas_Neue({
   weight: "400",
   variable: "--font-bebas_neue",
 });
+
+export const metadata = main_metadata;
 
 interface RootLayoutProps {
   children: ReactNode;

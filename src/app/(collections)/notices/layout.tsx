@@ -1,5 +1,3 @@
-'use client';
-
 import { ReactNode } from 'react';
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/app-sidebar';
@@ -8,6 +6,7 @@ import { Roboto, Oswald, Bebas_Neue } from 'next/font/google';
 import Footer from '@/components/collections_footer';
 import Link from 'next/link';
 import '@/app/globals.css';
+import { Metadata } from 'next';
 
 // Font configurations
 const roboto = Roboto({
@@ -27,6 +26,11 @@ const bebasNeue = Bebas_Neue({
   weight: '400',
   variable: '--font-bebas_neue',
 });
+
+export const metadata: Metadata = {
+  title: "परेवा_ - Your Source for Notices, Articles & News",
+  description: "Parewa is a media platform developed and managed by the students of BNKS",
+};
 
 // Header component
 const DashboardHeader: React.FC = () => (
