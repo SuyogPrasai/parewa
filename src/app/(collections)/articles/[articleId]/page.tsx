@@ -16,6 +16,8 @@ import VoteComponent from '@/components/voting-component-article';
 import { useVote } from "@/hooks/use-vote";
 import Image from 'next/image';
 import ArticleRankings from '@/components/app-side-top-articles';
+import PublisherCard from '@/components/publisher-card';
+import SideArticleList from '@/components/app-article-collection';
 
 
 export default function ArticlesPage() {
@@ -25,9 +27,11 @@ export default function ArticlesPage() {
     const category = useMemo(() => searchParams.get('category') || 'Literature', [searchParams]);
     const article_id = useMemo(() => searchParams.get('id') || '', [searchParams]);
 
+    const [articles, setArticles] = useState([]);
 
     const { articles: articles_, isLoading: isLoadingArticles } = useTopArticles();
 
+    
 
     const navLinks = [
         { name: "Politics", href: "#" },
@@ -75,12 +79,29 @@ export default function ArticlesPage() {
         if (article_id) fetchArticle();
     }, [searchParams]);
 
+    useEffect(() => {
+        const fetchArticles = async () => {
+            try {
+                const response = await axios.get(`/api/get_articles?limit=2&category=${category}`);
+                if (response.data.success) {
+                    setArticles(response.data.articles);
+                } else {
+                    console.error('Error fetching articles:', response.data.message);
+                }
+            } catch (error: any) {
+                console.error('Request failed:', error.message);
+            }
+        };
+
+        fetchArticles();
+    }, []); 
+
     const { netVotes, activeVote, handleVote } = useVote(article.voteCount);
 
     return (
         <>
             <Navbar header_click={handleCategoryChange} navLinks={navLinks} />
-            
+
             <div className="flex flex-row justify-left">
                 <div className="flex flex-col py-2 pl-5 max-w-[900px]">
                     <h1 className="text-6xl font-oswald mt-5 max-w-[60%] underline underline-offset-4 leading-[105%] decoration-1 decoration-gray-200">{article.title.toUpperCase()}</h1>
@@ -117,6 +138,15 @@ export default function ArticlesPage() {
 
                     <ArticleRankings articles={articles_} />
                 </div>
+
+            </div>
+            <div className="publisher">
+                <PublisherCard initials={article.publisher.name[0]} name={article.publisher.name} established={article.publishedIn} />
+            </div>
+            <div className="w-[700px] my-10">
+            <h1 className='text-5xl font-bold mb-6 md:text-10xl text-gray-900 font-oswald underline underline-offset-8 decoration-gray-200 decoration-1'>Some Latest Articles in {category}</h1>
+            <SideArticleList articles={articles} />
+
             </div>
         </>
     )
