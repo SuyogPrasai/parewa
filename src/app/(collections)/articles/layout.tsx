@@ -7,6 +7,7 @@ import Footer from '@/components/collections_footer';
 import Link from 'next/link';
 import '@/app/globals.css';
 import { Metadata } from 'next';
+import { Separator } from '@/components/ui/separator';
 
 // Font configurations
 const roboto = Roboto({
@@ -63,6 +64,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               <div className="flex">
 
               <DashboardHeader />
+              <Separator orientation='vertical' className='h-full'/>
               <main className="w-full h-full pl-4">{children}</main>
               </div>
               <Footer />

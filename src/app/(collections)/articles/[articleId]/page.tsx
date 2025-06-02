@@ -9,9 +9,11 @@ import { Article } from '@/types/singleArticle';
 import ArticleResponse from '@/types/singleArticle';
 
 import { Navbar } from '@/components/collection-navbar';
-import ArticleRankings from '@/components/app-side-top-articles';
 import axios from 'axios';
 import { Separator } from '@/components/ui/separator';
+import AuthorCard from '@/components/author-details-card';
+import VoteComponent from '@/components/voting-component-article';
+import { useVote } from "@/hooks/use-vote";
 
 
 export default function ArticlesPage() {
@@ -20,6 +22,7 @@ export default function ArticlesPage() {
 
     const category = useMemo(() => searchParams.get('category') || 'Literature', [searchParams]);
     const article_id = useMemo(() => searchParams.get('id') || '', [searchParams]);
+
 
     const { articles: articles_, isLoading: isLoadingArticles } = useTopArticles();
 
@@ -66,16 +69,23 @@ export default function ArticlesPage() {
         if (article_id) fetchArticle();
     }, [searchParams]);
 
+    const { netVotes, activeVote, handleVote } = useVote(article.voteCount);
 
     return (
         <>
             <Navbar header_click={handleCategoryChange} navLinks={navLinks} />
-            <div className="flex flex-col py-2">
-                <Separator />
-                <h1 className="text-5xl font-oswald mt-5 ml-5 max-w-[70%]">{article.title.toUpperCase()}</h1>
+            <div className="flex flex-col py-2 pl-5">
+                <h1 className="text-6xl font-oswald mt-5 max-w-[60%] underline underline-offset-4 leading-[105%] decoration-1 decoration-gray-200">{article.title.toUpperCase()}</h1>
+                <div className='flex flex-col lg:max-w-[629px] mt-5 p-2'>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam porro eveniet soluta explicabo. Ratione, itaque?</p>
+                    <div className='flex flex-row justify-between py-2'>
+                        <AuthorCard initials={article.author[0]} name={article.author} timestamp={`${article.publishedIn}`} />
+                        <VoteComponent orientation='horizontal' handleVote={handleVote} netVotes={netVotes} activeVote={activeVote} />
+                    </div>
+                </div>
                 <div className="flex">
 
-                    <div className="flex flex-col lg:w-[629px]">
+                    <div className="flex flex-col lg:w-[629px] h-[100vh]">
                     </div>
                 </div>
             </div>

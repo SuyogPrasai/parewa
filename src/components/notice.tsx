@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowUp, ArrowDown } from "lucide-react";
+import { useVote } from "@/hooks/use-vote";
+
+import VoteComponent from "./voting-component-article";
 
 interface NoticeCardProps {
   title: string;
@@ -21,22 +22,8 @@ export function NoticeCard({
   tags,
   initialVotes,
 }: NoticeCardProps) {
-  const [netVotes, setNetVotes] = useState(initialVotes);
-  const [activeVote, setActiveVote] = useState<"up" | "down" | null>(null);
 
-  const handleVote = (type: "up" | "down") => {
-    if (activeVote === type) {
-      setNetVotes((prev) => prev + (type === "up" ? -1 : 1));
-      setActiveVote(null);
-    } else {
-      const newValue =
-        netVotes +
-        (type === "up" ? 1 : -1) +
-        (activeVote ? (activeVote === "up" ? -1 : 1) : 0);
-      setNetVotes(newValue);
-      setActiveVote(type);
-    }
-  };
+  const { netVotes, activeVote, handleVote } = useVote(initialVotes);
 
   return (
     <Card className="w-[100%] p-4 bg-background shadow-sm hover:shadow-md transition-shadow mb-3">
@@ -60,31 +47,11 @@ export function NoticeCard({
               </Badge>
             ))}
           </div>
+
         </div>
+          <VoteComponent netVotes={netVotes} activeVote={activeVote} handleVote={handleVote} />
 
-        <div className="flex flex-col items-center gap-1">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => handleVote("up")}
-            className={`h-8 w-8 ${activeVote === "up" ? "text-green-600 bg-green-50" : "text-muted-foreground"
-              }`}
-          >
-            <ArrowUp className="h-4 w-4" />
-          </Button>
-
-          <span className="font-medium text-foreground text-base">{netVotes}</span>
-
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => handleVote("down")}
-            className={`h-8 w-8 ${activeVote === "down" ? "text-red-600 bg-red-50" : "text-muted-foreground"
-              }`}
-          >
-            <ArrowDown className="h-4 w-4" />
-          </Button>
-        </div>
+        
       </div>
     </Card>
   );
