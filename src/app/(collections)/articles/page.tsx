@@ -137,13 +137,6 @@ export default function ArticlesPage() {
             </>
           )}
         </div>
-        <div className="px-5">
-          {isLoadingArticles ? (
-            <p>Loading articles...</p>
-          ) : (
-            <ArticleRankings articles={articles_} />
-          )}
-        </div>
       </div>
     </div>
   );

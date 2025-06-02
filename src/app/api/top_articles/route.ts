@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
         : "No content available",
       image: article.image || null, // Fallback for missing image
       author: article.author || "Unknown Author", // Fallback for missing author
-      link: `/p/${article.link}`,
+      link: `/articles/article?id=${article.link}`,
       category: article.category || "Uncategorized" // Fallback for missing category
     }));
 

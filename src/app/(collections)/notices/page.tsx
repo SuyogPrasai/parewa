@@ -107,7 +107,7 @@ export default function NewsPage() {
       <div className="flex flex-col md:flex-row">
 
         <div className="ml-5 my-8 flex-1">
-          <div className="flex w-[97.5%] mb-2 justify-between py-2 rounded-sm">
+          <div className="flex w-[97.5%] mb-2 justify-between py-2 rounded-sm max-w-2xl lg:w-[80vw]">
             <div className="relative w-[50%] flex items-center">
               <Search className="absolute left-3 h-5 w-5 text-gray-500" />
               <Input
@@ -136,13 +136,6 @@ export default function NewsPage() {
                 onPageChange={handlePageChange}
               />
             </>
-          )}
-        </div>
-        <div className="px-5">
-          {isLoadingArticles ? (
-            <p>Loading articles...</p>
-          ) : (
-            <ArticleRankings articles={articles} />
           )}
         </div>
       </div>
