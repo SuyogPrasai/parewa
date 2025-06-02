@@ -18,7 +18,7 @@ const ArticleRankings = ({ articles }: { articles: Article[] }) => (
 );
 
 const SideArticleCard = ({ article, rank }: { article: Article; rank: number }) => (
-    <Card className="h-[75px] overflow-hidden rounded-lg flex w-full lg:w-[350px] border border-gray-200 p-2">
+    <Card className="h-[75px] overflow-hidden rounded-lg flex w-full lg:w-[300px] border border-gray-200 p-2">
         <div className="flex items-center gap-2">
             <div className="w-7 flex items-center justify-end font-sans text-xl text-[#232323]">
                 {rank.toString().padStart(2, '0')}

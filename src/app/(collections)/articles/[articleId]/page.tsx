@@ -11,6 +11,7 @@ import ArticleResponse from '@/types/singleArticle';
 import { Navbar } from '@/components/collection-navbar';
 import ArticleRankings from '@/components/app-side-top-articles';
 import axios from 'axios';
+import { Separator } from '@/components/ui/separator';
 
 
 export default function ArticlesPage() {
@@ -69,15 +70,14 @@ export default function ArticlesPage() {
     return (
         <>
             <Navbar header_click={handleCategoryChange} navLinks={navLinks} />
-            <div className="flex flex-col">
-                <h1 className="text-3xl">{article.title}</h1>
-            </div>
-            <div className="px-5">
-                {isLoadingArticles ? (
-                    <p>Loading articles...</p>
-                ) : (
-                    <ArticleRankings articles={articles_} />
-                )}
+            <div className="flex flex-col py-2">
+                <Separator />
+                <h1 className="text-5xl font-oswald mt-5 ml-5 max-w-[70%]">{article.title.toUpperCase()}</h1>
+                <div className="flex">
+
+                    <div className="flex flex-col lg:w-[629px]">
+                    </div>
+                </div>
             </div>
         </>
     )
