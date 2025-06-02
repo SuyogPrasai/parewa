@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-import dbConnect from "@/lib/dbConnnect";
+import dbConnect from "@/lib/dbConnect";
 import ArticleModel from "@/models/Article";
 import UserModel, { User } from "@/models/User";
 import { Types } from "mongoose";

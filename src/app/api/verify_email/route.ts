@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 
-import dbConnect from "@/lib/dbConnnect";
+import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/models/User";
 import { extractRollAndName } from "@/helpers/extractNameAndEmail";
 

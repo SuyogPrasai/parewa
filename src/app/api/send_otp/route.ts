@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 import { sendVerificationEmail } from "@/helpers/SendVerificationEmail";
 import OtpModel from "@/models/Otp";
-import dbConnect from "@/lib/dbConnnect";
+import dbConnect from "@/lib/dbConnect";
 
 export async function POST(req: Request) {
   await dbConnect(); // Ensure DB connection

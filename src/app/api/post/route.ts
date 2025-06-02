@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-import dbConnect from "@/lib/dbConnnect";
+import dbConnect from "@/lib/dbConnect";
 import NoticeModel from "@/models/Notice";
 import ArticleModel from "@/models/Article";
 import UserModel from "@/models/User";

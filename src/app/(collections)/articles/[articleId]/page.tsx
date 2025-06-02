@@ -49,7 +49,11 @@ export default function ArticlesPage() {
     const [article, setArticle] = useState<Article>({
         _id: '',
         title: '',
-        content: '',
+        content: [
+            {
+                type: '',
+            }
+        ],
         publishedIn: '',
         featuredImage: '', // URL
         voteCount: 0,
@@ -76,8 +80,9 @@ export default function ArticlesPage() {
     return (
         <>
             <Navbar header_click={handleCategoryChange} navLinks={navLinks} />
+            
             <div className="flex flex-row justify-left">
-                <div className="flex flex-col py-2 pl-5 max-w-[800px]">
+                <div className="flex flex-col py-2 pl-5 max-w-[900px]">
                     <h1 className="text-6xl font-oswald mt-5 max-w-[60%] underline underline-offset-4 leading-[105%] decoration-1 decoration-gray-200">{article.title.toUpperCase()}</h1>
                     <div className='flex flex-col lg:max-w-[650px] mt-5 p-2'>
                         <p className='text-gray-600 font-roboto text-xl'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam porro eveniet soluta explicabo. Ratione, itaque?</p>
@@ -100,17 +105,17 @@ export default function ArticlesPage() {
                                 <div className="bg-gray-200 w-full aspect-[16/9]"></div>
                             )}
                         </div>
-                        <p className="mt-4">{article.content}</p>
-                    </div>
-                    <div className="flex">
+                        {article.featuredImage && article.featuredImage !== "" ? (
+                            <div className="mb-10" dangerouslySetInnerHTML={{ __html: article.content }}></div>
 
-                        <div className="flex flex-col lg:w-[650px] h-[100vh]">
-                        </div>
+                        ) : (
+                            <div className="mb-10"></div>
+                        )}
                     </div>
                 </div>
                 <div className='absolute right-[100px] top-[300px] '>
 
-                <ArticleRankings articles={articles_}  />
+                    <ArticleRankings articles={articles_} />
                 </div>
             </div>
         </>

@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-import dbConnect from "@/lib/dbConnnect"; // Fixed typo: dbConnnect -> dbConnect
+import dbConnect from "@/lib/dbConnect"; // Fixed typo: dbConnnect -> dbConnect
 import ArticleModel from "@/models/Article";
 import extractFirst15Words from "@/helpers/extractFiffteenWords";
 

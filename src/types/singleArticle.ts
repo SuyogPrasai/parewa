@@ -1,7 +1,7 @@
 export interface Article {
     _id: string;
     title: string;
-    content: string;
+    content: Element[];
     publishedIn: string; // ISO 8601 date string
     featuredImage: string; // URL
     voteCount: number;
@@ -14,6 +14,13 @@ export interface Article {
     };
 
 }
+
+interface Element {
+  type: string;
+  content?: string;
+  attrs?: Record<string, any>;
+}
+
 
 export default interface ArticleResponse {
     success: boolean;

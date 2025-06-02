@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import dbConnect from "@/lib/dbConnnect";
+import dbConnect from "@/lib/dbConnect";
 import OtpModel from "@/models/Otp";
 import { otpSchema } from "@/schemas/otpSchema";
 import { updateSignUpSession } from "@/lib/session"

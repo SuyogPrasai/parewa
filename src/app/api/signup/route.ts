@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 
-import dbConnect from "@/lib/dbConnnect";
+import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/models/User";
 import { updateSignUpSession, deleteSignUpSession } from "@/lib/session"
 import { extractRollAndName } from "@/helpers/extractNameAndEmail";

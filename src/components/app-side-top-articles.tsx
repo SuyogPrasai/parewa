@@ -8,7 +8,7 @@ import { Article } from "@/types/articleSection";
 
 const ArticleRankings = ({ articles }: { articles: Article[] }) => (
     <div className="flex flex-col gap-4 lg:mr-5">
-        <h2 className="text-black text-xl font-bold font-oswald">Article Rankings</h2>
+        <h2 className="text-black text-4xl font-bold font-oswald ml-2">Rankings</h2>
         <div className="flex flex-col gap-2">
             {articles.slice(0, 6).map((article, i) => (
                 <SideArticleCard key={article.link} article={article} rank={i + 1} />
@@ -25,13 +25,17 @@ const SideArticleCard = ({ article, rank }: { article: Article; rank: number }) 
             </div>
         </div>
         <Link href={article.link} className="flex-1 h-full">
-            <CardContent className="px-4 py-3 h-full bg-white flex flex-col justify-center">
-                <h3 className="text-sm font-bold hover:text-primary-block transition-colors font-sans border-l-2 border-blue-500 pl-2">
+            <CardContent className="px-4 py-3 h-full relative bg-white flex flex-col justify-center">
+                <div className="absolute w-[2px] h-[40px] bg-primary"></div>
+                <div className="pl-2">
+
+                <h3 className="text-sm mt-2 font-bold hover:text-primary-block transition-colors font-sans pl-3">
                     {article.title}
                 </h3>
-                <span className="text-xs font-medium text-primary-block border-l-2 border-blue-500 pl-2">
+                <span className="text-xs font-medium text-primary-block pl-2 my-2">
                     {article.author}
                 </span>
+                </div>
             </CardContent>
         </Link>
     </Card>

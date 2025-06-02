@@ -1,12 +1,14 @@
 import { NextResponse, NextRequest } from "next/server";
 
-import dbConnect from "@/lib/dbConnnect";
+import dbConnect from "@/lib/dbConnect";
 
 import ArticleModel from "@/models/Article";
 import UserModel, { User } from "@/models/User";
 import RoleModel from "@/models/Role";
 import PositionModel from "@/models/Positions";
 
+import { parseHTML } from "@/lib/htmlParser";
+import options from "@/lib/parsing_options";
 
 export async function GET(request: NextRequest) {
     await dbConnect();
@@ -46,11 +48,12 @@ export async function GET(request: NextRequest) {
         const publisher_roleID  = publisher.roleID
         
         const role = await RoleModel.findById(publisher_roleID);
+        const parsed_html = await parseHTML(article.content || "", options);
 
         const response_article_: any = {
             '_id': article._id,
             'title': article.title,
-            'content': article.content,
+            'content': parsed_html,
             'publishedIn': article.publishedIn,
             'featuredImage': article.featuredImage,
             'voteCount': article.voteCount,
