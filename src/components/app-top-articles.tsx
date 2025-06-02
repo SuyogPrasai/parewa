@@ -10,7 +10,7 @@ import Image from "next/image";
 const ArticleRankings = ({ articles }: { articles: Article[] }) => {
     return (
         <div className="flex flex-col gap-6 lg:mr-5">
-            <div className="text-black text-3xl font-bold pr-5 font-oswald">Article Rankings for the Month</div>
+            <div className="text-black text-3xl font-bold pr-5 font-oswald mb-5">Article Rankings for the Month</div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-6">
                     {articles.slice(0, 3).map((article, index) => (
@@ -37,8 +37,8 @@ function SideArticleCard({ article, rank }: { article: Article; rank: number }) 
                 </div>
                 <CardContent className="px-4 pt-4 flex-1 bg-white relative">
                     <div className="relative bg-black w-[40%] rounded-lg h-[0.15rem] mb-2"></div>
-                    <h3 className="text-sm font-bold hover:text-primary-block transition-colors duration-200">
-                        {article.title}
+                    <h3 className="text-md hover:text-primary-block transition-colors duration-200 font-oswald">
+                        {article.title.toUpperCase()}
                     </h3>
                     <span className="text-primary-block text-xs font-medium font-roboto">{article.author}</span>
                 </CardContent>

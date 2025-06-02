@@ -29,10 +29,10 @@ const SideArticleCard = ({ article, rank }: { article: Article; rank: number }) 
                 <div className="absolute w-[2px] h-[40px] bg-primary"></div>
                 <div className="pl-2">
 
-                <h3 className="text-sm mt-2 font-bold hover:text-primary-block transition-colors font-sans pl-3">
-                    {article.title}
+                <h3 className="text-md mt-2 font-bold font-oswald hover:text-primary-block transition-colors  pl-3">
+                    {article.title.toUpperCase()}
                 </h3>
-                <span className="text-xs font-medium text-primary-block pl-2 my-2">
+                <span className="text-xs font-medium font-roboto text-primary-block pl-2 my-2">
                     {article.author}
                 </span>
                 </div>

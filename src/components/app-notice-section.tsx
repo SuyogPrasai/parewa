@@ -16,6 +16,7 @@ export default function NoticeSection({ notices } : { notices: Notice[] }) {
             username={notice.author}
             tags={notice.postTags}
             initialVotes={notice.voteCount}
+            id = {notice._id}
           />
         ))
       ) : (
