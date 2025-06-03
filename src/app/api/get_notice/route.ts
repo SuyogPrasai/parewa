@@ -62,7 +62,8 @@ export async function GET(request: NextRequest) {
                 'name': publisher_name,
                 'username': publisher_username,
                 'role': role?.name,
-            }
+            },
+            'category': notice.category,
         };
 
         if (role?.name.toLocaleLowerCase() === "student") {

@@ -11,6 +11,7 @@ export interface Notice {
         name: string;
         username: string;
     };
+    category: string;
 }
 
 interface Element {
@@ -22,5 +23,5 @@ interface Element {
 
 export default interface NoticeResponse {
     success: boolean;
-    Notice: Notice;
+    notice: Notice;
 }
