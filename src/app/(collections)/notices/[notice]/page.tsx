@@ -9,6 +9,7 @@ import { useTopArticles } from '@/hooks/use-top-articles';
 import ArticleRankings from '@/components/app-side-top-articles';
 import { Navbar } from '@/components/collection-navbar';
 import { Separator } from '@/components/ui/separator';
+import Image from 'next/image';
 
 import NoticeResponse, { Notice } from '@/types/singleNotice';
 
@@ -59,8 +60,6 @@ export default function NewsPage() {
     [router, searchParams]
   );
 
-
-
   useEffect(() => {
     const fetchNotice = async () => {
       const response = await axios.get<NoticeResponse>(`/api/get_notice/?id=${notice_id}`);
@@ -94,10 +93,8 @@ export default function NewsPage() {
       <Navbar header_click={handleCategoryChange} navLinks={navLinks} />
       <Separator />
       <h1 className="text-6xl font-oswald mt-5 ml-5">NOTICE</h1>
-      <div className="flex flex-col md:flex-row">
-        <div className="ml-5 my-8 flex-1">
-
-        </div>
+      <div className="flex flex-col md:flex-row mt-5 ">
+        
       </div>
     </div>
   );
