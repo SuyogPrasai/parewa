@@ -124,7 +124,7 @@ export default function NewsPage() {
             </div>
           </div>
           {isLoading ? (
-            <p>Loading notices...</p>
+            <p></p>
           ) : error ? (
             <p className="text-red-500">{error}</p>
           ) : (

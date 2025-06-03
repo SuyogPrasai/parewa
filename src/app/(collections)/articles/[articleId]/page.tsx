@@ -24,7 +24,6 @@ export default function ArticlesPage() {
     const router = useRouter();
     const searchParams = useSearchParams();
 
-    const category = useMemo(() => searchParams.get('category') || 'Literature', [searchParams]);
     const article_id = useMemo(() => searchParams.get('id') || '', [searchParams]);
 
     const [articles, setArticles] = useState([]);
@@ -67,7 +66,8 @@ export default function ArticlesPage() {
             _id: '',
             name: '',
             username: '',
-        }
+        },
+        category: '',
     });
 
     useEffect(() => {
@@ -78,6 +78,8 @@ export default function ArticlesPage() {
 
         if (article_id) fetchArticle();
     }, [searchParams]);
+    
+    const category = article.category;
 
     useEffect(() => {
         const fetchArticles = async () => {
@@ -94,7 +96,7 @@ export default function ArticlesPage() {
         };
 
         fetchArticles();
-    }, []); 
+    }, [category]); 
 
     const { netVotes, activeVote, handleVote } = useVote(article.voteCount);
 
@@ -144,7 +146,7 @@ export default function ArticlesPage() {
                 <PublisherCard initials={article.publisher.name[0]} name={article.publisher.name} established={article.publishedIn} />
             </div>
             <div className="w-[700px] my-10">
-            <h1 className='text-5xl font-bold mb-6 md:text-10xl text-gray-900 font-oswald underline underline-offset-8 decoration-gray-200 decoration-1'>Some Latest Articles in {category}</h1>
+            <h1 className='text-5xl font-bold mb-6 md:text-10xl text-gray-900 font-oswald underline underline-offset-8 decoration-gray-200 decoration-1'>Some Latest Articles in {article.category}</h1>
             <SideArticleList articles={articles} />
 
             </div>

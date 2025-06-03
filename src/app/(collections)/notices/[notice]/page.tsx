@@ -1,81 +1,67 @@
-import { ReactNode } from 'react';
-import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
-import { AppSidebar } from '@/components/app-sidebar';
-import AuthProvider from '@/context/AuthProvider';
-import { Roboto, Oswald, Bebas_Neue } from 'next/font/google';
-import Footer from '@/components/collections_footer';
-import Link from 'next/link';
-import '@/app/globals.css';
-import { Metadata } from 'next';
+'use client';
+
+import { useEffect, useMemo, useCallback, JSX, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+
+import { useTopArticles } from '@/hooks/use-top-articles';
+
+import ArticleRankings from '@/components/app-side-top-articles';
+import { Navbar } from '@/components/collection-navbar';
 import { Separator } from '@/components/ui/separator';
-import ScrollFadeIn from '@/components/app-scrolldown';
+import { Notice } from '@/types/singleNotice';
 
-// Font configurations
-const roboto = Roboto({
-  subsets: ['latin'],
-  weight: '300',
-  variable: '--font-roboto',
-});
+export default function NewsPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-const oswald = Oswald({
-  subsets: ['latin'],
-  weight: '700',
-  variable: '--font-oswald',
-});
+  const { articles, isLoading: isLoadingArticles } = useTopArticles();
 
-const bebasNeue = Bebas_Neue({
-  subsets: ['latin'],
-  weight: '400',
-  variable: '--font-bebas_neue',
-});
+  const navLinks = [
+    { name: "General", href: "#" },
+    { name: "Departments", href: "#" },
+    { name: "School", href: "#" },
+    { name: "Council", href: "#" },
+    { name: "Clubs", href: "#" },
+  ];
 
-export const metadata: Metadata = {
-  title: "परेवा_ - Your Source for Notices, Articles & News",
-  description: "Parewa is a media platform developed and managed by the students of BNKS",
-};
+  const handleCategoryChange = useCallback(
+    (newCategory: string) => {
+      const params = new URLSearchParams(searchParams);
 
-// Header component
-const DashboardHeader: React.FC = () => (
-  <header className="sticky top-0 z-50 w-[400px] bg-secondary-background h-[125px]">
-    <div className="flex items-center justify-between w-full p-6 bg-opacity-30 text-white mt-3">
-      <div className="flex items-center gap-2">
-        <SidebarTrigger className="mr-2" />
-        <Link href="/">
-          <p className="text-xl font-sans md:text-4xl font-bold">परेवा_</p>
-        </Link>
+      router.push(`/notices?category=${newCategory}`);
+    },
+    [router, searchParams]
+  );
+
+  const [article, setArticle] = useState<Notice>({
+    _id: '',
+    title: '',
+    content: [
+      {
+        type: '',
+      }
+    ],
+    publishedIn: '',
+    featuredImage: '', // URL
+    voteCount: 0,
+    postTags: [],
+    publisher: {
+      _id: '',
+      name: '',
+      username: '',
+    }
+  });
+
+  return (
+    <div className="min-h-screen">
+      <Navbar header_click={handleCategoryChange} navLinks={navLinks} />
+      <Separator />
+      <h1 className="text-6xl font-oswald mt-5 ml-5"></h1>
+      <div className="flex flex-col md:flex-row">
+        <div className="ml-5 my-8 flex-1">
+
+        </div>
       </div>
     </div>
-  </header>
-);
-
-
-interface DashboardLayoutProps {
-  children: ReactNode;
-}
-
-export default function DashboardLayout({ children }: DashboardLayoutProps) {
-  return (
-    <html lang="en">
-      <body className={`${roboto.variable} ${oswald.variable} ${bebasNeue.variable}`}>
-        <AuthProvider>
-          <SidebarProvider defaultOpen={false}>
-            <AppSidebar />
-            <SidebarInset>
-              <div className="flex relative">
-
-                <div className="flex flex-col">
-
-                  <DashboardHeader />
-                  <ScrollFadeIn />
-                </div>
-                <Separator orientation='vertical' className='h-full' />
-                <main className="w-full h-full pl-4">{children}</main>
-              </div>
-              <Footer />
-            </SidebarInset>
-          </SidebarProvider>
-        </AuthProvider>
-      </body>
-    </html>
   );
 }

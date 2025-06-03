@@ -12,6 +12,7 @@ export interface Article {
         name: string;
         username: string;
     };
+    category: string;
 
 }
 
