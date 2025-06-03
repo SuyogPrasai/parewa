@@ -19,7 +19,8 @@ export async function GET(request: NextRequest) {
           author: 1,
           image: "$featuredImage",
           link: "$_id",
-          category: 1 // Include category if needed
+          category: 1, // Include category if needed
+          publishedAt: "$publishedIn"
         }
       }
     ]);
@@ -33,7 +34,8 @@ export async function GET(request: NextRequest) {
       image: article.image || null, // Fallback for missing image
       author: article.author || "Unknown Author", // Fallback for missing author
       link: `/articles/article?id=${article.link}`,
-      category: article.category || "Uncategorized" // Fallback for missing category
+      category: article.category || "Uncategorized", // Fallback for missing category
+      date: article.publishedAt
     }));
 
     // Check if articles are empty

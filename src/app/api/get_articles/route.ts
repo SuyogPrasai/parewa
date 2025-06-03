@@ -90,6 +90,7 @@ export async function GET(request: NextRequest) {
       image: article.featuredImage || "", // adjust if field differs
       author: userMap[article.publisherID.toString()] || "Unknown",
       date: article.createdAt,
+      category: article.category
     }));
 
     return NextResponse.json(

@@ -8,7 +8,7 @@ import RoleModel from "@/models/Role";
 import PositionModel from "@/models/Positions";
 
 import { parseHTML } from "@/lib/htmlParser";
-import options from "@/lib/parsing_options";
+import { article_options } from "@/lib/parsing_options";
 
 export async function GET(request: NextRequest) {
     await dbConnect();
@@ -48,7 +48,7 @@ export async function GET(request: NextRequest) {
         const publisher_roleID  = publisher.roleID
         
         const role = await RoleModel.findById(publisher_roleID);
-        const parsed_html = await parseHTML(article.content || "", options);
+        const parsed_html = await parseHTML(article.content || "", article_options);
 
         const response_article_: any = {
             '_id': article._id,

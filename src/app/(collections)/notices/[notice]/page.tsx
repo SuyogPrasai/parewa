@@ -6,10 +6,10 @@ import axios from 'axios';
 
 import { useTopArticles } from '@/hooks/use-top-articles';
 
-import ArticleRankings from '@/components/app-side-top-articles';
 import { Navbar } from '@/components/collection-navbar';
 import { Separator } from '@/components/ui/separator';
-import Image from 'next/image';
+import NoticeDetail from '@/components/notice_detail';
+
 
 import NoticeResponse, { Notice } from '@/types/singleNotice';
 
@@ -18,10 +18,8 @@ export default function NewsPage() {
   const searchParams = useSearchParams();
 
   const notice_id = useMemo(() => searchParams.get('id') || '', [searchParams]);
-
-  const [articles, setArticles] = useState([]);
-
   const { articles: articles_, isLoading: isLoadingArticles } = useTopArticles();
+
 
   const [Notice, setNotice] = useState<Notice>({
     _id: '',
@@ -70,31 +68,13 @@ export default function NewsPage() {
     fetchNotice();
   }, [searchParams]);
 
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        if (!Notice.category) return;
-        const response = await axios.get(`/api/get_articles?limit=2&category=${Notice.category}`);
-        if (response.data.success) {
-          setArticles(response.data.articles);
-        } else {
-          console.error('Error fetching articles:', response.data.message);
-        }
-      } catch (error: any) {
-        console.error('Request failed:', error.message);
-      }
-    };
-
-    fetchArticles();
-  }, [Notice.category]);
-
   return (
     <div className="min-h-screen">
       <Navbar header_click={handleCategoryChange} navLinks={navLinks} />
-      <Separator />
+
       <h1 className="text-6xl font-oswald mt-5 ml-5">NOTICE</h1>
-      <div className="flex flex-col md:flex-row mt-5 ">
-        
+      <div className='flex flex-row p-2 mt-5 ml-5'>
+        <NoticeDetail Notice={Notice} Articles={articles_} />
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ export type Article = {
     link: string;
     image: string;
     author: string;
+    category?: string[];
 };
 
 export interface ArticlesSectionProps {

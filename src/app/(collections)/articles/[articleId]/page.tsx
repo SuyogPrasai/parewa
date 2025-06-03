@@ -136,7 +136,7 @@ export default function ArticlesPage() {
                         )}
                     </div>
                 </div>
-                <div className='absolute right-[100px] top-[300px] '>
+                <div className='absolute right-[70px] top-[300px] '>
 
                     <ArticleRankings articles={articles_} />
                 </div>

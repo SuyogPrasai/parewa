@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/app-sidebar';
 import AuthProvider from '@/context/AuthProvider';
-import { Roboto, Oswald, Bebas_Neue } from 'next/font/google';
+import { Roboto, Oswald, Bebas_Neue, Lato } from 'next/font/google';
 import Footer from '@/components/collections_footer';
 import Link from 'next/link';
 import '@/app/globals.css';
@@ -28,6 +28,12 @@ const bebasNeue = Bebas_Neue({
   weight: '400',
   variable: '--font-bebas_neue',
 });
+
+const lato = Lato({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-lato',
+})
 
 export const metadata: Metadata = {
   title: "परेवा_ - Your Source for Notices, Articles & News",
@@ -56,7 +62,7 @@ interface DashboardLayoutProps {
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} ${oswald.variable} ${bebasNeue.variable}`}>
+      <body className={`${roboto.variable} ${oswald.variable} ${bebasNeue.variable} ${lato.variable}`}>
         <AuthProvider>
           <SidebarProvider defaultOpen={false}>
             <AppSidebar />

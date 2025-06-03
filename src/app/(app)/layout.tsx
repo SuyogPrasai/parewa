@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Roboto, Oswald, Bebas_Neue } from "next/font/google";
+import { Roboto, Lato, Oswald, Bebas_Neue } from "next/font/google";
 import "../globals.css";
 
 // Components
@@ -37,6 +37,12 @@ const bebas_neue = Bebas_Neue({
   variable: "--font-bebas_neue",
 });
 
+const lato = Lato({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-lato',
+})
+
 export const metadata = main_metadata;
 
 interface RootLayoutProps {
@@ -46,7 +52,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} ${oswald.variable} ${bebas_neue.variable}`}>
+      <body className={`${roboto.variable} ${lato.variable}  ${oswald.variable} ${bebas_neue.variable}`}>
         <AuthProvider>
           {/* PreloaderWrapper is commented out as per original code */}
           {/* <PreloaderWrapper> */}

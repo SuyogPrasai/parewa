@@ -24,7 +24,7 @@ const AuthorCard: React.FC<AuthorCardProps> = ({ initials, name, timestamp }) =>
     <div className="flex items-center space-x-2">
       {/* Circular badge with initials */}
       <div className="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center">
-        <span className="text-lg font-bold text-black font-roboto">{initials}</span>
+        <span className="text-lg font-bold text-black font-roboto">{initials || 'A'}</span>
       </div>
       {/* Author name and timestamp */}
       <div>

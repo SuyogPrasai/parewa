@@ -8,7 +8,7 @@ import RoleModel from "@/models/Role";
 import PositionModel from "@/models/Positions";
 
 import { parseHTML } from "@/lib/htmlParser";
-import options from "@/lib/parsing_options";
+import { notice_options } from "@/lib/parsing_options";
 
 export async function GET(request: NextRequest) {
     await dbConnect();
@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
         const publisher_roleID = publisher.roleID;
         
         const role = await RoleModel.findById(publisher_roleID);
-        const parsed_html = await parseHTML(notice.content || "", options); // Changed from article.content
+        const parsed_html = await parseHTML(notice.content || "", notice_options); // Changed from article.content
 
         const response_notice_: any = { // Changed variable name
             '_id': notice._id,

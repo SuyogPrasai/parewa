@@ -103,6 +103,7 @@ export default {
 				roboto: ['var(--font-roboto)', 'sans-serif'],
 				oswald: ['var(--font-oswald)', 'sans-serif'],
 				bebas_neue: ['var(--font-bebas_neue)', 'sans-serif'],
+				lato: ['var(--font-lato)', 'sans-serif'],
 
 			}
 		}

@@ -31,7 +31,7 @@ const PublisherInformation: React.FC<PublisherInformationProps> = ({ initials, n
     <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg shadow-sm max-w-[700px] mb-10">
       {/* Circular badge with publisher initials */}
       <div className="w-12 h-12 rounded-full bg-blue-300 flex items-center justify-center">
-        <span className="text-xl font-bold text-black font-roboto">{initials}</span>
+        <span className="text-xl font-bold text-black font-roboto">{initials ? initials.toUpperCase() : 'A'}</span>
       </div>
       {/* Publisher information */}
       <div>

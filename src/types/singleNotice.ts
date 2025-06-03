@@ -14,7 +14,7 @@ export interface Notice {
     category: string;
 }
 
-interface Element {
+export interface Element {
   type: string;
   content?: string;
   attrs?: Record<string, any>;
