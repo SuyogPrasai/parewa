@@ -22,13 +22,13 @@ export default function ScrollFadeIn() {
 
   return (
     <div
-      className={`fixed top-[225px] left-[247px] transition-translate transform duration-500 z-40 ${
-        show ? 'translate-y-[-100px]' : '-translate-y-[200px] pointer-events-none'
-      }`}
+      className={`hidden lgplus:block fixed top-[225px] left-[247px] transition-translate transform duration-500 z-40 ${show ? 'translate-y-[-100px]' : '-translate-y-[200px] pointer-events-none'
+        }`}
     >
       <div className="p-4 bg-blue-600 text-white shadow-xl font-oswald text-2xl">
         CONTACT US
       </div>
     </div>
+
   );
 }

@@ -118,7 +118,7 @@ export default function ArticlesPage() {
                         </div>
 
 
-                        <div className="section flex flex-row gap-10">
+                        <div className="section flex flex-col justify-center md:justify-start lgplus:flex-row gap-10">
 
 
                             <div className="content-component lg:max-w-[650px] gap">
@@ -146,7 +146,7 @@ export default function ArticlesPage() {
                                 )}
                             </div>
 
-                            <div className=''>
+                            <div className='mx-auto lgplus:mx-0'>
                                 <ArticleRankings articles={articles_} />
                             </div>
                         </div>
@@ -158,7 +158,7 @@ export default function ArticlesPage() {
             <div className="publisher">
                 <PublisherCard initials={article.publisher.name[0]} name={article.publisher.name} established={article.publishedIn} />
             </div>
-            <div className="w-[700px] my-10">
+            <div className="max-w-[700px] my-10">
                 <h1 className='text-5xl font-bold mb-6 md:text-10xl text-gray-900 font-oswald underline underline-offset-8 decoration-gray-200 decoration-1'>Some Latest Articles in {article.category}</h1>
                 <SideArticleList articles={articles} variant='simple' />
             </div>

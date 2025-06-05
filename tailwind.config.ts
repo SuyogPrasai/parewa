@@ -10,6 +10,10 @@ export default {
 	],
 	theme: {
 		extend: {
+			screens: {
+				'lgplus': '1400px',
+			},
+
 			colors: {
 				background: 'hsl(var(--background))',
 				foreground: { DEFAULT: 'hsl(var(--foreground))', highlight: 'hsl(var(--foreground-highlight))' },

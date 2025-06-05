@@ -1,5 +1,4 @@
 import { format } from 'date-fns';
-
 import { Article } from "@/types/articleSection";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,40 +6,45 @@ import { Card, CardContent } from "./ui/card_newsletter";
 
 interface SideArticleCardProps {
   article: Article;
-  variant?: "simple" | "detailed"; // Add more variants as needed
+  variant?: "simple" | "detailed";
 }
 
-// No changes needed for SideArticleCard, it's fine as is.
 function SideArticleCard({ article, variant = "detailed" }: SideArticleCardProps) {
   const getFormattedDate = format(new Date(article.date), 'MMMM d');
 
   return (
     <Link href={article.link} className="flex">
-      <Card className="h-full relative overflow-hidden transition-shadow duration-200 z-10 flex w-full">
-        <div className="relative w-[50%] max-w-[400px] flex-shrink-0">
-          <Image src={article.image} alt={article.title} fill className="object-cover" />
+      <Card className="h-full relative overflow-hidden transition-shadow duration-200 z-10 flex flex-col sm:flex-row w-full">
+        <div className="relative w-full sm:w-[50%] max-w-[400px] flex-shrink-0 h-48 sm:h-auto">
+          <Image 
+            src={article.image} 
+            alt={article.title} 
+            fill 
+            className="object-cover"
+            sizes="(max-width: 640px) 100vw, 50vw"
+          />
         </div>
 
-        <CardContent className="pt-4 pl-10 pr-4 flex-1 bg-white flex flex-col">
+        <CardContent className="pt-4 pl-4 sm:pl-6 lg:pl-10 pr-4 flex-1 bg-white flex flex-col">
           {variant === "simple" ? (
             <>
-              <h3 className="text-2xl mb-3 leading-tight font-bold hover:text-primary-block transition-colors duration-200 font-oswald w-[80%] mt-0">
+              <h3 className="text-2xl sm:text-3xl mb-3 leading-tight font-bold hover:text-primary-block transition-colors duration-200 font-oswald w-full sm:w-[80%] mt-0">
                 {article.title}
               </h3>
               <span className="text-primary-block text-xs font-medium font-roboto tracking-widest mb-2">
                 {article.author}
               </span>
-              <span className="text-black text-[0.875rem] font-medium font-serif tracking-widest mb-2">
+              <span className="text-black text-sm sm:text-[0.875rem] font-medium font-serif tracking-widest mb-2 line-clamp-2">
                 {article.subtitle}
               </span>
             </>
           ) : (
-            <div className="flex flex-row w-full">
-              <div className="author-part w-[50%] flex flex-col">
-                <h3 className="text-2xl mb-3 leading-tight font-bold hover:text-primary-block transition-colors duration-200 font-oswald w-[80%] mt-0">
+            <div className="flex flex-col sm:flex-row w-full gap-4">
+              <div className="author-part w-full sm:w-[50%] flex flex-col">
+                <h3 className="text-xl sm:text-2xl mb-3 leading-tight font-bold hover:text-primary-block transition-colors duration-200 font-oswald w-full sm:w-[80%] mt-0">
                   {article.title}
                 </h3>
-                <div className="flex flex-row gap-3">
+                <div className="flex flex-row gap-2 sm:gap-3">
                   <span className="text-primary-block text-xs font-medium font-roboto tracking-widest mb-2">
                     {article.author}
                   </span>
@@ -52,8 +56,8 @@ function SideArticleCard({ article, variant = "detailed" }: SideArticleCardProps
                   </span>
                 </div>
               </div>
-              <div className="description-part w-[50%]">
-                <span className="text-black text-[0.875rem] font-medium font-serif tracking-widest mb-2">
+              <div className="description-part w-full sm:w-[50%]">
+                <span className="text-black text-sm sm:text-[0.875rem] font-medium tracking-widest font-serif mb-2 line-clamp-4 ">
                   {article.subtitle}
                 </span>
               </div>
@@ -72,13 +76,13 @@ interface SideArticleListProps {
 
 function SideArticleList({ articles = [], variant = "detailed" }: SideArticleListProps) {
   return (
-    <section className="w-full space-y-8">
+    <section className="w-full space-y-6 sm:space-y-8">
       {articles.length > 0 ? (
         articles.map((article) => (
           <SideArticleCard key={article.link} article={article} variant={variant} />
         ))
       ) : (
-        <p className="text-gray-500 text-center font-roboto">
+        <p className="text-gray-500 text-center font-roboto text-sm sm:text-base">
           No articles available.
         </p>
       )}

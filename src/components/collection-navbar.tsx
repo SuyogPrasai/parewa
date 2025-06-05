@@ -24,7 +24,7 @@ function Navbar({ header_click, navLinks }: NavbarProps) {
   };
 
   return (
-    <div className="bg-white mr-auto max-w-[1000px] lg:relative lg:block shadow-sm">
+    <div className="hidden bg-white mr-auto w-full max-w-[1000px] lg:relative lgplus:block shadow-sm">
       <div className="container relative">
         <nav className="flex lg:flex-row items-center justify-between">
           {/* Desktop Navigation */}
@@ -60,7 +60,7 @@ function Navbar({ header_click, navLinks }: NavbarProps) {
           </div>
 
           {/* About and Contact Buttons */}
-          <div className="hidden lg:flex space-x-0 h-[60px] items-center ml-10">
+          <div className="hidden lgplus:flex space-x-0 h-[60px] items-center ml-10">
             <div
               className="py-2 px-6 flex items-center justify-center hover:cursor-pointer text-black text-lg font-bold"
               style={{
