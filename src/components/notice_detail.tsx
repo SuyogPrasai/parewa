@@ -6,33 +6,39 @@ import ArticleRankings from "./app-side-top-articles"
 import NoticeSection from "./app-notice-section";
 
 interface Notice_Multi {
-  _id: string;
-  title: string;
-  content: string;
-  publishedIn: string;
-  postTags: string[];
-  voteCount: number;
-  author: string;
-  trashed: boolean;
-  link: string;
+    _id: string;
+    title: string;
+    content: string;
+    publishedIn: string;
+    postTags: string[];
+    voteCount: number;
+    author: string;
+    trashed: boolean;
+    link: string;
 }
 
-export default function NoticeDetail ({ Notice, Articles, Notices } : { Notice: Notice , Articles: Article[], Notices: Notice_Multi[] }) {
+export default function NoticeDetail({ Notice, Articles, Notices }: { Notice: Notice, Articles: Article[], Notices: Notice_Multi[] }) {
 
     return (
         <>
-            <div className="flex flex-col lg:flex-row gap-2">
-                <div className="w-full">
-                    <NoticeInfo 
-                        title={Notice.title}
-                        date={Notice.publishedIn}
-                        publisher={Notice.publisher.name}
-                        tags={Notice.postTags}
-                        content={Notice.content}
-                        featured_image={Notice.featuredImage}
-                        voteCount={Notice.voteCount}
-                    />
-                    <NoticeSection notices={Notices} />
+            <div className="flex flex-col lg:flex-row gap-4">
+                <div className="w-full flex flex-col">
+                    <div className="mb-5">
+                        <NoticeInfo
+                            title={Notice.title}
+                            date={Notice.publishedIn}
+                            publisher={Notice.publisher.name}
+                            tags={Notice.postTags}
+                            content={Notice.content}
+                            featured_image={Notice.featuredImage}
+                            voteCount={Notice.voteCount}
+                        />
+                    </div>
+                    <div className="flex flex-col gap-5 my-10">
+                        <h1 className="text-3xl font-oswald"> SIMILAR NOTICES</h1>
+                        <NoticeSection notices={Notices} />
+
+                    </div>
                 </div>
                 <div className="w-full ">
                     <ArticleRankings articles={Articles} />

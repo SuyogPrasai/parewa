@@ -10,6 +10,7 @@ import { Navbar } from '@/components/collection-navbar';
 import NoticeDetail from '@/components/notice_detail';
 
 import NoticeResponse, { Notice } from '@/types/singleNotice'; // Using 'type' for imports that are only used as types
+import NoticeSection from '@/components/app-notice-section';
 
 // It's generally good practice to define interfaces closer to where they are used,
 // or in a dedicated types file if they are shared across many components.

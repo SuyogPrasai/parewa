@@ -43,7 +43,7 @@ const SideArticleCard = ({ article, rank }: { article: Article; rank: number }) 
 
     return (
         // Add transition for smooth hover effects
-        <Card className="h-[75px] overflow-hidden rounded-lg flex w-full max-w-[325px] border border-gray-200 p-2 py-3 items-center
+        <Card className="h-[75px] overflow-hidden rounded-lg flex w-full max-w-[275px] border border-gray-200 p-2 py-3 items-center
                        transition-all duration-300 ease-in-out hover:shadow-md"> {/* Hover shadow effect */}
             <Link href={article.link} className="flex flex-row justify-start w-full overflow-hidden">
                 <span
