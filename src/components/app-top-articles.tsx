@@ -37,7 +37,7 @@ function SideArticleCard({ article, rank }: { article: Article; rank: number }) 
                 </div>
                 <CardContent className="px-4 pt-4 flex-1 bg-white relative">
                     <div className="relative bg-black w-[40%] rounded-lg h-[0.15rem] mb-2"></div>
-                    <h3 className="text-md hover:text-primary-block transition-colors duration-200 font-oswald">
+                    <h3 className="text-xs font-bold hover:text-primary-block transition-colors duration-200 font-sans">
                         {article.title.toUpperCase()}
                     </h3>
                     <span className="text-primary-block text-xs font-medium font-roboto">{article.author}</span>

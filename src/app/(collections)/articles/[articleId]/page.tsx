@@ -105,40 +105,53 @@ export default function ArticlesPage() {
             <Navbar header_click={handleCategoryChange} navLinks={navLinks} />
 
             <div className="flex flex-row justify-left">
-                <div className="flex flex-col py-2 pl-5 max-w-[900px]">
+                <div className="flex flex-col py-2 pl-5 max-w-[1400px]">
                     <h1 className="text-6xl font-oswald mt-5 max-w-[60%] underline underline-offset-4 leading-[105%] decoration-1 decoration-gray-200">{article.title.toUpperCase()}</h1>
-                    <div className='flex flex-col lg:max-w-[650px] mt-5 p-2'>
-                        <p className='text-gray-600 font-roboto text-xl'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam porro eveniet soluta explicabo. Ratione, itaque?</p>
-                        <div className='flex flex-row justify-between py-2'>
+                    <div className='flex flex-col lg:max-w-[1400px] mt-5 p-2'>
+                        <div className="details-card lg:max-w-[700px]">
+                            <p className='text-gray-600 font-roboto text-xl'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam porro eveniet soluta explicabo. Ratione, itaque?</p>
+                            <div className='flex flex-row justify-between py-2 '>
+
+                            </div>
                             <AuthorCard initials={article.author[0]} name={article.author} timestamp={`${article.publishedIn}`} />
                             <VoteComponent orientation='horizontal' handleVote={handleVote} netVotes={netVotes} activeVote={activeVote} />
                         </div>
-                        <Separator className="my-4" />
-                        <div>
-                            {article.featuredImage && article.featuredImage !== "" ? (
-                                <Image
-                                    src={article.featuredImage}
-                                    alt="Featured Image"
-                                    layout="responsive"
-                                    width={16}
-                                    height={9}
-                                    className="object-cover w-full aspect-[16/9]"
-                                />
-                            ) : (
-                                <div className="bg-gray-200 w-full aspect-[16/9]"></div>
-                            )}
+
+
+                        <div className="section flex flex-row gap-10">
+
+
+                            <div className="content-component lg:max-w-[650px] gap">
+
+                            <Separator className="my-4" />
+                                <div>
+                                    {article.featuredImage && article.featuredImage !== "" ? (
+                                        <Image
+                                            src={article.featuredImage}
+                                            alt="Featured Image"
+                                            layout="responsive"
+                                            width={16}
+                                            height={9}
+                                            className="object-cover w-full aspect-[16/9]"
+                                        />
+                                    ) : (
+                                        <div className="bg-gray-200 w-full aspect-[16/9]"></div>
+                                    )}
+                                </div>
+                                {article.featuredImage && article.featuredImage !== "" ? (
+                                    <div className="mb-10" dangerouslySetInnerHTML={{ __html: article.content }}></div>
+
+                                ) : (
+                                    <div className="mb-10"></div>
+                                )}
+                            </div>
+
+                            <div className=''>
+                                <ArticleRankings articles={articles_} />
+                            </div>
                         </div>
-                        {article.featuredImage && article.featuredImage !== "" ? (
-                            <div className="mb-10" dangerouslySetInnerHTML={{ __html: article.content }}></div>
 
-                        ) : (
-                            <div className="mb-10"></div>
-                        )}
                     </div>
-                </div>
-                <div className='absolute right-[70px] top-[300px] '>
-
-                    <ArticleRankings articles={articles_} />
                 </div>
 
             </div>
@@ -148,7 +161,6 @@ export default function ArticlesPage() {
             <div className="w-[700px] my-10">
                 <h1 className='text-5xl font-bold mb-6 md:text-10xl text-gray-900 font-oswald underline underline-offset-8 decoration-gray-200 decoration-1'>Some Latest Articles in {article.category}</h1>
                 <SideArticleList articles={articles} />
-
             </div>
         </>
     )

@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 
 // Header component
 const DashboardHeader: React.FC = () => (
-  <header className="sticky top-0 z-50 w-[400px] bg-secondary-background h-[125px]">
+  <header className="sticky top-0 z-50 w-full md:w-[400px] bg-secondary-background h-[125px]">
     <div className="flex items-center justify-between w-full p-6 bg-opacity-30 text-white mt-3">
       <div className="flex items-center gap-2">
         <SidebarTrigger className="mr-2" />

@@ -24,7 +24,7 @@ function Navbar({ header_click, navLinks }: NavbarProps) {
   };
 
   return (
-    <div className="bg-white mx-auto lg:relative lg:block shadow-sm">
+    <div className="bg-white mr-auto max-w-[1000px] lg:relative lg:block shadow-sm">
       <div className="container relative">
         <nav className="flex lg:flex-row items-center justify-between">
           {/* Desktop Navigation */}
