@@ -160,7 +160,7 @@ export default function ArticlesPage() {
             </div>
             <div className="w-[700px] my-10">
                 <h1 className='text-5xl font-bold mb-6 md:text-10xl text-gray-900 font-oswald underline underline-offset-8 decoration-gray-200 decoration-1'>Some Latest Articles in {article.category}</h1>
-                <SideArticleList articles={articles} />
+                <SideArticleList articles={articles} variant='simple' />
             </div>
         </>
     )

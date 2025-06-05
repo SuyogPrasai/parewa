@@ -128,7 +128,7 @@ export default function ArticlesPage() {
             <p className="text-red-500">{error}</p>
           ) : (
             <>
-              <SideArticleList articles={articles} /> {/* Pass articles directly */}
+              <SideArticleList articles={articles} variant='detailed' /> {/* Pass articles directly */}
               <PaginationControls
                 currentPage={page}
                 totalPages={totalPages}

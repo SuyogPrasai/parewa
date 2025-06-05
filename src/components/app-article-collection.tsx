@@ -5,9 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent } from "./ui/card_newsletter";
 
+interface SideArticleCardProps {
+  article: Article;
+  variant?: "simple" | "detailed"; // Add more variants as needed
+}
+
 // No changes needed for SideArticleCard, it's fine as is.
-function SideArticleCard({ article }: { article: Article }) {
-  const getFormattedDate = format(new Date(article.date), 'MMMM d ');
+function SideArticleCard({ article, variant = "detailed" }: SideArticleCardProps) {
+  const getFormattedDate = format(new Date(article.date), 'MMMM d');
+
   return (
     <Link href={article.link} className="flex">
       <Card className="h-full relative overflow-hidden transition-shadow duration-200 z-10 flex w-full">
@@ -15,33 +21,44 @@ function SideArticleCard({ article }: { article: Article }) {
           <Image src={article.image} alt={article.title} fill className="object-cover" />
         </div>
 
-        <CardContent className=" pt-4 pl-10 pr-4 flex-1 bg-white flex flex-col"> {/* Removed justify-center for more control */}
-
-          <div className="flex fQlex-row w-full">
-            <div className="author-part w-[50%] flex flex-col">
-              <h3 className="text-2xl mb-3 leading-tight font-bold hover:text-primary-block transition-colors duration-200 font-oswald w-[80%] mt-0"> {/* Added mt-0 */}
+        <CardContent className="pt-4 pl-10 pr-4 flex-1 bg-white flex flex-col">
+          {variant === "simple" ? (
+            <>
+              <h3 className="text-2xl mb-3 leading-tight font-bold hover:text-primary-block transition-colors duration-200 font-oswald w-[80%] mt-0">
                 {article.title}
               </h3>
-              {/* If the author name is also too far, ensure it doesn't have unnecessary top margin/padding */}
-              <div className="flex flex-row gap-3">
-
               <span className="text-primary-block text-xs font-medium font-roboto tracking-widest mb-2">
                 {article.author}
               </span>
-              <span className="text-primary-block text-xs font-medium font-roboto tracking-widest mb-2">
-                {" - "}
+              <span className="text-black text-[0.875rem] font-medium font-serif tracking-widest mb-2">
+                {article.subtitle}
               </span>
-              <span className="text-gray-400 text-xs font-medium font-roboto tracking-widest mb-2">
-               {getFormattedDate}
-              </span>
+            </>
+          ) : (
+            <div className="flex flex-row w-full">
+              <div className="author-part w-[50%] flex flex-col">
+                <h3 className="text-2xl mb-3 leading-tight font-bold hover:text-primary-block transition-colors duration-200 font-oswald w-[80%] mt-0">
+                  {article.title}
+                </h3>
+                <div className="flex flex-row gap-3">
+                  <span className="text-primary-block text-xs font-medium font-roboto tracking-widest mb-2">
+                    {article.author}
+                  </span>
+                  <span className="text-primary-block text-xs font-medium font-roboto tracking-widest mb-2">
+                    {" - "}
+                  </span>
+                  <span className="text-gray-400 text-xs font-medium font-roboto tracking-widest mb-2">
+                    {getFormattedDate}
+                  </span>
+                </div>
+              </div>
+              <div className="description-part w-[50%]">
+                <span className="text-black text-[0.875rem] font-medium font-serif tracking-widest mb-2">
+                  {article.subtitle}
+                </span>
               </div>
             </div>
-            <div className="description-part w-[50%]">
-              <span className="text-black text-[0.875rem] font-medium font-serif tracking-widest mb-2">
-                 {article.subtitle}
-              </span>
-            </div>
-          </div>
+          )}
         </CardContent>
       </Card>
     </Link>
@@ -50,17 +67,15 @@ function SideArticleCard({ article }: { article: Article }) {
 
 interface SideArticleListProps {
   articles: Article[];
+  variant?: "simple" | "detailed";
 }
 
-function SideArticleList({ articles }: SideArticleListProps) {
-  // Defensive check: Ensure articles is an array, or default to an empty array.
-  const articlesToRender = articles || [];
-
+function SideArticleList({ articles = [], variant = "detailed" }: SideArticleListProps) {
   return (
     <section className="w-full space-y-8">
-      {articlesToRender.length > 0 ? (
-        articlesToRender.map((article) => (
-          <SideArticleCard key={article.link} article={article} />
+      {articles.length > 0 ? (
+        articles.map((article) => (
+          <SideArticleCard key={article.link} article={article} variant={variant} />
         ))
       ) : (
         <p className="text-gray-500 text-center font-roboto">

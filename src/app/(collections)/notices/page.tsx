@@ -129,12 +129,15 @@ export default function NewsPage() {
             <p className="text-red-500">{error}</p>
           ) : (
             <>
+            <div className="max-w-[700px]">
+
               <NoticeSection notices={notices} />
               <PaginationControls
                 currentPage={page}
                 totalPages={totalPages}
                 onPageChange={handlePageChange}
               />
+            </div>
             </>
           )}
         </div>
