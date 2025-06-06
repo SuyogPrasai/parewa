@@ -75,7 +75,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                   <ScrollFadeIn />
                 </div>
                 <Separator orientation='vertical' className='hidden lg:block lg:h-auto lg:w-[1px] bg-gray-200' />
-                <main className="w-full h-full pl-4">{children}</main>
+                <main className="w-full h-full lg:pl-4">{children}</main>
               </div>
               <Footer />
             </SidebarInset>

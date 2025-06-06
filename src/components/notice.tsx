@@ -31,9 +31,10 @@ export function NoticeCard({
   return (
 
     <Card className="w-[100%] p-4 bg-background shadow-sm hover:shadow-md transition-shadow mb-3">
-      <Link href={"/notices/notice?id=" + id}>
-        <div className="flex justify-between items-start gap-3">
-          <div className="flex-1">
+
+      <div className="flex justify-between items-start gap-3">
+        <div className="flex-1">
+          <Link href={"/notices/notice?id=" + id}>
             <div className="flex justify-between items-center mb-1">
               <h3 className="text-base font-semibold text-foreground">{title}</h3>
               <span className="text-xs text-muted-foreground">{timestamp}</span>
@@ -53,10 +54,10 @@ export function NoticeCard({
               ))}
             </div>
 
-          </div>
-          <VoteComponent netVotes={netVotes} activeVote={activeVote} handleVote={handleVote} />
+          </Link>
         </div>
-      </Link>
+        <VoteComponent netVotes={netVotes} activeVote={activeVote} handleVote={handleVote} />
+      </div>
     </Card>
   );
 }

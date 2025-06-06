@@ -2,12 +2,9 @@
 
 import { useEffect, useMemo, useCallback, JSX, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-
 import { useTopArticles } from '@/hooks/use-top-articles';
-
 import { Article } from '@/types/singleArticle';
 import ArticleResponse from '@/types/singleArticle';
-
 import { Navbar } from '@/components/collection-navbar';
 import axios from 'axios';
 import { Separator } from '@/components/ui/separator';
@@ -19,18 +16,13 @@ import ArticleRankings from '@/components/app-side-top-articles';
 import PublisherCard from '@/components/publisher-card';
 import SideArticleList from '@/components/app-article-collection';
 
-
 export default function ArticlesPage() {
     const router = useRouter();
     const searchParams = useSearchParams();
-
     const article_id = useMemo(() => searchParams.get('id') || '', [searchParams]);
-
     const [articles, setArticles] = useState([]);
 
     const { articles: articles_, isLoading: isLoadingArticles } = useTopArticles();
-
-
 
     const navLinks = [
         { name: "Politics", href: "#" },
@@ -43,7 +35,6 @@ export default function ArticlesPage() {
     const handleCategoryChange = useCallback(
         (newCategory: string) => {
             const params = new URLSearchParams(searchParams);
-
             router.push(`/articles?category=${newCategory}`);
         },
         [router, searchParams]
@@ -52,21 +43,13 @@ export default function ArticlesPage() {
     const [article, setArticle] = useState<Article>({
         _id: '',
         title: '',
-        content: [
-            {
-                type: '',
-            }
-        ],
+        content: [{ type: '' }],
         publishedIn: '',
-        featuredImage: '', // URL
+        featuredImage: '',
         voteCount: 0,
         postTags: [],
         author: '',
-        publisher: {
-            _id: '',
-            name: '',
-            username: '',
-        },
+        publisher: { _id: '', name: '', username: '' },
         category: '',
     });
 
@@ -77,7 +60,7 @@ export default function ArticlesPage() {
         };
 
         if (article_id) fetchArticle();
-    }, [searchParams]);
+    }, [article_id]);
 
     const category = article.category;
 
@@ -101,67 +84,67 @@ export default function ArticlesPage() {
     const { netVotes, activeVote, handleVote } = useVote(article.voteCount);
 
     return (
-        <>
+        <div className="min-h-screen bg-white">
             <Navbar header_click={handleCategoryChange} navLinks={navLinks} />
 
-            <div className="flex flex-row justify-left">
-                <div className="flex flex-col py-2 pl-5 max-w-[1400px]">
-                    <h1 className="text-6xl font-oswald mt-5 max-w-[60%] underline underline-offset-4 leading-[105%] decoration-1 decoration-gray-200">{article.title.toUpperCase()}</h1>
-                    <div className='flex flex-col lg:max-w-[1400px] mt-5 p-2'>
-                        <div className="details-card lg:max-w-[700px]">
-                            <p className='text-gray-600 font-roboto text-xl'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam porro eveniet soluta explicabo. Ratione, itaque?</p>
-                            <div className='flex flex-row justify-between py-2 '>
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex flex-col py-4 sm:py-6">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-oswald font-bold uppercase mt-4 sm:mt-6 max-w-full sm:max-w-[80%] md:max-w-[70%] lg:max-w-[90%] underline underline-offset-4 decoration-1 decoration-gray-200 leading-tight">
+                        {article.title}
+                    </h1>
 
+                    <div className="flex flex-col mt-4 sm:mt-6 max-w-[1400px]">
+                        <div className="details-card w-full md:max-w-2xl lg:max-w-2xl">
+                            <p className="text-gray-600 font-roboto text-base sm:text-lg md:text-xl leading-relaxed">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam porro eveniet soluta explicabo. Ratione, itaque?
+                            </p>
+                            <div className="flex flex-col sm:flex-row sm:justify-between py-3 sm:py-4 gap-4">
+                                <AuthorCard initials={article.author[0]} name={article.author} timestamp={`${article.publishedIn}`} />
+                                <VoteComponent orientation="horizontal" handleVote={handleVote} netVotes={netVotes} activeVote={activeVote} />
                             </div>
-                            <AuthorCard initials={article.author[0]} name={article.author} timestamp={`${article.publishedIn}`} />
-                            <VoteComponent orientation='horizontal' handleVote={handleVote} netVotes={netVotes} activeVote={activeVote} />
                         </div>
 
-
-                        <div className="section flex flex-col justify-center md:justify-start lgplus:flex-row gap-10">
-
-
-                            <div className="content-component lg:max-w-[650px] gap">
-
-                            <Separator className="my-4" />
-                                <div>
+                        <div className="flex flex-col lg:flex-row gap-5 lg:gap-10 mt-6 lg:w-[125%] lg:max-w-[1400px]">
+                            <div className="content-component w-full">
+                                <Separator className="my-4" />
+                                <div className="relative w-full aspect-[16/9]">
                                     {article.featuredImage && article.featuredImage !== "" ? (
                                         <Image
                                             src={article.featuredImage}
                                             alt="Featured Image"
-                                            layout="responsive"
-                                            width={16}
-                                            height={9}
-                                            className="object-cover w-full aspect-[16/9]"
+                                            fill
+                                            className="object-cover w-full h-full"
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                            priority
                                         />
                                     ) : (
-                                        <div className="bg-gray-200 w-full aspect-[16/9]"></div>
+                                        <div className="bg-gray-200 w-full h-full"></div>
                                     )}
                                 </div>
-                                {article.featuredImage && article.featuredImage !== "" ? (
-                                    <div className="mb-10" dangerouslySetInnerHTML={{ __html: article.content }}></div>
-
-                                ) : (
-                                    <div className="mb-10"></div>
-                                )}
+                                <div
+                                    className="prose prose-sm sm:prose-base lg:prose-lg max-w-none mt-4 mb-8 sm:mb-10"
+                                    dangerouslySetInnerHTML={{ __html: article.content }}
+                                ></div>
                             </div>
 
-                            <div className='mx-auto lgplus:mx-0'>
+                            <div className="w-full lg:w-auto lg:min-w-[300px] xl:min-w-[350px] lg:ml-5">
                                 <ArticleRankings articles={articles_} />
                             </div>
                         </div>
-
                     </div>
                 </div>
 
+                <div className="publisher mt-6 sm:mt-8">
+                    <PublisherCard initials={article.publisher.name[0]} name={article.publisher.name} established={article.publishedIn} />
+                </div>
+
+                <div className="mb-8 mt-8 sm:mt-10 max-w-full md:max-w-2xl lg:max-w-3xl">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-oswald font-bold uppercase text-gray-900 underline underline-offset-8 decoration-gray-200 decoration-1 mb-4 sm:mb-6">
+                        Some Latest Articles in {article.category}
+                    </h2>
+                    <SideArticleList articles={articles} variant="simple" />
+                </div>
             </div>
-            <div className="publisher">
-                <PublisherCard initials={article.publisher.name[0]} name={article.publisher.name} established={article.publishedIn} />
-            </div>
-            <div className="max-w-[700px] my-10">
-                <h1 className='text-5xl font-bold mb-6 md:text-10xl text-gray-900 font-oswald underline underline-offset-8 decoration-gray-200 decoration-1'>Some Latest Articles in {article.category}</h1>
-                <SideArticleList articles={articles} variant='simple' />
-            </div>
-        </>
-    )
+        </div>
+    );
 }

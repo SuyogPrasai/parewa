@@ -15,7 +15,7 @@ function SideArticleCard({ article, variant = "detailed" }: SideArticleCardProps
   return (
     <Link href={article.link} className="flex">
       <Card className="h-full relative overflow-hidden transition-shadow duration-200 z-10 flex flex-col sm:flex-row w-full">
-        <div className="relative w-full sm:w-[50%] max-w-[400px] flex-shrink-0 h-48 sm:h-auto">
+        <div className="mx-auto relative w-full sm:w-[50%] max-w-[400px] flex-shrink-0 h-48 sm:h-auto">
           <Image 
             src={article.image} 
             alt={article.title} 
