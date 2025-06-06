@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/models/User";
 import { updateSignUpSession, deleteSignUpSession } from "@/lib/session"
-import { extractRollAndName } from "@/helpers/extractNameAndEmail";
+import { extractRollAndName } from "@/helpers/extract-name-and-email";
 
 import { emailVerifySchema } from "@/schemas/emailVerifySchema";
 import { setPasswordSchema } from "@/schemas/setPasswordSchema";

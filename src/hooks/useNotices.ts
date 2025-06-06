@@ -4,7 +4,7 @@ import { NoticesResponse } from '@/types/post_objects/notice';
 import { ITEMS_PER_PAGE, MAX_PAGES_TO_SHOW } from '@/config/site-config';
 import axios from 'axios';
 
-import getFormattedDate from '@/helpers/getDateInFormat'; // Assuming this helper exists
+import getFormattedDate from '@/helpers/get-date-in-format'; // Assuming this helper exists
 
 export const useNotices = (category: string, page: number, query: string, date: Date | null) => {
   const [notices, setNotices] = useState<Notice[]>([]);

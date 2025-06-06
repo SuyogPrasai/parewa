@@ -2,7 +2,7 @@ import { NextResponse, NextRequest } from "next/server";
 
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/models/User";
-import { extractRollAndName } from "@/helpers/extractNameAndEmail";
+import { extractRollAndName } from "@/helpers/extract-name-and-email";
 
 import { emailVerifySchema } from "@/schemas/emailVerifySchema";
 import { deleteSignUpSession, createSignUpSession, updateSignUpSession } from "@/lib/session"

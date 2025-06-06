@@ -4,7 +4,7 @@ import { useEffect, useMemo, useCallback, JSX, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import { Search } from 'lucide-react';
-import getFormattedDate from '@/helpers/getDateInFormat'; // Assuming this helper exists
+import getFormattedDate from '@/helpers/get-date-in-format'; // Assuming this helper exists
 import { useTopArticles } from '@/hooks/useTopArticles';
 import { useNotices } from '@/hooks/useNotices';
 

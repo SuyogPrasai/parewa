@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import getFormattedDate from '@/helpers/getDateInFormat';
+import getFormattedDate from '@/helpers/get-date-in-format';
 import { ArticlesSectionProps } from '@/types/post_objects/article';
 import { ArticlesResponse } from '@/types/post_objects/article';
 import { Article } from '@/types/post_objects/article';

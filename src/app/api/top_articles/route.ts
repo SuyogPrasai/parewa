@@ -1,7 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import dbConnect from "@/lib/dbConnect"; // Fixed typo: dbConnnect -> dbConnect
 import ArticleModel from "@/models/Article";
-import extractFirst15Words from "@/helpers/extractFiffteenWords";
+import extractFirst15Words from "@/helpers/extract-fiffteen-words";
 
 export async function GET(request: NextRequest) {
   try {

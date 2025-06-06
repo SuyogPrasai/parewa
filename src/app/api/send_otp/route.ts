@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { sendVerificationEmail } from "@/helpers/SendVerificationEmail";
+import { sendVerificationEmail } from "@/helpers/send-verification-email";
 import OtpModel from "@/models/Otp";
 import dbConnect from "@/lib/dbConnect";
 

@@ -4,7 +4,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { format } from "date-fns";
 import axios from 'axios';
-import getFormattedDate from '../helpers/getDateInFormat';
+import getFormattedDate from '../helpers/get-date-in-format';
 import { Event } from '@/models/Event';
 import { ScrollArea } from './ui/scroll-area';
 
