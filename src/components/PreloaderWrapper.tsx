@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation'; // Correct import for App Router
-import Preloader from './preloader-main';
+import Preloader from './PreloaderMain';
 
 interface PreloaderWrapperProps {
   children: React.ReactNode;

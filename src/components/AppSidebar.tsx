@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/sidebar";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Separator } from "./ui/separator";
-import AuthButton from "@/components/auth-button";
+import AuthButton from "@/components/AuthButton";
 import Link from "next/link";
 
 

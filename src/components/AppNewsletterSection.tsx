@@ -13,7 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import ArticleRankings from "@/components/app-top-articles";
+import ArticleRankings from "@/components/AppTopArticles";
 
 export function NewsletterSignup({ articles }: { articles: Article[] }) {
     const [email, setEmail] = useState("");

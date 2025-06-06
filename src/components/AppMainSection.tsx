@@ -1,6 +1,6 @@
 'use client'
 import NoticeSection from "./AppNoticeSection";
-import SideCalendar from "./app-side-calendar";
+import SideCalendar from "./AppSideCalendar";
 import Notice from "../types/post_objects/notice";
 
 

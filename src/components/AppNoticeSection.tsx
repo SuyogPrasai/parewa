@@ -1,5 +1,5 @@
 import React from "react";
-import { NoticeCard } from "./notice";
+import { NoticeCard } from "./Notice";
 import Notice from "@/types/post_objects/notice";
 
 export default function NoticeSection({ notices } : { notices: Notice[] }) {

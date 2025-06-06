@@ -3,14 +3,14 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-import { Navbar } from '@/components/app-navbar';
+import { Navbar } from '@/components/AppNavbar';
 import { Separator } from '@/components/ui/separator';
-import MainSection from '@/components/app-main-section';
-import ArticlesSection from '@/components/app-article-section';
+import MainSection from '@/components/AppMainSection';
+import ArticlesSection from '@/components/AppArticleSection';
 
 
 import Article from '@/types/post_objects/article';
-import { NewsletterSignup } from '@/components/app-newsletter-section';
+import { NewsletterSignup } from '@/components/AppNewsletterSection';
 import Image from 'next/image';
 import Notice from '@/types/post_objects/notice';
 
