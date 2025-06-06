@@ -7,8 +7,8 @@ import UserModel, { User } from "@/models/User";
 import RoleModel from "@/models/Role";
 import PositionModel from "@/models/Positions";
 
-import { parseHTML } from "@/lib/htmlParser";
-import { notice_options } from "@/lib/parsing_options";
+import { parseHTML } from "@/lib/parse/htmlParser";
+import { notice_options } from "@/lib/parse/parsing-options";
 
 export async function GET(request: NextRequest) {
     await dbConnect();

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useVote } from "@/hooks/use-vote";
+import { useVote } from "@/hooks/useVote";
 
-import VoteComponent from "./voting-component-article";
+import VoteComponent from "./VotingComponentArticle";
 import Link from "next/link";
 
 interface NoticeCardProps {

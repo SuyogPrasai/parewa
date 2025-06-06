@@ -7,7 +7,7 @@ import axios, { AxiosError } from "axios";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { useDebounceValue } from "usehooks-ts";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/useToast";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";

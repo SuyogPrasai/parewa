@@ -2,19 +2,19 @@
 
 import { useEffect, useMemo, useCallback, JSX, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useTopArticles } from '@/hooks/use-top-articles';
+import { useTopArticles } from '@/hooks/useTopArticles';
 import { Article } from '@/types/singleArticle';
 import ArticleResponse from '@/types/singleArticle';
-import { Navbar } from '@/components/collection-navbar';
+import { Navbar } from '@/components/CollectionNavbar';
 import axios from 'axios';
 import { Separator } from '@/components/ui/separator';
-import AuthorCard from '@/components/author-details-card';
-import VoteComponent from '@/components/voting-component-article';
-import { useVote } from "@/hooks/use-vote";
+import AuthorCard from '@/components/AuthorDetailsCard';
+import VoteComponent from '@/components/VotingComponentArticle';
+import { useVote } from "@/hooks/useVote";
 import Image from 'next/image';
-import ArticleRankings from '@/components/app-side-top-articles';
-import PublisherCard from '@/components/publisher-card';
-import SideArticleList from '@/components/app-article-collection';
+import ArticleRankings from '@/components/AppSideTopArticles';
+import PublisherCard from '@/components/PublisherCard';
+import SideArticleList from '@/components/AppArticleCollection';
 
 export default function ArticlesPage() {
     const router = useRouter();

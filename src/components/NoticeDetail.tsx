@@ -1,9 +1,9 @@
 import { Notice } from "@/types/singleNotice"
 import { ArticlesResponse, Article } from "@/types/post_objects/article"
 
-import NoticeInfo from "./note_info"
-import ArticleRankings from "./app-side-top-articles"
-import NoticeSection from "./app-notice-section";
+import NoticeInfo from "./NoteInfo"
+import ArticleRankings from "./AppSideTopArticles"
+import NoticeSection from "./AppNoticeSection";
 
 interface Notice_Multi {
     _id: string;

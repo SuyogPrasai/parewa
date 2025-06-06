@@ -5,17 +5,17 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 import { Search } from 'lucide-react';
 import getFormattedDate from '@/helpers/getDateInFormat'; // Assuming this helper exists
-import { useTopArticles } from '@/hooks/use-top-articles';
-import { useNotices } from '@/hooks/use-notices';
+import { useTopArticles } from '@/hooks/useTopArticles';
+import { useNotices } from '@/hooks/useNotices';
 
-import NoticeSection from '@/components/app-notice-section';
-import ArticleRankings from '@/components/app-side-top-articles';
-import { Navbar } from '@/components/collection-navbar';
+import NoticeSection from '@/components/AppNoticeSection';
+import ArticleRankings from '@/components/AppSideTopArticles';
+import { Navbar } from '@/components/CollectionNavbar';
 import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
-import { DatePicker } from '@/components/date-picker';
+import { DatePicker } from '@/components/DatePicker';
 import { useDebounceValue } from "usehooks-ts";
-import PaginationControls from '@/components/pagination';
+import PaginationControls from '@/components/Pagination';
 
 export default function NewsPage() {
   const router = useRouter();

@@ -4,13 +4,13 @@ import { useEffect, useMemo, useCallback, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import axios from 'axios';
 
-import { useTopArticles } from '@/hooks/use-top-articles';
+import { useTopArticles } from '@/hooks/useTopArticles';
 
-import { Navbar } from '@/components/collection-navbar';
-import NoticeDetail from '@/components/notice_detail';
+import { Navbar } from '@/components/CollectionNavbar';
+import NoticeDetail from '@/components/NoticeDetail';
 
 import NoticeResponse, { Notice } from '@/types/singleNotice'; // Using 'type' for imports that are only used as types
-import NoticeSection from '@/components/app-notice-section';
+import NoticeSection from '@/components/AppNoticeSection';
 
 // It's generally good practice to define interfaces closer to where they are used,
 // or in a dedicated types file if they are shared across many components.

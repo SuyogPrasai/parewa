@@ -4,16 +4,16 @@ import { useEffect, useMemo, useCallback, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Search } from 'lucide-react';
 import getFormattedDate from '@/helpers/getDateInFormat'; // Assuming this helper exists
-import { useTopArticles } from '@/hooks/use-top-articles';
-import { useArticles } from '@/hooks/use-articles';
-import ArticleRankings from '@/components/app-side-top-articles';
-import { Navbar } from '@/components/collection-navbar';
+import { useTopArticles } from '@/hooks/useTopArticles';
+import { useArticles } from '@/hooks/useArticles';
+import ArticleRankings from '@/components/AppSideTopArticles';
+import { Navbar } from '@/components/CollectionNavbar';
 import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
-import { DatePicker } from '@/components/date-picker';
+import { DatePicker } from '@/components/DatePicker';
 import { useDebounceValue } from 'usehooks-ts';
-import PaginationControls from '@/components/pagination';
-import SideArticleList from '@/components/app-article-collection';
+import PaginationControls from '@/components/Pagination';
+import SideArticleList from '@/components/AppArticleCollection';
 
 export default function ArticlesPage() {
   const router = useRouter();

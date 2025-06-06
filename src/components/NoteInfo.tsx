@@ -2,8 +2,8 @@ import React from 'react'
 import Image from 'next/image';
 
 import { Element } from '@/types/singleNotice';
-import AuthorCard from './author-details-card';
-import VoteComponent from './voting-component-article';
+import AuthorCard from './AuthorDetailsCard';
+import VoteComponent from './VotingComponentArticle';
 import { Badge } from './ui/badge';
 
 interface NoticeInfo {

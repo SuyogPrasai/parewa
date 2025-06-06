@@ -10,10 +10,10 @@ import {
   SidebarInset,
   SidebarProvider,
 } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
-import  Footer  from "@/components/footer";
-import { CarouselHome } from "@/components/app-carousel";
-import { Header } from "@/components/header";
+import { AppSidebar } from "@/components/AppSidebar";
+import  Footer  from "@/components/Footer";
+import { CarouselHome } from "@/components/AppCarousel";
+import { Header } from "@/components/Header";
 
 // Configuration
 import { main_metadata, slides } from "@/config/site-config";
