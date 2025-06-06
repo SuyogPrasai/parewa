@@ -106,20 +106,19 @@ export default function NewsPage() {
 
       <div className="flex flex-col md:flex-row">
 
-        <div className="lg:ml-5 my-8 flex-1 p-2">
-          <div className="flex w-[97.5%] mb-2 justify-between py-2 rounded-sm max-w-2xl lg:w-[80vw]">
-            <div className="relative w-[50%] flex items-center">
-              <Search className="absolute left-3 h-5 w-5 text-gray-500" />
+        <div className="lg:ml-5 my-8 flex-1 p-2 flex justify-center flex-col">
+           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4 w-full max-w-[675px] mx-auto">
+            <div className="relative w-full sm:w-1/2">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500" />
               <Input
                 onChange={(e) => setSearch(e.target.value)}
                 type="text"
-                placeholder="Search </>"
-                className="pl-10 w-full"
+                placeholder="Search articles..."
+                className="pl-10 w-full text-sm sm:text-base"
                 defaultValue={search}
               />
             </div>
-            <div className="flex">
-              {/* Pass null to setDate to clear the date filter */}
+            <div className="flex justify-center md:justify-end">
               <DatePicker date={selectedDate} setDate={setSelectedDate} />
             </div>
           </div>
@@ -129,7 +128,7 @@ export default function NewsPage() {
             <p className="text-red-500">{error}</p>
           ) : (
             <>
-            <div className="max-w-[700px]">
+            <div className="max-w-[700px] mx-auto">
 
               <NoticeSection notices={notices} />
               <PaginationControls

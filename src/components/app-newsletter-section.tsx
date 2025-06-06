@@ -45,13 +45,11 @@ export function NewsletterSignup({ articles }: { articles: Article[] }) {
 
     return (
         <>
-
-
             <div className="flex flex-col relative ">
                 <div className="text-black text-3xl font-bold pr-5 font-oswald mb-10">Article Rankings for the Month</div>
-                <div className="flex">
+                <div className="flex flex-col lgplus:flex-row">
                     <ArticleRankings articles={articles} />
-                    <Card className="relative lg:max-w-sm b/g-white text-gray-800 p-10 rounded-none mt-10 lg:mt-0">
+                    <Card className="relative lg:max-w-sm b/g-white text-gray-800 p-10 rounded-none mt-10 lgplus:mt-0 mx-auto">
                         <CardHeader className="p-0 mb-6">
                             <CardTitle className="text-gray-900 text-3xl font-extrabold leading-tight mt-2">
                                 Join the Newsletter

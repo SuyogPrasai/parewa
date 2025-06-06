@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/navigation-menu";
 
 import Image from "next/image";
+import Link from "next/link";
 
 function Navbar({ header_click }: any) {
   const [activeLink, setActiveLink] = useState("General"); // State to track active link
@@ -79,7 +80,9 @@ function Navbar({ header_click }: any) {
                 fontFamily: "monospace, sans-serif",
               }}
             >
+              <Link href="https://github.com/SuyogPrasai/parewa" target="_blank">
               ABOUT
+              </Link>
             </div>
             <div
               className="py-2 px-6 flex items-center justify-center hover:cursor-pointer text-white text-lg font-bold"
