@@ -23,11 +23,15 @@ type FooterLinkSectionProps = {
 
 const FooterLinkSection = ({ title, links }: FooterLinkSectionProps) => (
   <div>
-    <h3 className="text-base font-semibold mb-4 text-white">{title}</h3>
-    <ul className="space-y-2 text-sm text-gray-300">
+    {/* Centered text on small screens, left-aligned on medium and larger */}
+    <h3 className="text-base font-semibold mb-4 text-white text-center md:text-left">{title}</h3>
+    {/* Centered list items on small screens, left-aligned on medium and larger */}
+    <ul className="space-y-2 text-sm text-gray-300 text-center md:text-left">
       {links.map((link, index) => (
         <li key={index}>
-          <Link href={link.href} className="hover:text-white transition-colors duration-200">{link.text}</Link>
+          <Link href={link.href} className="hover:text-white transition-colors duration-200">
+            {link.text}
+          </Link>
         </li>
       ))}
     </ul>

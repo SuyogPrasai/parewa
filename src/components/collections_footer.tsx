@@ -23,11 +23,15 @@ type FooterLinkSectionProps = {
 
 const FooterLinkSection = ({ title, links }: FooterLinkSectionProps) => (
   <div>
-    <h3 className="text-base font-semibold mb-4 text-white">{title}</h3>
-    <ul className="space-y-2 text-sm text-gray-300">
+    {/* Centered text on small screens, left-aligned on medium and larger */}
+    <h3 className="text-base font-semibold mb-4 text-white text-center md:text-left">{title}</h3>
+    {/* Centered list items on small screens, left-aligned on medium and larger */}
+    <ul className="space-y-2 text-sm text-gray-300 text-center md:text-left">
       {links.map((link, index) => (
         <li key={index}>
-          <Link href={link.href} className="hover:text-white transition-colors duration-200">{link.text}</Link>
+          <Link href={link.href} className="hover:text-white transition-colors duration-200">
+            {link.text}
+          </Link>
         </li>
       ))}
     </ul>
@@ -58,15 +62,15 @@ export default function Footer() {
     <footer className="relative bg-secondary-background text-gray-300 py-16 px-4 sm:px-6 md:px-8 lg:px-12">
       <div className="max-w-4xl mx-auto">
         {/* Main Footer Content */}
-        <div className="flex flex-col mx-auto max-w-screen-lg"> {/* Removed justify-center here */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div className="flex flex-col items-center md:items-start mx-auto max-w-screen-lg"> {/* Added items-center for small screens */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 w-full"> {/* Added w-full to ensure grid spans */}
             {/* Logo and Description - occupies 1 column on small screens, 1 on medium+ */}
-            <div className="md:col-span-1">
+            <div className="md:col-span-1 text-center md:text-left"> {/* Added text-center for small screens */}
               <h2 className="text-4xl font-bold mb-4 font-oswald text-white">PAREWA</h2>
-              <p className="text-sm text-gray-300 mb-6 font-roboto ">
+              <p className="text-sm text-gray-300 mb-6 font-roboto mx-auto md:mx-0 max-w-xs"> {/* Added mx-auto for centering */}
                 A collection of 100+ responsive HTML templates for your startup business or side project.
               </p>
-              <div className="flex gap-4 ">
+              <div className="flex gap-4 justify-center md:justify-start"> {/* Added justify-center for small screens */}
                 {socialIcons.map(({ Icon, href }, index) => (
                   <SocialIcon key={index} Icon={Icon} href={href} />
                 ))}
@@ -74,16 +78,15 @@ export default function Footer() {
             </div>
 
             {/* Link Sections - occupies 2 columns on medium+ screens, side by side */}
-            <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:ml-20  font-roboto text-center"> {/* Changed to grid for better control */}
+            {/* Adjusted grid and text alignment for smaller screens */}
+            <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:ml-20 font-roboto">
               <FooterLinkSection title="Company" links={companyLinks} />
               <FooterLinkSection title="Resources" links={companyLinks} />
             </div>
           </div>
-
-          
         </div>
 
-        {/* Bottom Footer */}
+        {/* Bottom Footer remains centered */}
         <div className="mt-10 border-t border-gray-700 pt-6 text-center text-gray-400 text-xs">
           <p>PAREWA © {new Date().getFullYear()} All rights reserved</p>
           <p>6229 Suyog</p>

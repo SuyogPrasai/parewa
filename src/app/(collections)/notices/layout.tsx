@@ -33,7 +33,7 @@ const lato = Lato({
   subsets: ['latin'],
   weight: '400',
   variable: '--font-lato',
-})
+});
 
 export const metadata: Metadata = {
   title: "परेवा_ - Your Source for Notices, Articles & News",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 
 // Header component
 const DashboardHeader: React.FC = () => (
-  <header className="sticky top-0 z-50 w-[400px] bg-secondary-background h-[125px]">
+  <header className="sticky top-0 z-50 w-full lg:w-[400px] bg-secondary-background h-[125px]">
     <div className="flex items-center justify-between w-full p-6 bg-opacity-30 text-white mt-3">
       <div className="flex items-center gap-2">
         <SidebarTrigger className="mr-2" />
@@ -53,7 +53,6 @@ const DashboardHeader: React.FC = () => (
     </div>
   </header>
 );
-
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -67,15 +66,13 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           <SidebarProvider defaultOpen={false}>
             <AppSidebar />
             <SidebarInset>
-              <div className="flex relative">
-
-                <div className="flex flex-col">
-
+              <div className="flex flex-col lg:flex-row lg:max-w-[1400px]">
+                <div className="flex flex-col w-full lg:w-auto">
                   <DashboardHeader />
                   <ScrollFadeIn />
                 </div>
-                <Separator orientation='vertical' className='h-full' />
-                <main className="w-full h-full pl-4">{children}</main>
+                <Separator orientation="vertical" className="hidden lg:block lg:h-auto lg:w-[1px] bg-gray-200" />
+                <main className="w-full h-full lg:pl-4">{children}</main>
               </div>
               <Footer />
             </SidebarInset>

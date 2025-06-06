@@ -113,7 +113,7 @@ export default function ArticlesPage() {
                 defaultValue={search}
               />
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-center md:justify-end">
               <DatePicker date={selectedDate} setDate={setSelectedDate} />
             </div>
           </div>

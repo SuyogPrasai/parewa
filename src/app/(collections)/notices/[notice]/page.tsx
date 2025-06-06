@@ -101,7 +101,7 @@ export default function NewsPage() {
 
   useEffect(() => {
     const fetchRelatedNotices = async () => {
-1
+      1
       try {
         const response = await axios.get(`/api/get_news?category=General&limit=3`);
         if (response.data.success) {
@@ -120,8 +120,10 @@ export default function NewsPage() {
     <div className="min-h-screen">
       <Navbar header_click={handleCategoryChange} navLinks={navLinks} />
 
-      <h1 className="text-6xl font-oswald mt-5 ml-5">NOTICE</h1>
-      <div className='flex flex-row p-2 mt-5 ml-5'>
+      <h1 className="text-4xl sm:text-5xl md:text-6xl font-oswald mt-3 sm:mt-4 md:mt-10 ml-3 sm:ml-5 md:ml-10">
+        NOTICE
+      </h1>
+      <div className='flex flex-row mt-5 lg:ml-5'>
         {/* Pass the fetched notice and related notices to NoticeDetail */}
         <NoticeDetail
           Notice={notice}

@@ -18,12 +18,11 @@ interface Notice_Multi {
 }
 
 export default function NoticeDetail({ Notice, Articles, Notices }: { Notice: Notice, Articles: Article[], Notices: Notice_Multi[] }) {
-
     return (
-        <>
-            <div className="flex flex-col lg:flex-row gap-4">
-                <div className="w-full flex flex-col">
-                    <div className="mb-5">
+        <div className="flex flex-col gap-4 mx-auto max-w-7xl px-2 lgplus:px-8 min-h-screen">
+            <div className="flex flex-col lgplus:flex-row gap-6">
+                <div className="w-full lgplus:w-2/3">
+                    <div className="mb-4 sm:mb-5">
                         <NoticeInfo
                             title={Notice.title}
                             date={Notice.publishedIn}
@@ -34,16 +33,15 @@ export default function NoticeDetail({ Notice, Articles, Notices }: { Notice: No
                             voteCount={Notice.voteCount}
                         />
                     </div>
-                    <div className="flex flex-col gap-5 my-10">
-                        <h1 className="text-3xl font-oswald"> SIMILAR NOTICES</h1>
+                    <div className="flex flex-col gap-4 sm:gap-5 my-8 sm:my-10">
+                        <h1 className="text-xl sm:text-2xl md:text-3xl font-oswald ml-10">SIMILAR NOTICES</h1>
                         <NoticeSection notices={Notices} />
-
                     </div>
                 </div>
-                <div className="w-full ">
+                <div className="w-full lgplus:w-1/3 lgplus:ml-4 lg:plus:mt-6 lgplus:mt-0 mb-10">
                     <ArticleRankings articles={Articles} />
                 </div>
             </div>
-        </>
+        </div>
     )
 }

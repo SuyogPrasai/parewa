@@ -9,7 +9,7 @@ import { format } from 'date-fns';
 
 function ArticleRankings({ articles }: { articles: Article[] }) {
     return (
-        <div className="flex flex-col gap-4 lg:mr-4 justify-center w-full max-w-full px-4 sm:px-6 lg:px-0">
+        <div className="flex flex-col gap-4 lg:mr-4 justify-center w-full max-w-full px-1 sm:px-2 lg:px-0">
             <div className="relative flex items-center justify-center group w-full max-w-[280px] mx-auto cursor-pointer mb-3 sm:max-w-[320px] lg:max-w-[360px]">
                 <div className="absolute bg-gradient-to-r from-pink-200 to-pink-300 transform -skew-x-12 px-4 py-2 w-full h-full -translate-x-1 translate-y-1 shadow-lg transition-all duration-300 group-hover:-translate-x-2 group-hover:translate-y-2 z-0"></div>
                 <div className="relative bg-gradient-to-r from-blue-500 to-blue-600 text-white font-oswald text-base sm:text-lg md:text-xl lg:text-2xl px-5 py-2.5 transform -skew-x-12 shadow-xl transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105 z-10 flex items-center justify-center">
