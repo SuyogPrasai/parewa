@@ -18,7 +18,7 @@ import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { ApiResponse } from "@/types/apiResoponse";
+import { ApiResponse } from "@/types/api-responses";
 import { emailVerifySchema } from "@/schemas/emailVerifySchema";
 
 

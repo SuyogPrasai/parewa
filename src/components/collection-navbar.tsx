@@ -8,7 +8,15 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 
-import { NavLink } from "@/types/navlinks";
+interface NavLink {
+    name: string;
+    href: string;
+}
+
+interface NavLinks {
+    [key: string]: NavLink[];
+}
+
 
 interface NavbarProps {
   header_click: (linkName: string) => void;

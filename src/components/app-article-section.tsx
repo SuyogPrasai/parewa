@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import Link from 'next/link';
 
-import { ArticlesSectionProps, Article } from '@/types/Article';
+import { ArticlesSectionProps, Article } from '@/types/post_objects/article';
 
 export default function ArticlesSection({ category, articles }: ArticlesSectionProps) {
   // Check if articles array is empty

@@ -1,5 +1,5 @@
 
-import PaginationControlsProps from '@/types/paginationControl';
+import PaginationControlsProps from '@/types/utilities';
 import { ITEMS_PER_PAGE, MAX_PAGES_TO_SHOW } from '@/config/site-config';
 import { useEffect, useMemo, useCallback, JSX, useState } from 'react';
 

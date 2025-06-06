@@ -9,10 +9,10 @@ import MainSection from '@/components/app-main-section';
 import ArticlesSection from '@/components/app-article-section';
 
 
-import Article from '@/types/Article';
+import Article from '@/types/post_objects/article';
 import { NewsletterSignup } from '@/components/app-newsletter-section';
 import Image from 'next/image';
-import Notice from '@/types/notice';
+import Notice from '@/types/post_objects/notice';
 
 import React from 'react';
 

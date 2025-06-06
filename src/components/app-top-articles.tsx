@@ -3,7 +3,7 @@ import {
     CardContent,
 } from "@/components/ui/card_newsletter";
 import Link from "next/link";
-import { Article } from "@/types/Article";
+import { Article } from "@/types/post_objects/article";
 
 import Image from "next/image";
 

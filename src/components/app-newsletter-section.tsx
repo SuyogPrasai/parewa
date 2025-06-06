@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Article } from "@/types/Article";
+import { Article } from "@/types/post_objects/article";
 
 import {
     Card,

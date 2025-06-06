@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { Article } from "@/types/Article";
+import { Article } from "@/types/post_objects/article";
 import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent } from "./ui/card_newsletter";

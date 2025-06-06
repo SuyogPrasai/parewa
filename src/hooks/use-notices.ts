@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import Notice from '@/types/notice';
-import { NoticesResponse } from '@/types/notice';
+import Notice from '@/types/post_objects/notice';
+import { NoticesResponse } from '@/types/post_objects/notice';
 import { ITEMS_PER_PAGE, MAX_PAGES_TO_SHOW } from '@/config/site-config';
 import axios from 'axios';
 

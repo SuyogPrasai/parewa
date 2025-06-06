@@ -1,7 +1,7 @@
 
 import { useEffect, useMemo, useCallback, JSX, useState } from 'react';
 import axios from 'axios';
-import { Article } from '@/types/Article';
+import { Article } from '@/types/post_objects/article';
 import { ArticlesResponse } from '@/types/articlesResponse';
 
 const useTopArticles = () => {

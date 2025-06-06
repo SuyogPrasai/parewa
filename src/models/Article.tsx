@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-import Article from "@/types/Article";
+import Article from "@/types/post_objects/article";
 
 // Defining the Article schema
 const ArticleSchema: Schema<Article> = new Schema(

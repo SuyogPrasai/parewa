@@ -1,19 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-// Defining the interface for the Notice model
-export interface Notice extends Document {
-  id: string;
-  title: string;
-  content?: string;
-  publishedIn: Date;
-  featuredImage?: string; // Path to the featured image
-  publisherID: string; // Reference to User ID
-  voteCount: number;
-  postTags: string[];
-  modifiedIn?: Date;
-  trashed?: boolean;
-  category: string;
-}
+import Notice from "@/types/post_objects/notice";
 
 // Defining the Notice schema
 const NoticeSchema: Schema<Notice> = new Schema(
