@@ -3,7 +3,7 @@ import {
     CardContent,
 } from "@/components/ui/card_newsletter";
 import Link from "next/link";
-import { Article } from "@/types/articleSection";
+import { Article } from "@/types/Article";
 import { Badge } from "./ui/badge";
 import { format } from 'date-fns';
 

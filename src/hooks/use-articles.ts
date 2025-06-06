@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import getFormattedDate from '@/helpers/getDateInFormat';
-import { ArticlesSectionProps } from '@/types/articleSection';
-import { ArticlesResponse } from '@/types/articleSection';
-import { Article } from '@/types/articleSection';
+import { ArticlesSectionProps } from '@/types/Article';
+import { ArticlesResponse } from '@/types/Article';
+import { Article } from '@/types/Article';
 import { ITEMS_PER_PAGE, MAX_PAGES_TO_SHOW } from '@/config/site-config';
 
 

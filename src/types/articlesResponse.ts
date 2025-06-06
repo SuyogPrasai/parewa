@@ -1,4 +1,4 @@
-import { Article } from '@/types/articleSection';
+import { Article } from '@/types/Article';
 
 export interface ArticlesResponse {
   success: boolean;

@@ -1,5 +1,5 @@
 import { Notice } from "@/types/singleNotice"
-import { ArticlesResponse, Article } from "@/types/articleSection"
+import { ArticlesResponse, Article } from "@/types/Article"
 
 import NoticeInfo from "./note_info"
 import ArticleRankings from "./app-side-top-articles"

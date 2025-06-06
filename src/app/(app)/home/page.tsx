@@ -7,13 +7,19 @@ import { Navbar } from '@/components/app-navbar';
 import { Separator } from '@/components/ui/separator';
 import MainSection from '@/components/app-main-section';
 import ArticlesSection from '@/components/app-article-section';
-// Make sure both types are correctly defined in articleSection.ts
-import { ArticlesSectionProps, Article } from '@/types/articleSection';
+
+
+import Article from '@/types/Article';
 import { NewsletterSignup } from '@/components/app-newsletter-section';
 import Image from 'next/image';
 import Notice from '@/types/notice';
 
 import React from 'react';
+
+export interface ArticlesSectionProps {
+    category: string;
+    articles: Article[];
+}
 
 export default function Page() {
     // articlesData should still be ArticlesSectionProps[] if /api/get_articles returns that structure

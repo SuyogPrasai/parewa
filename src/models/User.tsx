@@ -11,6 +11,7 @@ export interface User extends Document {
   positionID?: string; // Position ID reference
   rollNumber?: number; // Optional
   articleIDS: string[]; // Array of article IDs
+  noticeIDS: string[]; // Array of notice IDs
   isVerified: boolean;
 }
 
@@ -27,6 +28,7 @@ const UserSchema: Schema<User> = new Schema(
     isVerified: { type: Boolean, default: false },
     rollNumber: { type: Number }, // Optional
     articleIDS: [{ type: String, ref: "Article" }], // Array of article IDs, references the Article model    verifyCodeExpiry: { type: Date, required: true },
+    noticeIDS: [{ type: String, ref: "Notice" }], // Array of notice IDs, references the Notice model
   },
   {
     timestamps: true, // Adds createdAt and updatedAt fields automatically
