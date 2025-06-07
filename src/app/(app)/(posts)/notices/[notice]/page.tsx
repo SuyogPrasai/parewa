@@ -1,20 +1,18 @@
 'use client';
 
-import { useEffect, useMemo, useCallback, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
 import axios from 'axios';
 
+import { useEffect, useMemo, useCallback, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useTopArticles } from '@/hooks/useTopArticles';
 
-import { Navbar } from '@/components/CollectionNavbar';
-import NoticeDetail from '@/components/NoticeDetail';
+import Notice from '@/types/post_objects/notice'; // Using 'type' for imports that are only used as types
+import { NoticesResponse } from '@/types/api-responses';
 
-import NoticeResponse, { Notice } from '@/types/singleNotice'; // Using 'type' for imports that are only used as types
-import NoticeSection from '@/components/AppNoticeSection';
+import { Navbar } from '@/components/layout/Navbar';
+import NoticeDetail from '@/components/notice/NoticeDetail';
+import NoticeSection from '@/components/notice/NoticeSection';
 
-// It's generally good practice to define interfaces closer to where they are used,
-// or in a dedicated types file if they are shared across many components.
-// I've kept it here for now as it's directly used in this component's state.
 interface Notice_Multi {
   _id: string;
   title: string;

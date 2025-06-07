@@ -1,21 +1,21 @@
 'use client';
 
-import { useEffect, useMemo, useCallback, JSX, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-
 import { Search } from 'lucide-react';
 import getFormattedDate from '@/helpers/get-date-in-format'; // Assuming this helper exists
+
+import { useEffect, useMemo, useCallback, JSX, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useTopArticles } from '@/hooks/useTopArticles';
 import { useNotices } from '@/hooks/useNotices';
+import { useDebounceValue } from "usehooks-ts";
 
-import NoticeSection from '@/components/AppNoticeSection';
-import ArticleRankings from '@/components/AppSideTopArticles';
-import { Navbar } from '@/components/CollectionNavbar';
+import NoticeSection from '@/components/notice/NoticeSection';
+import ArticleRankings from '@/components/articles/TopArticles';
+import { Navbar } from '@/components/layout/Navbar';
 import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
-import { DatePicker } from '@/components/DatePicker';
-import { useDebounceValue } from "usehooks-ts";
-import PaginationControls from '@/components/Pagination';
+import { DatePicker } from '@/components/shared/DatePicker';
+import PaginationControls from '@/components/shared/Pagination';
 
 export default function NewsPage() {
   const router = useRouter();

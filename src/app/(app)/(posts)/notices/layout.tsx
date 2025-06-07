@@ -1,14 +1,16 @@
 import { ReactNode } from 'react';
-import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
-import { AppSidebar } from '@/components/AppSidebar';
+import '@/app/globals.css';
+
+import Link from 'next/link';
+import { Metadata } from 'next';
 import AuthProvider from '@/context/AuthProvider';
 import { Roboto, Oswald, Bebas_Neue, Lato } from 'next/font/google';
-import Footer from '@/components/CollectionsFooter';
-import Link from 'next/link';
-import '@/app/globals.css';
-import { Metadata } from 'next';
+
+import Footer from '@/components/layout/Footer';
+import ScrollFadeIn from '@/components/home/ScrollDown';
+import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { AppSidebar } from '@/components/layout/sidebar/Sidebar';
 import { Separator } from '@/components/ui/separator';
-import ScrollFadeIn from '@/components/AppScrollDown';
 
 // Font configurations
 const roboto = Roboto({
