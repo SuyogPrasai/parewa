@@ -10,7 +10,7 @@ export default interface PostObject {
     publisherID: string;
     voteCount: number;
     postTags: string[];
-    modifiedIn: Date;
+    updatedAt: Date;
     trashed?: boolean;
     category: string;
     link: string;

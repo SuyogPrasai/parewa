@@ -6,7 +6,6 @@ import Article from "@/types/post_objects/article";
 import { ArticleDB } from "@/types/post_objects/article";
 
 import ArticleModel from "@/models/Article";
-import UserModel, { User } from "@/models/User";
 
 export async function GET(request: NextRequest) {
   try {
@@ -38,7 +37,7 @@ export async function GET(request: NextRequest) {
       publisherID: article.publisherID,
       voteCount: article.voteCount,
       postTags: article.postTags,
-      modifiedIn: article.modifiedIn,
+      updatedAt: article.updatedAt,
       category: article.category,
       author: article.author,
       link: article.link,
@@ -66,7 +65,7 @@ export async function GET(request: NextRequest) {
         message: "Error getting articles",
         error: error.message,
       },
-      { status: 500 } // Changed to 500 for server-side errors
+      { status: 500 }
     );
   }
 }

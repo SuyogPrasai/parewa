@@ -91,7 +91,7 @@ export async function GET(request: NextRequest) {
       publisherID: article.publisherID,
       voteCount: article.voteCount,
       postTags: article.postTags,
-      modifiedIn: article.modifiedIn,
+      updatedAt: article.updatedAt,
       category: article.category,
       author: article.author,
       link: article.link,

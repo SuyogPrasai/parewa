@@ -100,7 +100,7 @@ export async function GET(request: NextRequest) {
       link: `/notices/${notice._id}`,
       category: notice.category,
       publisherID: notice.publisherID,
-      modifiedIn: notice.modifiedIn,
+      updatedAt: notice.updatedAt,
       publisher: [
         {
           name: notice.publisher?.[0]?.name || "",

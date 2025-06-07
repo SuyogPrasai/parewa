@@ -13,7 +13,6 @@ const NoticeSchema: Schema<NoticeDB> = new Schema(
     publisherID: { type: String, ref: "User", required: true }, // User ID reference
     voteCount: { type: Number, default: 0 },
     postTags: [{ type: String }],
-    modifiedIn: { type: Date },
     trashed: { type: Boolean, default: false },
     category: { type: String, required: true },
     link: { type: String, required: true },

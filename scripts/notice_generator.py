@@ -42,7 +42,7 @@ def generate_notice(notice_id_counter, category):
         "publisherID": PUBLISHER_ID,
         "voteCount": random.randint(0, 100),
         "postTags": post_tags,
-        "modifiedIn": modified_in,
+        "updatedAt": modified_in,
         "trashed": trashed,
         "category": category,
         "createdAt": fake.date_time_between(start_date='-2y', end_date='now', tzinfo=None),

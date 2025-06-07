@@ -14,7 +14,7 @@ const ArticleSchema: Schema<ArticleDB> = new Schema(
     publisherID: { type: String, ref: "users", required: true }, // User ID reference
     voteCount: { type: Number, default: 0 },
     postTags: [{ type: String}],
-    modifiedIn: { type: Date },
+    updatedAt: { type: Date },
     trashed: { type: Boolean, default: false },
     category: { type: String, required: true },
     author: { type: String, required: true },

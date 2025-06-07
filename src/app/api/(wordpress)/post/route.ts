@@ -163,7 +163,7 @@ async function handleModifiedEvent(type: string, id: string, data: PostObject) {
             publishedIn: date,
             featuredImage: featured_image,
             postTags: tags,
-            modifiedIn: modified,
+            updatedAt: modified,
             publisherID,
             category,
             author
@@ -180,7 +180,7 @@ async function handleModifiedEvent(type: string, id: string, data: PostObject) {
             publishedIn: date,
             featuredImage: featured_image,
             postTags: tags,
-            modifiedIn: modified,
+            updatedAt: modified,
             publisherID,
             category
         };
@@ -200,7 +200,7 @@ async function handlePublishedEvent(type: string, id: string, data: PostObject) 
             publishedIn: date,
             featuredImage: featured_image,
             postTags: tags,
-            modifiedIn: modified,
+            updatedAt: modified,
             publisherID,
             category,
             author
@@ -215,7 +215,7 @@ async function handlePublishedEvent(type: string, id: string, data: PostObject) 
             publishedIn: date,
             featuredImage: featured_image,
             postTags: tags,
-            modifiedIn: modified,
+            updatedAt: modified,
             publisherID,
             category
         };
