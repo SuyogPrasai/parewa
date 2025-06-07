@@ -1,14 +1,16 @@
 import { NextResponse, NextRequest } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 import ArticleModel from "@/models/Article";
+
 import UserModel, { User } from "@/models/User";
 import { Types } from "mongoose";
+import Article, { ArticleDB } from "@/types/post_objects/article";
 
 export async function GET(request: NextRequest) {
   await dbConnect();
 
   const { searchParams } = new URL(request.url);
-  
+
   const category_ = searchParams.get("category");
   const page_ = parseInt(searchParams.get("page") || "1", 10);
   const limit_ = parseInt(searchParams.get("limit") || "8", 10);
@@ -49,6 +51,16 @@ export async function GET(request: NextRequest) {
       { $sort: { createdAt: -1 } },
       { $skip: skip },
       { $limit: limit_ },
+      {
+        $lookup: {
+          from: 'users', // Matches UserSchema collection name
+          let: { publisherId: { $toObjectId: '$publisherID' } },
+          pipeline: [
+            { $match: { $expr: { $eq: ['$_id', '$$publisherId'] } } }
+          ],
+          as: 'publisher'
+        }
+      },
     ]);
 
     if (articles.length === 0) {
@@ -69,35 +81,32 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const userIds = articles.map(
-      (article: { publisherID: Types.ObjectId }) => article.publisherID
-    );
-    const users = await UserModel.find(
-      { _id: { $in: userIds } },
-      { _id: 1, username: 1 }
-    );
-
-    const userMap: Record<string, string> = Object.fromEntries(
-      users.map((user: User) => [
-        (user._id as Types.ObjectId).toString(),
-        user.username,
-      ])
-    );
-
-    const transformedArticles = articles.map((article: any) => ({
+    const transformed_articles: Article[] = articles.map((article) => ({
+      _id: article._id,
+      wp_id: article.wp_id,
       title: article.title,
-      subtitle: summarizeText(article.content),
-      link: `/articles/article?id=${article._id}`,
-      image: article.featuredImage || "", // adjust if field differs
-      author: userMap[article.publisherID.toString()] || "Unknown",
-      date: article.createdAt,
-      category: article.category
-    }));
+      oneLiner: article.oneLiner,
+      publishedIn: article.publishedIn,
+      featuredImage: article.featuredImage,
+      publisherID: article.publisherID,
+      voteCount: article.voteCount,
+      postTags: article.postTags,
+      modifiedIn: article.modifiedIn,
+      category: article.category,
+      author: article.author,
+      link: article.link,
+      publisher: [
+        {
+          name: article.publisher?.[0]?.name || "",
+          username: article.publisher?.[0]?.username || "",
+        }
+      ]
+    }))
 
     return NextResponse.json(
       {
         success: true,
-        articles: transformedArticles,
+        articles: transformed_articles,
         totalPages,
         currentPage: page_,
         totalArticles,
@@ -115,10 +124,4 @@ export async function GET(request: NextRequest) {
       { status: 400 }
     );
   }
-}
-
-function summarizeText(htmlString: string): string {
-  const text = htmlString.replace(/<\/?[^>]+(>|$)/g, "").trim();
-  const words = text.split(/\s+/);
-  return words.length > 20 ? words.slice(0, 20).join(" ") + "..." : text;
 }

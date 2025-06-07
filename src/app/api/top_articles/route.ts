@@ -28,7 +28,8 @@ export async function GET(request: NextRequest) {
       },
     ]);
 
-    const transformed_articles: Article[] = articles.map((article) => ({
+    const transformed_articles: Article[] = articles.map(( article : any ) => ({
+      _id: article._id,
       wp_id: article.wp_id,
       title: article.title,
       oneLiner: article.oneLiner,

@@ -10,6 +10,7 @@ export interface ArticleDB extends PostObjectDB {
 }
 
 export default interface Article extends PostObject {
+  _id: string;
   author: string;
   publisher: [
     {

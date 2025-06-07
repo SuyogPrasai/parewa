@@ -1,13 +1,16 @@
-import dbConnect from "@/lib/dbConnect";
 import { NextResponse, NextRequest } from "next/server";
+
+import dbConnect from "@/lib/dbConnect";
+
 import NoticeModel from "@/models/Notice";
-import UserModel, { User } from "@/models/User";
-import { Types } from "mongoose";
+
+import Notice from "@/types/post_objects/notice";
 
 export async function GET(request: NextRequest) {
   await dbConnect();
 
   const { searchParams } = new URL(request.url);
+
   const category_ = searchParams.get("category");
   const page_ = parseInt(searchParams.get("page") || "1", 10);
   const limit_ = parseInt(searchParams.get("limit") || "8", 10);
@@ -55,6 +58,17 @@ export async function GET(request: NextRequest) {
       { $sort: { createdAt: -1 } },
       { $skip: skip },
       { $limit: limit_ },
+      {
+        $lookup: {
+          from: "users", // Matches UserSchema collection name
+          let: { publisherId: { $toObjectId: "$publisherID" } },
+          pipeline: [
+            { $match: { $expr: { $eq: ["$_id", "$$publisherId"] } } },
+            { $project: { name: 1, username: 1, _id: 0 } },
+          ],
+          as: "publisher",
+        },
+      },
     ]);
 
     if (notices.length === 0) {
@@ -75,31 +89,30 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const userIds = notices.map((notice: { publisherID: Types.ObjectId }) => notice.publisherID);
-    const users = await UserModel.find(
-      { _id: { $in: userIds } },
-      { _id: 1, username: 1 }
-    );
-
-    const userMap: Record<string, string> = Object.fromEntries(
-      users.map((user: User) => [(user._id as Types.ObjectId).toString(), user.username])
-    );
-
-    const transformedNotices = notices.map((notice: any) => ({
-      _id: notice._id.toString(),
+    const transformed_notices: Notice[] = notices.map((notice: any) => ({
+      _id: notice._id,
+      wp_id: notice.wp_id,
       title: notice.title,
       content: summarizeText(notice.content),
       publishedIn: notice.publishedIn,
       postTags: notice.postTags,
       voteCount: notice.voteCount,
       link: `/notices/${notice._id}`,
-      author: userMap[notice.publisherID.toString()] || "Unknown",
+      category: notice.category,
+      publisherID: notice.publisherID,
+      modifiedIn: notice.modifiedIn,
+      publisher: [
+        {
+          name: notice.publisher?.[0]?.name || "",
+          username: notice.publisher?.[0]?.username || "Unknown",
+        },
+      ],
     }));
 
     return NextResponse.json(
       {
         success: true,
-        notices: transformedNotices,
+        notices: transformed_notices,
         totalPages,
         currentPage: page_,
         totalNotices,
@@ -107,14 +120,14 @@ export async function GET(request: NextRequest) {
       { status: 200 }
     );
   } catch (error: any) {
-    console.error("Error fetching notices:", error.message);
+    console.error("Error fetching notices:", error.message, error.stack);
     return NextResponse.json(
       {
         success: false,
-        message: "Error fetching notices from the server",
+        message: "Error getting notices",
         error: error.message,
       },
-      { status: 500 }
+      { status: 400 }
     );
   }
 }
