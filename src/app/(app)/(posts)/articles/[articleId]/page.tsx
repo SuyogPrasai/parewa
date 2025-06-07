@@ -6,7 +6,6 @@ import { useEffect, useMemo, useCallback, JSX, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useTopArticles } from '@/hooks/useTopArticles';
 
-
 import Article from '@/types/post_objects/article';
 import { ArticleResponse } from '@/types/api-responses';
 import { useVote } from "@/hooks/useVote";

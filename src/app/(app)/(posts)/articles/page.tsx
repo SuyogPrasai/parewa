@@ -1,19 +1,22 @@
 'use client';
 
-import { useEffect, useMemo, useCallback, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
 import { Search } from 'lucide-react';
+
 import getFormattedDate from '@/helpers/get-date-in-format'; // Assuming this helper exists
+import { useRouter, useSearchParams } from 'next/navigation';
+
+import { useEffect, useMemo, useCallback, useState } from 'react';
 import { useTopArticles } from '@/hooks/useTopArticles';
 import { useArticles } from '@/hooks/useArticles';
-import ArticleRankings from '@/components/AppSideTopArticles';
-import { Navbar } from '@/components/CollectionNavbar';
+
+import ArticleRankings from '@/components/articles/TopArticles';
+import { Navbar } from '@/components/layout/Navbar';
 import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
-import { DatePicker } from '@/components/DatePicker';
+import { DatePicker } from '@/components/shared/DatePicker';
 import { useDebounceValue } from 'usehooks-ts';
-import PaginationControls from '@/components/Pagination';
-import SideArticleList from '@/components/AppArticleCollection';
+import PaginationControls from '@/components/shared/Pagination';
+import SideArticleList from '@/components/articles/ArticleCollection';
 
 export default function ArticlesPage() {
   const router = useRouter();
