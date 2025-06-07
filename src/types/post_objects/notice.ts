@@ -1,3 +1,20 @@
-import PostObject from "../postObject";
+import { PostObjectDB } from "@/types/postObject";
+import PostObject from "@/types/postObject";
 
-export default interface Notice extends PostObject {}
+export interface NoticeDB extends PostObjectDB {
+  publisher?: [
+    {
+      name: string;
+      username: string;
+    }
+  ];
+}
+
+export default interface Article extends PostObject {
+  publisher: [
+    {
+      name: string;
+      username: string;
+    }
+  ];
+}

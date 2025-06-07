@@ -8,6 +8,7 @@ export async function GET(request: NextRequest) {
   await dbConnect();
 
   const { searchParams } = new URL(request.url);
+  
   const category_ = searchParams.get("category");
   const page_ = parseInt(searchParams.get("page") || "1", 10);
   const limit_ = parseInt(searchParams.get("limit") || "8", 10);

@@ -1,24 +1,13 @@
 import { Document } from "mongoose";
 
-// TODO: to remove this need to check
-interface Element {
-  type: string;
-  content?: string;
-  attrs?: Record<string, any>;
-}
-
-export default interface PostObject extends Document{
-    id: string;
+export default interface PostObject {
+    wp_id: string;
     title: string;
     oneLiner?: string;
     content?: string;
     publishedIn: Date;
     featuredImage?: string; // Path to the featured image
-    publisher: {
-        _id: string;
-        name: string;
-        username: string;
-    };
+    publisherID: string;
     voteCount: number;
     postTags: string[];
     modifiedIn: Date;
@@ -26,3 +15,5 @@ export default interface PostObject extends Document{
     category: string;
     link: string;
 }
+
+export interface PostObjectDB extends Document, PostObject {}

@@ -17,26 +17,25 @@ import { Separator } from '@/components/ui/separator';
 import { NewsletterSignup } from '@/components/home/NewsletterSection';
 
 export default function Page() {
-    // articlesData should still be ArticlesSectionProps[] if /api/get_articles returns that structure
+    
     const [articlesData, setArticlesData] = useState<ArticlesSectionProps[]>([]);
-    // topArticlesData should now be Article[] because your API returns a flat array of articles
     const [topArticlesData, setTopArticlesData] = useState<Article[]>([]);
+    const [notices, setNotices] = useState<Notice[]>([]);
+
     const [loadingArticles, setLoadingArticles] = useState(true);
     const [loadingTopArticles, setLoadingTopArticles] = useState(true);
 
-    // Fetch main articles (assuming /api/get_articles returns ArticlesSectionProps[])
     useEffect(() => {
         setLoadingArticles(true);
 
+        // TODO: Category Listing
         const categories = ['Literature', 'Politics', 'Economy'];
-
-        // Map each category to a request
+        
         const requests = categories.map((category) =>
             axios.get('/api/get_articles', {
                 params: {
                     query: '',
                     category,
-                    tdate: '2023-01-01', // Corrected typo in the date
                     page: 1,
                     limit: 4,
                 },
@@ -68,7 +67,7 @@ export default function Page() {
             .finally(() => setLoadingArticles(false));
     }, []);
 
-    // Fetch top articles (now correctly typed as Article[])
+    // Fetch top articles 
     useEffect(() => {
         setLoadingTopArticles(true);
         axios
@@ -77,7 +76,7 @@ export default function Page() {
                 console.log('Response from /api/top_articles:', response.data);
                 if (response.data.success) {
                     // DIRECTLY assign the array of articles, as your API returns it flat
-                    setTopArticlesData(response.data.articles || []);
+                    setTopArticlesData(response.data.articles);
                 } else {
                     console.error('API /api/top_articles returned success: false');
                     setTopArticlesData([]);
@@ -90,7 +89,6 @@ export default function Page() {
             .finally(() => setLoadingTopArticles(false));
     }, []);
 
-    const [notices, setNotices] = useState<Notice[]>([]);
 
     useEffect(() => {
         axios
@@ -133,15 +131,12 @@ export default function Page() {
                     // Always map over articlesData, and place NewsletterSignup strategically
                     articlesData.map((section, index) => (
                         <React.Fragment key={section.category || `section-${index}`}>
-                            {/* Render NewsletterSignup after the first section (index 0) of the main articles */}
                             {index === 1 && (
                                 <div className="flex flex-col justify-center items-center pt-10 px-4">
-                                    {/* Pass topArticlesData DIRECTLY, no need for flatMap */}
                                     <NewsletterSignup articles={topArticlesData} />
                                     <Separator orientation="horizontal" className="mt-10" />
                                 </div>
                             )}
-
                             <div>
                                 <ArticlesSection category={section.category} articles={section.articles} />
                                 <Separator orientation="horizontal" className="" />
@@ -150,17 +145,15 @@ export default function Page() {
                     ))
                 )}
 
-                {/* This block is important if articlesData is empty but topArticlesData has content */}
                 {!isLoading && articlesData.length === 0 && topArticlesData.length > 0 && (
                     <div className="flex flex-col justify-center items-center pt-10 px-4">
                         <NewsletterSignup articles={topArticlesData} />
                         <Separator orientation="horizontal" className="my-10" />
                     </div>
                 )}
-
                 <Image
                     src="/lightning - reversed.png"
-                    alt="Eagle Logo"
+                    alt="Lightning Reversed"
                     width={150}
                     height={150}
                     className="object-contain absolute bottom-0 left-[3%] w-[20%] min-w-[250px] max-w-[300px]"

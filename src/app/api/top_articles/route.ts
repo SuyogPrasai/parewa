@@ -1,58 +1,60 @@
 import { NextResponse, NextRequest } from "next/server";
-import dbConnect from "@/lib/dbConnect"; // Fixed typo: dbConnnect -> dbConnect
+
+import dbConnect from "@/lib/dbConnect";
+
+import Article from "@/types/post_objects/article";
+import { ArticleDB } from "@/types/post_objects/article";
+
 import ArticleModel from "@/models/Article";
-import extractFirst15Words from "@/helpers/extract-fiffteen-words";
+import UserModel, { User } from "@/models/User";
 
 export async function GET(request: NextRequest) {
   try {
     await dbConnect();
 
-    const articles = await ArticleModel.aggregate([
+    const articles = await ArticleModel.aggregate<ArticleDB>([
       { $match: { trashed: false } }, // Filter out trashed articles
       { $sort: { createdAt: -1 } }, // Sort by latest createdAt
       { $limit: 6 }, // Limit to 6 articles
       {
-        $project: {
-          _id: 0, // Exclude _id field
-          title: 1,
-          subtitle: "$content",
-          author: 1,
-          image: "$featuredImage",
-          link: "$_id",
-          category: 1, // Include category if needed
-          publishedAt: "$publishedIn"
+        $lookup: {
+          from: 'users', // Matches UserSchema collection name
+          let: { publisherId: { $toObjectId: '$publisherID' } },
+          pipeline: [
+            { $match: { $expr: { $eq: ['$_id', '$$publisherId'] } } }
+          ],
+          as: 'publisher'
         }
-      }
+      },
     ]);
 
-    // Process articles to extract first 15 words from subtitle
-    const processedArticles = articles.map((article: any) => ({
-      title: article.title || "Untitled", // Fallback for missing title
-      subtitle: article.subtitle
-        ? extractFirst15Words(article.subtitle) + "..."
-        : "No content available",
-      image: article.image || null, // Fallback for missing image
-      author: article.author || "Unknown Author", // Fallback for missing author
-      link: `/articles/article?id=${article.link}`,
-      category: article.category || "Uncategorized", // Fallback for missing category
-      date: article.publishedAt
-    }));
-
-    // Check if articles are empty
-    if (!articles.length) {
-      console.log("No articles found matching the criteria.");
-      return NextResponse.json(
-        { success: false, message: "No articles found" },
-        { status: 404 }
-      );
-    }
+    const transformed_articles: Article[] = articles.map((article) => ({
+      wp_id: article.wp_id,
+      title: article.title,
+      oneLiner: article.oneLiner,
+      publishedIn: article.publishedIn,
+      featuredImage: article.featuredImage,
+      publisherID: article.publisherID,
+      voteCount: article.voteCount,
+      postTags: article.postTags,
+      modifiedIn: article.modifiedIn,
+      category: article.category,
+      author: article.author,
+      link: article.link,
+      publisher: [
+        {
+          name: article.publisher?.[0]?.name || "",
+          username: article.publisher?.[0]?.username || "",
+        }
+      ]
+    }))
 
     return NextResponse.json(
-      { success: true, articles: processedArticles },
+      { success: true, articles: transformed_articles },
       { status: 200 }
     );
-  } catch (error: any) {
-    console.error("Error fetching articles:", error.message, error.stack);
+  }
+  catch (error: any) {
     return NextResponse.json(
       {
         success: false,
