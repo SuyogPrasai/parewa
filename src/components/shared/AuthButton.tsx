@@ -2,7 +2,6 @@
 
 import { useSession, signIn, signOut } from 'next-auth/react';
 
-
 export default function AuthButton() {
   const { data: session, status } = useSession();
 

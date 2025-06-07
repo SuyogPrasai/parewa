@@ -1,13 +1,11 @@
 'use client';
 
 import * as React from 'react';
+
 import Autoplay from 'embla-carousel-autoplay';
+
 import { Card, CardContent } from '@/components/ui/card';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from '@/components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem, } from '@/components/ui/carousel';
 
 // Define the type for a slide
 interface Slide {

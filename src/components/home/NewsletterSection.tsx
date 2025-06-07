@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Article } from "@/types/post_objects/article";
+import Article from "@/types/post_objects/article";
 
 import {
     Card,
@@ -13,7 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import ArticleRankings from "@/components/AppTopArticles";
+import ArticleRankings from "@/components/articles/TopArticles";
 
 export function NewsletterSignup({ articles }: { articles: Article[] }) {
     const [email, setEmail] = useState("");

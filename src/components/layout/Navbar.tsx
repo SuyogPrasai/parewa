@@ -1,6 +1,10 @@
 "use client";
 
 import { useState } from "react";
+
+import Image from "next/image";
+import Link from "next/link";
+
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -8,8 +12,6 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 
-import Image from "next/image";
-import Link from "next/link";
 
 function Navbar({ header_click }: any) {
   const [activeLink, setActiveLink] = useState("General"); // State to track active link

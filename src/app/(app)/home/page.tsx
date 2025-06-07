@@ -1,25 +1,20 @@
 'use client';
 
+import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-import { Navbar } from '@/components/AppNavbar';
-import { Separator } from '@/components/ui/separator';
-import MainSection from '@/components/AppMainSection';
-import ArticlesSection from '@/components/AppArticleSection';
-
-
+import { ArticlesSectionProps } from '@/types/utilities';
 import Article from '@/types/post_objects/article';
-import { NewsletterSignup } from '@/components/AppNewsletterSection';
-import Image from 'next/image';
 import Notice from '@/types/post_objects/notice';
 
-import React from 'react';
+import Image from 'next/image';
 
-export interface ArticlesSectionProps {
-    category: string;
-    articles: Article[];
-}
+import MainSection from '@/components/home/MainSection';
+import ArticlesSection from '@/components/articles/ArticleSection';
+import { Navbar } from '@/components/layout/Navbar';
+import { Separator } from '@/components/ui/separator';
+import { NewsletterSignup } from '@/components/home/NewsletterSection';
 
 export default function Page() {
     // articlesData should still be ArticlesSectionProps[] if /api/get_articles returns that structure

@@ -13,7 +13,7 @@ import VoteComponent from '@/components/VotingComponentArticle';
 import { useVote } from "@/hooks/useVote";
 import Image from 'next/image';
 import ArticleRankings from '@/components/AppSideTopArticles';
-import PublisherCard from '@/components/PublisherCard';
+import PublisherCard from '@/components/shared/PublisherCard';
 import SideArticleList from '@/components/AppArticleCollection';
 
 export default function ArticlesPage() {

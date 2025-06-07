@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+
 import { useVote } from "@/hooks/useVote";
 
-import VoteComponent from "./VotingComponentArticle";
 import Link from "next/link";
+
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import VoteComponent from "@/components/articles/VotingComponent";
 
 interface NoticeCardProps {
   title: string;

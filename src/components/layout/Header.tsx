@@ -1,5 +1,5 @@
-// src/components/header.tsx
 import Link from "next/link";
+
 import { SidebarTrigger } from "@/components/ui/sidebar";
 
 export function Header() {

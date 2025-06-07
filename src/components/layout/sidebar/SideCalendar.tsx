@@ -1,12 +1,14 @@
 'use client';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+import { format } from "date-fns";
+import getFormattedDate from '@/helpers/get-date-in-format';
+
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { format } from "date-fns";
-import axios from 'axios';
-import getFormattedDate from '../helpers/get-date-in-format';
 import { Event } from '@/models/Event';
-import { ScrollArea } from './ui/scroll-area';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const SideCalendar = () => {
   const [date, setDate] = useState<Date>(new Date());

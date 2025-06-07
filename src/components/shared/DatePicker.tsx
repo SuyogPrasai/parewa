@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+
 import { addDays, format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 
@@ -20,7 +21,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-export function DatePicker( { date, setDate } : any ) {
+export function DatePicker({ date, setDate }: any) {
 
   return (
     <Popover>

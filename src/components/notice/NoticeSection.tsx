@@ -1,6 +1,8 @@
 import React from "react";
-import { NoticeCard } from "./Notice";
+
 import Notice from "@/types/post_objects/notice";
+
+import { NoticeCard } from "./Notice";
 
 export default function NoticeSection({ notices } : { notices: Notice[] }) {
 
@@ -13,7 +15,7 @@ export default function NoticeSection({ notices } : { notices: Notice[] }) {
             title={notice.title}
             description={notice.content.replace(/<\/?[^>]+(>|$)/g, "")}
             timestamp={new Date(notice.publishedIn).toLocaleString()}
-            username={notice.author}
+            username={notice.publisher.username}
             tags={notice.postTags}
             initialVotes={notice.voteCount}
             id = {notice._id}

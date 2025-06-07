@@ -1,8 +1,10 @@
 import { format } from 'date-fns';
-import { Article } from "@/types/post_objects/article";
+
+import Article from "@/types/post_objects/article";
+
 import Image from "next/image";
 import Link from "next/link";
-import { Card, CardContent } from "./ui/card_newsletter";
+import { Card, CardContent } from "@/components/ui/card_newsletter";
 
 interface SideArticleCardProps {
   article: Article;
@@ -10,14 +12,14 @@ interface SideArticleCardProps {
 }
 
 function SideArticleCard({ article, variant = "detailed" }: SideArticleCardProps) {
-  const getFormattedDate = format(new Date(article.date), 'MMMM d');
+  const getFormattedDate = format(new Date(article.publishedIn), 'MMMM d');
 
   return (
     <Link href={article.link} className="flex">
       <Card className="h-full relative overflow-hidden transition-shadow duration-200 z-10 flex flex-col sm:flex-row w-full">
         <div className="mx-auto relative w-full sm:w-[50%] max-w-[400px] flex-shrink-0 h-48 sm:h-auto">
           <Image 
-            src={article.image} 
+            src={article.featuredImage} 
             alt={article.title} 
             fill 
             className="object-cover"
@@ -35,7 +37,7 @@ function SideArticleCard({ article, variant = "detailed" }: SideArticleCardProps
                 {article.author}
               </span>
               <span className="text-black text-sm sm:text-[0.875rem] font-medium font-serif tracking-widest mb-2 line-clamp-2">
-                {article.subtitle}
+                {article.oneLiner}
               </span>
             </>
           ) : (
@@ -58,7 +60,7 @@ function SideArticleCard({ article, variant = "detailed" }: SideArticleCardProps
               </div>
               <div className="description-part w-full sm:w-[50%]">
                 <span className="text-black text-sm sm:text-[0.875rem] font-medium tracking-widest font-serif mb-2 line-clamp-4 ">
-                  {article.subtitle}
+                  {article.oneLiner}
                 </span>
               </div>
             </div>

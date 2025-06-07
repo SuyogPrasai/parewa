@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import {
   X,
   Facebook, // Import Facebook icon
@@ -15,10 +17,10 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Separator } from "./ui/separator";
-import AuthButton from "@/components/AuthButton";
-import Link from "next/link";
+import { Separator } from "@/components/ui/separator";
+import AuthButton from "@/components/shared/AuthButton";
 
 
 const navItems = [

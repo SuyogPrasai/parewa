@@ -1,10 +1,12 @@
 'use client';
 
 import Image from 'next/image';
-import { Card, CardContent } from '@/components/ui/card';
 import Link from 'next/link';
 
-import { ArticlesSectionProps, Article } from '@/types/post_objects/article';
+import { ArticlesSectionProps } from '@/types/utilities';
+import Article from '@/types/post_objects/article';
+
+import { Card, CardContent } from '@/components/ui/card';
 
 export default function ArticlesSection({ category, articles }: ArticlesSectionProps) {
   // Check if articles array is empty
@@ -39,7 +41,7 @@ function MainArticleCard({ article }: { article: Article }) {
       <Card className="h-full hover:shadow-lg transition-shadow duration-200 rounded-lg overflow-hidden">
         <Link href={article.link} className="block relative h-56 md:h-72 lg:h-80">
           <Image
-            src={article.image}
+            src={article.featuredImage}
             alt={article.title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 67vw, 50vw"
@@ -53,7 +55,7 @@ function MainArticleCard({ article }: { article: Article }) {
               {article.title.toUpperCase()}
             </Link>
           </h3>
-          {article.subtitle && <p className="text-sm text-gray-600 mb-2">{article.subtitle}</p>}
+          {article.oneLiner && <p className="text-sm text-gray-600 mb-2">{article.oneLiner}</p>}
           <span className="text-primary-block text-sm  font-roboto tracking-widest">{article.author}</span>
         </CardContent>
       </Card>
@@ -66,7 +68,7 @@ function SideArticleCard({ article }: { article: Article }) {
     <Card className="h-full relative overflow-hidden hover:shadow-md transition-shadow duration-200 rounded-lg z-10">
       <Link href={article.link} className="flex flex-col md:flex-row h-full">
         <div className="relative w-full md:w-40 flex-shrink-0">
-          <Image src={article.image} alt={article.title} fill className="object-cover" />
+          <Image src={article.featuredImage} alt={article.title} fill className="object-cover" />
         </div>
         <CardContent className="px-4 pt-4 flex-1 bg-white">
           <div className="relative bg-black w-[70%] rounded-lg h-[0.15rem] mb-2"></div>

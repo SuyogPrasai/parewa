@@ -1,9 +1,6 @@
 import Link from "next/link";
-import { Instagram, Facebook, X, Linkedin } from 'lucide-react';
 
-// ---
-// Helper Components
-// ---
+import { Instagram, Facebook, X, Linkedin } from 'lucide-react';
 
 type SocialIconProps = {
   Icon: React.ComponentType<{ size?: number; className?: string }>;

@@ -1,9 +1,11 @@
 import { Notice } from "@/types/singleNotice"
-import { ArticlesResponse, Article } from "@/types/post_objects/article"
 
-import NoticeInfo from "./NoteInfo"
-import ArticleRankings from "./AppSideTopArticles"
-import NoticeSection from "./AppNoticeSection";
+import Article from "@/types/post_objects/article"
+import { ArticlesResponse } from "@/types/api-responses"
+
+import NoticeInfo from "@/components/notice/NoteInfo"
+import ArticleRankings from "@/components/articles/TopArticles"
+import NoticeSection from "@/components/notice/NoticeSection";
 
 interface Notice_Multi {
     _id: string;

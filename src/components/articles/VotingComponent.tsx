@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { Button } from './ui/button';
 import { ArrowUp, ArrowDown } from "lucide-react";
+
+import { Button } from '@/components/ui/button';
 
 // Define the props type for the VoteComponent
 interface VoteComponentProps {

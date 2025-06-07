@@ -1,10 +1,11 @@
 import React from 'react'
 import Image from 'next/image';
 
-import { Element } from '@/types/singleNotice';
-import AuthorCard from './AuthorDetailsCard';
-import VoteComponent from './VotingComponentArticle';
-import { Badge } from './ui/badge';
+import { Element } from '@/types/post_objects/notice';
+
+import AuthorCard from '@/components/articles/AuthorDetailsCard';
+import VoteComponent from '@/components/articles/VotingComponent';
+import { Badge } from '@/components/ui/badge';
 
 interface NoticeInfo {
     title: string;

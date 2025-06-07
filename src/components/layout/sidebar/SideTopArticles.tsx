@@ -1,11 +1,9 @@
-import {
-    Card,
-    CardContent,
-} from "@/components/ui/card_newsletter";
 import Link from "next/link";
-import { Article } from "@/types/post_objects/article";
-import { Badge } from "./ui/badge";
 import { format } from 'date-fns';
+
+import Article  from "@/types/post_objects/article";
+import { Card, CardContent } from "@/components/ui/card_newsletter";
+import { Badge } from "@/components/ui/badge";
 
 function ArticleRankings({ articles }: { articles: Article[] }) {
     return (
@@ -32,10 +30,10 @@ function ArticleRankings({ articles }: { articles: Article[] }) {
 
 const SideArticleCard = ({ article, rank }: { article: Article; rank: number }) => {
     let formattedDate = "Invalid date";
-    console.log(article.date)
+    console.log(article.publishedIn)
     try {
-        if (article.date) {
-            formattedDate = format(new Date(article.date), 'MMMM d, h:mm a');
+        if (article.publishedIn) {
+            formattedDate = format(new Date(article.publishedIn), 'MMMM d, h:mm a');
         }
     } catch (error) {
         console.error("Error formatting date:", error);
