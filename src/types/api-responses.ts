@@ -18,10 +18,10 @@ export default interface ArticleResponse {
 
 export interface ArticlesResponse extends ApiResponse {
   articles: Article[];
-  totalPages: number;
+  totalPages?: number;
 }
 
 export interface NoticesResponse extends ApiResponse {
   notices: Notice[];
-  totalPages: number;
+  totalPages?: number;
 }

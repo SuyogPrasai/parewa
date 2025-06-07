@@ -50,7 +50,11 @@ export async function GET(request: NextRequest) {
     }))
 
     return NextResponse.json(
-      { success: true, articles: transformed_articles },
+      { 
+        success: true, 
+        message: "Articles fetched successfully",
+        articles: transformed_articles,
+      },
       { status: 200 }
     );
   }

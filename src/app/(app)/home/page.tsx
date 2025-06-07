@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import { ArticlesSectionProps } from '@/types/utilities';
 import Article from '@/types/post_objects/article';
 import Notice from '@/types/post_objects/notice';
+import { ArticlesResponse } from '@/types/api-responses';
+import { NoticesResponse } from '@/types/api-responses';
 
 import Image from 'next/image';
 
@@ -17,7 +19,7 @@ import { Separator } from '@/components/ui/separator';
 import { NewsletterSignup } from '@/components/home/NewsletterSection';
 
 export default function Page() {
-    
+
     const [articlesData, setArticlesData] = useState<ArticlesSectionProps[]>([]);
     const [topArticlesData, setTopArticlesData] = useState<Article[]>([]);
     const [notices, setNotices] = useState<Notice[]>([]);
@@ -30,9 +32,9 @@ export default function Page() {
 
         // TODO: Category Listing
         const categories = ['Literature', 'Politics', 'Economy'];
-        
+
         const requests = categories.map((category) =>
-            axios.get('/api/get_articles', {
+            axios.get<ArticlesResponse>('/api/get_articles', {
                 params: {
                     query: '',
                     category,
@@ -48,7 +50,7 @@ export default function Page() {
                 const formattedArticles = responses.map((response, index) => {
                     if (response.data.success) {
                         return {
-                            category: categories[index],
+                            category: response.data.articles[index].category,
                             articles: response.data.articles || [],
                         };
                     } else {
@@ -71,7 +73,7 @@ export default function Page() {
     useEffect(() => {
         setLoadingTopArticles(true);
         axios
-            .get('/api/top_articles')
+            .get<ArticlesResponse>('/api/top_articles')
             .then((response) => {
                 console.log('Response from /api/top_articles:', response.data);
                 if (response.data.success) {
@@ -84,7 +86,6 @@ export default function Page() {
             })
             .catch((error) => {
                 console.error('Error fetching articles from /api/top_articles:', error);
-                setTopArticlesData([]);
             })
             .finally(() => setLoadingTopArticles(false));
     }, []);
@@ -92,7 +93,7 @@ export default function Page() {
 
     useEffect(() => {
         axios
-            .get("/api/get_news?category=General&number=4&limit=4")
+            .get<NoticesResponse>("/api/get_news?category=General&number=4&limit=4")
             .then((response) => {
                 if (response.data.success) {
                     setNotices(response.data.notices.filter((notice: Notice) => !notice.trashed));
