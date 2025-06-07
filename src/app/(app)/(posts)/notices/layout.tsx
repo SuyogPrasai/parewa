@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 import AuthProvider from '@/context/AuthProvider';
 import { Roboto, Oswald, Bebas_Neue, Lato } from 'next/font/google';
 
-import Footer from '@/components/layout/Footer';
+import Footer from '@/components/collections/CollectionsFooter';
 import ScrollFadeIn from '@/components/home/ScrollDown';
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/layout/sidebar/Sidebar';

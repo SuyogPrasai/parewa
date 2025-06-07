@@ -10,7 +10,7 @@ import { useTopArticles } from '@/hooks/useTopArticles';
 import { useArticles } from '@/hooks/useArticles';
 
 import ArticleRankings from '@/components/articles/TopArticles';
-import { Navbar } from '@/components/layout/Navbar';
+import { Navbar } from '@/components/collections/CollectionNavbar';
 import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
 import { DatePicker } from '@/components/shared/DatePicker';

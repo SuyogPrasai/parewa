@@ -9,7 +9,7 @@ import { useTopArticles } from '@/hooks/useTopArticles';
 import Notice from '@/types/post_objects/notice'; // Using 'type' for imports that are only used as types
 import { NoticesResponse } from '@/types/api-responses';
 
-import { Navbar } from '@/components/layout/Navbar';
+import { Navbar } from '@/components/collections/CollectionNavbar';
 import NoticeDetail from '@/components/notice/NoticeDetail';
 import NoticeSection from '@/components/notice/NoticeSection';
 

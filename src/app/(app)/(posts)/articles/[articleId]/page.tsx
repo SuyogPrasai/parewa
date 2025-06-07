@@ -12,7 +12,7 @@ import { useVote } from "@/hooks/useVote";
 
 import Image from 'next/image';
 
-import { Navbar } from '@/components/layout/Navbar';
+import { Navbar } from '@/components/collections/CollectionNavbar';
 import { Separator } from '@/components/ui/separator';
 import VoteComponent from '@/components/articles/VotingComponent';
 import AuthorCard from '@/components/articles/AuthorDetailsCard';

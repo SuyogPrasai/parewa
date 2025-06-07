@@ -19,7 +19,6 @@ import { Separator } from '@/components/ui/separator';
 import { NewsletterSignup } from '@/components/home/NewsletterSection';
 
 export default function Page() {
-
     const [articlesData, setArticlesData] = useState<ArticlesSectionProps[]>([]);
     const [topArticlesData, setTopArticlesData] = useState<Article[]>([]);
     const [notices, setNotices] = useState<Notice[]>([]);
@@ -48,7 +47,7 @@ export default function Page() {
         Promise.all(requests)
             .then((responses) => {
                 const formattedArticles = responses.map((response, index) => {
-                    if (response.data.success) {
+                    if (response.data.success && !(response.data.articles.length === 0)) {
                         return {
                             category: response.data.articles[index].category,
                             articles: response.data.articles || [],

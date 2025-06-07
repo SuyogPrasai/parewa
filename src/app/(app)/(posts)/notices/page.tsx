@@ -11,7 +11,7 @@ import { useDebounceValue } from "usehooks-ts";
 
 import NoticeSection from '@/components/notice/NoticeSection';
 import ArticleRankings from '@/components/articles/TopArticles';
-import { Navbar } from '@/components/layout/Navbar';
+import { Navbar } from '@/components/collections/CollectionNavbar';
 import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
 import { DatePicker } from '@/components/shared/DatePicker';
