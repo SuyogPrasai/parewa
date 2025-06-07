@@ -15,7 +15,7 @@ function SideArticleCard({ article, variant = "detailed" }: SideArticleCardProps
   const getFormattedDate = format(new Date(article.publishedIn), 'MMMM d');
 
   return (
-    <Link href={article.link} className="flex">
+    <Link href={article.link || "#"} className="flex">
       <Card className="h-full relative overflow-hidden transition-shadow duration-200 z-10 flex flex-col sm:flex-row w-full">
         <div className="mx-auto relative w-full sm:w-[50%] max-w-[400px] flex-shrink-0 h-48 sm:h-auto">
           <Image 

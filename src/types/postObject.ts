@@ -6,7 +6,7 @@ export default interface PostObject {
     oneLiner?: string;
     content?: string;
     publishedIn: Date;
-    featuredImage?: string; // Path to the featured image
+    featuredImage: string; // Path to the featured image
     publisherID: string;
     voteCount: number;
     postTags: string[];

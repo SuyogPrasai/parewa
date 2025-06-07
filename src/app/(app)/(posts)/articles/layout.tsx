@@ -70,9 +70,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             <AppSidebar />
             <SidebarInset>
               <div className="flex flex-col  lg:flex-row lgplus:max-w-[1400px]">
-
                 <div className="flex flex-col w-full lg:w-auto">
-
                   <DashboardHeader />
                   <ScrollFadeIn />
                 </div>

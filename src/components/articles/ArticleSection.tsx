@@ -27,7 +27,7 @@ export default function ArticlesSection({ category, articles }: ArticlesSectionP
         {/* Side Articles */}
         <div className="flex flex-col gap-6 md:col-span-1">
           {articles.slice(1).map((article) => (
-            <SideArticleCard key={article.link} article={article} />
+            <SideArticleCard key={article._id} article={article} />
           ))}
         </div>
       </div>
@@ -39,7 +39,7 @@ function MainArticleCard({ article }: { article: Article }) {
   return (
     <article className="md:col-span-2 z-10">
       <Card className="h-full hover:shadow-lg transition-shadow duration-200 rounded-lg overflow-hidden">
-        <Link href={article.link} className="block relative h-56 md:h-72 lg:h-80">
+        <Link href={article.link || "#"} className="block relative h-56 md:h-72 lg:h-80">
           <Image
             src={article.featuredImage}
             alt={article.title}
@@ -51,7 +51,7 @@ function MainArticleCard({ article }: { article: Article }) {
         </Link>
         <CardContent className="p-6 bg-white">
           <h3 className="text-lg font-bold mb-2 md:text-xl">
-            <Link href={article.link} className="hover:text-primary-block transition-colors duration-20 font-oswald text-3xl ">
+            <Link href={article.link || "#"} className="hover:text-primary-block transition-colors duration-20 font-oswald text-3xl ">
               {article.title.toUpperCase()}
             </Link>
           </h3>
@@ -66,7 +66,7 @@ function MainArticleCard({ article }: { article: Article }) {
 function SideArticleCard({ article }: { article: Article }) {
   return (
     <Card className="h-full relative overflow-hidden hover:shadow-md transition-shadow duration-200 rounded-lg z-10">
-      <Link href={article.link} className="flex flex-col md:flex-row h-full">
+      <Link href={article.link || "#"} className="flex flex-col md:flex-row h-full">
         <div className="relative w-full md:w-40 flex-shrink-0">
           <Image src={article.featuredImage} alt={article.title} fill className="object-cover" />
         </div>

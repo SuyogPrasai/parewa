@@ -11,12 +11,12 @@ const ArticleRankings = ({ articles }: { articles: Article[] }) => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-6">
                     {articles.slice(0, 3).map((article, index) => (
-                        <SideArticleCard key={article.link} article={article} rank={index + 1} />
+                        <SideArticleCard key={article._id} article={article} rank={index + 1} />
                     ))}
                 </div>
                 <div className="flex flex-col gap-6">
                     {articles.slice(3, 6).map((article, index) => (
-                        <SideArticleCard key={article.link} article={article} rank={index + 4} />
+                        <SideArticleCard key={article._id} article={article} rank={index + 4} />
                     ))}
                 </div>
             </div>
@@ -28,7 +28,7 @@ function SideArticleCard({ article, rank }: { article: Article; rank: number }) 
     return (
         <Card className="h-full overflow-hidden relative rounded w-full lg:w-[400px] flex">
 
-            <Link href={article.link} className="flex flex-col md:flex-row h-full flex-1">
+            <Link href={article.link || "#"} className="flex flex-col md:flex-row h-full flex-1">
                 <div className="relative w-full md:w-[50%] flex-shrink-0">
                     <Image src={article.featuredImage} alt={article.title} fill className="object-cover" />
                 </div>

@@ -47,8 +47,8 @@ export default function ArticlesPage() {
     const [article, setArticle] = useState<Article>({
         _id: '',
         title: '',
-        content: [{ type: '' }],
-        publishedIn: '',
+        content: '',
+        publishedIn: new Date(),
         featuredImage: '',
         voteCount: 0,
         postTags: [],
