@@ -1,24 +1,19 @@
 import { ReactNode } from "react";
-import { Roboto, Lato, Oswald, Bebas_Neue } from "next/font/google";
-import "../globals.css";
+import "@/app/globals.css";
 
-// Components
+import { Roboto, Lato, Oswald, Bebas_Neue } from "next/font/google";
 import AuthProvider  from "@/context/AuthProvider";
+
+import  Footer  from "@/components/layout/Footer";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/toaster";
 import { Separator } from "@/components/ui/separator";
-import {
-  SidebarInset,
-  SidebarProvider,
-} from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/AppSidebar";
-import  Footer  from "@/components/Footer";
-import { CarouselHome } from "@/components/AppCarousel";
-import { Header } from "@/components/Header";
+import { AppSidebar } from "@/components/layout/sidebar/Sidebar";
+import { CarouselHome } from "@/components/home/Carousel";
+import { Header } from "@/components/layout/Header";
 
-// Configuration
 import { main_metadata, slides } from "@/config/site-config";
 
-// Fonts
 const roboto = Roboto({
   subsets: ["latin"],
   weight: "300",
