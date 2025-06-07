@@ -22,23 +22,6 @@ const NoticeSchema: Schema<NoticeDB> = new Schema(
   }
 );
 
-NoticeSchema.index(
-  {
-    title: "text",
-    content: "text",
-    postTags: "text"
-  },
-  {
-    name: "notice_search_index", // Optional: Give your index a descriptive name
-    weights: {
-      title: 10,  // Give more weight to matches in the title
-      content: 5, // Give less weight to matches in the content
-      postTags: 8 // Give moderate weight to matches in tags
-    },
-    default_language: "english" // Specify the language for text processing
-  }
-);
-
 // Exporting the model
 const NoticeModel = (mongoose.models.Notice as mongoose.Model<NoticeDB>) || (mongoose.model<NoticeDB>('Notice', NoticeSchema));
 
