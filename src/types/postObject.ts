@@ -7,13 +7,13 @@ export default interface PostObject {
     content?: string;
     publishedIn: Date;
     featuredImage: string; // Path to the featured image
-    publisherID: string;
-    voteCount: number;
+    publisherID?: string;
+    voteCount?: number;
     postTags: string[];
-    updatedAt: Date;
+    updatedAt?: Date;
     trashed?: boolean;
     category: string;
-    link: string;
+    link?: string;
 }
 
 export interface PostObjectDB extends Document, PostObject {}

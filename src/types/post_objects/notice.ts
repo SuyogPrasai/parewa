@@ -13,8 +13,8 @@ export interface NoticeDB extends PostObjectDB {
 }
 
 export default interface Notice extends PostObject {
-  _id: string;
-  publisher: [
+  _id?: string;
+  publisher?: [
     {
       name: string;
       username: string;
