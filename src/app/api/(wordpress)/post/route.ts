@@ -2,15 +2,16 @@ import { NextResponse, NextRequest } from "next/server";
 
 import dbConnect from "@/lib/dbConnect";
 
-import PostObject from "@/types/postObject";
 import { NoticeDB } from "@/types/post_objects/notice";
 import { ArticleDB } from "@/types/post_objects/article";
+import { AnnouncementDB } from "@/types/post_objects/announcement";
 
 import NoticeModel from "@/models/Notice";
 import ArticleModel from "@/models/Article";
 import UserModel from "@/models/User";
 import RoleModel from "@/models/Role";
 import { User } from "@/models/User";
+import AnnouncementModel from "@/models/Announcements";
 
 const article_link = "articles/?id=";
 const notice_link = "notices/notice?id=";
@@ -58,7 +59,16 @@ export async function POST(request: NextRequest) {
                 author: requestBody['author_name'] || 'Anonymous',
                 category: requestBody['category'],
             } as ArticleDB;
-        } else {
+        } else if (requestBody['type'] === "announcement") {
+            post_object = {
+                wp_id: requestBody['wp_id'],
+                title: requestBody['title'],
+                content: requestBody['content'],
+                publishedIn: requestBody['publishedIn'],
+                category: requestBody['category'],
+            } as AnnouncementDB;
+        } 
+        else {
             return NextResponse.json(
                 { success: false, message: "Invalid type" },
                 { status: 400 }
@@ -146,7 +156,7 @@ export async function POST(request: NextRequest) {
 }
 
 // Helper functions for handling events
-async function handleModifiedEvent(type: string, id: string, data: ArticleDB | NoticeDB) {
+async function handleModifiedEvent(type: string, id: string, data: ArticleDB | NoticeDB | AnnouncementDB) {
     if (type === "article") {
         const {
             wp_id,
@@ -202,10 +212,31 @@ async function handleModifiedEvent(type: string, id: string, data: ArticleDB | N
         const notice = await NoticeModel.findOneAndUpdate({ id }, createFields, { new: true });
         if (!notice) throw new Error("Failed to find the Notice");
         return notice;
+    } else if ( type === "announcement") {
+
+        const {
+            wp_id,
+            title,
+            content,
+            publishedIn,
+            category,
+            publisherID,
+        } = data as AnnouncementDB;
+
+        const createFields = {
+            title,
+            content,
+            category,
+            publisherID,
+        };
+
+        const announcement = await AnnouncementModel.findOneAndUpdate({ wp_id }, createFields, { new: true });
+        if (!announcement) throw new Error("Failed to find the Announcement");
+        return announcement;
     }
 }
 
-async function handlePublishedEvent(type: string, wp_id: string, data: PostObject) {
+async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB | NoticeDB | AnnouncementDB) {
     if (type === "article") {
         const {
             wp_id,
@@ -270,6 +301,29 @@ async function handlePublishedEvent(type: string, wp_id: string, data: PostObjec
         let link = article_link + notice._id;
 
         await NoticeModel.findOneAndUpdate({ wp_id }, { link }, { new: true });
+    } else if ( type === "announcement") {
+        const {
+            wp_id,
+            title,
+            content,
+            publishedIn,
+            publisherID,
+            category,
+        } = data as AnnouncementDB;
+        
+        const AnnouncementData = {
+            wp_id,
+            title,
+            content,
+            publishedIn,
+            publisherID,
+            trashed: false,
+            category,
+        };
+        let announcement = await AnnouncementModel.create(AnnouncementData);
+        let link = article_link + announcement._id;
+
+        await AnnouncementModel.findOneAndUpdate({ wp_id }, { link }, { new: true });
     }
 }
 
