@@ -17,7 +17,7 @@ const ArticleSchema: Schema<ArticleDB> = new Schema(
     trashed: { type: Boolean, default: false },
     category: { type: String, required: true },
     author: { type: String, required: true },
-    link: { type: String, required: true },
+    link: { type: String, required: false },
   },
   {
     timestamps: true, // Adds createdAt and updatedAt fields automatically

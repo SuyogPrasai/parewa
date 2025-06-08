@@ -3,14 +3,14 @@ import { NextResponse, NextRequest } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 
 import PostObject from "@/types/postObject";
-import Notice from "@/types/post_objects/notice";
-import Article from "@/types/post_objects/article";
+import { NoticeDB } from "@/types/post_objects/notice";
+import { ArticleDB } from "@/types/post_objects/article";
 
 import NoticeModel from "@/models/Notice";
 import ArticleModel from "@/models/Article";
-import { User } from "@/models/User";
 import UserModel from "@/models/User";
 import RoleModel from "@/models/Role";
+import { User } from "@/models/User";
 
 const article_link = "articles/?id=";
 const notice_link = "notices/notice?id=";
@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        let post_object: Notice | Article;
+        let post_object: NoticeDB | ArticleDB;
         const requestBody = await request.json();
 
         console.log(requestBody);
@@ -41,25 +41,23 @@ export async function POST(request: NextRequest) {
                 wp_id: requestBody['wp_id'],
                 title: requestBody['title'],
                 content: requestBody['content'],
-                publishedIn: requestBody['date'],
-                featuredImage: requestBody['featured_image'],
-                postTags: requestBody['tags'],
+                publishedIn: requestBody['publishedIn'],
+                featuredImage: requestBody['featuredImage'],
+                postTags: requestBody['postTags'],
                 category: requestBody['category'],
-                publisher: [{}],  // initialize publisher array
-            } as Notice;
+            } as NoticeDB;
         } else if (requestBody['type'] === "article") {
             post_object = {
-                wp_id: requestBody['id'],
+                wp_id: requestBody['wp_id'],
                 title: requestBody['title'],
                 content: requestBody['content'],
                 oneLiner: requestBody['oneLiner'],
-                publishedIn: requestBody['date'],
-                featuredImage: requestBody['featured_image'],
-                postTags: requestBody['tags'],
+                publishedIn: requestBody['publishedIn'],
+                featuredImage: requestBody['featuredImage'],
+                postTags: requestBody['postTags'],
                 author: requestBody['author_name'] || 'Anonymous',
                 category: requestBody['category'],
-                publisher: [{}]
-            } as Article;
+            } as ArticleDB;
         } else {
             return NextResponse.json(
                 { success: false, message: "Invalid type" },
@@ -74,44 +72,20 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Fetch publisher ID
         let publisher_id = "";
-        let publisher_roleID = "";
-        let publisher_name = "";
-        let publisher_username = "";
         if (requestBody['publisher'] !== "") {
-            const user: User | null = await UserModel.findOne({ username: requestBody['publisher'] });
+            const user: User | null = await UserModel.findOne({ username: requestBody['publisher_name'] });
             if (!user) {
-                console.error(`Publisher not found: ${requestBody['publisher']}`);
+                console.error(`Publisher not found: ${requestBody['publisher_name']}`);
                 return NextResponse.json(
                     { success: false, message: "Publisher not found" },
                     { status: 404 }
                 );
             }
             publisher_id = user._id as string;
-            publisher_roleID = user.roleID;
-            publisher_name = user.name;
-            publisher_username = user.username;
         }
 
-        const publisher_role = await RoleModel.findById(publisher_roleID); // await added here
-
-        if (!publisher_role) {
-            console.error(`Publisher role not found: ${publisher_roleID}`);
-            return NextResponse.json(
-                { success: false, message: "Publisher role not found" },
-                { status: 404 }
-            );
-        }
-
-        // Assign publisher details
-        if (post_object.publisher && post_object.publisher[0]) {
-            post_object.publisher[0].name = publisher_name;
-            post_object.publisher[0].username = publisher_username;
-            post_object.publisher[0].role = publisher_role.name;
-
-            post_object.publisherID = publisher_id;
-        }
+        post_object.publisherID = publisher_id;
 
         // Handle events
         switch (requestBody['event']) {
@@ -165,66 +139,14 @@ export async function POST(request: NextRequest) {
     } catch (error: any) {
         console.error("Failed to handle the POST request:", error);
         return NextResponse.json(
-            { success: false, message: `Failed to handle the POST request: ${error.message}` },
+            { success: false, message: `Failed to handle the POST request: ${error}` },
             { status: 500 }
         );
     }
 }
 
 // Helper functions for handling events
-async function handleModifiedEvent(type: string, id: string, data: Article | Notice ) {
-    if (type === "article") {
-        const {
-            title,
-            content,
-            oneLiner,
-            featuredImage,
-            postTags,
-            category,
-            author,
-            publisherID 
-        } = data as Article;
-
-        const createFields = {
-            title,
-            content,
-            oneLiner,
-            featuredImage,
-            postTags,
-            category,
-            author,
-            publisherID,
-        };
-
-        const article = await ArticleModel.findOneAndUpdate({ id }, createFields, { new: true });
-        if (!article) throw new Error("Failed to find the Article");
-        return article;
-    } else if (type === "news") {
-        const {
-            title,
-            content,
-            featuredImage,
-            postTags,
-            category,
-            publisherID 
-        } = data as Notice;
-
-        const createFields = {
-            title,
-            content,
-            featuredImage,
-            postTags,
-            category,
-            publisherID,
-        }; 
-
-        const notice = await NoticeModel.findOneAndUpdate({ id }, createFields, { new: true });
-        if (!notice) throw new Error("Failed to find the Notice");
-        return notice;
-    }
-}
-
-async function handlePublishedEvent(type: string, id: string, data: PostObject) {
+async function handleModifiedEvent(type: string, id: string, data: ArticleDB | NoticeDB) {
     if (type === "article") {
         const {
             wp_id,
@@ -237,7 +159,66 @@ async function handlePublishedEvent(type: string, id: string, data: PostObject) 
             category,
             author,
             publisherID,
-        } = data as Article;
+        } = data as ArticleDB;
+
+
+        const createFields = {
+            title,
+            content,
+            oneLiner,
+            featuredImage,
+            postTags,
+            category,
+            author,
+            publisherID,
+            link: "",
+        };
+
+        const article = await ArticleModel.findOneAndUpdate({ wp_id }, createFields, { new: true });
+        if (!article) throw new Error("Failed to find the Article");
+        return article;
+    } else if (type === "news") {
+        const {
+            wp_id,
+            title,
+            content,
+            oneLiner,
+            publishedIn,
+            featuredImage,
+            postTags,
+            category,
+            publisherID,
+        } = data as NoticeDB;
+
+        const createFields = {
+            title,
+            content,
+            featuredImage,
+            postTags,
+            category,
+            publisherID,
+        };
+
+        const notice = await NoticeModel.findOneAndUpdate({ id }, createFields, { new: true });
+        if (!notice) throw new Error("Failed to find the Notice");
+        return notice;
+    }
+}
+
+async function handlePublishedEvent(type: string, wp_id: string, data: PostObject) {
+    if (type === "article") {
+        const {
+            wp_id,
+            title,
+            content,
+            oneLiner,
+            publishedIn,
+            featuredImage,
+            postTags,
+            category,
+            author,
+            publisherID,
+        } = data as ArticleDB;
 
         const ArticleData = {
             wp_id,
@@ -253,8 +234,11 @@ async function handlePublishedEvent(type: string, id: string, data: PostObject) 
             category,
             author
         };
-        await ArticleModel.create(ArticleData);
+        let article = await ArticleModel.create(ArticleData);
+        let link = article_link + article._id;
 
+        await ArticleModel.findOneAndUpdate({ wp_id }, { link }, { new: true });
+        
     } else if (type === "news") {
         const {
             wp_id,
@@ -266,8 +250,7 @@ async function handlePublishedEvent(type: string, id: string, data: PostObject) 
             postTags,
             category,
             publisherID,
-            publisher
-        } = data as Notice;
+        } = data as NoticeDB;
 
         const NoticeData = {
             wp_id,
@@ -282,43 +265,47 @@ async function handlePublishedEvent(type: string, id: string, data: PostObject) 
             trashed: false,
             category,
         };
-        await NoticeModel.create(NoticeData);
+        
+        let notice = await NoticeModel.create(NoticeData);
+        let link = article_link + notice._id;
+
+        await NoticeModel.findOneAndUpdate({ wp_id }, { link }, { new: true });
     }
 }
 
-async function handleTrashedEvent(type: string, id: string) {
+async function handleTrashedEvent(type: string, wp_id: string) {
     const updateFields = { trashed: true };
     if (type === "article") {
-        const article = await ArticleModel.findOneAndUpdate({ id }, updateFields, { new: true });
+        const article = await ArticleModel.findOneAndUpdate({ wp_id }, updateFields, { new: true });
         if (!article) throw new Error("Failed to find the Article");
         return article;
     } else if (type === "news") {
-        const notice = await NoticeModel.findOneAndUpdate({ id }, updateFields, { new: true });
+        const notice = await NoticeModel.findOneAndUpdate({ wp_id }, updateFields, { new: true });
         if (!notice) throw new Error("Failed to find the Notice");
         return notice;
     }
 }
 
-async function handleDeletedEvent(type: string, id: string) {
+async function handleDeletedEvent(type: string, wp_id: string) {
     if (type === "article") {
-        const article = await ArticleModel.findOneAndDelete({ id });
+        const article = await ArticleModel.findOneAndDelete({ wp_id });
         if (!article) throw new Error("Failed to find the Article");
         return article;
     } else if (type === "news") {
-        const notice = await NoticeModel.findOneAndDelete({ id });
+        const notice = await NoticeModel.findOneAndDelete({ wp_id });
         if (!notice) throw new Error("Failed to find the Notice");
         return notice;
     }
 }
 
-async function handlePostRestoreEvent(type: string, id: string) {
+async function handlePostRestoreEvent(type: string, wp_id: string) {
     const updateFields = { trashed: false };
     if (type === "article") {
-        const article = await ArticleModel.findOneAndUpdate({ id }, updateFields, { new: true });
+        const article = await ArticleModel.findOneAndUpdate({ wp_id }, updateFields, { new: true });
         if (!article) throw new Error("Failed to find the Article");
         return article;
     } else if (type === "news") {
-        const notice = await NoticeModel.findOneAndUpdate({ id }, updateFields, { new: true });
+        const notice = await NoticeModel.findOneAndUpdate({ wp_id }, updateFields, { new: true });
         if (!notice) throw new Error("Failed to find the Notice");
         return notice;
     }

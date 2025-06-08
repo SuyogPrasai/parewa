@@ -11,7 +11,7 @@ def connect_to_mongodb() -> Collection:
         # Connect to MongoDB (update the connection string as needed)
         client: MongoClient = MongoClient("mongodb://localhost:27017/")
         db: Database = client["parewa_backend"]  # Replace with your database name
-        collection: Collection = db["Role"]  # Collection name based on schema
+        collection: Collection = db["roles"]  # Collection name based on schema
         print("Connected to MongoDB successfully!")
         return collection
     except Exception as e:

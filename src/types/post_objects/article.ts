@@ -4,11 +4,6 @@ import PostObject from "@/types/postObject";
 export interface ArticleDB extends PostObjectDB {
   _id: string;
   author: string;
-  publisher?: [{
-    name: string;
-    username: string;
-    role: string;
-  }];
 }
 
 export default interface Article extends PostObject {
