@@ -52,26 +52,33 @@ export async function GET(request: NextRequest) {
         const role = await RoleModel.findById(publisher_roleID);
         const parsed_html = await parseHTML(notice.content || "", notice_options); // Changed from article.content
 
+        let position_name = null
+
+        if (role?.name.toLocaleLowerCase() === "author") {
+            const publisher_positionID = publisher.positionID;
+            const publisher_position = await PositionModel.findById(publisher_positionID);
+            position_name = publisher_position?.name;
+        }
+
         const response_notice_: Notice = { // Changed variable name
             '_id': notice._id,
             'wp_id': notice.wp_id,
             'title': notice.title,
             'content': parsed_html,
             'publishedIn': notice.publishedIn,
-            'publisherID': notice.publisherID,
             'featuredImage': notice.featuredImage, // Assuming notices might have a featured image
+            'publisherID': notice.publisherID,
             'voteCount': notice.voteCount,       // Assuming notices might have vote count
             'postTags': notice.postTags,         // Assuming notices might have tags
             'updatedAt': notice.updatedAt,
-            'link': notice.link,
-            'publisher': [
-                {
-                    'name': publisher_name,
-                    'username': publisher_username,
-                    'role': role?.name || "",
-                }
-            ],
             'category': notice.category,
+            'link': notice.link,
+            'publisher': [{
+                'name': publisher_name,
+                'username': publisher_username,
+                'role': role?.name || "",
+                'position': position_name || ""
+            }],
         };
 
 

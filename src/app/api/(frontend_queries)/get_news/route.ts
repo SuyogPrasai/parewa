@@ -3,8 +3,10 @@ import { NextResponse, NextRequest } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 
 import NoticeModel from "@/models/Notice";
+import RoleModel from "@/models/Role";
 
 import Notice from "@/types/post_objects/notice";
+import PositionModel from "@/models/Positions";
 
 export async function GET(request: NextRequest) {
   await dbConnect();
@@ -89,22 +91,36 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    const role = await RoleModel.findById(notices[0].publisher?.[0]?.roleID)
+    const role_name = role?.name
+
+    let position_name = null
+
+    if (role?.name.toLocaleLowerCase() === "author") {
+      const publisher_positionID = notices[0].publisher.positionID;
+      const publisher_position = await PositionModel.findById(publisher_positionID);
+      position_name = publisher_position?.name;
+    }
+
     const transformed_notices: Notice[] = notices.map((notice: any) => ({
       _id: notice._id,
       wp_id: notice.wp_id,
       title: notice.title,
       content: summarizeText(notice.content),
       publishedIn: notice.publishedIn,
-      postTags: notice.postTags,
-      voteCount: notice.voteCount,
-      link: `/notices/${notice._id}`,
-      category: notice.category,
+      featuredImage: notice.featuredImage,
       publisherID: notice.publisherID,
+      voteCount: notice.voteCount,
+      postTags: notice.postTags,
       updatedAt: notice.updatedAt,
+      category: notice.category,
+      link: `/notices/${notice._id}`,
       publisher: [
         {
           name: notice.publisher?.[0]?.name || "",
           username: notice.publisher?.[0]?.username || "Unknown",
+          role: role_name || "",
+          position: position_name || "",
         },
       ],
     }));
