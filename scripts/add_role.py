@@ -33,6 +33,8 @@ def insert_role(collection: Collection, name: str) -> None:
 
 def main():
     """Main function to continuously prompt for role names and insert into MongoDB."""
+    print("WARNING: the positions that you create must be linked to the WORDPRESS CMS OR THINGS WILL BREAK\n")
+
     collection: Collection = connect_to_mongodb()
     
     while True:

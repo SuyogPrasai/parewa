@@ -45,6 +45,7 @@ def main():
     collection = connect_to_mongodb()
     
     print("MongoDB Position Data Entry")
+    print("WARNING: the positions that you create must be linked to the WORDPRESS CMS OR THINGS WILL BREAK")
     print("--------------------------")
     insert_position(collection)
 
