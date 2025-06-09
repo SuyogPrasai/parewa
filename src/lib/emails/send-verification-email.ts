@@ -1,4 +1,4 @@
-import { resend } from "@/lib/resend";
+import { resend } from "@/lib/nodemailer";
 import VerificationEmail from "../../emails/VerificationEmail";
 import { ApiResponse } from "@/types/api-responses";
 
@@ -23,7 +23,7 @@ export async function sendVerificationEmail(
         console.log("Error Sending Verification Email");
         return {
             success: false,
-            message: "Error Sending Verification Emailk"
+            message: "Error Sending Verification Email"
         }
     }
 }
