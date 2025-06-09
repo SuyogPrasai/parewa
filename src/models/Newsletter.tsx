@@ -5,7 +5,6 @@ export interface Newsletter extends Document {
     announcements: boolean;
     notices: boolean;
     articles: boolean;
-    events: boolean;
     createdAt: boolean;
     updatedAt: boolean;
     userID?: string;
@@ -16,7 +15,6 @@ const NewsletterSchema: Schema = new Schema({
     announcements: { type: Boolean, default: true },
     notices: { type: Boolean, default: true },
     articles: { type: Boolean, default: true },
-    events: { type: Boolean, default: true },
     userID: { type: String, required: false, ref: 'User'},
 },
     {
