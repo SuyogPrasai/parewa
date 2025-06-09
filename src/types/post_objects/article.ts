@@ -14,6 +14,7 @@ export default interface Article extends PostObject {
       name: string;
       username: string;
       role: string;
+      position?: string;
     }
   ];
 }

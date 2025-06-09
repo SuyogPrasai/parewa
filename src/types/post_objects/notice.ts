@@ -12,6 +12,7 @@ export default interface Notice extends PostObject {
       name: string;
       username: string;
       role: string;
+      position?: string;
     }
   ];
 }

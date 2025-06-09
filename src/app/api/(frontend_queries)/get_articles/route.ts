@@ -1,10 +1,11 @@
 import { NextResponse, NextRequest } from "next/server";
+
 import dbConnect from "@/lib/dbConnect";
 import ArticleModel from "@/models/Article";
 
-import UserModel, { User } from "@/models/User";
-import { Types } from "mongoose";
 import Article, { ArticleDB } from "@/types/post_objects/article";
+import RoleModel from "@/models/Role";
+import PositionModel from "@/models/Positions";
 
 export async function GET(request: NextRequest) {
   await dbConnect();
@@ -81,6 +82,17 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    const role = await RoleModel.findById(articles[0].publisher?.[0]?.roleID)
+    const role_name = role?.name
+
+    let position_name = null
+
+    if (role?.name.toLocaleLowerCase() === "author") {
+      const publisher_positionID = articles[0].publisher.positionID;
+      const publisher_position = await PositionModel.findById(publisher_positionID);
+      position_name = publisher_position?.name;
+    }
+
     const transformed_articles: Article[] = articles.map((article) => ({
       _id: article._id,
       wp_id: article.wp_id,
@@ -99,6 +111,8 @@ export async function GET(request: NextRequest) {
         {
           name: article.publisher?.[0]?.name || "",
           username: article.publisher?.[0]?.username || "",
+          role: role_name || "",
+          position: position_name || "",
         }
       ]
     }))
