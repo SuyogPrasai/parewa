@@ -1,14 +1,16 @@
+import { render } from '@react-email/render';
 import { NodeMailer } from "@/lib/nodemailer";
 import NoticeEmail from "@/emails/NoticeNewsletter";
 
 import { ApiResponse } from '@/types/api-responses';
 import Notice from "@/types/post_objects/notice";
 
-import { render } from '@react-email/render';
-
 import NewsletterModel from "@/models/Newsletter";
+import UserModel from "@/models/User";
+import RoleModel from "@/models/Role";
+import PositionModel from "@/models/Positions";
 
-export async function sendNoticeNewsLetters( notice: Notice ): Promise<ApiResponse> {
+export async function sendNoticeNewsLetters(notice: Notice): Promise<ApiResponse> {
     try {
         const {
             _id,
@@ -21,14 +23,21 @@ export async function sendNoticeNewsLetters( notice: Notice ): Promise<ApiRespon
             postTags,
             updatedAt,
             category,
-            publisher,
         } = notice;
 
         // Publisher Details
-        const publisher_name = publisher?.[0]?.name ?? "Unknown";
-        const publisher_username = publisher?.[0]?.username ?? "unknown";
-        const publisher_role = publisher?.[0]?.role ?? "unknown";
-        const publisher_position = publisher?.[0]?.position ?? "unknown";
+
+        const publisher = await UserModel.findById(publisherID);
+        const publisher_name = publisher?.name ?? "unknown";
+        const publisher_username = publisher?.username ?? "unknown";
+        const publisher_roleID = publisher?.roleID ?? "unknown";
+        const publisher_positionID = publisher?.positionID ?? "unknown";
+
+        const role = await RoleModel.findById(publisher_roleID);
+        const publisher_role = role?.name ?? "unknown";    
+
+        const position = await PositionModel.findById(publisher_positionID);
+        const publisher_position = position?.name ?? "unknown";
 
         const pipeline = [
             {
@@ -44,37 +53,32 @@ export async function sendNoticeNewsLetters( notice: Notice ): Promise<ApiRespon
             },
         ];
 
+
+        const emailProps = {
+            title: title,
+            content: content ?? "",
+            publishedIn: publishedIn.toDateString(),
+            publisherName: publisher_name,
+            publisherPosition: publisher_position,
+        };
+
+        const email_html = await render(NoticeEmail(emailProps))
         const emails = await NewsletterModel.aggregate(pipeline).exec();
 
-
-        const html = render(
-            <NoticeEmail
-                notice
-            />
-        );
-        // Use Promise.all to await all email sends and collect results
-        await Promise.all(
-            emails.map(async (email) => {
-                try {
-                    const info = await NodeMailer.sendMail({
-                        from: `"Parewa" <${process.env.GMAIL_USER}>`,
-                        to: email.email,
-                        subject: 'Notice Newsletter | Parewa ',
-                        html: NoticeEmail({ 
-                            title: title ?? "", 
-                            content: content ?? "", 
-                            publishedIn: publishedIn.toString() ?? "", 
-                            publisherName: publisher_name ?? "", 
-                            publisherPosition: publisher_position ?? "" 
-                        }),
-                    });
-                    // Optionally handle data/error here
-                } catch (emailError) {
-                    console.log("Error Sending Notice Newsletter to", email.email);
-                }
-            })
-        );
-
+        await Promise.all(emails.map(async (email) => {
+            try {
+                const mailOptions = {
+                    from: process.env.GMAIL_EMAIL || 'parewa.noreply@gmail.com',
+                    to: email.email,
+                    subject: emailProps.title,
+                    html: email_html,
+                };
+                const info = await NodeMailer.sendMail(mailOptions);
+                console.log('Email sent: ' + info.messageId);
+            } catch ( emailError ){
+                console.log("Error sending this email", emailError);
+            }
+        }));
         return {
             success: true,
             message: "Successfully sent notice newsletter"

@@ -12,6 +12,7 @@ import UserModel from "@/models/User";
 import RoleModel from "@/models/Role";
 import { User } from "@/models/User";
 import AnnouncementModel from "@/models/Announcements";
+import { sendNoticeNewsLetters } from "@/lib/emails/send-notice-newsletter-emails";
 
 const article_link = "articles/?id=";
 const notice_link = "notices/notice?id=";
@@ -299,6 +300,8 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
         
         let notice = await NoticeModel.create(NoticeData);
         let link = article_link + notice._id;
+
+        await sendNoticeNewsLetters(notice);
 
         await NoticeModel.findOneAndUpdate({ wp_id }, { link }, { new: true });
     } else if ( type === "announcement") {
