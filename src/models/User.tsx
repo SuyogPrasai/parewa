@@ -7,7 +7,7 @@ export interface User extends Document {
   name: string;
   email: string;
   userTagIDS?: string[]; // Array of tag IDs
-  password?: string; // Hashed password
+  password: string; // Hashed password
   roleID: string; // Role ID reference
   positionID?: string; // Position ID reference
   rollNumber?: number; // Optional

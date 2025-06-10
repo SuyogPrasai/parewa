@@ -49,7 +49,7 @@ export async function sendNoticeNewsLetters( notice: Notice ): Promise<ApiRespon
 
         const html = render(
             <NoticeEmail
-                notice={notice}
+                notice
             />
         );
         // Use Promise.all to await all email sends and collect results
