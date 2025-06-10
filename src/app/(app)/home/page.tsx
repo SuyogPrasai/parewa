@@ -49,7 +49,7 @@ export default function Page() {
                 const formattedArticles = responses.map((response, index) => {
                     if (response.data.success && !(response.data.articles.length === 0)) {
                         return {
-                            category: response.data.articles[index].category,
+                            category: categories[index],
                             articles: response.data.articles || [],
                         };
                     } else {
@@ -128,7 +128,7 @@ export default function Page() {
                     articlesData.map((section, index) => (
                         <React.Fragment key={section.category || `section-${index}`}>
                             {index === 1 && (
-                                <div className="flex flex-col justify-center items-center pt-10 px-4">
+                                <div className="flex flex-col items-center pt-10 px-4">
                                     <NewsletterSignup articles={topArticlesData} />
                                     <Separator orientation="horizontal" className="mt-10" />
                                 </div>
@@ -140,13 +140,7 @@ export default function Page() {
                         </React.Fragment>
                     ))
                 }
-                
-                {!isLoading && articlesData.length === 0 && topArticlesData.length > 0 && (
-                    <div className="flex flex-col justify-center items-center pt-10 px-4">
-                        <NewsletterSignup articles={topArticlesData} />
-                        <Separator orientation="horizontal" className="my-10" />
-                    </div>
-                )}
+
                 <Image
                     src="/lightning - reversed.png"
                     alt="Lightning Reversed"

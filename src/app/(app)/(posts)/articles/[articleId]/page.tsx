@@ -16,7 +16,7 @@ import { Navbar } from '@/components/collections/CollectionNavbar';
 import { Separator } from '@/components/ui/separator';
 import VoteComponent from '@/components/articles/VotingComponent';
 import AuthorCard from '@/components/articles/AuthorDetailsCard';
-import ArticleRankings from '@/components/articles/TopArticles';
+import ArticleRankings from '@/components/collections/CollectionsTopArticles';
 import PublisherCard from '@/components/shared/PublisherCard';
 import SideArticleList from '@/components/articles/ArticleCollection';
 
@@ -131,9 +131,7 @@ export default function ArticlesPage() {
                                 ></div>
                             </div>
 
-                            <div className="w-full lg:w-auto lg:min-w-[300px] xl:min-w-[350px] lg:ml-5">
-                                <ArticleRankings articles={articles_} />
-                            </div>
+                            1
                         </div>
                     </div>
                 </div>

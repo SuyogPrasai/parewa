@@ -30,7 +30,7 @@ const SideCalendar = () => {
     <Card className="bg-background shadow-lg border-border/50 p-2">
       <CardHeader className="p-3">
 
-        <h2 className="text-lg font-semibold px-2 font-oswald">
+        <h2 className="mx-auto md:mx-0 text-lg font-semibold px-2 font-oswald">
           {format(date, 'dd MMMM, yyyy')}
         </h2>
 

@@ -5,10 +5,10 @@ import { Card, CardContent } from "@/components/ui/card_newsletter";
 import Link from "next/link";
 import Image from "next/image";
 
-const ArticleRankings = ({ articles }: { articles: Article[] }) => {
+export const ArticleRankings = ({ articles }: { articles: Article[] }) => {
     return (
-        <div className="flex flex-col gap-6 lg:mr-5">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="flex flex-col gap-6 lg:mr-5 max-w-[850px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-center">
                 <div className="flex flex-col gap-6">
                     {articles.slice(0, 3).map((article, index) => (
                         <SideArticleCard key={article._id} article={article} rank={index + 1} />
@@ -46,5 +46,3 @@ function SideArticleCard({ article, rank }: { article: Article; rank: number }) 
         </Card>
     );
 }
-
-export default ArticleRankings;

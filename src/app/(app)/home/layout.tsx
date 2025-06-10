@@ -60,7 +60,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <CarouselHome slides={slides} />
               <Separator orientation="horizontal" />
               {/* Main content area */}
-              <main className="w-full px-5 min-h-screen">
+              <main className="w-full px-1 *:lg:px-5 min-h-screen">
                 {children}
               </main>
               <Footer />
