@@ -1,6 +1,8 @@
 import { NextResponse, NextRequest } from "next/server";
 
 import dbConnect from "@/lib/dbConnect";
+import { sendNoticeNewsLetters } from "@/lib/emails/send-notice-newsletters-emails";
+import { sendAnnouncementNewsLetters } from "@/lib/emails/send-annoucment-newsletters-email";
 
 import { NoticeDB } from "@/types/post_objects/notice";
 import { ArticleDB } from "@/types/post_objects/article";
@@ -12,7 +14,7 @@ import UserModel from "@/models/User";
 import RoleModel from "@/models/Role";
 import { User } from "@/models/User";
 import AnnouncementModel from "@/models/Announcements";
-import { sendNoticeNewsLetters } from "@/lib/emails/send-notice-newsletter-emails";
+
 
 const article_link = "articles/?id=";
 const notice_link = "notices/notice?id=";
@@ -327,6 +329,8 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
         let link = article_link + announcement._id;
 
         await AnnouncementModel.findOneAndUpdate({ wp_id }, { link }, { new: true });
+
+        await sendAnnouncementNewsLetters(announcement);
     }
 }
 
@@ -352,6 +356,10 @@ async function handleDeletedEvent(type: string, wp_id: string) {
         const notice = await NoticeModel.findOneAndDelete({ wp_id });
         if (!notice) throw new Error("Failed to find the Notice");
         return notice;
+    } else if (type === "announcement") {
+        const announcement = await AnnouncementModel.findOneAndDelete({ wp_id });
+        if (!announcement) throw new Error("Failed to find the Announcement");
+        return announcement;
     }
 }
 
@@ -365,5 +373,9 @@ async function handlePostRestoreEvent(type: string, wp_id: string) {
         const notice = await NoticeModel.findOneAndUpdate({ wp_id }, updateFields, { new: true });
         if (!notice) throw new Error("Failed to find the Notice");
         return notice;
+    } else if (type === "announcement") {
+        const announcement = await AnnouncementModel.findOneAndUpdate({ wp_id }, updateFields, { new: true });
+        if (!announcement) throw new Error("Failed to find the Announcement");
+        return announcement;
     }
 }

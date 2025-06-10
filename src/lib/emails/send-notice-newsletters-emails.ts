@@ -25,8 +25,6 @@ export async function sendNoticeNewsLetters(notice: Notice): Promise<ApiResponse
             category,
         } = notice;
 
-        // Publisher Details
-
         const publisher = await UserModel.findById(publisherID);
         const publisher_name = publisher?.name ?? "unknown";
         const publisher_username = publisher?.username ?? "unknown";
@@ -53,7 +51,6 @@ export async function sendNoticeNewsLetters(notice: Notice): Promise<ApiResponse
             },
         ];
 
-
         const emailProps = {
             title: title,
             content: content ?? "",
@@ -76,7 +73,7 @@ export async function sendNoticeNewsLetters(notice: Notice): Promise<ApiResponse
                 const mailOptions = {
                     from: process.env.GMAIL_EMAIL || 'parewa.noreply@gmail.com',
                     to: email.email,
-                    subject: emailProps.title,
+                    subject: emailProps.title + " | " +  'Parewa Notice',
                     html: email_html,
                     attachments: attached_image
                 };
