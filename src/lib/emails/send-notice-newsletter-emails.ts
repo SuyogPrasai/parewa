@@ -34,7 +34,7 @@ export async function sendNoticeNewsLetters(notice: Notice): Promise<ApiResponse
         const publisher_positionID = publisher?.positionID ?? "unknown";
 
         const role = await RoleModel.findById(publisher_roleID);
-        const publisher_role = role?.name ?? "unknown";    
+        const publisher_role = role?.name ?? "unknown";
 
         const position = await PositionModel.findById(publisher_positionID);
         const publisher_position = position?.name ?? "unknown";
@@ -60,11 +60,18 @@ export async function sendNoticeNewsLetters(notice: Notice): Promise<ApiResponse
             publishedIn: publishedIn.toDateString(),
             publisherName: publisher_name,
             publisherPosition: publisher_position,
+            featuredImage: featuredImage
         };
 
         const email_html = await render(NoticeEmail(emailProps))
         const emails = await NewsletterModel.aggregate(pipeline).exec();
 
+        
+        const attached_image = [
+            {
+                path: featuredImage
+            }
+        ]
         await Promise.all(emails.map(async (email) => {
             try {
                 const mailOptions = {
@@ -72,10 +79,11 @@ export async function sendNoticeNewsLetters(notice: Notice): Promise<ApiResponse
                     to: email.email,
                     subject: emailProps.title,
                     html: email_html,
+                    attachments: attached_image
                 };
                 const info = await NodeMailer.sendMail(mailOptions);
                 console.log('Email sent: ' + info.messageId);
-            } catch ( emailError ){
+            } catch (emailError) {
                 console.log("Error sending this email", emailError);
             }
         }));

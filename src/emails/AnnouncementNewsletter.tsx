@@ -8,26 +8,23 @@ import {
   Section,
   Text,
   Button,
-  Img,
 } from '@react-email/components';
 
-interface NoticeEmailProps {
+interface AnnouncementEmailProps {
   title: string;
   content: string;
   publishedIn: string;
-  featuredImage: string;
   publisherName: string;
   publisherPosition: string;
 }
 
-export default function NoticeEmail({
+export default function AnnouncementEmail({
   title,
   content,
   publishedIn,
   publisherName,
   publisherPosition,
-  featuredImage
-}: NoticeEmailProps) {
+}: AnnouncementEmailProps) {
   const formattedDate = new Date(publishedIn).toLocaleDateString('en-US', {
     weekday: 'long',
     year: 'numeric',
@@ -57,7 +54,7 @@ export default function NoticeEmail({
         </Row>
         <Row>
           <Text dangerouslySetInnerHTML={{ __html: content }} />
-      </Row>
+        </Row>
         <Row>
           <Text>
             Published on <strong>{formattedDate}</strong> by{' '}
