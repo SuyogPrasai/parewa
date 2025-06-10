@@ -60,7 +60,6 @@ export async function sendNoticeNewsLetters(notice: Notice): Promise<ApiResponse
             publishedIn: publishedIn.toDateString(),
             publisherName: publisher_name,
             publisherPosition: publisher_position,
-            featuredImage: featuredImage
         };
 
         const email_html = await render(NoticeEmail(emailProps))

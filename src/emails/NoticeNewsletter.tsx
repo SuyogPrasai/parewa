@@ -15,7 +15,6 @@ interface NoticeEmailProps {
   title: string;
   content: string;
   publishedIn: string;
-  featuredImage: string;
   publisherName: string;
   publisherPosition: string;
 }
@@ -26,7 +25,6 @@ export default function NoticeEmail({
   publishedIn,
   publisherName,
   publisherPosition,
-  featuredImage
 }: NoticeEmailProps) {
   const formattedDate = new Date(publishedIn).toLocaleDateString('en-US', {
     weekday: 'long',
