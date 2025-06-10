@@ -72,19 +72,19 @@ export default function Page() {
     useEffect(() => {
         setLoadingTopArticles(true);
         axios
-            .get<ArticlesResponse>('/api/top_articles')
+            .get<ArticlesResponse>('/api/get_articles?top_articles=true')
             .then((response) => {
-                console.log('Response from /api/top_articles:', response.data);
+                console.log('Response from /api/get_articles?top_articles=true:', response.data);
                 if (response.data.success) {
                     // DIRECTLY assign the array of articles, as your API returns it flat
                     setTopArticlesData(response.data.articles);
                 } else {
-                    console.error('API /api/top_articles returned success: false');
+                    console.error('API /api/get_articles?top_articles=true returned success: false');
                     setTopArticlesData([]);
                 }
             })
             .catch((error) => {
-                console.error('Error fetching articles from /api/top_articles:', error);
+                console.error('Error fetching articles from /api/get_articles?top_articles=true:', error);
             })
             .finally(() => setLoadingTopArticles(false));
     }, []);
@@ -120,14 +120,10 @@ export default function Page() {
                 <Navbar header_click={updateNotices} />
                 <Separator orientation="horizontal" className="" />
 
-                <MainSection notices={notices} />
+                <MainSection notices={notices} isLoading={isLoading} />
                 <Separator orientation="horizontal" className="" />
 
-                {isLoading ? (
-                    <p className="container mx-auto my-10 px-4 sm:px-6 lg:px-8">Loading articles...</p>
-                ) : articlesData.length === 0 && topArticlesData.length === 0 ? ( // Check topArticlesData directly now
-                    <p className="container mx-auto my-10 px-4 sm:px-6 lg:px-8">No articles available.</p>
-                ) : (
+                {
                     // Always map over articlesData, and place NewsletterSignup strategically
                     articlesData.map((section, index) => (
                         <React.Fragment key={section.category || `section-${index}`}>
@@ -138,13 +134,13 @@ export default function Page() {
                                 </div>
                             )}
                             <div>
-                                <ArticlesSection category={section.category} articles={section.articles} />
+                                <ArticlesSection category={section.category} articles={section.articles} isLoading={isLoading} />
                                 <Separator orientation="horizontal" className="" />
                             </div>
                         </React.Fragment>
                     ))
-                )}
-
+                }
+                
                 {!isLoading && articlesData.length === 0 && topArticlesData.length > 0 && (
                     <div className="flex flex-col justify-center items-center pt-10 px-4">
                         <NewsletterSignup articles={topArticlesData} />

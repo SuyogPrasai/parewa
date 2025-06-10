@@ -13,7 +13,7 @@ export const useTopArticles = () => {
     const fetchArticles = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get<ArticlesResponse>('/api/top_articles');
+        const response = await axios.get<ArticlesResponse>('/api/get_articles?top_articles=true');
         if (response.data.success) {
           setArticles(response.data.articles || []);
         } else {
