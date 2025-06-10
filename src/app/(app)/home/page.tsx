@@ -128,12 +128,17 @@ export default function Page() {
                     articlesData.map((section, index) => (
                         <React.Fragment key={section.category || `section-${index}`}>
                             {index === 1 && (
-                                <div className="flex flex-col items-center pt-10 px-4">
-                                    <NewsletterSignup articles={topArticlesData} />
-                                    <Separator orientation="horizontal" className="mt-10" />
-                                </div>
+                                <>
+
+                                    <div className="flex flex-col justify-center pt-10 px-4 max-w-[1450px] mx-auto">
+
+                                        <NewsletterSignup articles={topArticlesData} />
+                                        <Separator orientation="horizontal" className="mt-10" />
+                                    </div>
+                                </>
                             )}
                             <div>
+
                                 <ArticlesSection category={section.category} articles={section.articles} isLoading={isLoading} />
                                 <Separator orientation="horizontal" className="" />
                             </div>
