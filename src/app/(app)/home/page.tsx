@@ -1,41 +1,44 @@
 'use client';
 
+export const dynamic = 'force-dynamic';
+
+import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-import { Navbar } from '@/components/app-navbar';
-import { Separator } from '@/components/ui/separator';
-import MainSection from '@/components/app-main-section';
-import ArticlesSection from '@/components/app-article-section';
-// Make sure both types are correctly defined in articleSection.ts
-import { ArticlesSectionProps, Article } from '@/types/articleSection';
-import { NewsletterSignup } from '@/components/app-newsletter-section';
-import Image from 'next/image';
-import Notice from '@/types/notice';
+import { ArticlesSectionProps } from '@/types/utilities';
+import Article from '@/types/post_objects/article';
+import Notice from '@/types/post_objects/notice';
+import { ArticlesResponse } from '@/types/api-responses';
+import { NoticesResponse } from '@/types/api-responses';
 
-import React from 'react';
+import Image from 'next/image';
+
+import MainSection from '@/components/home/MainSection';
+import ArticlesSection from '@/components/articles/ArticleSection';
+import { Navbar } from '@/components/layout/Navbar';
+import { Separator } from '@/components/ui/separator';
+import { NewsletterSignup } from '@/components/home/NewsletterSection';
 
 export default function Page() {
-    // articlesData should still be ArticlesSectionProps[] if /api/get_articles returns that structure
     const [articlesData, setArticlesData] = useState<ArticlesSectionProps[]>([]);
-    // topArticlesData should now be Article[] because your API returns a flat array of articles
     const [topArticlesData, setTopArticlesData] = useState<Article[]>([]);
+    const [notices, setNotices] = useState<Notice[]>([]);
+
     const [loadingArticles, setLoadingArticles] = useState(true);
     const [loadingTopArticles, setLoadingTopArticles] = useState(true);
 
-    // Fetch main articles (assuming /api/get_articles returns ArticlesSectionProps[])
     useEffect(() => {
         setLoadingArticles(true);
 
+        // TODO: Category Listing
         const categories = ['Literature', 'Politics', 'Economy'];
 
-        // Map each category to a request
         const requests = categories.map((category) =>
-            axios.get('/api/get_articles', {
+            axios.get<ArticlesResponse>('/api/get_articles', {
                 params: {
                     query: '',
                     category,
-                    tdate: '2023-01-01', // Corrected typo in the date
                     page: 1,
                     limit: 4,
                 },
@@ -46,7 +49,7 @@ export default function Page() {
         Promise.all(requests)
             .then((responses) => {
                 const formattedArticles = responses.map((response, index) => {
-                    if (response.data.success) {
+                    if (response.data.success && !(response.data.articles.length === 0)) {
                         return {
                             category: categories[index],
                             articles: response.data.articles || [],
@@ -67,33 +70,31 @@ export default function Page() {
             .finally(() => setLoadingArticles(false));
     }, []);
 
-    // Fetch top articles (now correctly typed as Article[])
+    // Fetch top articles 
     useEffect(() => {
         setLoadingTopArticles(true);
         axios
-            .get('/api/top_articles')
+            .get<ArticlesResponse>('/api/get_articles?top_articles=true')
             .then((response) => {
-                console.log('Response from /api/top_articles:', response.data);
+                console.log('Response from /api/get_articles?top_articles=true:', response.data);
                 if (response.data.success) {
                     // DIRECTLY assign the array of articles, as your API returns it flat
-                    setTopArticlesData(response.data.articles || []);
+                    setTopArticlesData(response.data.articles);
                 } else {
-                    console.error('API /api/top_articles returned success: false');
+                    console.error('API /api/get_articles?top_articles=true returned success: false');
                     setTopArticlesData([]);
                 }
             })
             .catch((error) => {
-                console.error('Error fetching articles from /api/top_articles:', error);
-                setTopArticlesData([]);
+                console.error('Error fetching articles from /api/get_articles?top_articles=true:', error);
             })
             .finally(() => setLoadingTopArticles(false));
     }, []);
 
-    const [notices, setNotices] = useState<Notice[]>([]);
 
     useEffect(() => {
         axios
-            .get("/api/get_news?category=General&number=4&limit=4")
+            .get<NoticesResponse>("/api/get_news?category=General&number=4&limit=4")
             .then((response) => {
                 if (response.data.success) {
                     setNotices(response.data.notices.filter((notice: Notice) => !notice.trashed));
@@ -121,45 +122,35 @@ export default function Page() {
                 <Navbar header_click={updateNotices} />
                 <Separator orientation="horizontal" className="" />
 
-                <MainSection notices={notices} />
+                <MainSection notices={notices} isLoading={isLoading} />
                 <Separator orientation="horizontal" className="" />
 
-                {isLoading ? (
-                    <p className="container mx-auto my-10 px-4 sm:px-6 lg:px-8">Loading articles...</p>
-                ) : articlesData.length === 0 && topArticlesData.length === 0 ? ( // Check topArticlesData directly now
-                    <p className="container mx-auto my-10 px-4 sm:px-6 lg:px-8">No articles available.</p>
-                ) : (
+                {
                     // Always map over articlesData, and place NewsletterSignup strategically
                     articlesData.map((section, index) => (
                         <React.Fragment key={section.category || `section-${index}`}>
-                            {/* Render NewsletterSignup after the first section (index 0) of the main articles */}
                             {index === 1 && (
-                                <div className="flex flex-col justify-center items-center pt-10 px-4">
-                                    {/* Pass topArticlesData DIRECTLY, no need for flatMap */}
-                                    <NewsletterSignup articles={topArticlesData} />
-                                    <Separator orientation="horizontal" className="mt-10" />
-                                </div>
-                            )}
+                                <>
 
+                                    <div className="flex flex-col justify-center pt-10 px-4 max-w-[1450px] mx-auto">
+
+                                        <NewsletterSignup articles={topArticlesData} />
+                                        <Separator orientation="horizontal" className="mt-10" />
+                                    </div>
+                                </>
+                            )}
                             <div>
-                                <ArticlesSection category={section.category} articles={section.articles} />
+
+                                <ArticlesSection category={section.category} articles={section.articles} isLoading={isLoading} />
                                 <Separator orientation="horizontal" className="" />
                             </div>
                         </React.Fragment>
                     ))
-                )}
-
-                {/* This block is important if articlesData is empty but topArticlesData has content */}
-                {!isLoading && articlesData.length === 0 && topArticlesData.length > 0 && (
-                    <div className="flex flex-col justify-center items-center pt-10 px-4">
-                        <NewsletterSignup articles={topArticlesData} />
-                        <Separator orientation="horizontal" className="my-10" />
-                    </div>
-                )}
+                }
 
                 <Image
                     src="/lightning - reversed.png"
-                    alt="Eagle Logo"
+                    alt="Lightning Reversed"
                     width={150}
                     height={150}
                     className="object-contain absolute bottom-0 left-[3%] w-[20%] min-w-[250px] max-w-[300px]"

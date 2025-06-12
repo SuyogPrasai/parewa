@@ -2,9 +2,6 @@ import 'server-only';
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 
-
-// TODO need to refactor this as well
-
 const key = new TextEncoder().encode(process.env.NEXTAUTH_SECRET || '');
 
 export const cookie = {

@@ -1,15 +1,19 @@
+import { Document } from "mongoose";
+
 export default interface PostObject {
-    id: string;
+    wp_id: string;
     title: string;
-    content: string;
-    type: string;
-    publisher: string;
-    date: string;
-    modified: string;
-    tags: string[];
-    event: string;
-    featured_image: string;
-    category: string;
-    author?: string; // Optional for news type
+    oneLiner?: string;
+    content?: string;
+    publishedIn: Date;
+    featuredImage: string; // Path to the featured image
     publisherID?: string;
+    voteCount?: number;
+    postTags: string[];
+    updatedAt?: Date;
+    trashed?: boolean;
+    category: string;
+    link?: string;
 }
+
+export interface PostObjectDB extends Document, PostObject {}

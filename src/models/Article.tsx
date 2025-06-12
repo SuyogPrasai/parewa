@@ -1,36 +1,23 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-// Defining the interface for the Article model
-export interface Article extends Document {
-  id: string;
-  title: string;
-  content?: string;
-  publishedIn: Date;
-  featuredImage?: string; // Path to the featured image
-  publisherID: string; // Reference to User ID
-  voteCount?: number;
-  postTags: string[];
-  modifiedIn?: Date;
-  trashed?: boolean;
-  category: string;
-  author: string;
-}
+import { ArticleDB } from "@/types/post_objects/article";
 
 // Defining the Article schema
-const ArticleSchema: Schema<Article> = new Schema(
+const ArticleSchema: Schema<ArticleDB> = new Schema(
   {
-    id: { type: String, required: true, trim: true, unique: true }, // Reference to the wordpressd database for this
+    wp_id: { type: String, required: true, trim: true, unique: true }, // Reference to the wordpressd database for this
     title: { type: String, required: true, trim: true },
     content: { type: String, required: false },
+    oneLiner: { type: String, required: false, trim: true},
     publishedIn: { type: Date, required: true },
     featuredImage: { type: String, required: false }, // Path to the featured image
-    publisherID: { type: String, ref: "User", required: true }, // User ID reference
+    publisherID: { type: String, ref: "users", required: true }, // User ID reference
     voteCount: { type: Number, default: 0 },
     postTags: [{ type: String}],
-    modifiedIn: { type: Date },
     trashed: { type: Boolean, default: false },
     category: { type: String, required: true },
     author: { type: String, required: true },
+    link: { type: String, required: false },
   },
   {
     timestamps: true, // Adds createdAt and updatedAt fields automatically
@@ -38,6 +25,6 @@ const ArticleSchema: Schema<Article> = new Schema(
 );
 
 // Exporting the model
-const ArticleModel = (mongoose.models.Article as mongoose.Model<Article>) || (mongoose.model<Article>('Article', ArticleSchema));
+const ArticleModel = (mongoose.models.Article as mongoose.Model<ArticleDB>) || (mongoose.model<ArticleDB>('Article', ArticleSchema));
 
 export default ArticleModel;
