@@ -28,11 +28,17 @@ const SideCalendar = () => {
 
   return (
     <Card className="bg-background shadow-lg border-border/50 p-2">
-      <CardHeader className="p-3">
+      <CardHeader className="p-3 flex flex-row items-center">
 
-        <h2 className="mx-auto md:mx-0 text-lg font-semibold px-2 font-oswald">
+        <h2 className="mx-auto md:mx-0 text-lg md:text-xl  font-semibold px-2 font-oswald md:w-[30%] lg:w-full">
           {format(date, 'dd MMMM, yyyy')}
         </h2>
+        <div className="relative md:flex hidden lg:hidden items-center justify-center group w-full max-w-[280px] mx-auto md:ml-10 lg:mx-auto cursor-pointer mb-3 sm:max-w-[150px] lg:max-w-[150px] mt-5">
+          <div className="absolute bg-gradient-to-r from-pink-200 to-pink-300 transform -skew-x-12 px-4 py-2 w-full h-full -translate-x-1 translate-y-1 shadow-lg transition-all duration-300 group-hover:-translate-x-2 group-hover:translate-y-2 z-0"></div>
+          <div className="relative bg-gradient-to-r from-blue-500 to-blue-600 text-white font-oswald text-base sm:text-lg md:text-xl lg:text-xl px-5 py-2.5 transform -skew-x-12 shadow-xl transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105 z-10 flex items-center justify-center">
+            EVENTS
+          </div>
+        </div>
 
       </CardHeader>
 
@@ -47,7 +53,12 @@ const SideCalendar = () => {
         </div>
 
         <div className="w-full p-2">
-          <h3 className="text-lg font-semibold text-center pb-2 lg:text-left md:text-left mt-5 font-oswald">Events</h3>
+          <div className="relative md:hidden flex lg:flex items-center justify-center group w-full max-w-[280px] mx-auto md:ml-10 lg:mx-auto cursor-pointer mb-3 sm:max-w-[150px] lg:max-w-[150px] mt-5">
+            <div className="absolute bg-gradient-to-r from-pink-200 to-pink-300 transform -skew-x-12 px-4 py-2 w-full h-full -translate-x-1 translate-y-1 shadow-lg transition-all duration-300 group-hover:-translate-x-2 group-hover:translate-y-2 z-0 max-w-[200px]"></div>
+            <div className="relative bg-gradient-to-r from-blue-500 to-blue-600 text-white font-oswald text-base sm:text-lg md:text-xl lg:text-md px-5 py-2.5 transform -skew-x-12 shadow-xl transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105 z-10 flex items-center justify-center">
+              EVENTS
+            </div>
+          </div>
           <div className=" max-h-[500px] overflow-y-auto ">
             <ScrollArea className="h-[200px] w-[250px] rounded-md p-2">
               {events.length > 0 ? (

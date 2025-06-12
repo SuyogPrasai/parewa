@@ -1,15 +1,12 @@
 'use client';
 
 import { Search } from 'lucide-react';
-
-import getFormattedDate from '@/helpers/get-date-in-format'; // Assuming this helper exists
+import { Suspense } from 'react'; // Import Suspense
+import getFormattedDate from '@/helpers/get-date-in-format';
 import { useRouter, useSearchParams } from 'next/navigation';
-
 import { useEffect, useMemo, useCallback, useState } from 'react';
 import { useTopArticles } from '@/hooks/useTopArticles';
 import { useArticles } from '@/hooks/useArticles';
-
-import ArticleRankings from '@/components/articles/TopArticles';
 import { Navbar } from '@/components/collections/CollectionNavbar';
 import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
@@ -19,26 +16,32 @@ import PaginationControls from '@/components/shared/Pagination';
 import SideArticleList from '@/components/articles/ArticleCollection';
 
 export default function ArticlesPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ArticlesPageContent />
+    </Suspense>
+  );
+}
+
+function ArticlesPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const category = useMemo(() => searchParams.get('category') || 'Literature', [searchParams]);
   const page = useMemo(() => parseInt(searchParams.get('page') || '1', 10), [searchParams]);
 
-  // Initialize selectedDate from URL or null if not present
   const initialDate = useMemo(() => {
     const dateParam = searchParams.get('date');
     if (dateParam) {
       const [year, month, day] = dateParam.split('-').map(Number);
-      return new Date(year, month - 1, day); // Month is 0-indexed
+      return new Date(year, month - 1, day);
     }
-    return null; // Set to null if no date param is found
+    return null;
   }, [searchParams]);
 
   const [selectedDate, setSelectedDate] = useState<Date | null>(initialDate);
   const [search, setSearch] = useState(searchParams.get('query') || '');
   const [debouncedQuery] = useDebounceValue(search, 500);
 
-  // Pass query and selectedDate to Articles
   const { articles, totalPages, isLoading, error } = useArticles(category, page, debouncedQuery, selectedDate);
   const { articles: articles_, isLoading: isLoadingArticles } = useTopArticles();
 
@@ -102,7 +105,6 @@ export default function ArticlesPage() {
       <h1 className="text-4xl sm:text-5xl md:text-6xl font-oswald mt-4 sm:mt-5 ml-4 sm:ml-5">
         {category}
       </h1>
-
       <div className="flex flex-col lg:flex-row gap-6 px-4 sm:px-6 lg:px-8">
         <div className="flex-1 max-w-full lg:max-w-[950px] my-6 sm:my-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4 w-full">
@@ -142,4 +144,4 @@ export default function ArticlesPage() {
       </div>
     </div>
   );
-}``
+}

@@ -6,12 +6,12 @@ export interface ApiResponse {
     message: string;
 }
 
-export default interface NoticeResponse {
+export interface NoticeResponse {
     success: boolean;
     notice: Notice;
 }
 
-export default interface ArticleResponse {
+export interface ArticleResponse {
     success: boolean;
     article: Article;
 }

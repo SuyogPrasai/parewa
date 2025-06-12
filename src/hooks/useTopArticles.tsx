@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import { ArticlesResponse } from '@/types/articlesResponse';
-import { Article } from "@/types/post_objects/article";
+import { ArticlesResponse } from '@/types/api-responses';
+import Article from "@/types/post_objects/article";
 
 export const useTopArticles = () => {
   const [articles, setArticles] = useState<Article[]>([]);

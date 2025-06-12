@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import getFormattedDate from '@/helpers/get-date-in-format';
-import { ArticlesSectionProps } from '@/types/post_objects/article';
-import { ArticlesResponse } from '@/types/post_objects/article';
-import { Article } from '@/types/post_objects/article';
+import { ArticlesSectionProps } from '@/types/utilities';
+import { ArticlesResponse } from '@/types/api-responses';
+import Article from '@/types/post_objects/article';
 import { ITEMS_PER_PAGE, MAX_PAGES_TO_SHOW } from '@/config/site-config';
 
 
@@ -34,7 +34,7 @@ export const useArticles = (category: string, page: number, query: string, date:
         );
         if (response.data.success) {
           setArticles(response.data.articles);
-          setTotalPages(response.data.totalPages);
+          setTotalPages(response.data.totalPages ?? 1);
         } else {
           setArticles([]);
           setTotalPages(1);

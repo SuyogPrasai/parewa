@@ -1,33 +1,21 @@
 import React from 'react'
 import Image from 'next/image';
 
-import { Element } from '@/types/post_objects/notice';
+import Notice from '@/types/post_objects/notice';
 
 import AuthorCard from '@/components/articles/AuthorDetailsCard';
 import VoteComponent from '@/components/articles/VotingComponent';
 import { Badge } from '@/components/ui/badge';
 
-interface NoticeInfo {
-    title: string;
-    date: string;
-    publisher: string;
-    tags: string[];
-    content: Element[];
-    featured_image?: string;
-    urls?: string[];
-    voteCount: number;
-}
-
 function NoticeInfo({
     title,
-    date,
+    publishedIn,
     publisher,
-    tags,
+    postTags,
     content,
-    featured_image,
-    urls,
+    featuredImage,
     voteCount = 0,
-}: NoticeInfo) {
+}: Notice) {
 
     return (
         <>
@@ -35,17 +23,17 @@ function NoticeInfo({
                 <div className="p-2 sm:p-3 font-oswald text-xl sm:text-2xl md:text-3xl">{title}</div>
 
                 <div className="flex flex-wrap items-center gap-2 mt-2 pl-2 sm:pl-3">
-                    {tags.map((tag, index) => (
+                    {postTags.map((tag, index) => (
                         <Badge key={index} variant="secondary" className="text-xs sm:text-sm font-medium px-1.5 sm:px-2 py-0.5">
                             #{tag}
                         </Badge>
                     ))}
                 </div>
-                <div className="p-2 sm:p-3 text-sm sm:text-base" dangerouslySetInnerHTML={{ __html: content }}></div>
-                {featured_image !== '' ? (
+                <div className="p-2 sm:p-3 text-sm sm:text-base" dangerouslySetInnerHTML={{ __html: content || '' }}></div>
+                {featuredImage !== '' ? (
                     <div className="p-2 sm:p-3">
                         <Image
-                            src={featured_image || ''}
+                            src={featuredImage || ''}
                             alt="Featured Image"
                             width={0}
                             height={0}
@@ -58,11 +46,13 @@ function NoticeInfo({
                 )}
 
                 <div className="p-2 sm:p-3 flex flex-col sm:flex-row justify-between gap-3">
-                    <AuthorCard
-                        name={publisher}
-                        timestamp={date}
-                        initials={publisher[0]}
-                    />
+                    {publisher && publishedIn && (
+                        <AuthorCard
+                            name={publisher[0].name}
+                            timestamp={publishedIn.toDateString()}
+                            initials={publisher[0].name[0].toUpperCase()}
+                        />
+                    )}
                     <VoteComponent
                         orientation="horizontal"
                         netVotes={voteCount}

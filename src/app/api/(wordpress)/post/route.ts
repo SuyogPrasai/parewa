@@ -16,8 +16,8 @@ import { User } from "@/models/User";
 import AnnouncementModel from "@/models/Announcements";
 
 
-const article_link = "articles/?id=";
-const notice_link = "notices/notice?id=";
+const article_link = "/articles/article?id=";
+const notice_link = "/notices/notice?id=";
 
 export async function POST(request: NextRequest) {
     const API_KEY = process.env.NEXT_WORDPRESS_API;

@@ -13,12 +13,12 @@ export default function NoticeSection({ notices } : { notices: Notice[] }) {
           <NoticeCard
             key={notice._id}
             title={notice.title}
-            description={notice.content.replace(/<\/?[^>]+(>|$)/g, "")}
+            description={(notice.content ?? "").replace(/<\/?[^>]+(>|$)/g, "")}
             timestamp={new Date(notice.publishedIn).toLocaleString()}
-            username={notice.publisher.username}
+            username={notice.publisher?.[0]?.username || ""}
             tags={notice.postTags}
-            initialVotes={notice.voteCount}
-            id = {notice._id}
+            initialVotes={notice.voteCount || 0}
+            id={notice._id || ""}
           />
         ))
       ) : (

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Notice from '@/types/post_objects/notice';
-import { NoticesResponse } from '@/types/post_objects/notice';
+import { NoticesResponse } from '@/types/api-responses';
 import { ITEMS_PER_PAGE, MAX_PAGES_TO_SHOW } from '@/config/site-config';
 import axios from 'axios';
 
@@ -33,7 +33,7 @@ export const useNotices = (category: string, page: number, query: string, date: 
         );
         if (response.data.success) {
           setNotices(response.data.notices);
-          setTotalPages(response.data.totalPages);
+          setTotalPages(response.data.totalPages ?? 1);
         } else {
           setNotices([]);
           setTotalPages(1);
