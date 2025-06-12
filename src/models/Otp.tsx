@@ -1,10 +1,10 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface Otp extends Document {
-        email: string;
-        otp: string;
-        createdAt: Date;
-        expiresAt: Date;
+    email: string;
+    otp: string;
+    createdAt: Date;
+    expiresAt: Date;
 }
 
 const OtpSchema: Schema = new Schema({

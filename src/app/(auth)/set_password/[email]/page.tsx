@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/useToast";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

@@ -5,6 +5,8 @@ export interface Event extends Document {
     title: string;
     start_date: Date;
     end_date: Date;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
 // Defining the Notice schema
