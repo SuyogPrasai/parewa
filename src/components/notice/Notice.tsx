@@ -39,7 +39,7 @@ export function NoticeCard({
           <Link href={"/notices/notice?id=" + id}>
             <div className="flex justify-between items-center mb-1">
               <h3 className="text-base font-semibold text-foreground">{title}</h3>
-              <span className="text-xs text-muted-foreground">{timestamp}</span>
+              {/* <span className="text-xs text-muted-foreground">{timestamp}</span> */}
             </div>
 
             <p className="text-xs text-muted-foreground mb-2 cursor-pointer hover:underline">

@@ -5,6 +5,8 @@ import Article from '@/types/post_objects/article';
 import Notice from '@/types/post_objects/notice';
 import { ArticlesResponse, NoticesResponse } from '@/types/api-responses';
 
+import { fetchTopArticles } from '@/lib/actions/get-top-articles';
+
 import MainSection from '@/components/home/MainSection';
 import ArticlesSection from '@/components/articles/ArticleSection';
 import { Separator } from '@/components/ui/separator';
@@ -37,23 +39,7 @@ export async function fetchArticlesByCategory(category: string) {
     }
 }
 
-export async function fetchTopArticles(): Promise<Article[]> {
-    try {
-        const response = await axios.get<ArticlesResponse>(`${BASE_URL}/api/get_articles?top_articles=true`);
 
-        if (response.data.success) {
-            return response.data.articles;
-
-        }
-        console.log("API /api/get_articles?top_articles=true returned success: false")
-        return [];
-
-    } catch (error: any) {
-        console.error("Error fetching notices:", error);
-        return [];
-
-    }
-}
 
 async function fetchNotices(category = 'General'): Promise<Notice[]> {
     try {

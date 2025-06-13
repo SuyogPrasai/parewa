@@ -100,7 +100,7 @@ function ArticlesPageContent() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar header_click={handleCategoryChange} navLinks={navLinks} />
+      <Navbar navLinks={navLinks} type="article" />
       <Separator />
       <h1 className="text-4xl sm:text-5xl md:text-6xl font-oswald mt-4 sm:mt-5 ml-4 sm:ml-5">
         {category}

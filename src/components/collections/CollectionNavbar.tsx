@@ -1,35 +1,41 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState, useCallback } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from "@/components/ui/navigation-menu";
+} from '@/components/ui/navigation-menu';
 
 interface NavLink {
-    name: string;
-    href: string;
+  name: string;
+  href: string;
 }
-
-interface NavLinks {
-    [key: string]: NavLink[];
-}
-
 
 interface NavbarProps {
-  header_click: (linkName: string) => void;
   navLinks: NavLink[];
+  type: string;
 }
 
-function Navbar({ header_click, navLinks }: NavbarProps) {
-  const [activeLink, setActiveLink] = useState("General"); // State to track active link
+export function Navbar({ navLinks, type }: NavbarProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [activeLink, setActiveLink] = useState('General'); // State to track active link
 
-  const handleLinkClick = (linkName: string) => {
-    setActiveLink(linkName);
-    header_click(linkName);
-  };
+  const handleLinkClick = useCallback(
+    (linkName: string) => {
+      setActiveLink(linkName);
+      const params = new URLSearchParams(searchParams);
+      if ( type === "article") {
+        router.push(`/articles?category=${encodeURIComponent(linkName)}`);
+      } else if ( type === "notice" ) {
+        router.push(`/notices?category=${encodeURIComponent(linkName)}`);
+      }
+    },
+    [router, searchParams]
+  );
 
   return (
     <div className="hidden bg-white mr-auto w-full max-w-[1000px] lg:relative lgplus:block shadow-sm">
@@ -44,18 +50,15 @@ function Navbar({ header_click, navLinks }: NavbarProps) {
                     <NavigationMenuLink
                       className="py-2 px-6 flex items-center justify-center text-black text-lg font-bold hover:cursor-pointer"
                       style={{
-                        backgroundColor:
-                          activeLink === link.name
-                            ? ""
-                            : "white",
-                        color: activeLink === link.name ? "" : "black",
-                        minWidth: "100px",
-                        height: "60px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        letterSpacing: "0.05em",
-                        fontFamily: "oswald, sans-serif",
+                        backgroundColor: activeLink === link.name ? '' : 'white',
+                        color: activeLink === link.name ? '' : 'black',
+                        minWidth: '100px',
+                        height: '60px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        letterSpacing: '0.05em',
+                        fontFamily: 'oswald, sans-serif',
                       }}
                       onClick={() => handleLinkClick(link.name)}
                     >
@@ -72,32 +75,34 @@ function Navbar({ header_click, navLinks }: NavbarProps) {
             <div
               className="py-2 px-6 flex items-center justify-center hover:cursor-pointer text-black text-lg font-bold"
               style={{
-                backgroundColor: "hsl(var(--primary-low-bright))",
-                color: "black",
-                minWidth: "100px",
-                height: "60px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                letterSpacing: "0.05em",
-                fontFamily: "oswald, sans-serif",
+                backgroundColor: 'hsl(var(--primary-low-bright))',
+                color: 'black',
+                minWidth: '100px',
+                height: '60px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                letterSpacing: '0.05em',
+                fontFamily: 'oswald, sans-serif',
               }}
+              onClick={() => router.push('/about')}
             >
               ABOUT
             </div>
             <div
               className="py-2 px-6 flex items-center justify-center hover:cursor-pointer text-white text-lg font-bold"
               style={{
-                backgroundColor: "hsl(var(--primary-high-bright))",
-                color: "white",
-                minWidth: "100px",
-                height: "60px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                letterSpacing: "0.05em",
-                fontFamily: "oswald, sans-serif",
+                backgroundColor: 'hsl(var(--primary-high-bright))',
+                color: 'white',
+                minWidth: '100px',
+                height: '60px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                letterSpacing: '0.05em',
+                fontFamily: 'oswald, sans-serif',
               }}
+              onClick={() => router.push('/contact')}
             >
               CONTACT
             </div>
@@ -106,6 +111,4 @@ function Navbar({ header_click, navLinks }: NavbarProps) {
       </div>
     </div>
   );
-};
-
-export { Navbar };
+}
