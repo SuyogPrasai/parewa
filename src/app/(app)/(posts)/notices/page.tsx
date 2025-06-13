@@ -138,7 +138,7 @@ function NewsPageContent() {
           )}
         </div>
         <div className="mt-8 mx-5">
-          <ArticleRankings articles={articles} isLoading={isLoadingArticles} />
+          <ArticleRankings articles={articles} />
         </div>
       </div>
     </div>
