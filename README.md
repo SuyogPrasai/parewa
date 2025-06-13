@@ -12,6 +12,7 @@
 Designed to digitalize internal communication within the school and ensure an effective way to deliver essential notices, it serves as the school’s official system for announcements, updates, and articles.
 
 <br><br>
+![Featured Image](./featured_image.png)
 
 ## Installation and Usage
 
