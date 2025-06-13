@@ -8,7 +8,7 @@ import { ArticlesResponse, NoticesResponse } from '@/types/api-responses';
 import MainSection from '@/components/home/MainSection';
 import ArticlesSection from '@/components/articles/ArticleSection';
 import { Separator } from '@/components/ui/separator';
-import { NewsletterSignup } from '@/components/home/NewsletterSection';
+import NewsletterSignup from '@/components/home/NewsletterSection';
 
 const BASE_URL = process.env.SITE_BASE_URI
 
@@ -97,11 +97,11 @@ export default async function Page() {
                         category={categories[0]}
                         articles={articlesData[0].articles}
                     />
+                    <Separator orientation="horizontal" className="mt-10" />
                 </div>
                 {/* Newsletter Signup after Literature */}
                 <div className="flex flex-col justify-center pt-10 px-4 max-w-[1450px] mx-auto">
                     <NewsletterSignup articles={topArticlesData} />
-                    <Separator orientation="horizontal" className="mt-10" />
                 </div>
 
                 <div>
@@ -109,12 +109,14 @@ export default async function Page() {
                         category={categories[1]}
                         articles={articlesData[1].articles}
                     />
+                    <Separator orientation="horizontal" className="mt-10" />
                 </div>
                 <div>
                     <ArticlesSection
                         category={categories[2]}
                         articles={articlesData[2].articles}
                     />
+                    <Separator orientation="horizontal" className="mt-10" />
                 </div>
 
                 <Image
