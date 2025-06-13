@@ -5,7 +5,7 @@ import { fetchTopArticles } from "@/lib/actions/get-top-articles";
 import NoticeDetail from "@/components/notice/NoticeDetail";
 
 
-export async function fetchNotice(notice_id: string) {
+async function fetchNotice(notice_id: string) {
 	try {
 		const response = await axios.get(`${process.env.SITE_BASE_URI}/api/get_notice/?id=${notice_id}`);
 
@@ -23,7 +23,7 @@ export async function fetchNotice(notice_id: string) {
 }
 
 
-export async function fetchRelatedNotices(category: string) {
+async function fetchRelatedNotices(category: string) {
 	try {
 		const response = await axios.get(`${process.env.SITE_BASE_URI}/api/get_news?category=${category}&limit=3`);
 
@@ -40,7 +40,7 @@ export async function fetchRelatedNotices(category: string) {
 	}
 }
 
-export default async function NoticePage({ searchParams }: { searchParams: { id: string } }) {
+export default async function NoticePage({ searchParams }: { searchParams: Promise<{ id: string }> }) {
 
 	const SearchParams = await searchParams;
 

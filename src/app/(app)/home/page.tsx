@@ -14,7 +14,7 @@ import NewsletterSignup from '@/components/home/NewsletterSection';
 
 const BASE_URL = process.env.SITE_BASE_URI
 
-export async function fetchArticlesByCategory(category: string) {
+async function fetchArticlesByCategory(category: string) {
     try {
         const response = await axios.get<ArticlesResponse>(`${BASE_URL}/api/get_articles`, {
             params: {

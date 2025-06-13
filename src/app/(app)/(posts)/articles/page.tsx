@@ -1,138 +1,30 @@
-'use client';
+import { fetchArticles } from "@/lib/actions/get-articles";
+import { fetchTopArticles } from "@/lib/actions/get-top-articles";
+import ArticlesClient from "@/components/collections/Pages/ArticlesCollection";
 
-import { Search } from 'lucide-react';
-import { Suspense } from 'react'; // Import Suspense
-import getFormattedDate from '@/helpers/get-date-in-format';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useMemo, useCallback, useState } from 'react';
-import { useTopArticles } from '@/hooks/useTopArticles';
-import { useArticles } from '@/hooks/useArticles';
-import { Navbar } from '@/components/collections/CollectionNavbar';
-import { Separator } from '@/components/ui/separator';
-import { Input } from '@/components/ui/input';
-import { DatePicker } from '@/components/shared/DatePicker';
-import { useDebounceValue } from 'usehooks-ts';
-import PaginationControls from '@/components/shared/Pagination';
-import SideArticleList from '@/components/articles/ArticleCollection';
 
-export default function ArticlesPage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <ArticlesPageContent />
-    </Suspense>
-  );
+interface ArticlesPageProps {
+  searchParams: {
+    category?: string;
+    page?: string;
+    query?: string;
+    date?: string;
+  };
 }
 
-function ArticlesPageContent() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const category = useMemo(() => searchParams.get('category') || 'Literature', [searchParams]);
-  const page = useMemo(() => parseInt(searchParams.get('page') || '1', 10), [searchParams]);
+export default async function ArticlesPage({ searchParams }: ArticlesPageProps) {
+  const SearchParams = await searchParams;
+  
+  const category = await SearchParams.category || 'Literature';
+  const page = Number(await SearchParams.page || '1');
+  const query = await SearchParams.query || '';
+  const date = await SearchParams.date || '';
 
-  const initialDate = useMemo(() => {
-    const dateParam = searchParams.get('date');
-    if (dateParam) {
-      const [year, month, day] = dateParam.split('-').map(Number);
-      return new Date(year, month - 1, day);
-    }
-    return null;
-  }, [searchParams]);
-
-  const [selectedDate, setSelectedDate] = useState<Date | null>(initialDate);
-  const [search, setSearch] = useState(searchParams.get('query') || '');
-  const [debouncedQuery] = useDebounceValue(search, 500);
-
-  const { articles, totalPages, isLoading, error } = useArticles(category, page, debouncedQuery, selectedDate);
-  const { articles: articles_, isLoading: isLoadingArticles } = useTopArticles();
-
-
-  const handleCategoryChange = useCallback(
-    (newCategory: string) => {
-      const params = new URLSearchParams(searchParams);
-      params.set('category', newCategory);
-      params.set('page', '1');
-      params.delete('query');
-      params.delete('date');
-      router.push(`?${params.toString()}`);
-    },
-    [router, searchParams]
-  );
-
-  useEffect(() => {
-    const params = new URLSearchParams();
-    params.set('category', category);
-    params.set('page', page.toString());
-    if (debouncedQuery) {
-      params.set('query', debouncedQuery);
-    } else {
-      params.delete('query');
-    }
-    if (selectedDate) {
-      params.set('date', getFormattedDate(selectedDate));
-    } else {
-      params.delete('date');
-    }
-    router.push(`?${params.toString()}`);
-  }, [debouncedQuery, router, selectedDate, category, page]);
-
-  const handlePageChange = useCallback(
-    (newPage: number) => {
-      const params = new URLSearchParams(searchParams);
-      params.set('category', category);
-      params.set('page', newPage.toString());
-      if (debouncedQuery) {
-        params.set('query', debouncedQuery);
-      }
-      if (selectedDate) {
-        params.set('date', getFormattedDate(selectedDate));
-      }
-      router.push(`?${params.toString()}`);
-    },
-    [router, searchParams, category, debouncedQuery, selectedDate]
-  );
+  const { articles, totalPages, error } = await fetchArticles({category, page, query, date});
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <h1 className="text-4xl sm:text-5xl md:text-6xl font-oswald mt-4 sm:mt-5 ml-4 sm:ml-5">
-        {category}
-      </h1>
-      <div className="flex flex-col lg:flex-row gap-6 px-4 sm:px-6 lg:px-8">
-        <div className="flex-1 max-w-full lg:max-w-[950px] my-6 sm:my-8">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4 w-full">
-            <div className="relative w-full sm:w-1/2">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500" />
-              <Input
-                onChange={(e) => setSearch(e.target.value)}
-                type="text"
-                placeholder="Search articles..."
-                className="pl-10 w-full text-sm sm:text-base"
-                defaultValue={search}
-              />
-            </div>
-            <div className="flex justify-center md:justify-end">
-              <DatePicker date={selectedDate} setDate={setSelectedDate} />
-            </div>
-          </div>
-          {isLoading ? (
-            <p className="text-center text-sm sm:text-base">Loading articles...</p>
-          ) : error ? (
-            <p className="text-red-500 text-center text-sm sm:text-base">{error}</p>
-          ) : (
-            <>
-              <div className="grid grid-cols-1 gap-4">
-                <SideArticleList articles={articles} variant="detailed" />
-              </div>
-              <div className="mt-6">
-                <PaginationControls
-                  currentPage={page}
-                  totalPages={totalPages}
-                  onPageChange={handlePageChange}
-                />
-              </div>
-            </>
-          )}
-        </div>
-      </div>
-    </div>
-  );
+    <>
+        <ArticlesClient initialArticles={articles} totalPages={totalPages} initialCategory={category} />
+    </>
+  )
 }

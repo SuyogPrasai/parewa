@@ -13,7 +13,7 @@ import SideArticleList from '@/components/articles/ArticleCollection';
 
 
 
-export async function fetchArticle(article_id: string) {
+async function fetchArticle(article_id: string) {
 	try {
 		const response = await axios.get(`${process.env.SITE_BASE_URI}/api/get_article/?id=${article_id}`);
 
@@ -30,7 +30,7 @@ export async function fetchArticle(article_id: string) {
 	}
 }
 
-export async function fetchRelatedArticles(category: string) {
+async function fetchRelatedArticles(category: string) {
 	try {
 		const response = await axios.get(`${process.env.SITE_BASE_URI}/api/get_articles?category=${category}&limit=2`);
 
@@ -47,7 +47,7 @@ export async function fetchRelatedArticles(category: string) {
 	}
 }
 
-export default async function ArticlePage({ searchParams }: { searchParams: { id: string } }) {
+export default async function ArticlePage({ searchParams }: { searchParams: Promise<{ id: string }>}) {
 
 	const SearchParams = await searchParams;
 

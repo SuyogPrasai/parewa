@@ -41,12 +41,13 @@ function NoticeInfo({
                     />
                 </div>
                 <div className="p-2 sm:p-3 flex flex-col sm:flex-row justify-between gap-3">
-                    <AuthorCard
-                        name={publisher[0].name}
-                        timestamp={publishedIn.toString()}
-                        initials={publisher[0].name[0].toUpperCase()}
-                    />
-
+                    {publisher && publishedIn && (
+                        <AuthorCard
+                            name={publisher[0].name}
+                            timestamp={publishedIn.toString()}
+                            initials={publisher[0].name[0].toUpperCase()}
+                        />
+                    )}
                     <VoteComponent
                         orientation="horizontal"
                     />
