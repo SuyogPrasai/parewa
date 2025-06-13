@@ -19,7 +19,7 @@ function NoticeInfo({
 
     return (
         <>
-            <div className="w-full max-w-3xl mx-auto bg-white p-3 sm:p-4 md:py-6 min-h-fit">
+            <div className="w-full max-w-3xl mx-auto bg-white lgplus:p-2 sm:p-4 md:py-6 min-h-fit">
                 <div className="p-2 sm:p-3 font-oswald text-xl sm:text-2xl md:text-3xl">{title}</div>
 
                 <div className="flex flex-wrap items-center gap-2 mt-2 pl-2 sm:pl-3">
@@ -49,7 +49,7 @@ function NoticeInfo({
                     {publisher && publishedIn && (
                         <AuthorCard
                             name={publisher[0].name}
-                            timestamp={publishedIn.toDateString()}
+                            timestamp={publishedIn.toString()}
                             initials={publisher[0].name[0].toUpperCase()}
                         />
                     )}
