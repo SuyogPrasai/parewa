@@ -72,7 +72,7 @@ const PaginationControls: React.FC<PaginationControlsProps> = ({
 
     return (
         <>
-            <Pagination className="mt-8">
+            <Pagination className="mt-3">
                 <PaginationContent>
                     <PaginationItem>
                         <PaginationPrevious
