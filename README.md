@@ -1,12 +1,19 @@
 <h1 className="text-3xl md:text-4xl font-bold font-sans" align="center">परेवा_</h1>
 <h3 align="center"><strong>Parewa delivers — your News, your Articles, your Way!</strong></h3>
 
+## Table of Contents
+- [Introduction](#introduction)
+- [Installation and Usage](#installation-and-usage)
+- [Features](#features)
+- [Tutorials](#usage-tutorials)
+- [FAQ's](#common-faqs)
+- [Contributors](#contributors)
 
 
 
 ## Introduction
 
-<img src="sexy_parewa-removebg-preview.png" align="right" width="250" alt="Parewa Logo" style="margin-top: -30px;" />
+<img src="public/Public Images/sexy_parewa-removebg-preview.png" align="right" width="250" alt="Parewa Logo" style="margin-top: -30px;" />
 
 **Parewa** is a student-driven information delivery platform developed entirely by the students of Budhanilkantha School (BNKS).  
 Designed to digitalize internal communication within the school and ensure an effective way to deliver essential notices, it serves as the school’s official system for announcements, updates, and articles.
@@ -27,7 +34,7 @@ www.parewa.com.np
 In order to install and configure Parewa into your system you will first need to download the entire repository into a folder and then run the development server in the folder as shown:
 
 <p align="center">
-<img src="carbon (1).png" width="300px"> </p>
+<img src="public/Public Images/carbon (1).png" width="300px"> </p>
 
 ``` bash
 npm run dev
@@ -48,7 +55,7 @@ This project uses next/font to automatically optimize and load Geist, a new font
       </p>
     </td>
     <td>
-      <img src="504639516_1055763299327840_5106628068511268479_n.gif" alt="Parewa Logo" width="450" />
+      <img src="public/Public Images/504639516_1055763299327840_5106628068511268479_n.gif" alt="Parewa Logo" width="450" />
     </td>
   </tr>
 </table>
@@ -92,25 +99,8 @@ bnks.parewa.moderator@gmail.com
 ```
 ## Contributors
 
-<div align="center">
-  <table>
-    <tr>
-      <td align="center" style="padding: 10px;">
-        <a href="https://github.com/SuyogPrasai" target="_blank">
-          <img src="https://github.com/SuyogPrasai.png" width="80" height="80" style="border-radius: 50%;" alt="Suyog Prasai"/>
-          <br/>
-          <sub><b>Suyog Prasai</b></sub>
-        </a>
-      </td>
-      <td align="center" style="padding: 10px;">
-        <a href="https://github.com/Valorant-rocks" target="_blank">
-          <img src="https://github.com/Valorant-rocks.png" width="80" height="80" style="border-radius: 50%;" alt="Valorant-rocks"/>
-          <br/>
-          <sub><b>Valorant-rocks</b></sub>
-        </a>
-      </td>
-    </tr>
-  </table>
-</div>
+**Suyog Prasai(CEO)** <br><br>
+[![LinkedIn](https://img.icons8.com/color/24/000000/linkedin.png)](https://www.linkedin.com/in/suyogprasai/)
+[![Instagram](https://img.icons8.com/color/24/000000/instagram-new.png)](https://www.instagram.com/suyog_prasai/)
 
 
