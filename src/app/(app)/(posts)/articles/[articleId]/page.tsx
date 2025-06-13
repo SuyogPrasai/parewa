@@ -106,8 +106,8 @@ function ArticlesPageContent() {
                 <VoteComponent orientation="horizontal" handleVote={handleVote} netVotes={netVotes} activeVote={activeVote} />
               </div>
             </div>
-            <div className="flex flex-col lg:flex-row gap-5 lg:gap-10 mt-6 lg:w-[125%] lg:max-w-[1400px]">
-              <div className="content-component w-full">
+            <div className="flex flex-col lgplus:flex-row gap-5 lg:gap-10 lgplus:w-[110%] mt-6 lg:max-w-[1400px]">
+              <div className="content-component w-full ">
                 <Separator className="my-4" />
                 <div className="relative w-full aspect-[16/9]">
                   {article?.featuredImage && article.featuredImage !== '' ? (
@@ -127,6 +127,9 @@ function ArticlesPageContent() {
                   className="prose prose-sm sm:prose-base lg:prose-lg max-w-none mt-4 mb-8 sm:mb-10"
                   dangerouslySetInnerHTML={{ __html: article?.content || '' }}
                 ></div>
+              </div>
+              <div>
+                <ArticleRankings articles={articles_} />
               </div>
             </div>
           </div>
