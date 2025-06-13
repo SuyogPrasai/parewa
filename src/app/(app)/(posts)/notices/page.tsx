@@ -14,6 +14,7 @@ import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
 import { DatePicker } from '@/components/shared/DatePicker';
 import PaginationControls from '@/components/shared/Pagination';
+import ArticleRankings from '@/components/collections/CollectionsTopArticles';
 
 export default function NewsPage() {
   return (
@@ -104,8 +105,8 @@ function NewsPageContent() {
       <Separator />
       <h1 className="text-6xl font-oswald mt-5 ml-5">{category}</h1>
 
-      <div className="flex flex-col md:flex-row">
-        <div className="lg:ml-5 my-8 flex-1 p-2 flex justify-center flex-col">
+      <div className="flex flex-col lgplus:flex-row">
+        <div className="lg:mx-3 my-8 flex py-2 justify-start flex-col">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4 w-full max-w-[675px] mx-auto">
             <div className="relative w-full sm:w-1/2">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500" />
@@ -135,6 +136,9 @@ function NewsPageContent() {
               />
             </div>
           )}
+        </div>
+        <div className="mt-8 mx-5">
+          <ArticleRankings articles={articles} isLoading={isLoadingArticles} />
         </div>
       </div>
     </div>
