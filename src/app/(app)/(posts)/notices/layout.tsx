@@ -11,6 +11,7 @@ import ScrollFadeIn from '@/components/home/ScrollDown';
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/layout/sidebar/Sidebar';
 import { Separator } from '@/components/ui/separator';
+import { Navbar } from '@/components/collections/CollectionNavbar';
 
 // Font configurations
 const roboto = Roboto({
@@ -42,6 +43,14 @@ export const metadata: Metadata = {
   description: "Parewa is a media platform developed and managed by the students of BNKS",
 };
 
+const navLinks = [
+  { name: 'General', href: '#' },
+  { name: 'Departments', href: '#' },
+  { name: 'School', href: '#' },
+  { name: 'Council', href: '#' },
+  { name: 'Clubs', href: '#' },
+];
+
 // Header component
 const DashboardHeader: React.FC = () => (
   <header className="sticky top-0 z-50 w-full lg:w-[400px] bg-secondary-background h-[125px]">
@@ -55,6 +64,7 @@ const DashboardHeader: React.FC = () => (
     </div>
   </header>
 );
+
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -74,7 +84,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                   <ScrollFadeIn />
                 </div>
                 <Separator orientation="vertical" className="hidden lg:block lg:h-auto lg:w-[1px] bg-gray-200" />
-                <main className="w-full h-full lg:pl-4">{children}</main>
+                <main className="w-full h-full lg:pl-4">
+                  <Navbar navLinks={navLinks} type="notice" />
+                  {children}
+                </main>
               </div>
               <Footer />
             </SidebarInset>

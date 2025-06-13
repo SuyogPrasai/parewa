@@ -1,97 +1,72 @@
-'use client';
 
-import axios from 'axios';
-import { Suspense } from 'react'; // Import Suspense
-import { useEffect, useMemo, useCallback, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useTopArticles } from '@/hooks/useTopArticles';
-import Notice from '@/types/post_objects/notice';
-import { NoticeResponse } from '@/types/api-responses';
-import { Navbar } from '@/components/collections/CollectionNavbar';
-import NoticeDetail from '@/components/notice/NoticeDetail';
-import NoticeSection from '@/components/notice/NoticeSection';
+import axios from "axios";
 
-export default function NewsPage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <NewsPageContent />
-    </Suspense>
-  );
+import { fetchTopArticles } from "@/lib/actions/get-top-articles";
+import NoticeDetail from "@/components/notice/NoticeDetail";
+
+
+export async function fetchNotice(notice_id: string) {
+	try {
+		const response = await axios.get(`${process.env.SITE_BASE_URI}/api/get_notice/?id=${notice_id}`);
+
+		if (response.data.success) {
+			return response.data.notice;
+		}
+		console.log(`API ${process.env.SITE_BASE_URI}/api/get_notice/?id=${notice_id} returned success: false`)
+		return null
+	}
+	catch (error: any) {
+		console.error('Error fetching notice:', error.message);
+		return null
+
+	}
 }
 
-function NewsPageContent() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const noticeId = useMemo(() => searchParams.get('id') || '', [searchParams]);
-  const { articles: topArticles, isLoading: isLoadingTopArticles } = useTopArticles();
-  const [notice, setNotice] = useState<Notice>();
-  const [relatedNotices, setRelatedNotices] = useState<Notice[]>([]);
 
-  const navLinks = useMemo(
-    () => [
-      { name: 'General', href: '#' },
-      { name: 'Departments', href: '#' },
-      { name: 'School', href: '#' },
-      { name: 'Council', href: '#' },
-      { name: 'Clubs', href: '#' },
-    ],
-    []
-  );
+export async function fetchRelatedNotices(category: string) {
+	try {
+		const response = await axios.get(`${process.env.SITE_BASE_URI}/api/get_news?category=${category}&limit=3`);
 
-  const handleCategoryChange = useCallback(
-    (newCategory: string) => {
-      router.push(`/notices?category=${newCategory}`);
-    },
-    [router]
-  );
+		if (response.data.success) {
+			return response.data.notices;
+		}
+		console.log(`API ${process.env.SITE_BASE_URI}/api/get_news?category=${category} returned success: false`)
+		return []
+	}
+	catch (error: any) {
+		console.error('Error fetching notices:', error.message);
+		return []
 
-  useEffect(() => {
-    async function fetchNotice() {
-      if (!noticeId) {
-        return;
-      }
-      try {
-        const response = await axios.get<NoticeResponse>(`/api/get_notice/?id=${noticeId}`);
-        setNotice(response.data.notice);
-      } catch (error) {
-        console.error('Error fetching notice:', error);
-      }
-    }
-    fetchNotice();
-  }, [noticeId]);
+	}
+}
 
-  useEffect(() => {
-    const fetchRelatedNotices = async () => {
-      try {
-        const response = await axios.get(`/api/get_news?category=${notice?.category}&limit=3`);
-        if (response.data.success) {
-          setRelatedNotices(response.data.notices);
-        }
-      } catch (error) {
-        console.error('Error fetching related notices:', error);
-      }
-    };
+export default async function NoticePage({ searchParams }: { searchParams: { id: string } }) {
 
-    if (notice?.category) {
-      fetchRelatedNotices();
-    }
-  }, [notice?.category]);
+	const SearchParams = await searchParams;
 
-  return (
-    <div className="min-h-screen">
-      <Navbar header_click={handleCategoryChange} navLinks={navLinks} />
-      <h1 className="text-4xl sm:text-5xl md:text-6xl font-oswald mt-3 sm:mt-4 md:mt-10 ml-3 sm:ml-5 md:ml-10">
-        NOTICE
-      </h1>
-      <div className="flex flex-row mt-5 lg:ml-5">
-        {notice && relatedNotices && (
-          <NoticeDetail
-            Notice={notice}
-            Articles={topArticles}
-            Notices={relatedNotices}
-          />
-        )}
-      </div>
-    </div>
-  );
+	const notice_id = await SearchParams.id || '';
+
+	const topArticles = await fetchTopArticles();
+
+	const notice = await fetchNotice(notice_id);
+
+	const relatedNotices = await fetchRelatedNotices(notice?.category);
+
+	return (
+		<>
+			<div className="min-h-screen">
+				<h1 className="text-4xl sm:text-5xl md:text-6xl font-oswald mt-3 sm:mt-4 md:mt-10 ml-3 sm:ml-5 md:ml-10">
+					NOTICE
+				</h1>
+				<div className="flex flex-row mt-5 lg:ml-5">
+
+					<NoticeDetail
+						Notice={notice}
+						Articles={topArticles}
+						Notices={relatedNotices}
+					/>
+				</div>
+			</div>
+		</>
+	)
 }

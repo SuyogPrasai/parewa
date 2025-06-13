@@ -59,21 +59,9 @@ export default async function ArticlePage({ searchParams }: { searchParams: { id
 
 	const relatedArticles = await fetchRelatedArticles(article.category);
 
-	console.log("dsa")
-	console.log( relatedArticles)
-
-	const navLinks = [
-		{ name: 'Politics', href: '#' },
-		{ name: 'Literature', href: '#' },
-		{ name: 'Economy', href: '#' },
-		{ name: 'Culture', href: '#' },
-		{ name: 'History', href: '#' },
-	];
-
 	return (
 		<>
 			<div className="min-h-screen bg-white">
-				<Navbar navLinks={navLinks} type="article" />
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex flex-col py-4 sm:pt-6">
 

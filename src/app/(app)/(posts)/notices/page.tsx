@@ -46,13 +46,7 @@ function NewsPageContent() {
   const { notices, totalPages, isLoading, error } = useNotices(category, page, debouncedQuery, selectedDate);
   const { articles, isLoading: isLoadingArticles } = useTopArticles();
 
-  const navLinks = [
-    { name: 'General', href: '#' },
-    { name: 'Departments', href: '#' },
-    { name: 'School', href: '#' },
-    { name: 'Council', href: '#' },
-    { name: 'Clubs', href: '#' },
-  ];
+
 
   const handleCategoryChange = useCallback(
     (newCategory: string) => {
@@ -101,8 +95,6 @@ function NewsPageContent() {
 
   return (
     <div className="min-h-screen">
-      <Navbar header_click={handleCategoryChange} navLinks={navLinks} />
-      <Separator />
       <h1 className="text-6xl font-oswald mt-5 ml-5">{category}</h1>
 
       <div className="flex flex-col lgplus:flex-row">

@@ -45,13 +45,6 @@ function ArticlesPageContent() {
   const { articles, totalPages, isLoading, error } = useArticles(category, page, debouncedQuery, selectedDate);
   const { articles: articles_, isLoading: isLoadingArticles } = useTopArticles();
 
-  const navLinks = [
-    { name: 'Politics', href: '#' },
-    { name: 'Literature', href: '#' },
-    { name: 'Economy', href: '#' },
-    { name: 'Culture', href: '#' },
-    { name: 'History', href: '#' },
-  ];
 
   const handleCategoryChange = useCallback(
     (newCategory: string) => {
@@ -100,8 +93,6 @@ function ArticlesPageContent() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar navLinks={navLinks} type="article" />
-      <Separator />
       <h1 className="text-4xl sm:text-5xl md:text-6xl font-oswald mt-4 sm:mt-5 ml-4 sm:ml-5">
         {category}
       </h1>

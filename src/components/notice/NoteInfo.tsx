@@ -19,7 +19,7 @@ function NoticeInfo({
 
     return (
         <>
-            <div className="w-full max-w-3xl mx-auto bg-white lgplus:p-2 sm:p-4 md:py-6 min-h-fit">
+            <div className="w-full max-w-[650px] mx-auto lgplus:mx-0 bg-white lgplus:p-2 sm:p-4 md:py-6 min-h-fit">
                 <div className="p-2 sm:p-3 font-oswald text-xl sm:text-2xl md:text-3xl">{title}</div>
 
                 <div className="flex flex-wrap items-center gap-2 mt-2 pl-2 sm:pl-3">
@@ -30,34 +30,25 @@ function NoticeInfo({
                     ))}
                 </div>
                 <div className="p-2 sm:p-3 text-sm sm:text-base" dangerouslySetInnerHTML={{ __html: content || '' }}></div>
-                {featuredImage !== '' ? (
-                    <div className="p-2 sm:p-3">
-                        <Image
-                            src={featuredImage || ''}
-                            alt="Featured Image"
-                            width={0}
-                            height={0}
-                            sizes="100vw"
-                            className="w-full h-auto max-h-64 object-cover"
-                        />
-                    </div>
-                ) : (
-                    <div></div>
-                )}
-
+                <div className="p-2 sm:p-3">
+                    <Image
+                        src={featuredImage || ''}
+                        alt="Featured Image"
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        className="w-full h-auto max-h-64 object-cover"
+                    />
+                </div>
                 <div className="p-2 sm:p-3 flex flex-col sm:flex-row justify-between gap-3">
-                    {publisher && publishedIn && (
-                        <AuthorCard
-                            name={publisher[0].name}
-                            timestamp={publishedIn.toString()}
-                            initials={publisher[0].name[0].toUpperCase()}
-                        />
-                    )}
+                    <AuthorCard
+                        name={publisher[0].name}
+                        timestamp={publishedIn.toString()}
+                        initials={publisher[0].name[0].toUpperCase()}
+                    />
+
                     <VoteComponent
                         orientation="horizontal"
-                        netVotes={voteCount}
-                        activeVote={null}
-                        handleVote={() => { }}
                     />
                 </div>
             </div>

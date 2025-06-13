@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-
-import { useVote } from "@/hooks/useVote";
+import React from "react";
 
 import Link from "next/link";
 
@@ -27,8 +25,6 @@ export function NoticeCard({
   initialVotes,
   id
 }: NoticeCardProps) {
-
-  const { netVotes, activeVote, handleVote } = useVote(initialVotes);
 
   return (
 
@@ -58,7 +54,7 @@ export function NoticeCard({
 
           </Link>
         </div>
-        <VoteComponent netVotes={netVotes} activeVote={activeVote} handleVote={handleVote} />
+        <VoteComponent />
       </div>
     </Card>
   );
