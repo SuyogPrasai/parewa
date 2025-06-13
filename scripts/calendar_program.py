@@ -3,7 +3,8 @@ from pymongo import MongoClient
 from datetime import datetime
 
 # Connect to MongoDB
-client = MongoClient("mongodb://127.0.0.1:27017")
+client = MongoClient("mongodb+srv://suyogprasai:uU9kiqpVlvppdAi5@parewa.8akkuij.mongodb.net/?retryWrites=true&w=majority&appName=parewa/parewa_backend")
+
 db = client["parewa_backend"]
 collection = db["events"]
 
