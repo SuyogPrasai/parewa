@@ -60,9 +60,9 @@ async function fetchNotices(category = 'General'): Promise<Notice[]> {
 
 export default async function Page() {
 
-    const categories = ['Literature', 'Politics', 'Economy'];
+    const categories = ['BNKS', 'World', 'National'];
 
-    const articlesDataPromises = categories.map((category) => fetchArticlesByCategory(category));
+    const articlesDataPromises = categories.map((category: string) => fetchArticlesByCategory(category.toLocaleLowerCase()));
 
     const articlesData = await Promise.all(articlesDataPromises);
 

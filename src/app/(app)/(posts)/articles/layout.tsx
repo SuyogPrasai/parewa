@@ -58,11 +58,11 @@ const DashboardHeader: React.FC = () => (
 );
 
 const navLinks = [
-  { name: 'Politics', href: '#' },
   { name: 'Literature', href: '#' },
-  { name: 'Economy', href: '#' },
-  { name: 'Culture', href: '#' },
-  { name: 'History', href: '#' },
+  { name: 'Science', href: '#' },
+  { name: 'National', href: '#' },
+  { name: 'World', href: '#' },
+  { name: 'BNKS', href: '#' },
 ];
 
 interface DashboardLayoutProps {
