@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-
-import { useVote } from "@/hooks/useVote";
+import React from "react";
 
 import Link from "next/link";
 
@@ -28,8 +26,6 @@ export function NoticeCard({
   id
 }: NoticeCardProps) {
 
-  const { netVotes, activeVote, handleVote } = useVote(initialVotes);
-
   return (
 
     <Card className="w-[100%] p-4 bg-background shadow-sm hover:shadow-md transition-shadow mb-3">
@@ -39,7 +35,7 @@ export function NoticeCard({
           <Link href={"/notices/notice?id=" + id}>
             <div className="flex justify-between items-center mb-1">
               <h3 className="text-base font-semibold text-foreground">{title}</h3>
-              <span className="text-xs text-muted-foreground">{timestamp}</span>
+              {/* <span className="text-xs text-muted-foreground">{timestamp}</span> */}
             </div>
 
             <p className="text-xs text-muted-foreground mb-2 cursor-pointer hover:underline">
@@ -58,7 +54,7 @@ export function NoticeCard({
 
           </Link>
         </div>
-        <VoteComponent netVotes={netVotes} activeVote={activeVote} handleVote={handleVote} />
+        <VoteComponent />
       </div>
     </Card>
   );

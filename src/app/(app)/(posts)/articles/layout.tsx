@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import '@/app/globals.css';
 
 import AuthProvider from '@/context/AuthProvider';
@@ -11,6 +11,7 @@ import { AppSidebar } from '@/components/layout/sidebar/Sidebar';
 import Footer from '@/components/collections/CollectionsFooter';
 import { Separator } from '@/components/ui/separator';
 import ScrollFadeIn from '@/components/home/ScrollDown';
+import { Navbar } from '@/components/collections/CollectionNavbar';
 
 // Font configurations
 const roboto = Roboto({
@@ -56,6 +57,13 @@ const DashboardHeader: React.FC = () => (
   </header>
 );
 
+const navLinks = [
+  { name: 'Politics', href: '#' },
+  { name: 'Literature', href: '#' },
+  { name: 'Economy', href: '#' },
+  { name: 'Culture', href: '#' },
+  { name: 'History', href: '#' },
+];
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -75,7 +83,12 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                   <ScrollFadeIn />
                 </div>
                 <Separator orientation='vertical' className='hidden lg:block lg:h-auto lg:w-[1px] bg-gray-200' />
-                <main className="w-full h-full lg:pl-4">{children}</main>
+                <main className="w-full h-full lg:pl-4">
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <Navbar navLinks={navLinks} type="article" />
+                  </Suspense>
+                  {children}
+                </main>
               </div>
               <Footer />
             </SidebarInset>
