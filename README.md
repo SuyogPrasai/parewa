@@ -1,6 +1,6 @@
+
+
 <h1 className="text-3xl md:text-4xl font-bold font-sans" align="center">परेवा_</h1>
-
-
 <div align="center">
 
 [![Donate](https://img.shields.io/badge/_-Donate-red.svg?logo=githubsponsors&labelColor=555555&style=for-the-badge)](Collaborators.md#collaborators "Donate")
@@ -9,11 +9,11 @@
 [![Commits](https://img.shields.io/github/commit-activity/m/suyogprasai/parewa?label=commits&style=for-the-badge)](https://github.com/suyogprasai/parewa/commits "Commit History")
 [![Last Commit](https://img.shields.io/github/last-commit/suyogprasai/parewa/master?label=&style=for-the-badge&display_timestamp=committer)](https://github.com/suyogprasai/parewa/pulse/monthly "Last activity")
 </div>
+
 <img 
   src="public/Public Images/parewa_logo.png" 
-  align="right" 
+  align="center" 
   width="300" 
-  style="margin: 2em 0; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease; max-width: 100%; height: auto;" 
   alt="Parewa Logo"
 />
 ## Table of Contents
