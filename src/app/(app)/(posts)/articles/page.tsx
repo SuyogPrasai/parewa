@@ -17,12 +17,12 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
 
     const SearchParams = await searchParams;
 
-    const category = SearchParams.category || 'Literature';
+    const category = SearchParams.category || 'literature';
     const page = Number(SearchParams.page || '1');
     const query = SearchParams.query || '';
     const date = SearchParams.date || '';
 
-    const { articles, totalPages } = await fetchArticles({ category, page, query, date });
+    const { articles, totalPages } = await fetchArticles({ category: category.toLocaleLowerCase(), page, query, date });
 
 
     return (
@@ -55,7 +55,6 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                                     selectedDate={new Date(date)}
                                 />
                             </Suspense>
-
                         </div>
                     </div>
                 </div>

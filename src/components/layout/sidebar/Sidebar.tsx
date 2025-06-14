@@ -32,15 +32,15 @@ const navItems = [
 ];
 
 const secondaryNavItems = [
-  { title: "POLITICS", url: "/articles?category=Literature" },
-  { title: "ECONOMY", url: "/articles?category=Literature" },
   { title: "LITERATURE", url: "/articles?category=Literature" },
-  { title: "VIDEOS", url: "/articles?category=Literature" },
-  { title: "DOCUMENTATION", url: "/articles?category=Literature" },
+  { title: "SCIENCE AND TECH", url: "/articles?category=science" },
+  { title: "NATIONAL ARTICLES", url: "/articles?category=national" },
+  { title: "WORLD", url: "/articles?category=world" },
+  { title: "BNKS STORIES", url: "/articles?category=bnks" },
 ];
 const finalNavItems = [
-  { title: "ABOUT", url: "#" },
-  { title: "DOCUMENTATION", url: "#" },
+  { title: "ABOUT", url: "https://github.com/SuyogPrasai/parewa" },
+  { title: "DOCUMENTATION", url: "https://github.com/SuyogPrasai/parewa?tab=readme-ov-file#documentation" },
   { title: "WAYS TO CONTRIBUTE", url: "#" },
   { title: "REPORT A BUG", url: "https://forms.gle/e7LWQa73WBmnsiDS8" },
   { title: "JOBS", url: "https://forms.gle/cybYghNXgoumfKfP6" },

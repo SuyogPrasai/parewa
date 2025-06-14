@@ -86,7 +86,7 @@ export function Navbar({ navLinks, type }: NavbarProps) {
                   letterSpacing: '0.05em',
                   fontFamily: 'oswald, sans-serif',
                 }}
-                onClick={() => router.push('/about')}
+                onClick={() => router.push('https://github.com/SuyogPrasai/parewa')}
               >
                 ABOUT
               </div>
@@ -105,7 +105,7 @@ export function Navbar({ navLinks, type }: NavbarProps) {
                 }}
                 onClick={() => router.push('/contact')}
               >
-                CONTACT
+                SUBMIT
               </div>
             </div>
           </nav>
