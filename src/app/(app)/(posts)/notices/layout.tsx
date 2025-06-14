@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import '@/app/globals.css';
 
 import Link from 'next/link';
@@ -85,7 +85,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                 </div>
                 <Separator orientation="vertical" className="hidden lg:block lg:h-auto lg:w-[1px] bg-gray-200" />
                 <main className="w-full h-full lg:pl-4">
-                  <Navbar navLinks={navLinks} type="notice" />
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <Navbar navLinks={navLinks} type="notice" />
+                  </Suspense>
                   {children}
                 </main>
               </div>

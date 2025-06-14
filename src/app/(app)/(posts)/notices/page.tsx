@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { fetchNotices } from '@/lib/actions/get-notices';
 import PaginationControls from '@/components/shared/Pagination';
 import CollectionsDateHeader from '@/components/shared/CollectionsDateHeader';
@@ -34,23 +34,28 @@ export default async function NoticePage({ searchParams }: NoticesPageProps) {
         <div className="flex flex-col lg:flex-row gap-6 px-4 sm:px-6 lg:px-8 max-w-[750px]">
           <div className="flex-1 max-w-full lg:max-w-[950px] my-6 sm:my-8">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4 w-full">
-              <CollectionsDateHeader
-                initialDate={date}
-                initialPage={page}
-                initialQuery={query}
-              />
+              <Suspense fallback={<div>Loading...</div>}>
+                <CollectionsDateHeader
+                  initialDate={date}
+                  initialPage={page}
+                  initialQuery={query}
+                />
+              </Suspense>
+
             </div>
             <div className="grid grid-cols-1 gap-4">
               <NoticeSection notices={notices} />
             </div>
             <div className="mt-6">
-              <PaginationControls
-                currentPage={page}
-                totalPages={totalPages}
-                category={category}
-                debouncedQuery={query}
-                selectedDate={new Date(date)}
-              />
+              <Suspense fallback={<div>Loading...</div>}>
+                <PaginationControls
+                  currentPage={page}
+                  totalPages={totalPages}
+                  category={category}
+                  debouncedQuery={query}
+                  selectedDate={new Date(date)}
+                />
+              </Suspense>
             </div>
           </div>
         </div>

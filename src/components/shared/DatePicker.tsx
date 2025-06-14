@@ -19,7 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useState, useCallback } from "react";
+import { useState, useCallback, Suspense } from "react";
 
 export function DatePicker() {
   const router = useRouter();
@@ -95,5 +95,6 @@ export function DatePicker() {
         </div>
       </PopoverContent>
     </Popover>
+
   );
 }

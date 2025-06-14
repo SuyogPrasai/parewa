@@ -12,7 +12,7 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from '@/components/ui/pagination';
-
+import { Suspense } from 'react';
 interface PaginationControlsProps {
     currentPage: number;
     totalPages: number;
