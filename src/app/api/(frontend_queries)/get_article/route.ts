@@ -7,8 +7,8 @@ import UserModel, { User } from "@/models/User";
 import RoleModel from "@/models/Role";
 import PositionModel from "@/models/Positions";
 
-import { parseHTML } from "@/lib/parse/htmlParser";
-import { article_options } from "@/lib/parse/parsing-options";
+import { parseHTML } from "@/lib/htmlParser";
+import { article_options } from "@/config/parsing-options";
 import Article from "@/types/post_objects/article";
 
 export async function GET(request: NextRequest) {

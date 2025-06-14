@@ -5,7 +5,7 @@ import Article from '@/types/post_objects/article';
 import Notice from '@/types/post_objects/notice';
 import { ArticlesResponse, NoticesResponse } from '@/types/api-responses';
 
-import { fetchTopArticles } from '@/lib/actions/get-top-articles';
+import { fetchTopArticles } from '@/lib/application/get-top-articles';
 
 import MainSection from '@/components/home/MainSection';
 import ArticlesSection from '@/components/articles/ArticleSection';
