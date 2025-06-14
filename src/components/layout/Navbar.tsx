@@ -100,7 +100,7 @@ function Navbar({ header_click }: any) {
                 fontFamily: "monospace, sans-serif",
               }}
             >
-              Contact
+              SUBMIT 
             </div>
           </div>
         </nav>

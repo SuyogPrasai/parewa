@@ -10,7 +10,7 @@ import NoticeSection from "@/components/notice/NoticeSection";
 export default function NoticeDetail({ Notice, Articles, Notices }: { Notice: Notice, Articles: Article[], Notices: Notice[] }) {
     return (
         <div className="flex flex-col gap-4 max-w-7xl px-2  min-h-screen">
-            <div className="flex flex-col lgplus:flex-row gap-6">
+            <div className="flex flex-col lgplus:flex-row gap-1">
                 <div className="w-full lgplus:w-2/3">
                     <div className="mb-4 sm:mb-5">
                         <NoticeInfo {...Notice} />
@@ -20,7 +20,7 @@ export default function NoticeDetail({ Notice, Articles, Notices }: { Notice: No
                         <NoticeSection notices={Notices} />
                     </div>
                 </div>
-                <div className="w-full lgplus:w-1/3 lgplus:ml-4 lg:plus:mt-6 lgplus:mt-0 mb-10">
+                <div className="w-full lgplus:w-1/3 lgplus:ml-2 lg:plus:mt-6 lgplus:mt-0 mb-10">
                     <ArticleRankings articles={Articles} />
                 </div>
             </div>

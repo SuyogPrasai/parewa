@@ -12,7 +12,7 @@ interface SideArticleCardProps {
 }
 
 function SideArticleCard({ article, variant = "detailed" }: SideArticleCardProps) {
-  const getFormattedDate = format(new Date(article.publishedIn), 'MMMM d');
+  const getFormattedDate = format(article.publishedIn, 'MMMM d');
 
   return (
     <Link href={article.link || "#"} className="flex">
@@ -30,7 +30,7 @@ function SideArticleCard({ article, variant = "detailed" }: SideArticleCardProps
         <CardContent className="pt-4 pl-4 sm:pl-6 lg:pl-10 pr-4 flex-1 bg-white flex flex-col">
           {variant === "simple" ? (
             <>
-              <h3 className="text-2xl sm:text-3xl mb-3 leading-tight font-bold hover:text-primary-block transition-colors duration-200 font-oswald w-full sm:w-[80%] mt-0">
+              <h3 className="text-2xl sm:text-2xl mb-3 leading-tight font-bold hover:text-primary-block transition-colors duration-200 font-oswald w-full sm:w-[80%] mt-0">
                 {article.title}
               </h3>
               <span className="text-primary-block text-xs font-medium font-roboto tracking-widest mb-2">

@@ -1,50 +1,39 @@
 import React from 'react';
-
-import { ArrowUp, ArrowDown } from "lucide-react";
-
+import { ArrowUp, ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-// Define the props type for the VoteComponent
 interface VoteComponentProps {
   orientation?: 'vertical' | 'horizontal';
-  handleVote: (vote: 'up' | 'down') => void;
-  activeVote?: 'up' | 'down' | null;
-  netVotes: number;
 }
 
-const VoteComponent: React.FC<VoteComponentProps> = ({ 
-  orientation = 'vertical', 
-  handleVote, 
-  activeVote = null, 
-  netVotes 
-}) => {
+export default function VoteComponent({ orientation = 'vertical' }: VoteComponentProps) {
   const isVertical = orientation === 'vertical';
   const flexDirection = isVertical ? 'flex-col' : 'flex-row';
-  const gapClass = isVertical ? 'gap-1' : 'gap-2';
+  const gapClass = isVertical ? 'gap-2' : 'gap-3';
+
+  const netVotes = 0;
 
   return (
-    <div className={`flex ${flexDirection} items-center ${gapClass}`}>
+    <div className={`flex ${flexDirection} items-center justify-center ${gapClass}`}>
       <Button
         variant="ghost"
         size="icon"
-        onClick={() => handleVote("up")}
-        className={`h-8 w-8 ${activeVote === "up" ? "text-green-600 bg-green-50" : "text-muted-foreground"}`}
+        className="h-9 w-9 rounded-full hover:bg-accent/50 transition-colors"
       >
-        <ArrowUp className="h-4 w-4" />
+        <ArrowUp className="h-5 w-5 text-foreground/70 hover:text-green-500" />
       </Button>
 
-      <span className="font-medium text-foreground text-base">{netVotes}</span>
+      <span className="font-semibold text-foreground text-lg tabular-nums font-roboto">
+        {netVotes}
+      </span>
 
       <Button
         variant="ghost"
         size="icon"
-        onClick={() => handleVote("down")}
-        className={`h-8 w-8 ${activeVote === "down" ? "text-red-600 bg-red-50" : "text-muted-foreground"}`}
+        className="h-9 w-9 rounded-full hover:bg-accent/50 transition-colors"
       >
-        <ArrowDown className="h-4 w-4" />
+        <ArrowDown className="h-5 w-5 text-foreground/70 hover:text-red-500" />
       </Button>
     </div>
   );
-};
-
-export default VoteComponent;
+}
