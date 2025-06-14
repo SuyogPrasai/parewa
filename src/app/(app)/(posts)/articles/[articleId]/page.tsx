@@ -2,7 +2,6 @@ import axios from "axios";
 
 import { fetchTopArticles } from "@/lib/application/get-top-articles";
 
-import { Navbar } from "@/components/collections/CollectionNavbar";
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 import ArticleRankings from '@/components/collections/CollectionsTopArticles';

@@ -4,7 +4,6 @@ import PaginationControls from '@/components/shared/Pagination';
 import CollectionsDateHeader from '@/components/shared/CollectionsDateHeader';
 import NoticeSection from '@/components/notice/NoticeSection';
 
-
 interface NoticesPageProps {
   searchParams: Promise<{
     category?: string;
@@ -23,7 +22,7 @@ export default async function NoticePage({ searchParams }: NoticesPageProps) {
   const query = SearchParams.query || '';
   const date = SearchParams.date || '';
 
-  const { notices, totalPages, error } = await fetchNotices({ category, page, query, date });
+  const { notices, totalPages } = await fetchNotices({ category, page, query, date });
 
   return (
     <>
