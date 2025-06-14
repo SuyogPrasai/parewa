@@ -23,7 +23,7 @@ export default function VoteComponent({ orientation = 'vertical' }: VoteComponen
         <ArrowUp className="h-5 w-5 text-foreground/70 hover:text-green-500" />
       </Button>
 
-      <span className="font-semibold text-foreground text-lg tabular-nums">
+      <span className="font-semibold text-foreground text-lg tabular-nums font-roboto">
         {netVotes}
       </span>
 
