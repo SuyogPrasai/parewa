@@ -9,17 +9,19 @@
 [![Commits](https://img.shields.io/github/commit-activity/m/suyogprasai/parewa?label=commits&style=for-the-badge)](https://github.com/suyogprasai/parewa/commits "Commit History")
 [![Last Commit](https://img.shields.io/github/last-commit/suyogprasai/parewa/master?label=&style=for-the-badge&display_timestamp=committer)](https://github.com/suyogprasai/parewa/pulse/monthly "Last activity")
 </div>
-<img src="public/Public Images/parewa_logo.png" align="right" width="250" alt="Parewa Logo"/>
-
+<img 
+  src="public/Public Images/parewa_logo.png" 
+  align="right" 
+  width="300" 
+  style="margin: 2em 0; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease; max-width: 100%; height: auto;" 
+  alt="Parewa Logo"
+/>
 ## Table of Contents
 - [Introduction](#introduction)
 - [Installation and Usage](#installation-and-usage)
 - [Features](#features)
 - [Tutorials](#usage-tutorials)
 - [FAQ's](#common-faqs)
-- [Contributors](#contributors)
-
-
 
 ## Introduction
 
@@ -109,10 +111,5 @@ Absolutely, since parewa's server is hosted in the school's intranet, within the
 ```bash
 bnks.parewa.moderator@gmail.com
 ```
-## Contributors
-
-**Suyog Prasai(CEO)** <br><br>
-[![LinkedIn](https://img.icons8.com/color/24/000000/linkedin.png)](https://www.linkedin.com/in/suyogprasai/)
-[![Instagram](https://img.icons8.com/color/24/000000/instagram-new.png)](https://www.instagram.com/suyog_prasai/)
 
 
