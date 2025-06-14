@@ -2,7 +2,7 @@ import Link from "next/link";
 import { format } from 'date-fns';
 
 import Article  from "@/types/post_objects/article";
-import { Card, CardContent } from "@/components/ui/card_newsletter";
+import { Card } from "@/components/ui/card_newsletter";
 import { Badge } from "@/components/ui/badge";
 
 function ArticleRankings({ articles }: { articles: Article[] }) {

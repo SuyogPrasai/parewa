@@ -11,7 +11,6 @@ import { AnnouncementDB } from "@/types/post_objects/announcement";
 import NoticeModel from "@/models/Notice";
 import ArticleModel from "@/models/Article";
 import UserModel from "@/models/User";
-import RoleModel from "@/models/Role";
 import { User } from "@/models/User";
 import AnnouncementModel from "@/models/Announcements";
 

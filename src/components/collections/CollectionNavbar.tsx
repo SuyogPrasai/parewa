@@ -27,7 +27,7 @@ export function Navbar({ navLinks, type }: NavbarProps) {
   const handleLinkClick = useCallback(
     (linkName: string) => {
       setActiveLink(linkName);
-      const params = new URLSearchParams(searchParams);
+      
       if (type === "article") {
         router.push(`/articles?category=${encodeURIComponent(linkName)}`);
       } else if (type === "notice") {
