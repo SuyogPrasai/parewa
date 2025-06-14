@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import { fetchNotices } from '@/lib/actions/get-notices';
+import { fetchNotices } from '@/lib/application/get-notices';
 import PaginationControls from '@/components/shared/Pagination';
 import CollectionsDateHeader from '@/components/shared/CollectionsDateHeader';
 import NoticeSection from '@/components/notice/NoticeSection';

@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { fetchArticles } from '@/lib/actions/get-articles';
+import { fetchArticles } from '@/lib/application/get-articles';
 import SideArticleList from '@/components/articles/ArticleCollection';
 import PaginationControls from '@/components/shared/Pagination';
 import CollectionsDateHeader from '@/components/shared/CollectionsDateHeader';
