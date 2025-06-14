@@ -1,5 +1,15 @@
 <h1 className="text-3xl md:text-4xl font-bold font-sans" align="center">परेवा_</h1>
-<h3 align="center"><strong>Parewa delivers — your News, your Articles, your Way!</strong></h3>
+
+
+<div align="center">
+
+[![Donate](https://img.shields.io/badge/_-Donate-red.svg?logo=githubsponsors&labelColor=555555&style=for-the-badge)](Collaborators.md#collaborators "Donate")
+[![Discord](https://img.shields.io/discord/123456789012345678?color=blue&labelColor=555555&label=&logo=discord&style=for-the-badge)](https://discord.gg/ABCDEF12345 "Discord")
+[![License: Unlicense](https://img.shields.io/badge/-Unlicense-blue.svg?style=for-the-badge)](LICENSE "License")
+[![Commits](https://img.shields.io/github/commit-activity/m/suyogprasai/parewa?label=commits&style=for-the-badge)](https://github.com/suyogprasai/parewa/commits "Commit History")
+[![Last Commit](https://img.shields.io/github/last-commit/suyogprasai/parewa/master?label=&style=for-the-badge&display_timestamp=committer)](https://github.com/suyogprasai/parewa/pulse/monthly "Last activity")
+</div>
+<img src="public/Public Images/parewa_logo.png" align="right" width="250" alt="Parewa Logo"/>
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -12,8 +22,6 @@
 
 
 ## Introduction
-
-<img src="public/Public Images/sexy_parewa-removebg-preview.png" align="right" width="250" alt="Parewa Logo" style="margin-top: -30px;" />
 
 **Parewa** is a student-driven information delivery platform developed entirely by the students of Budhanilkantha School (BNKS).  
 Designed to digitalize internal communication within the school and ensure an effective way to deliver essential notices, it serves as the school’s official system for announcements, updates, and articles.
@@ -29,7 +37,7 @@ The servers of Parewa are up and running on the school's Intranet, as we speak. 
 <br>
 
 ``` bash
-www.parewa.com.np
+parea.vercel.app
 ```
 <h3 > Local </h3>
 In order to install and configure Parewa into your system you will first need to download the entire repository into a folder and then run the development server in the folder as shown:
@@ -81,6 +89,9 @@ This project uses next/font to automatically optimize and load Geist, a new font
 ## Usage Tutorials
 If you have any concerns exploring the full-scale usage of Parewa, please kindly refer to our [YouTube page](https://www.youtube.com/your-channel-url) here. 
 It consits of videos on how to use the entire website to the fullest. 
+
+> [!IMPORTANT]
+> Whether you have feedback on features, have encountered any bugs, or have suggestions for enhancements, we're eager to hear from you. Your insights help us make the PAREWA more robust and user-friendly.
 
 
 ## Common FAQ's
