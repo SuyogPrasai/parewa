@@ -12,7 +12,7 @@
 <div align="center">
   
 <img 
-  src="public/Public Images/parewa_logo.png" 
+  src="public/github_images/parewa_logo.png" 
   align="center" 
   width="300"
   alt="Parewa Logo"
@@ -36,7 +36,8 @@
 Designed to digitalize internal communication within the school and ensure an effective way to deliver essential notices, it serves as the school’s official system for announcements, updates, and articles.
 
 <br><br>
-![Featured Image](./public/github_images/dataflow_diagram.png)
+![Featured Image](./featured_image.png)
+
 
 
 # Our Features
@@ -89,6 +90,9 @@ You can checkout the scripts on `/scripts` folder on the repository for scripts 
 ## Documentation
 
 Parewa is made primarily as a two server system with next js acting as the main frontend for the website with wordpress as the headless cms for content management of the site. This allows us for using proper management and segregation of the data and the system. 
+
+![Featured Image](./public/github_images/dataflow_diagram.png)
+
 
 
 
