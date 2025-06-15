@@ -36,8 +36,7 @@
 Designed to digitalize internal communication within the school and ensure an effective way to deliver essential notices, it serves as the school’s official system for announcements, updates, and articles.
 
 <br><br>
-![Featured Image](./featured_image.png)
-
+![Featured Image](./public/github_images/dataflow_diagram.png)
 
 
 # Our Features
@@ -91,7 +90,7 @@ You can checkout the scripts on `/scripts` folder on the repository for scripts 
 
 Parewa is made primarily as a two server system with next js acting as the main frontend for the website with wordpress as the headless cms for content management of the site. This allows us for using proper management and segregation of the data and the system. 
 
-// Work to do
+
 
 ## Usage Tutorials
 If you have any concerns exploring the full-scale usage of Parewa, please kindly refer to our [YouTube page](https://www.youtube.com/your-channel-url) here. 
