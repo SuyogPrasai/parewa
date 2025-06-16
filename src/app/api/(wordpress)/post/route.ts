@@ -11,7 +11,6 @@ import { AnnouncementDB } from "@/types/post_objects/announcement";
 import NoticeModel from "@/models/Notice";
 import ArticleModel from "@/models/Article";
 import UserModel from "@/models/User";
-import RoleModel from "@/models/Role";
 import { User } from "@/models/User";
 import AnnouncementModel from "@/models/Announcements";
 
@@ -181,7 +180,7 @@ async function handleModifiedEvent(type: string, id: string, data: ArticleDB | N
             oneLiner,
             featuredImage,
             postTags,
-            category,
+            category: category.toLowerCase(),
             author,
             publisherID,
             link: "",
@@ -208,7 +207,7 @@ async function handleModifiedEvent(type: string, id: string, data: ArticleDB | N
             content,
             featuredImage,
             postTags,
-            category,
+            category: category.toLowerCase(),
             publisherID,
         };
 
@@ -229,7 +228,7 @@ async function handleModifiedEvent(type: string, id: string, data: ArticleDB | N
         const createFields = {
             title,
             content,
-            category,
+            category: category.toLowerCase(),
             publisherID,
         };
 
@@ -265,7 +264,7 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
             voteCount: 0,
             postTags,
             trashed: false,
-            category,
+            category: category.toLowerCase(),
             author
         };
         let article = await ArticleModel.create(ArticleData);
@@ -297,7 +296,8 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
             voteCount: 0,
             postTags,
             trashed: false,
-            category,
+            category: category.toLowerCase(),
+
         };
         
         let notice = await NoticeModel.create(NoticeData);
@@ -323,7 +323,8 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
             publishedIn,
             publisherID,
             trashed: false,
-            category,
+            category: category.toLowerCase(),
+
         };
         let announcement = await AnnouncementModel.create(AnnouncementData);
         let link = article_link + announcement._id;

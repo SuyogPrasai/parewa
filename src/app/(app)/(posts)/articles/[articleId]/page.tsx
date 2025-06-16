@@ -1,8 +1,7 @@
 import axios from "axios";
 
-import { fetchTopArticles } from "@/lib/actions/get-top-articles";
+import { fetchTopArticles } from "@/lib/application/get-top-articles";
 
-import { Navbar } from "@/components/collections/CollectionNavbar";
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 import ArticleRankings from '@/components/collections/CollectionsTopArticles';
@@ -10,6 +9,7 @@ import VoteComponent from '@/components/articles/VotingComponent';
 import AuthorCard from '@/components/articles/AuthorDetailsCard';
 import PublisherCard from '@/components/shared/PublisherCard';
 import SideArticleList from '@/components/articles/ArticleCollection';
+import Article from "@/types/post_objects/article";
 
 
 
@@ -47,7 +47,7 @@ async function fetchRelatedArticles(category: string) {
 	}
 }
 
-export default async function ArticlePage({ searchParams }: { searchParams: Promise<{ id: string }>}) {
+export default async function ArticlePage({ searchParams }: { searchParams: Promise<{ id: string }> }) {
 
 	const SearchParams = await searchParams;
 
@@ -55,7 +55,7 @@ export default async function ArticlePage({ searchParams }: { searchParams: Prom
 
 	const topArticles = await fetchTopArticles();
 
-	const article = await fetchArticle(article_id);
+	const article: Article = await fetchArticle(article_id);
 
 	const relatedArticles = await fetchRelatedArticles(article.category);
 
@@ -78,8 +78,7 @@ export default async function ArticlePage({ searchParams }: { searchParams: Prom
 									{article && (
 										<AuthorCard initials={article.author[0]} name={article.author} timestamp={`${article.publishedIn}`} />
 									)}
-									<VoteComponent orientation="horizontal" />
-								</div>
+									<VoteComponent orientation="horizontal" voteCount={article.voteCount || 0} post_id={article._id || ""} post_type={"article"} />								</div>
 							</div>
 							<div className="flex flex-col lgplus:flex-row gap-5 lg:gap-10 lgplus:w-[105%] mt-6 lg:max-w-[1400px]">
 								<div className="content-component w-full ">

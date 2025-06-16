@@ -1,9 +1,8 @@
 import React, { Suspense } from 'react'
-import { fetchNotices } from '@/lib/actions/get-notices';
+import { fetchNotices } from '@/lib/application/get-notices';
 import PaginationControls from '@/components/shared/Pagination';
 import CollectionsDateHeader from '@/components/shared/CollectionsDateHeader';
 import NoticeSection from '@/components/notice/NoticeSection';
-
 
 interface NoticesPageProps {
   searchParams: Promise<{
@@ -23,7 +22,7 @@ export default async function NoticePage({ searchParams }: NoticesPageProps) {
   const query = SearchParams.query || '';
   const date = SearchParams.date || '';
 
-  const { notices, totalPages, error } = await fetchNotices({ category, page, query, date });
+  const { notices, totalPages } = await fetchNotices({ category: category.toLocaleLowerCase(), page, query, date });
 
   return (
     <>

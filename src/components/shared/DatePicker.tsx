@@ -19,7 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useState, useCallback, Suspense } from "react";
+import { useState, useCallback } from "react";
 
 export function DatePicker() {
   const router = useRouter();

@@ -5,7 +5,7 @@ import Article from '@/types/post_objects/article';
 import Notice from '@/types/post_objects/notice';
 import { ArticlesResponse, NoticesResponse } from '@/types/api-responses';
 
-import { fetchTopArticles } from '@/lib/actions/get-top-articles';
+import { fetchTopArticles } from '@/lib/application/get-top-articles';
 
 import MainSection from '@/components/home/MainSection';
 import ArticlesSection from '@/components/articles/ArticleSection';
@@ -41,7 +41,7 @@ async function fetchArticlesByCategory(category: string) {
 
 
 
-async function fetchNotices(category = 'General'): Promise<Notice[]> {
+async function fetchNotices(category = 'general'): Promise<Notice[]> {
     try {
         const response = await axios.get<NoticesResponse>(
             `${BASE_URL}/api/get_news?category=${category}&number=4&limit=4`
@@ -60,9 +60,9 @@ async function fetchNotices(category = 'General'): Promise<Notice[]> {
 
 export default async function Page() {
 
-    const categories = ['Literature', 'Politics', 'Economy'];
+    const categories = ['BNKS', 'World', 'National'];
 
-    const articlesDataPromises = categories.map((category) => fetchArticlesByCategory(category));
+    const articlesDataPromises = categories.map((category: string) => fetchArticlesByCategory(category.toLocaleLowerCase()));
 
     const articlesData = await Promise.all(articlesDataPromises);
 

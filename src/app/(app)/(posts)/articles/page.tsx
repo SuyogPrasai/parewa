@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { fetchArticles } from '@/lib/actions/get-articles';
+import { fetchArticles } from '@/lib/application/get-articles';
 import SideArticleList from '@/components/articles/ArticleCollection';
 import PaginationControls from '@/components/shared/Pagination';
 import CollectionsDateHeader from '@/components/shared/CollectionsDateHeader';
@@ -17,12 +17,12 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
 
     const SearchParams = await searchParams;
 
-    const category = SearchParams.category || 'Literature';
+    const category = SearchParams.category || 'literature';
     const page = Number(SearchParams.page || '1');
     const query = SearchParams.query || '';
     const date = SearchParams.date || '';
 
-    const { articles, totalPages, error } = await fetchArticles({ category, page, query, date });
+    const { articles, totalPages } = await fetchArticles({ category: category.toLocaleLowerCase(), page, query, date });
 
 
     return (
@@ -34,7 +34,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                 <div className="flex flex-col lg:flex-row gap-6 px-4 sm:px-6 lg:px-8">
                     <div className="flex-1 max-w-full lg:max-w-[950px] my-6 sm:my-8">
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4 w-full">
-                            <Suspense fallback={<div>Loading...</div>}>
+                            <Suspense>
                                 <CollectionsDateHeader
                                     initialDate={date}
                                     initialPage={page}
@@ -46,7 +46,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                             <SideArticleList articles={articles} variant="detailed" />
                         </div>
                         <div className="mt-6">
-                            <Suspense fallback={<div>Loading...</div>}>
+                            <Suspense>
                                 <PaginationControls
                                     currentPage={page}
                                     totalPages={totalPages}
@@ -55,7 +55,6 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                                     selectedDate={new Date(date)}
                                 />
                             </Suspense>
-
                         </div>
                     </div>
                 </div>

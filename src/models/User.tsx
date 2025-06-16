@@ -21,7 +21,7 @@ export interface User extends Document {
 // Defining the User schema
 const UserSchema: Schema<User> = new Schema(
   {
-    wp_id: { type: String, required: false, unique: true },
+    wp_id: { type: String, required: false, unique: false },
     username: { type: String, required: true, unique: true, trim: true, lowercase: true  },
     name: { type: String, required: true, trim: true, lowercase: true },
     email: { type: String, required: true, unique: true, trim: true, lowercase: true  },

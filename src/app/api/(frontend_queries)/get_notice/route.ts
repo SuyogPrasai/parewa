@@ -10,8 +10,8 @@ import PositionModel from "@/models/Positions";
 import Notice, { NoticeDB } from "@/types/post_objects/notice";
 
 
-import { parseHTML } from "@/lib/parse/htmlParser";
-import { notice_options } from "@/lib/parse/parsing-options";
+import { parseHTML } from "@/lib/htmlParser";
+import { notice_options } from "@/config/parsing-options";
 
 export async function GET(request: NextRequest) {
     await dbConnect();
