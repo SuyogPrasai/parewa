@@ -54,7 +54,7 @@ export function NoticeCard({
 
           </Link>
         </div>
-        <VoteComponent />
+        <VoteComponent orientation="vertical" voteCount={initialVotes} post_id={id} post_type={"notice"}/>
       </div>
     </Card>
   );

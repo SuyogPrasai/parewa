@@ -1,9 +1,9 @@
+import Image from "next/image";
+import Link from "next/link";
 import { format } from 'date-fns';
 
 import Article from "@/types/post_objects/article";
 
-import Image from "next/image";
-import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card_newsletter";
 
 interface SideArticleCardProps {
@@ -81,7 +81,7 @@ function SideArticleList({ articles = [], variant = "detailed" }: SideArticleLis
     <section className="w-full space-y-6 sm:space-y-8">
       {articles.length > 0 ? (
         articles.map((article) => (
-          <SideArticleCard key={article.link} article={article} variant={variant} />
+          <SideArticleCard key={article._id} article={article} variant={variant} />
         ))
       ) : (
         <p className="text-gray-500 text-center font-roboto text-sm sm:text-base">

@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
 		
 			const { roll, name } = result;
 			const username = roll + name;
-		
+			
 			const newUser = await UserModel.create({
 				username,
 				name,

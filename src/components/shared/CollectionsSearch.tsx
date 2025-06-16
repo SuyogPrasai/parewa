@@ -4,7 +4,6 @@ import { Search } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useState, useCallback } from 'react';
 import { Input } from '../ui/input';
-import { Suspense } from 'react';
 
 function CollectionsSearch() {
   const router = useRouter();

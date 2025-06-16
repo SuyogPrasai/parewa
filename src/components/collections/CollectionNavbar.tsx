@@ -27,7 +27,7 @@ export function Navbar({ navLinks, type }: NavbarProps) {
   const handleLinkClick = useCallback(
     (linkName: string) => {
       setActiveLink(linkName);
-      const params = new URLSearchParams(searchParams);
+      
       if (type === "article") {
         router.push(`/articles?category=${encodeURIComponent(linkName)}`);
       } else if (type === "notice") {
@@ -86,7 +86,7 @@ export function Navbar({ navLinks, type }: NavbarProps) {
                   letterSpacing: '0.05em',
                   fontFamily: 'oswald, sans-serif',
                 }}
-                onClick={() => router.push('/about')}
+                onClick={() => router.push('https://github.com/SuyogPrasai/parewa')}
               >
                 ABOUT
               </div>
@@ -103,9 +103,9 @@ export function Navbar({ navLinks, type }: NavbarProps) {
                   letterSpacing: '0.05em',
                   fontFamily: 'oswald, sans-serif',
                 }}
-                onClick={() => router.push('/contact')}
+                onClick={() => router.push('http://localhost:8080/wp-login.php')}
               >
-                CONTACT
+                SUBMIT
               </div>
             </div>
           </nav>

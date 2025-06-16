@@ -38,14 +38,20 @@ const FooterLinkSection = ({ title, links }: FooterLinkSectionProps) => (
 // Data for Links and Social Media
 // ---
 
-const companyLinks = [
-  { href: "#", text: "About" },
-  { href: "#", text: "Team" },
-  { href: "#", text: "Blog" },
-  { href: "#", text: "Careers" },
-  { href: "#", text: "Contact" },
+const Articles = [
+  { href: "/articles?category=Literature", text: "Literature" },
+  { href: "/articles?category=Science", text: "Science and Tech" },
+  { href: "/articles?category=National", text: "National Articles" },
+  { href: "/articles?category=World", text: "World" },
+  { href: "/articles?category=BNKS", text: "BNKS Stories" },
 ];
-
+const Notices = [
+  { href: "/notices?category=General", text: "Genral News" },
+  { href: "/notices?category=Departments", text: "Department's Message" },
+  { href: "/notices?category=School", text: "School Administration" },
+  { href: "/notices?category=Council", text: "The Student Council" },
+  { href: "/notices?category=Clubs", text: "Clubs and Events" },
+];
 const socialIcons = [
   { Icon: Instagram, href: "https://instagram.com" },
   { Icon: Facebook, href: "https://facebook.com" },
@@ -64,7 +70,7 @@ export default function Footer() {
             <div className="md:col-span-1 text-center md:text-left"> {/* Added text-center for small screens */}
               <h2 className="text-4xl font-bold mb-4 font-oswald text-white">PAREWA</h2>
               <p className="text-sm text-gray-300 mb-6 font-roboto mx-auto md:mx-0 max-w-xs"> {/* Added mx-auto for centering */}
-                A collection of 100+ responsive HTML templates for your startup business or side project.
+                Parewa is a student-driven information delivery platform developed entirely by the students of Budhanilkantha School. <strong>Your news, Your way</strong>
               </p>
               <div className="flex gap-4 justify-center md:justify-start"> {/* Added justify-center for small screens */}
                 {socialIcons.map(({ Icon, href }, index) => (
@@ -76,8 +82,8 @@ export default function Footer() {
             {/* Link Sections - occupies 2 columns on medium+ screens, side by side */}
             {/* Adjusted grid and text alignment for smaller screens */}
             <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:ml-20 font-roboto">
-              <FooterLinkSection title="Company" links={companyLinks} />
-              <FooterLinkSection title="Resources" links={companyLinks} />
+              <FooterLinkSection title="Articles" links={Articles} />
+              <FooterLinkSection title="News & Notices" links={Notices} />
             </div>
           </div>
         </div>

@@ -32,15 +32,15 @@ const navItems = [
 ];
 
 const secondaryNavItems = [
-  { title: "POLITICS", url: "/articles?category=Literature" },
-  { title: "ECONOMY", url: "/articles?category=Literature" },
   { title: "LITERATURE", url: "/articles?category=Literature" },
-  { title: "VIDEOS", url: "/articles?category=Literature" },
-  { title: "DOCUMENTATION", url: "/articles?category=Literature" },
+  { title: "SCIENCE AND TECH", url: "/articles?category=science" },
+  { title: "NATIONAL ARTICLES", url: "/articles?category=national" },
+  { title: "WORLD", url: "/articles?category=world" },
+  { title: "BNKS STORIES", url: "/articles?category=bnks" },
 ];
 const finalNavItems = [
-  { title: "ABOUT", url: "#" },
-  { title: "DOCUMENTATION", url: "#" },
+  { title: "ABOUT", url: "https://github.com/SuyogPrasai/parewa" },
+  { title: "DOCUMENTATION", url: "https://github.com/SuyogPrasai/parewa?tab=readme-ov-file#documentation" },
   { title: "WAYS TO CONTRIBUTE", url: "#" },
   { title: "REPORT A BUG", url: "https://forms.gle/e7LWQa73WBmnsiDS8" },
   { title: "JOBS", url: "https://forms.gle/cybYghNXgoumfKfP6" },
@@ -72,9 +72,11 @@ export function AppSidebar() {
             </SidebarMenu>
             <Separator className="bg-black h-[0.0125rem]" />
             <div className="my-4 w-[75%]">
+              <Link href={"http://localhost:8080/wp-login.php"}>
               <button className="bg-primary text-white py-2 px-4 w-full flex items-center justify-center font-sans font-bold">
                 SUBMIT NOTICE <span className="ml-2 text-lg">→</span>
               </button>
+              </Link>
             </div>
             <Separator className="bg-black h-[0.0125rem]" />
             <div className="pt-4 mb-2">

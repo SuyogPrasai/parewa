@@ -100,7 +100,9 @@ function Navbar({ header_click }: any) {
                 fontFamily: "monospace, sans-serif",
               }}
             >
-              SUBMIT 
+              <Link href="http://localhost:8080/wp-login.php" target="_blank">
+              SUBMIT
+              </Link>
             </div>
           </div>
         </nav>

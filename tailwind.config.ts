@@ -1,5 +1,6 @@
 import { Bebas_Neue } from "next/font/google";
 import type { Config } from "tailwindcss";
+// TODO NEEDS REFACTORING
 
 export default {
 	darkMode: ["class"],

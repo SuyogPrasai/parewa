@@ -7,31 +7,9 @@ import { ArticlesSectionProps } from '@/types/utilities';
 import Article from '@/types/post_objects/article';
 
 import { Card, CardContent } from '@/components/ui/card';
-import { Skeleton } from '@/components/ui/skeleton'; // Assuming you have a Skeleton component from your UI library
-
-import { MainArticleCardSkeleton } from '../skeletons/MainArticleCardSkeleton';
-import { SideArticleCardSkeleton } from '../skeletons/SideArticleCardSkeleton';
-
 
 export default function ArticlesSection({ category, articles }: ArticlesSectionProps) {
-  // Show skeleton loaders if loading
-  // if (isLoading) {
-  //   return (
-  //     <section className="container mx-auto my-10 px-4 sm:px-6 lg:px-8 max-w-[1350px]">
-  //       <Skeleton className="h-12 w-64 mb-6" /> {/* Skeleton for category title */}
-  //       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-6">
-  //         <MainArticleCardSkeleton />
-  //         <div className="flex flex-col gap-6 md:col-span-1">
-  //           <SideArticleCardSkeleton />
-  //           <SideArticleCardSkeleton />
-  //           <SideArticleCardSkeleton />
-  //         </div>
-  //       </div>
-  //     </section>
-  //   );
-  // }
 
-  // Check if articles array is empty after loading
   if (!articles || articles.length === 0) {
     return <section className="container mx-auto my-10 px-4 sm:px-6 lg:px-8">No articles available.</section>;
   }
@@ -43,10 +21,9 @@ export default function ArticlesSection({ category, articles }: ArticlesSectionP
       </Link>
 
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Main Article */}
+
         <MainArticleCard article={articles[0]} />
 
-        {/* Side Articles */}
         <div className="flex flex-col gap-6 md:col-span-1">
           {articles.slice(1).map((article) => (
             <SideArticleCard key={article._id} article={article} />
