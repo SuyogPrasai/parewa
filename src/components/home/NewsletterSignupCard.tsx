@@ -15,15 +15,17 @@ import { Label } from "@/components/ui/label";
 
 async function subscribeToNewsletter(email: string) {
   try {
-    const response = await axios.post("/api/subscribe", { email });
-
-    return { success: true, message: response.data.message || "Thank you for subscribing!" };
-  } catch (error: any ) {
+    const response = await axios.post("/api/add_newsletter", { email });
+    return {
+      success: response.data.success,
+      message: response.data.message || "Newsletter added successfully",
+    };
+  } catch (error: any) {
     console.error("Subscription failed:", error);
     const message =
       error.response?.data?.message ||
       error.message ||
-      "There was an error subscribing. Please try again.";
+      "Failed to add newsletter. Please try again.";
     return { success: false, message };
   }
 }
@@ -38,7 +40,7 @@ export default function NewsletterSignupCard() {
     startTransition(async () => {
       // Basic client-side validation
       if (!email || !email.includes("@")) {
-        setMessage("Please enter a valid email address.");
+        setMessage("Invalid email format");
         return;
       }
 
@@ -65,7 +67,7 @@ export default function NewsletterSignupCard() {
         </CardDescription>
       </CardHeader>
       <CardContent className="p-0">
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="space-y-4">
           <div>
             <Label htmlFor="email" className="sr-only">
               Enter your email address
@@ -82,7 +84,8 @@ export default function NewsletterSignupCard() {
             />
           </div>
           <Button
-            type="submit"
+            type="button"
+            onClick={handleSubmit}
             className="w-full h-12 p-7 border border-primary-high_bright bg-white flex justify-start text-primary-high_bright font-bold text-lg rounded-none hover:bg-white transition disabled:opacity-50"
             disabled={isPending}
           >
@@ -96,11 +99,11 @@ export default function NewsletterSignupCard() {
               </>
             )}
           </Button>
-        </form>
+        </div>
         {message && (
           <p
             className={`mt-4 text-center text-sm font-medium ${
-              message.includes("Thank you") ? "text-primary-block" : "text-red-600"
+              message.includes("successfully") ? "text-primary-block" : "text-red-600"
             }`}
           >
             {message}
