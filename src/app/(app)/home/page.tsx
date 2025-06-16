@@ -41,7 +41,7 @@ async function fetchArticlesByCategory(category: string) {
 
 
 
-async function fetchNotices(category = 'General'): Promise<Notice[]> {
+async function fetchNotices(category = 'general'): Promise<Notice[]> {
     try {
         const response = await axios.get<NoticesResponse>(
             `${BASE_URL}/api/get_news?category=${category}&number=4&limit=4`

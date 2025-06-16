@@ -22,7 +22,7 @@ export default async function NoticePage({ searchParams }: NoticesPageProps) {
   const query = SearchParams.query || '';
   const date = SearchParams.date || '';
 
-  const { notices, totalPages } = await fetchNotices({ category, page, query, date });
+  const { notices, totalPages } = await fetchNotices({ category: category.toLocaleLowerCase(), page, query, date });
 
   return (
     <>
