@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { Instagram, Facebook, X, Linkedin } from 'lucide-react';
+import FooterNewsletter from "./FooterNewsletter";
 
 type SocialIconProps = {
   Icon: React.ComponentType<{ size?: number; className?: string }>;
@@ -39,12 +40,19 @@ const FooterLinkSection = ({ title, links }: FooterLinkSectionProps) => (
 // Data for Links and Social Media
 // ---
 
-const companyLinks = [
-  { href: "#", text: "About" },
-  { href: "#", text: "Team" },
-  { href: "#", text: "Blog" },
-  { href: "#", text: "Careers" },
-  { href: "#", text: "Contact" },
+const Articles = [
+  { href: "/articles?category=Literature", text: "Literature" },
+  { href: "/articles?category=Science", text: "Science and Tech" },
+  { href: "/articles?category=National", text: "National Articles" },
+  { href: "/articles?category=World", text: "World" },
+  { href: "/articles?category=BNKS", text: "BNKS Stories" },
+];
+const Notices = [
+  { href: "/notices?category=General", text: "Genral News" },
+  { href: "/notices?category=Departments", text: "Department's Message" },
+  { href: "/notices?category=School", text: "School Administration" },
+  { href: "/notices?category=Council", text: "The Student Council" },
+  { href: "/notices?category=Clubs", text: "Clubs and Events" },
 ];
 
 const socialIcons = [
@@ -64,8 +72,8 @@ export default function Footer() {
             {/* Logo and Description - occupies 1 column on small screens, 1 on medium+ */}
             <div className="md:col-span-1">
               <h2 className="text-4xl font-bold mb-4 font-oswald text-white">PAREWA</h2>
-              <p className="text-sm text-gray-300 mb-6 font-roboto ">
-                A collection of 100+ responsive HTML templates for your startup business or side project.
+              <p className="text-sm text-gray-300 mb-6 font-roboto mx-auto md:mx-0 max-w-xs"> {/* Added mx-auto for centering */}
+                Parewa is a student-driven information delivery platform developed entirely by the students of Budhanilkantha School. <strong>Your news, Your way</strong>
               </p>
               <div className="flex gap-4 ">
                 {socialIcons.map(({ Icon, href }, index) => (
@@ -76,31 +84,13 @@ export default function Footer() {
 
             {/* Link Sections - occupies 2 columns on medium+ screens, side by side */}
             <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:ml-20  font-roboto text-center"> {/* Changed to grid for better control */}
-              <FooterLinkSection title="Company" links={companyLinks} />
-              <FooterLinkSection title="Resources" links={companyLinks} />
+              <FooterLinkSection title="Articles" links={Articles} />
+              <FooterLinkSection title="News & Notices" links={Notices} />
             </div>
           </div>
 
           {/* Newsletter - Full width at the bottom of the main content section */}
-          <div className="mt-4 border-t border-gray-700 pt-8"> {/* Added top border and padding */}
-            <h3 className="text-xl font-semibold mb-4 text-white font-sans">Newsletter</h3>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <p className="text-sm text-gray-300 mb-2 sm:mb-0">Subscribe to our newsletter for updates.</p>
-              <div className="flex w-full sm:max-w-xs lg:ml-7">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-grow rounded-l-md rounded-r-none text-sm bg-gray-800 text-gray-100 border border-gray-700 focus:border-white transition-colors duration-200 py-2 px-3"
-                />
-                <button className="bg-primary-block text-white rounded-l-none rounded-r-md text-sm whitespace-nowrap hover:bg-light-dark transition-colors duration-200 px-4 py-2">
-                  Subscribe
-                </button>
-              </div>
-            </div>
-            <p className="text-xs text-gray-300 mt-2 sm:mt-0 ">
-              By subscribing, you agree to our <a href="#" className="underline hover:text-white">Privacy Policy</a>
-            </p>
-          </div>
+          <FooterNewsletter />
         </div>
 
         {/* Bottom Footer */}
