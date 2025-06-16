@@ -1,69 +1,108 @@
 "use client";
-import React from 'react';
+
+import React, { useEffect, useState } from 'react';
+
 import { useSession } from 'next-auth/react';
+import { useVote } from '@/hooks/useVote';
 import { useRouter } from 'next/navigation';
+
 import { ArrowUp, ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useVote } from '@/hooks/useVote';
+import { set } from 'mongoose';
 
 interface VoteComponentProps {
-  orientation?: 'vertical' | 'horizontal';
-  initial_votes: number;
-  post_id: string;
-  user_id: string;
-  post_type: string;
+	orientation?: 'vertical' | 'horizontal';
+	post_id: string;
+	post_type: string;
+	voteCount: number;
 }
 
-export default function VoteComponent({ orientation = 'vertical', initial_votes, post_id, user_id, post_type }: VoteComponentProps) {
-  const { data: session, status } = useSession();
-  const router = useRouter();
-  const isVertical = orientation === 'vertical';
-  const flexDirection = isVertical ? 'flex-col' : 'flex-row';
-  const gapClass = isVertical ? 'gap-2' : 'gap-3';
+export default function VoteComponent({
+	orientation = 'vertical',
+	post_id,
+	post_type,
+	voteCount
+}: VoteComponentProps) {
 
-  const { netVotes, activeVote, handleVote } = useVote(initial_votes, post_id, user_id, post_type);
+	const router = useRouter();
 
-  const isUpVoted = activeVote === 'up';
-  const isDownVoted = activeVote === 'down';
+	const { data: session, status } = useSession();
 
-  // Handle click events for upvote/downvote buttons
-  const handleVoteClick = () => {
-    if (status === 'unauthenticated') {
-      router.push('/api/auth/signin');
-      return;
-    }
-    // Add your vote logic here (e.g., API call) for authenticated users
-    console.log('Vote clicked');
-  };
+	const isVertical = orientation === 'vertical';
 
-  // Show loading state while checking authentication
-  if (status === 'loading') {
-    return <div>Loading...</div>;
-  }
+	const user_id = session?.user._id;
 
-  return (
-    <div className={`flex ${flexDirection} items-center justify-center ${gapClass}`}>
-      <Button
-        variant="ghost"
-        size="icon"
-        className="h-9 w-9 rounded-full hover:bg-accent/50 transition-colors"
-        onClick={() => handleVote("up")}
-      >
-        <ArrowUp className="h-5 w-5 text-foreground/70 hover:text-green-500" />
-      </Button>
+	const [isUpVoted, setIsUpVoted] = useState<boolean>(false);
 
-      <span className="font-semibold text-foreground text-lg tabular-nums font-roboto">
-        {netVotes}
-      </span>
+	const [isDownVoted, setIsDownVoted] = useState<boolean>(false);
 
-      <Button
-        variant="ghost"
-        size="icon"
-        className="h-9 w-9 rounded-full hover:bg-accent/50 transition-colors"
-        onClick={() => handleVote("down")}
-      >
-        <ArrowDown className="h-5 w-5 text-foreground/70 hover:text-red-500" />
-      </Button>
-    </div>
-  );
+	const { netVotes, activeVote, handleVote } = useVote({
+		post_id: post_id,
+		user_id: user_id,
+		post_type: post_type,
+		vote_count: voteCount
+	});
+
+
+	const handleVoteClick = (voteType: 1 | 0 | -1) => {
+		if (status === 'unauthenticated') {
+			router.push('/api/auth/signin');
+			return;
+		}
+		handleVote(voteType);
+	};
+
+	useEffect(() => {
+		if (activeVote === 1) {
+			setIsUpVoted(true);
+			setIsDownVoted(false);
+		} else if (activeVote === -1) {
+			setIsUpVoted(false);
+			setIsDownVoted(true);
+		} else {
+			setIsUpVoted(false);
+			setIsDownVoted(false);
+		}
+
+	}, [activeVote])
+
+	return (
+		<div className={`flex ${isVertical ? 'flex-col' : 'flex-row'} items-center justify-center ${isVertical ? 'gap-1' : 'gap-2'}`}>
+			<Button
+				variant="ghost"
+				size="icon"
+				className={`
+          h-9 w-9 rounded-md transition-all duration-200 ease-in-out
+          ${isUpVoted
+						? 'bg-green-100 text-green-600 hover:bg-green-200'
+						: 'text-gray-500 hover:bg-gray-100 hover:text-green-500'
+					}
+        `}
+				onClick={() => handleVoteClick(1)}
+				aria-label="Upvote"
+			>
+				<ArrowUp className="h-5 w-5" />
+			</Button>
+
+			<span className="font-sans text-base font-medium text-gray-800 tabular-nums">
+				{netVotes || 0}
+			</span>
+
+			<Button
+				variant="ghost"
+				size="icon"
+				className={`
+          h-9 w-9 rounded-md transition-all duration-200 ease-in-out
+          ${isDownVoted
+						? 'bg-red-100 text-red-600 hover:bg-red-200'
+						: 'text-gray-500 hover:bg-gray-100 hover:text-red-500'
+					}
+        `}
+				onClick={() => handleVoteClick(-1)}
+				aria-label="Downvote"
+			>
+				<ArrowDown className="h-5 w-5" />
+			</Button>
+		</div>
+	);
 }
