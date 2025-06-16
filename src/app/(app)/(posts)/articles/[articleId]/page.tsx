@@ -47,7 +47,7 @@ async function fetchRelatedArticles(category: string) {
 	}
 }
 
-export default async function ArticlePage({ searchParams }: { searchParams: Promise<{ id: string }>}) {
+export default async function ArticlePage({ searchParams }: { searchParams: Promise<{ id: string }> }) {
 
 	const SearchParams = await searchParams;
 
@@ -78,8 +78,7 @@ export default async function ArticlePage({ searchParams }: { searchParams: Prom
 									{article && (
 										<AuthorCard initials={article.author[0]} name={article.author} timestamp={`${article.publishedIn}`} />
 									)}
-									<VoteComponent orientation="horizontal" initial_votes={article.voteCount || 0} post_id={article._id || ""} user_id={article} post_type="article" />
-								</div>
+									<VoteComponent orientation="horizontal" voteCount={article.voteCount || 0} post_id={article._id || ""} post_type={"article"} />								</div>
 							</div>
 							<div className="flex flex-col lgplus:flex-row gap-5 lg:gap-10 lgplus:w-[105%] mt-6 lg:max-w-[1400px]">
 								<div className="content-component w-full ">

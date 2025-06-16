@@ -8,6 +8,7 @@ import VoteComponent from '@/components/articles/VotingComponent';
 import { Badge } from '@/components/ui/badge';
 
 function NoticeInfo({
+    _id,
     title,
     publishedIn,
     publisher,
@@ -48,9 +49,7 @@ function NoticeInfo({
                             initials={publisher[0].name[0].toUpperCase()}
                         />
                     )}
-                    <VoteComponent
-                        orientation="horizontal"
-                    />
+                    <VoteComponent orientation="horizontal" voteCount={voteCount} post_id={_id || ''} post_type={"notice"} />
                 </div>
             </div>
         </>

@@ -43,6 +43,7 @@ export function useVote({ post_id, user_id, post_type, vote_count }: VoteParams)
 			if (activeVote === 1 || activeVote === -1) {
 				setNetVotes(netVotes - activeVote);
 				setActiveVote(0);
+				type = 0;
 			} else {
 				setNetVotes(netVotes + type); // Fix: Use `type` instead of `activeVote`
 				setActiveVote(type);
@@ -51,7 +52,6 @@ export function useVote({ post_id, user_id, post_type, vote_count }: VoteParams)
 			setNetVotes(netVotes + (type - activeVote));
 			setActiveVote(type);
 		}
-
 		setIsVoting(true);
 
 		try {
@@ -65,7 +65,7 @@ export function useVote({ post_id, user_id, post_type, vote_count }: VoteParams)
 					user_id: user_id,
 					post_id: post_id,
 					post_type: post_type,
-					vote: type, // Fix: Use `type` instead of `activeVote`
+					vote: type,
 				}),
 			});
 
