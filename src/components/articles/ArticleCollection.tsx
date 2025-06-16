@@ -81,7 +81,7 @@ function SideArticleList({ articles = [], variant = "detailed" }: SideArticleLis
     <section className="w-full space-y-6 sm:space-y-8">
       {articles.length > 0 ? (
         articles.map((article) => (
-          <SideArticleCard key={article.link} article={article} variant={variant} />
+          <SideArticleCard key={article._id} article={article} variant={variant} />
         ))
       ) : (
         <p className="text-gray-500 text-center font-roboto text-sm sm:text-base">

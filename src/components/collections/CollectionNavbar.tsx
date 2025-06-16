@@ -103,7 +103,7 @@ export function Navbar({ navLinks, type }: NavbarProps) {
                   letterSpacing: '0.05em',
                   fontFamily: 'oswald, sans-serif',
                 }}
-                onClick={() => router.push('/contact')}
+                onClick={() => router.push('http://localhost:8080/wp-login.php')}
               >
                 SUBMIT
               </div>

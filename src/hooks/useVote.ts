@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function useVote(initialVotes: number) {
+export function useVote(initialVotes: number, post_id: string, user_id: string, post_type: string) {
   const [netVotes, setNetVotes] = useState(initialVotes);
   const [activeVote, setActiveVote] = useState<"up" | "down" | null>(null);
 
