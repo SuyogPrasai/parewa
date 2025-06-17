@@ -40,7 +40,7 @@ function MainArticleCard({ article }: { article: Article }) {
       <Card className="h-full hover:shadow-lg transition-shadow duration-200 rounded-lg overflow-hidden">
         <Link href={article.link || "#"} className="block relative h-56 md:h-72 lg:h-80">
           <Image
-            src={article.featuredImage}
+            src={article.featuredImage || ""}
             alt={article.title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 67vw, 50vw"
@@ -67,7 +67,7 @@ function SideArticleCard({ article }: { article: Article }) {
     <Card className="h-full relative overflow-hidden hover:shadow-md transition-shadow duration-200 rounded-lg z-10">
       <Link href={article.link || "#"} className="flex flex-col md:flex-row h-full">
         <div className="relative w-full md:w-40 flex-shrink-0">
-          <Image src={article.featuredImage} alt={article.title} fill className="object-cover" />
+          <Image src={article.featuredImage || ""} alt={article.title} fill className="object-cover" />
         </div>
         <CardContent className="px-4 pt-4 flex-1 bg-white">
           <div className="relative bg-black w-[70%] rounded-lg h-[0.15rem] mb-2"></div>
