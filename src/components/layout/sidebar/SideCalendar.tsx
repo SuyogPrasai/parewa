@@ -12,12 +12,13 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 
 const SideCalendar = () => {
   const [date, setDate] = useState<Date>(new Date());
+
   const [events, setEvents] = useState<Event[]>([]);
 
   useEffect(() => {
-    const formattedSelectedDate = getFormattedDate(date);
+    const formattedDate = getFormattedDate(date);
     axios
-      .get("/api/get_events?date=" + formattedSelectedDate)
+      .get("/api/get_events?date=" + formattedDate)
       .then((response) => {
         if (response.data.success) {
           setEvents(response.data.events);
@@ -26,6 +27,7 @@ const SideCalendar = () => {
       .catch((error) => console.error("Error fetching events:", error));
   }, [date]);
 
+  // setDate(new Date());
   return (
     <Card className="bg-background shadow-lg border-border/50 p-2">
       <CardHeader className="p-3 flex flex-row items-center">
@@ -64,7 +66,7 @@ const SideCalendar = () => {
               {events.length > 0 ? (
                 events.map((event) => (
                   <Card
-                    key={`${event.start_date}-${event.title}`}
+                    key={`${event._id}`}
                     className="shadow-none mb-2 rounded-none border-none relative flex items-center" // Added flex and items-center
                   >
                     <div className="bg-primary h-full w-[2px] absolute left-0 top-0 rounded-2xl"></div> {/* h-full and top-0 */}
