@@ -91,8 +91,9 @@ You can checkout the scripts on `/scripts` folder on the repository for scripts 
 
 Parewa is made primarily as a two server system with next js acting as the main frontend for the website with wordpress as the headless cms for content management of the site. This allows us for using proper management and segregation of the data and the system. 
 ![Featured Image](public/github_images/Main_systems_architecture.png)
-![Featured Image](public/github_images/file_structure.png)
-![Featured Image](public/github_images/Data_flow_Diagram.png)
+<img src="public/github_images/file_structure.png" alt="File Structure" width="500" height="425"/>
+<img src="public/github_images/Data_flow_Diagram.png" alt="Data Flow" width="500" height="425"/>
+
 
 
 
@@ -102,6 +103,12 @@ Parewa is made primarily as a two server system with next js acting as the main 
 ## Usage Tutorials
 If you have any concerns exploring the full-scale usage of Parewa, please kindly refer to our [YouTube page](https://www.youtube.com/your-channel-url) here. 
 It consits of videos on how to use the entire website to the fullest. 
+
+
+
+
+
+
 
 > [!IMPORTANT]
 > Whether you have feedback on features, have encountered any bugs, or have suggestions for enhancements, we're eager to hear from you. Your insights help us make the PAREWA more robust and user-friendly.
