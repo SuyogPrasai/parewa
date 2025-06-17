@@ -23,14 +23,14 @@ async function fetchNotice(notice_id: string) {
 }
 
 
-async function fetchRelatedNotices(category: string) {
+async function fetchRelatedNotices({ category, excluding }: { category: string, excluding: string }) {
 	try {
-		const response = await axios.get(`${process.env.SITE_BASE_URI}/api/get_news?category=${category}&limit=3`);
+		const response = await axios.get(`${process.env.SITE_BASE_URI}/api/get_news?category=${category}&limit=3&excluding=${excluding}`);
 
 		if (response.data.success) {
 			return response.data.notices;
 		}
-		console.log(`API ${process.env.SITE_BASE_URI}/api/get_news?category=${category} returned success: false`)
+		console.log(`API ${process.env.SITE_BASE_URI}/api/get_news?category=${category}&excluding=${excluding} returned success: false`)
 		return []
 	}
 	catch (error: any) {
@@ -50,7 +50,7 @@ export default async function NoticePage({ searchParams }: { searchParams: Promi
 
 	const notice = await fetchNotice(notice_id);
 
-	const relatedNotices = await fetchRelatedNotices(notice?.category);
+	const relatedNotices = await fetchRelatedNotices({category: notice?.category, excluding: notice_id});
 
 	return (
 		<>

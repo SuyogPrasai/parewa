@@ -19,6 +19,7 @@ export async function GET(request: NextRequest) {
   const limit_ = parseInt(searchParams.get("limit") || "8", 10);
   const query_ = searchParams.get("query");
   const date_ = searchParams.get("date");
+  const exclude_ = searchParams.get("exclude");
 
   if (!category_) {
     return NextResponse.json(
@@ -32,6 +33,14 @@ export async function GET(request: NextRequest) {
       trashed: false,
       category: category_,
     };
+
+    // Handle exclude parameter - can be single ID or comma-separated IDs
+    if (exclude_) {
+      const excludeIds = exclude_.split(',').map(id => id.trim()).filter(id => id);
+      if (excludeIds.length > 0) {
+        matchConditions._id = { $nin: excludeIds };
+      }
+    }
 
     if (query_) {
       matchConditions.$or = [
@@ -102,7 +111,6 @@ export async function GET(request: NextRequest) {
       const publisher_position = await PositionModel.findById(publisher_positionID);
       position_name = publisher_position?.name;
     }
-
 
     const transformed_notices: Notice[] = notices.map((notice: any) => {
 
