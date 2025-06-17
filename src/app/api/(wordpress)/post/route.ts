@@ -68,8 +68,11 @@ export async function POST(request: NextRequest) {
                 content: requestBody['content'],
                 publishedIn: requestBody['publishedIn'],
                 category: requestBody['category'],
+                link: requestBody['link'],
+                author: requestBody['author_name'] || 'Anonymous',
+                show: requestBody['show'],
             } as AnnouncementDB;
-        } 
+        }
         else {
             return NextResponse.json(
                 { success: false, message: "Invalid type" },
@@ -214,7 +217,7 @@ async function handleModifiedEvent(type: string, id: string, data: ArticleDB | N
         const notice = await NoticeModel.findOneAndUpdate({ id }, createFields, { new: true });
         if (!notice) throw new Error("Failed to find the Notice");
         return notice;
-    } else if ( type === "announcement") {
+    } else if (type === "announcement") {
 
         const {
             wp_id,
@@ -223,6 +226,9 @@ async function handleModifiedEvent(type: string, id: string, data: ArticleDB | N
             publishedIn,
             category,
             publisherID,
+            link,
+            show,
+            author
         } = data as AnnouncementDB;
 
         const createFields = {
@@ -230,6 +236,9 @@ async function handleModifiedEvent(type: string, id: string, data: ArticleDB | N
             content,
             category: category.toLowerCase(),
             publisherID,
+            link,
+            show,
+            author
         };
 
         const announcement = await AnnouncementModel.findOneAndUpdate({ wp_id }, createFields, { new: true });
@@ -271,7 +280,7 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
         let link = article_link + article._id;
 
         await ArticleModel.findOneAndUpdate({ wp_id }, { link }, { new: true });
-        
+
     } else if (type === "news") {
         const {
             wp_id,
@@ -299,14 +308,14 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
             category: category.toLowerCase(),
 
         };
-        
+
         let notice = await NoticeModel.create(NoticeData);
         let link = article_link + notice._id;
 
         await sendNoticeNewsLetters(notice);
 
         await NoticeModel.findOneAndUpdate({ wp_id }, { link }, { new: true });
-    } else if ( type === "announcement") {
+    } else if (type === "announcement") {
         const {
             wp_id,
             title,
@@ -314,8 +323,11 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
             publishedIn,
             publisherID,
             category,
+            link,
+            show,
+            author,
         } = data as AnnouncementDB;
-        
+
         const AnnouncementData = {
             wp_id,
             title,
@@ -324,14 +336,13 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
             publisherID,
             trashed: false,
             category: category.toLowerCase(),
-
+            link,
+            show,
+            author,
         };
         let announcement = await AnnouncementModel.create(AnnouncementData);
-        let link = article_link + announcement._id;
 
-        await AnnouncementModel.findOneAndUpdate({ wp_id }, { link }, { new: true });
-
-        await sendAnnouncementNewsLetters(announcement);
+        // await sendAnnouncementNewsLetters(announcement);
     }
 }
 
