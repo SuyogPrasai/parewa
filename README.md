@@ -101,7 +101,7 @@ Parewa is made primarily as a two server system with next js acting as the main 
 
 
 ## Usage Tutorials
-If you have any concerns exploring the full-scale usage of Parewa, please kindly refer to our [YouTube page](https://www.youtube.com/your-channel-url) here. 
+If you have any concerns exploring the full-scale usage of Parewa, please kindly refer to our [YouTube page](https://www.youtube.com/@parewa_bnks) here. 
 It consits of videos on how to use the entire website to the fullest. 
 
 
