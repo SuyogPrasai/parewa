@@ -6,6 +6,7 @@ import ArticleModel from "@/models/Article";
 import Article, { ArticleDB } from "@/types/post_objects/article";
 import RoleModel from "@/models/Role";
 import PositionModel from "@/models/Positions";
+import { article_link } from "@/config/site-config";
 
 export async function GET(request: NextRequest) {
   await dbConnect();
@@ -111,7 +112,9 @@ export async function GET(request: NextRequest) {
           const publisher_position = await PositionModel.findById(article.publisher.positionID);
           position_name = publisher_position?.name || "";
         }
-
+      
+        const link = article_link + article._id
+        
         return {
           _id: article._id,
           wp_id: article.wp_id,
@@ -125,7 +128,7 @@ export async function GET(request: NextRequest) {
           updatedAt: article.updatedAt,
           category: article.category,
           author: article.author,
-          link: article.link,
+          link: link,
           publisher: [
             {
               name: article.publisher?.name || "",

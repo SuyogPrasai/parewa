@@ -29,7 +29,8 @@ export const slides = [
 ];
 
 // Pagination Stuff
-
+export const article_link = "/articles/article?id=";
+export const notice_link = "/notices/notice?id=";
 
 export const ITEMS_PER_PAGE = 8;
 export const MAX_PAGES_TO_SHOW = 5;
