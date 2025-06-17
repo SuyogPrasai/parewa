@@ -12,6 +12,7 @@ import Notice, { NoticeDB } from "@/types/post_objects/notice";
 
 import { parseHTML } from "@/lib/htmlParser";
 import { notice_options } from "@/config/parsing-options";
+import { notice_link } from "@/config/site-config";
 
 export async function GET(request: NextRequest) {
     await dbConnect();
@@ -59,7 +60,9 @@ export async function GET(request: NextRequest) {
             const publisher_position = await PositionModel.findById(publisher_positionID);
             position_name = publisher_position?.name;
         }
-
+        
+        const link = notice_link + notice._id  
+        
         const response_notice_: Notice = { // Changed variable name
             '_id': notice._id,
             'wp_id': notice.wp_id,
@@ -72,7 +75,7 @@ export async function GET(request: NextRequest) {
             'postTags': notice.postTags,         // Assuming notices might have tags
             'updatedAt': notice.updatedAt,
             'category': notice.category,
-            'link': notice.link,
+            'link': link,
             'publisher': [{
                 'name': publisher_name,
                 'username': publisher_username,

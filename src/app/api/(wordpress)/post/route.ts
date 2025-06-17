@@ -14,10 +14,6 @@ import UserModel from "@/models/User";
 import { User } from "@/models/User";
 import AnnouncementModel from "@/models/Announcements";
 
-
-const article_link = "/articles/article?id=";
-const notice_link = "/notices/notice?id=";
-
 export async function POST(request: NextRequest) {
     const API_KEY = process.env.NEXT_WORDPRESS_API;
     await dbConnect(); // Ensure the database connection is established
@@ -277,9 +273,6 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
             author
         };
         let article = await ArticleModel.create(ArticleData);
-        let link = article_link + article._id;
-
-        await ArticleModel.findOneAndUpdate({ wp_id }, { link }, { new: true });
 
     } else if (type === "news") {
         const {
@@ -310,11 +303,9 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
         };
 
         let notice = await NoticeModel.create(NoticeData);
-        let link = article_link + notice._id;
 
         await sendNoticeNewsLetters(notice);
 
-        await NoticeModel.findOneAndUpdate({ wp_id }, { link }, { new: true });
     } else if (type === "announcement") {
         const {
             wp_id,
