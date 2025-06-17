@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Instagram, Facebook, X, Linkedin } from 'lucide-react';
+import { Instagram, Youtube, Github } from 'lucide-react';
 import FooterNewsletter from "./FooterNewsletter";
 
 type SocialIconProps = {
@@ -56,10 +56,9 @@ const Notices = [
 ];
 
 const socialIcons = [
-  { Icon: Instagram, href: "https://instagram.com" },
-  { Icon: Facebook, href: "https://facebook.com" },
-  { Icon: X, href: "https://x.com" },
-  { Icon: Linkedin, href: "https://linkedin.com" },
+  { Icon: Instagram, href: "https://www.instagram.com/parewa_bnks" },
+  { Icon: Github, href: "https://github.com/suyogprasai/parewa" },
+  { Icon: Youtube, href: "https://www.youtube.com/@parewa_bnks" },
 ];
 
 export default function Footer() {
