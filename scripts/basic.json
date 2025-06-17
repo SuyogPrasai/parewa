@@ -1,0 +1,2563 @@
+{
+  "VCALENDAR": [
+    {
+      "VEVENT": [
+        {
+          "DTSTART": "20250102T083000Z",
+          "DTEND": "20250102T093000Z",
+          "SUMMARY": "Sports Day Rehearsal"
+        },
+        {
+          "DTSTART": "20250104",
+          "DTEND": "20250105",
+          "SUMMARY": "Sports Day "
+        },
+        {
+          "DTSTART": "20250104",
+          "DTEND": "20250105",
+          "SUMMARY": "Students go home with Report Card After Program"
+        },
+        {
+          "DTSTART": "20250104",
+          "DTEND": "20250105",
+          "SUMMARY": "Winter break begins "
+        },
+        {
+          "DTSTART": "20250106",
+          "DTEND": "20250107",
+          "SUMMARY": "Workshop for Teachers"
+        },
+        {
+          "DTSTART": "20250107",
+          "DTEND": "20250108",
+          "SUMMARY": "Workshop for Teachers"
+        },
+        {
+          "DTSTART": "20250108",
+          "DTEND": "20250109",
+          "SUMMARY": "Workshop for Teachers"
+        },
+        {
+          "DTSTART": "20250111",
+          "DTEND": "20250112",
+          "SUMMARY": "National Math League (Math Club) in Collaboration with Culinary Club Prithi Jayanti "
+        },
+        {
+          "DTSTART": "20250112",
+          "DTEND": "20250113",
+          "SUMMARY": "National Math League (Math Club)"
+        },
+        {
+          "DTSTART": "20250112",
+          "DTEND": "20250113",
+          "SUMMARY": "Inter School Art Workshop Starts (Art Club)"
+        },
+        {
+          "DTSTART": "20250114",
+          "DTEND": "20250115",
+          "SUMMARY": "Maghi Parva "
+        },
+        {
+          "DTSTART": "20250114",
+          "DTEND": "20250115",
+          "SUMMARY": "Inter School MUN Begins (Interact Club)"
+        },
+        {
+          "DTSTART": "20250117",
+          "DTEND": "20250118",
+          "SUMMARY": "Inter School MUN Ends"
+        },
+        {
+          "DTSTART": "20250118T113000Z",
+          "DTEND": "20250118T123000Z",
+          "SUMMARY": "Students must return by"
+        },
+        {
+          "DTSTART": "20250119",
+          "DTEND": "20250120",
+          "SUMMARY": "Clothing Drive Begins (Social Service Club)"
+        },
+        {
+          "DTSTART": "20250120",
+          "DTEND": "20250121",
+          "SUMMARY": "Class 10 Final Examination Begins"
+        },
+        {
+          "DTSTART": "20250121",
+          "DTEND": "20250122",
+          "SUMMARY": "Clothing Drive Ends"
+        },
+        {
+          "DTSTART": "20250123T104500Z",
+          "DTEND": "20250123T114500Z",
+          "SUMMARY": "Python Programming Competiton for Grades 8-9"
+        },
+        {
+          "DTSTART": "20250124",
+          "DTEND": "20250125",
+          "SUMMARY": "Movie Night for BL in Respective House (Theatre Club)"
+        },
+        {
+          "DTSTART": "20250125",
+          "DTEND": "20250126",
+          "SUMMARY": "Nilgiri House and Pumori House Picnic"
+        },
+        {
+          "DTSTART": "20250125",
+          "DTEND": "20250126",
+          "SUMMARY": "Hiunchuli and Saipal House Day Trek "
+        },
+        {
+          "DTSTART": "20250125",
+          "DTEND": "20250126",
+          "SUMMARY": "Youth Meet Begins (SFON Club)"
+        },
+        {
+          "DTSTART": "20250127",
+          "DTEND": "20250128",
+          "SUMMARY": "Class 10 Final Examination Ends "
+        },
+        {
+          "DTSTART": "20250129",
+          "DTEND": "20250130",
+          "SUMMARY": "Sahid Diwas - a holiday"
+        },
+        {
+          "DTSTART": "20250129",
+          "DTEND": "20250130",
+          "SUMMARY": "Youth Meet Ends "
+        },
+        {
+          "DTSTART": "20250129",
+          "DTEND": "20250130",
+          "SUMMARY": "Photo Walk (Photography Club)"
+        },
+        {
+          "DTSTART": "20250130",
+          "DTEND": "20250131",
+          "SUMMARY": "Sonam Lhosar"
+        },
+        {
+          "DTSTART": "20250131",
+          "DTEND": "20250201",
+          "SUMMARY": "Ends of Fourth / Fifth Grade Assessment for Classes 8-12 A1\\, A2\\, / 5-7 "
+        },
+        {
+          "DTSTART": "20250131T110000Z",
+          "DTEND": "20250131T120000Z",
+          "SUMMARY": "Almuni Talk Show"
+        },
+        {
+          "DTSTART": "20250131T140000Z",
+          "DTEND": "20250131T150000Z",
+          "SUMMARY": "H/H Cultural Night"
+        },
+        {
+          "DTSTART": "20250201",
+          "DTEND": "20250202",
+          "SUMMARY": "Hiunchuli & Saipal House Picnic"
+        },
+        {
+          "DTSTART": "20250201",
+          "DTEND": "20250202",
+          "SUMMARY": "Nilgiri and Pumori House Day Trek "
+        },
+        {
+          "DTSTART": "20250201",
+          "DTEND": "20250202",
+          "SUMMARY": "ICAFT Begins"
+        },
+        {
+          "DTSTART": "20250202",
+          "DTEND": "20250203",
+          "SUMMARY": "Summer Time-table starts"
+        },
+        {
+          "DTSTART": "20250202",
+          "DTEND": "20250203",
+          "SUMMARY": "Project Presentation for Post SEE begins (Physics Dept.)"
+        },
+        {
+          "DTSTART": "20250202",
+          "DTEND": "20250203",
+          "SUMMARY": "C.R. Shakya Week Begins"
+        },
+        {
+          "DTSTART": "20250203",
+          "DTEND": "20250204",
+          "SUMMARY": "Shri Panchami"
+        },
+        {
+          "DTSTART": "20250204",
+          "DTEND": "20250205",
+          "SUMMARY": "Grade Review Meeting"
+        },
+        {
+          "DTSTART": "20250206T025000Z",
+          "DTEND": "20250206T035000Z",
+          "SUMMARY": "School Assembly (BL)"
+        },
+        {
+          "DTSTART": "20250206",
+          "DTEND": "20250207",
+          "SUMMARY": "Project Presentation for Post SEE Ends Physics Dept.)"
+        },
+        {
+          "DTSTART": "20250206",
+          "DTEND": "20250207",
+          "SUMMARY": "C.R. Shakya Week Ends"
+        },
+        {
+          "DTSTART": "20250207",
+          "DTEND": "20250208",
+          "SUMMARY": "Class 10 Trial Examination Begins"
+        },
+        {
+          "DTSTART": "20250207T134500Z",
+          "DTEND": "20250207T144500Z",
+          "SUMMARY": "PH Cultural Night"
+        },
+        {
+          "DTSTART": "20250208",
+          "DTEND": "20250209",
+          "SUMMARY": "Dhaulagiri and Makalu House Picnic"
+        },
+        {
+          "DTSTART": "20250208",
+          "DTEND": "20250209",
+          "SUMMARY": "ICAFT Ends (Closing Ceremony)"
+        },
+        {
+          "DTSTART": "20250209",
+          "DTEND": "20250210",
+          "SUMMARY": "Panel Discussion (Biology Department)"
+        },
+        {
+          "DTSTART": "20250210",
+          "DTEND": "20250211",
+          "SUMMARY": "School Assembly (SL) 8:10 AM"
+        },
+        {
+          "DTSTART": "20250211",
+          "DTEND": "20250212",
+          "SUMMARY": "Three Day Workshop Begins (Scout club) 4\\;30 PM"
+        },
+        {
+          "DTSTART": "20250213",
+          "DTEND": "20250214",
+          "SUMMARY": "Three Day Workshop Ends "
+        },
+        {
+          "DTSTART": "20250213",
+          "DTEND": "20250214",
+          "SUMMARY": "Exploration in Science 2081 (Int. Science Dept.)"
+        },
+        {
+          "DTSTART": "20250214",
+          "DTEND": "20250215",
+          "SUMMARY": "Class 10 Trial Examination Ends"
+        },
+        {
+          "DTSTART": "20250215",
+          "DTEND": "20250216",
+          "SUMMARY": "Idea Pitch (Photography & FYE club) "
+        },
+        {
+          "DTSTART": "20250215",
+          "DTEND": "20250216",
+          "SUMMARY": "Blood Donation Program (YRC)"
+        },
+        {
+          "DTSTART": "20250218",
+          "DTEND": "20250219",
+          "SUMMARY": "School Day"
+        },
+        {
+          "DTSTART": "20250218",
+          "DTEND": "20250219",
+          "SUMMARY": "Students may go home after program"
+        },
+        {
+          "DTSTART": "20250219",
+          "DTEND": "20250220",
+          "SUMMARY": "National Democracy Day"
+        },
+        {
+          "DTSTART": "20250219",
+          "DTEND": "20250220",
+          "SUMMARY": "Class 9 Social Studies Visit Begins"
+        },
+        {
+          "DTSTART": "20250220T123000Z",
+          "DTEND": "20250220T133000Z",
+          "SUMMARY": "Students must return by:"
+        },
+        {
+          "DTSTART": "20250221",
+          "DTEND": "20250222",
+          "SUMMARY": "College Fair"
+        },
+        {
+          "DTSTART": "20250223",
+          "DTEND": "20250224",
+          "SUMMARY": "Class 9 Social Studies visit Ends"
+        },
+        {
+          "DTSTART": "20250224T024000Z",
+          "DTEND": "20250224T034000Z",
+          "SUMMARY": "School Assembly (BL)"
+        },
+        {
+          "DTSTART": "20250224",
+          "DTEND": "20250225",
+          "SUMMARY": "Nilgiri House Presentation"
+        },
+        {
+          "DTSTART": "20250224",
+          "DTEND": "20250225",
+          "SUMMARY": "Integrated science Visit for Grade 8"
+        },
+        {
+          "DTSTART": "20250226",
+          "DTEND": "20250227",
+          "SUMMARY": "Mahashivaratri - a holiday"
+        },
+        {
+          "DTSTART": "20250227",
+          "DTEND": "20250228",
+          "SUMMARY": "Integrated Science Visit for grade 8"
+        },
+        {
+          "DTSTART": "20250228",
+          "DTEND": "20250301",
+          "SUMMARY": "Junior School Play (BL)"
+        },
+        {
+          "DTSTART": "20250228",
+          "DTEND": "20250301",
+          "SUMMARY": "Course Completion of A1 & A2"
+        },
+        {
+          "DTSTART": "20250228",
+          "DTEND": "20250301",
+          "SUMMARY": "Gyalpo Lhosar"
+        },
+        {
+          "DTSTART": "20250301T073000Z",
+          "DTEND": "20250301T083000Z",
+          "SUMMARY": "Junior School Play for Parents (English)"
+        },
+        {
+          "DTSTART": "20250302",
+          "DTEND": "20250303",
+          "SUMMARY": "Class 10 Mock SEE Examination Begins "
+        },
+        {
+          "DTSTART": "20250307",
+          "DTEND": "20250308",
+          "SUMMARY": "Course Completion of Class 12"
+        },
+        {
+          "DTSTART": "20250308",
+          "DTEND": "20250309",
+          "SUMMARY": "International Women`s Day"
+        },
+        {
+          "DTSTART": "20250308",
+          "DTEND": "20250309",
+          "SUMMARY": "Dhaulagiri House and Makalu House Day Trek"
+        },
+        {
+          "DTSTART": "20250309",
+          "DTEND": "20250310",
+          "SUMMARY": "Class 10 Mock SEE Examination Ends "
+        },
+        {
+          "DTSTART": "20250310",
+          "DTEND": "20250311",
+          "SUMMARY": "School Assembly (SL) 8:10 AM"
+        },
+        {
+          "DTSTART": "20250312",
+          "DTEND": "20250313",
+          "SUMMARY": "A1/A2 Trial Examination Begins"
+        },
+        {
+          "DTSTART": "20250313",
+          "DTEND": "20250314",
+          "SUMMARY": "Holi Purnima - a holiday"
+        },
+        {
+          "DTSTART": "20250314T113000Z",
+          "DTEND": "20250314T153000Z",
+          "SUMMARY": "Course Completion for Grades"
+        },
+        {
+          "DTSTART": "20250321T113000Z",
+          "DTEND": "20250321T133000Z",
+          "SUMMARY": "Second Semester Exam ("
+        },
+        {
+          "DTSTART": "20250321",
+          "DTEND": "20250322",
+          "SUMMARY": "Final Exam (9) Trial Exam (Class 12) Begin"
+        },
+        {
+          "DTSTART": "20250321",
+          "DTEND": "20250322",
+          "SUMMARY": "Course Completion of Grade 11"
+        },
+        {
+          "DTSTART": "20250322",
+          "DTEND": "20250323",
+          "SUMMARY": "Teaching Staff Picnic"
+        },
+        {
+          "DTSTART": "20250328",
+          "DTEND": "20250329",
+          "SUMMARY": "Examination End"
+        },
+        {
+          "DTSTART": "20250301T090000Z",
+          "DTEND": "20250301T100000Z",
+          "SUMMARY": "Class 11 Trial Examination Begins"
+        },
+        {
+          "DTSTART": "20250329",
+          "DTEND": "20250330",
+          "SUMMARY": "Ghodejatra"
+        },
+        {
+          "DTSTART": "20250404",
+          "DTEND": "20250405",
+          "SUMMARY": "Class 11 Trial Exam ends"
+        },
+        {
+          "DTSTART": "20250404",
+          "DTEND": "20250405",
+          "SUMMARY": "Report Card Distribution "
+        },
+        {
+          "DTSTART": "20250404",
+          "DTEND": "20250405",
+          "SUMMARY": "Academic Year 2082 begins on May 2\\, 2025"
+        },
+        {
+          "DTSTART": "20250404",
+          "DTEND": "20250405",
+          "SUMMARY": "Baishak 18\\, 2082) Thursday "
+        },
+        {
+          "DTSTART": "20250401T090000Z",
+          "DTEND": "20250401T100000Z",
+          "SUMMARY": "Class 5 Fee-payers Entrance Test 9:00 AM"
+        },
+        {
+          "DTSTART": "20250405",
+          "DTEND": "20250406",
+          "SUMMARY": "Class 5 Fee-payers Entrance Test"
+        },
+        {
+          "DTSTART": "20250429",
+          "DTEND": "20250430",
+          "SUMMARY": "Cambridge International AS/A Level Examination Begins"
+        },
+        {
+          "DTSTART": "20250501",
+          "DTEND": "20250502",
+          "SUMMARY": "International Worker's Day"
+        },
+        {
+          "DTSTART": "20250502",
+          "DTEND": "20250503",
+          "SUMMARY": "Teachers' Training & Annual Planning  "
+        },
+        {
+          "DTSTART": "20250503T123000Z",
+          "DTEND": "20250503T133000Z",
+          "SUMMARY": "Students must return before"
+        },
+        {
+          "DTSTART": "20250504",
+          "DTEND": "20250505",
+          "SUMMARY": "School Assembly (SL)"
+        },
+        {
+          "DTSTART": "20250503",
+          "DTEND": "20250504",
+          "SUMMARY": "Teaching & Admin Heads meeting Department Meeting\\, Pastoral Meeting 9:00 AM"
+        },
+        {
+          "DTSTART": "20250506T104500Z",
+          "DTEND": "20250506T114500Z",
+          "SUMMARY": "Heads of Departments Meeting"
+        },
+        {
+          "DTSTART": "20250507",
+          "DTEND": "20250508",
+          "SUMMARY": "Class 5 Students Arrival "
+        },
+        {
+          "DTSTART": "20250508T024000Z",
+          "DTEND": "20250508T034000Z",
+          "SUMMARY": "School Assembly (BL)"
+        },
+        {
+          "DTSTART": "20250508",
+          "DTEND": "20250509",
+          "SUMMARY": "Class 5 Orientation"
+        },
+        {
+          "DTSTART": "20250509",
+          "DTEND": "20250510",
+          "SUMMARY": "Class 5 Orientation "
+        },
+        {
+          "DTSTART": "20250511T024000Z",
+          "DTEND": "20250511T034000Z",
+          "SUMMARY": "School Assembly (BL)"
+        },
+        {
+          "DTSTART": "20250512",
+          "DTEND": "20250513",
+          "SUMMARY": "Buddha Jayanti - a Holiday"
+        },
+        {
+          "DTSTART": "20250513T104500Z",
+          "DTEND": "20250513T114500Z",
+          "SUMMARY": "Heads of House Meeting"
+        },
+        {
+          "DTSTART": "20250514T113000Z",
+          "DTEND": "20250514T123000Z",
+          "SUMMARY": "Handwriting Competition Class Nepali Department 4:00 PM"
+        },
+        {
+          "DTSTART": "20250518",
+          "DTEND": "20250519",
+          "SUMMARY": "Grade 6 Social Studies Visit"
+        },
+        {
+          "DTSTART": "20250525T024500Z",
+          "DTEND": "20250525T034500Z",
+          "SUMMARY": "School Assembly (BL)"
+        },
+        {
+          "DTSTART": "20250525",
+          "DTEND": "20250526",
+          "SUMMARY": "Grade 5 Social Studies Visit"
+        },
+        {
+          "DTSTART": "20250526T113000Z",
+          "DTEND": "20250526T143000Z",
+          "SUMMARY": "English Handwriting Competition for grade 4:00 PM"
+        },
+        {
+          "DTSTART": "20250528",
+          "DTEND": "20250529",
+          "SUMMARY": "Students may go home after classes."
+        },
+        {
+          "DTSTART": "20250529",
+          "DTEND": "20250530",
+          "SUMMARY": "Republic Day "
+        },
+        {
+          "DTSTART": "20250528T183000Z",
+          "DTEND": "20250529T183000Z",
+          "SUMMARY": "Leave Weekend "
+        },
+        {
+          "DTSTART": "20250529",
+          "DTEND": "20250530",
+          "SUMMARY": "Environment Week Begins (Environment Club). "
+        },
+        {
+          "DTSTART": "20250529T183000Z",
+          "DTEND": "20250530T183000Z",
+          "SUMMARY": "Leave Weekend"
+        },
+        {
+          "DTSTART": "20250531T123000Z",
+          "DTEND": "20250531T133000Z",
+          "SUMMARY": "Students must return before"
+        },
+        {
+          "DTSTART": "20250601T101500Z",
+          "DTEND": "20250601T111500Z",
+          "SUMMARY": "Volleyball/Softball Matches (Girls Class 7)"
+        },
+        {
+          "DTSTART": "20250601T110000Z",
+          "DTEND": "20250601T120000Z",
+          "SUMMARY": "Volleyball/Softball Matches (Girls Class 10)"
+        },
+        {
+          "DTSTART": "20250601",
+          "DTEND": "20250602",
+          "SUMMARY": "Volleyball/ Softball Matches (Boys Class 10) 4:30 PM"
+        },
+        {
+          "DTSTART": "20250602T024000Z",
+          "DTEND": "20250602T034000Z",
+          "SUMMARY": "School Assembly (SL) Annapurna House Presentation"
+        },
+        {
+          "DTSTART": "20250602T101500Z",
+          "DTEND": "20250602T111500Z",
+          "SUMMARY": "Throw ball/Softball Matches (Boys Class 6)"
+        },
+        {
+          "DTSTART": "20250602T101500Z",
+          "DTEND": "20250602T111500Z",
+          "SUMMARY": "Volleyball/softball Matches (Girls Class 8)"
+        },
+        {
+          "DTSTART": "20250602T110000Z",
+          "DTEND": "20250602T120000Z",
+          "SUMMARY": "Volleyball/Softball Matches (Girls Class 9 )"
+        },
+        {
+          "DTSTART": "20250603",
+          "DTEND": "20250604",
+          "SUMMARY": "Throw Ball/ Softball Matches (Boys Class 5) 3:45 PM"
+        },
+        {
+          "DTSTART": "20250603",
+          "DTEND": "20250604",
+          "SUMMARY": "Volleyball/ Softball Matches (Boys Class 9 ) 4:30 PM"
+        },
+        {
+          "DTSTART": "20250603T110000Z",
+          "DTEND": "20250603T120000Z",
+          "SUMMARY": "Volleyball/ Softball Matches Super League"
+        },
+        {
+          "DTSTART": "20250604T110000Z",
+          "DTEND": "20250604T120000Z",
+          "SUMMARY": "Volleyball/Softball Matches Super League Boys"
+        },
+        {
+          "DTSTART": "20250604",
+          "DTEND": "20250605",
+          "SUMMARY": "Throw ball/Softball Matches (Girls Class 6 ) 3:45"
+        },
+        {
+          "DTSTART": "20250604T101500Z",
+          "DTEND": "20250604T111500Z",
+          "SUMMARY": "Volleyball/ Softball Matches (Boys Class 8)"
+        },
+        {
+          "DTSTART": "20250605T110000Z",
+          "DTEND": "20250605T120000Z",
+          "SUMMARY": "Volleyball/Softball Matches Super League Boys"
+        },
+        {
+          "DTSTART": "20250605",
+          "DTEND": "20250606",
+          "SUMMARY": "Volleyball/Softball Matches (Girls Class 10)"
+        },
+        {
+          "DTSTART": "20250605",
+          "DTEND": "20250606",
+          "SUMMARY": "Volleyball/Softball Matches (Girls Class 7)"
+        },
+        {
+          "DTSTART": "20250606",
+          "DTEND": "20250607",
+          "SUMMARY": "Throwball/Softball Matches (Boys Class 6) 3:45 PM"
+        },
+        {
+          "DTSTART": "20250606T110000Z",
+          "DTEND": "20250606T120000Z",
+          "SUMMARY": "Volleyball/ Softball Matches (Boys Class 10 )"
+        },
+        {
+          "DTSTART": "20250606T101500Z",
+          "DTEND": "20250606T111500Z",
+          "SUMMARY": "Throwball/Softball Matches (Girls Class 5)"
+        },
+        {
+          "DTSTART": "20250608T024000Z",
+          "DTEND": "20250608T034000Z",
+          "SUMMARY": "School Assembly (BL)"
+        },
+        {
+          "DTSTART": "20250608T110000Z",
+          "DTEND": "20250608T120000Z",
+          "SUMMARY": "Volleyball/Softball Matches Super League Girls"
+        },
+        {
+          "DTSTART": "20250608T101500Z",
+          "DTEND": "20250608T111500Z",
+          "SUMMARY": "Volleyball/Softball Matches (Girls Class 8)"
+        },
+        {
+          "DTSTART": "20250608T101500Z",
+          "DTEND": "20250608T111500Z",
+          "SUMMARY": "Throw ball/Softball Matches (Boys Class 5)"
+        },
+        {
+          "DTSTART": "20250609T110000Z",
+          "DTEND": "20250609T120000Z",
+          "SUMMARY": "Volleyball/Softball Matches Super League Boys 4:30 PM"
+        },
+        {
+          "DTSTART": "20250609",
+          "DTEND": "20250610",
+          "SUMMARY": "Throwball/Softball Matches (Girls Class 5) 3:45 PM"
+        },
+        {
+          "DTSTART": "20250609T110000Z",
+          "DTEND": "20250609T120000Z",
+          "SUMMARY": "Volleyball/Softball Matches (Girls Class 9)"
+        },
+        {
+          "DTSTART": "20250610T101500Z",
+          "DTEND": "20250610T111500Z",
+          "SUMMARY": "Throwball/Softball Matches (Girls Class 6)"
+        },
+        {
+          "DTSTART": "20250610T101500Z",
+          "DTEND": "20250610T111500Z",
+          "SUMMARY": "Volleyball/Softball Matches (Boys Class 7)"
+        },
+        {
+          "DTSTART": "20250611T101500Z",
+          "DTEND": "20250611T111500Z",
+          "SUMMARY": "Volleyball/Softball Matches (Boys Class 8)"
+        },
+        {
+          "DTSTART": "20250611T110000Z",
+          "DTEND": "20250611T120000Z",
+          "SUMMARY": "Volleyball/Softball Matches (Boys Class 9)"
+        },
+        {
+          "DTSTART": "20250611",
+          "DTEND": "20250612",
+          "SUMMARY": "Cambridge International AS/A Level Exam ends."
+        },
+        {
+          "DTSTART": "20250611",
+          "DTEND": "20250612",
+          "SUMMARY": "Farewell for 6000 E batch"
+        },
+        {
+          "DTSTART": "20250612",
+          "DTEND": "20250613",
+          "SUMMARY": "End of First Grade Assessment Period"
+        },
+        {
+          "DTSTART": "20250612",
+          "DTEND": "20250613",
+          "SUMMARY": "7000 E Batch Educational Visit"
+        },
+        {
+          "DTSTART": "20250613",
+          "DTEND": "20250614",
+          "SUMMARY": "7000 E Batch Educational Visit"
+        },
+        {
+          "DTSTART": "20250613T104500Z",
+          "DTEND": "20250613T114500Z",
+          "SUMMARY": "English Debate for grades 9 & 10"
+        },
+        {
+          "DTSTART": "20250614",
+          "DTEND": "20250615",
+          "SUMMARY": "7000 E Batch Educational Visit"
+        },
+        {
+          "DTSTART": "20250616T024000Z",
+          "DTEND": "20250616T034000Z",
+          "SUMMARY": "School Assembly (SL)"
+        },
+        {
+          "DTSTART": "20250616",
+          "DTEND": "20250617",
+          "SUMMARY": "Kanchenjunga House Presentation "
+        },
+        {
+          "DTSTART": "20250617T104500Z",
+          "DTEND": "20250617T114500Z",
+          "SUMMARY": "Grade Review Meeting"
+        },
+        {
+          "DTSTART": "20250618T093000Z",
+          "DTEND": "20250618T103000Z",
+          "SUMMARY": "A1 Students (8000 E Batch Arrival ) 12 :"
+        },
+        {
+          "DTSTART": "20250619T104500Z",
+          "DTEND": "20250619T114500Z",
+          "SUMMARY": "Club Fair"
+        },
+        {
+          "DTSTART": "20250620T140000Z",
+          "DTEND": "20250620T150000Z",
+          "SUMMARY": "KH Cultural Night"
+        },
+        {
+          "DTSTART": "20250621",
+          "DTEND": "20250622",
+          "SUMMARY": "Intra School Debate (interact Club)"
+        },
+        {
+          "DTSTART": "20250622T104500Z",
+          "DTEND": "20250622T114500Z",
+          "SUMMARY": "A2/12 GC Session-1 (Assembly Hall)"
+        },
+        {
+          "DTSTART": "20250623T024000Z",
+          "DTEND": "20250623T034000Z",
+          "SUMMARY": "School Assembly (BL) Nilgiri House Presentation"
+        },
+        {
+          "DTSTART": "20250623T103000Z",
+          "DTEND": "20250623T113000Z",
+          "SUMMARY": "Integrated Science Quiz for grades 7 and 8"
+        },
+        {
+          "DTSTART": "20250624T110000Z",
+          "DTEND": "20250624T120000Z",
+          "SUMMARY": "Gamers Meet (ARC and Sports & Fitness Club)"
+        },
+        {
+          "DTSTART": "20250625T110000Z",
+          "DTEND": "20250625T120000Z",
+          "SUMMARY": "Gamers Meet (ARC and Sports & Fitness Club)"
+        },
+        {
+          "DTSTART": "20250626T024000Z",
+          "DTEND": "20250626T034000Z",
+          "SUMMARY": "School Assembly (SL)"
+        },
+        {
+          "DTSTART": "20250626T110000Z",
+          "DTEND": "20250626T120000Z",
+          "SUMMARY": "Gamers Meet (ARC and Sports & Fitness Club)"
+        },
+        {
+          "DTSTART": "20250627",
+          "DTEND": "20250628",
+          "SUMMARY": "Culinary Workshop (Creativity Club) 4:40 PM"
+        },
+        {
+          "DTSTART": "20250627T140000Z",
+          "DTEND": "20250627T150000Z",
+          "SUMMARY": "AH Cultural Night"
+        },
+        {
+          "DTSTART": "20250628",
+          "DTEND": "20250629",
+          "SUMMARY": "Culinary Workshop (Creativity Club)"
+        },
+        {
+          "DTSTART": "20250628",
+          "DTEND": "20250629",
+          "SUMMARY": "Leo Cultural Fair (Leo Club)"
+        },
+        {
+          "DTSTART": "20250629T113000Z",
+          "DTEND": "20250629T143000Z",
+          "SUMMARY": "Nepali Poem Reading Competition Grade 4:00 PM"
+        },
+        {
+          "DTSTART": "20250630T024000Z",
+          "DTEND": "20250630T034000Z",
+          "SUMMARY": "School Assembly (SL) Jugal House Presentation"
+        },
+        {
+          "DTSTART": "20250701T110000Z",
+          "DTEND": "20250701T120000Z",
+          "SUMMARY": "How to use camera (Photography Club)"
+        },
+        {
+          "DTSTART": "20250702T104500Z",
+          "DTEND": "20250702T114500Z",
+          "SUMMARY": "Original English Story Writing Competition for all"
+        },
+        {
+          "DTSTART": "20250703T024000Z",
+          "DTEND": "20250703T034000Z",
+          "SUMMARY": "School Assembly (BL)"
+        },
+        {
+          "DTSTART": "20250703",
+          "DTEND": "20250704",
+          "SUMMARY": "Inter House Science Quiz (BL) Science Club 4:15 PM"
+        },
+        {
+          "DTSTART": "20250704",
+          "DTEND": "20250705",
+          "SUMMARY": "Publication of BNKS Chronicle"
+        },
+        {
+          "DTSTART": "20250704",
+          "DTEND": "20250705",
+          "SUMMARY": "Students may go home after classes."
+        },
+        {
+          "DTSTART": "20250706",
+          "DTEND": "20250707",
+          "SUMMARY": "Parents- Teachers Meeting for Class 8"
+        },
+        {
+          "DTSTART": "20250706T123000Z",
+          "DTEND": "20250706T133000Z",
+          "SUMMARY": "Students must return before"
+        },
+        {
+          "DTSTART": "20250707T024000Z",
+          "DTEND": "20250707T034000Z",
+          "SUMMARY": "School Assembly (BL)"
+        },
+        {
+          "DTSTART": "20250707",
+          "DTEND": "20250708",
+          "SUMMARY": "Inter House Science Quiz (SL) Science Club 4:15 PM"
+        },
+        {
+          "DTSTART": "20250708T110000Z",
+          "DTEND": "20250708T120000Z",
+          "SUMMARY": "TED Talk Interact Club"
+        },
+        {
+          "DTSTART": "20250709",
+          "DTEND": "20250710",
+          "SUMMARY": "Clothing Drive Youth Redcross Club"
+        },
+        {
+          "DTSTART": "20250711T110000Z",
+          "DTEND": "20250711T120000Z",
+          "SUMMARY": "Alumni Talk Show"
+        },
+        {
+          "DTSTART": "20250712",
+          "DTEND": "20250713",
+          "SUMMARY": "Annual Dance Competition 7000 E Batch"
+        },
+        {
+          "DTSTART": "20250713T024000Z",
+          "DTEND": "20250713T034000Z",
+          "SUMMARY": "Bhanu Jayanti"
+        },
+        {
+          "DTSTART": "20250713T101500Z",
+          "DTEND": "20250713T111500Z",
+          "SUMMARY": "Football Matches (Boys Class 8)"
+        },
+        {
+          "DTSTART": "20250713T110000Z",
+          "DTEND": "20250713T120000Z",
+          "SUMMARY": "Football Matches (Boys Class 9 )"
+        },
+        {
+          "DTSTART": "20250714",
+          "DTEND": "20250715",
+          "SUMMARY": "School Assembly (SL) Tilicho House Presentation Integrated Science Quiz Grades 5 and 6 4:00 PM"
+        },
+        {
+          "DTSTART": "20250714",
+          "DTEND": "20250715",
+          "SUMMARY": "Football Matches (Boys Class 10 ) 4:30 PM"
+        },
+        {
+          "DTSTART": "20250714",
+          "DTEND": "20250715",
+          "SUMMARY": "Football Matches (Boys Class 7) 3:45 PM"
+        },
+        {
+          "DTSTART": "20250715T110000Z",
+          "DTEND": "20250715T120000Z",
+          "SUMMARY": "Football Matches (Girls Class 10)"
+        },
+        {
+          "DTSTART": "20250715T101500Z",
+          "DTEND": "20250715T111500Z",
+          "SUMMARY": "Football Matches (Boys Class 6)"
+        },
+        {
+          "DTSTART": "20250716T110000Z",
+          "DTEND": "20250716T120000Z",
+          "SUMMARY": "Football Matches Super League"
+        },
+        {
+          "DTSTART": "20250716T101500Z",
+          "DTEND": "20250716T111500Z",
+          "SUMMARY": "Football Matches (Girls Class 7)"
+        },
+        {
+          "DTSTART": "20250717T024000Z",
+          "DTEND": "20250717T034000Z",
+          "SUMMARY": "School Assembly (BL)"
+        },
+        {
+          "DTSTART": "20250717",
+          "DTEND": "20250718",
+          "SUMMARY": "Football Matches (Boys Class 5) 3:45 PM"
+        },
+        {
+          "DTSTART": "20250717",
+          "DTEND": "20250718",
+          "SUMMARY": "Football Matches (Girls Class 8) 4:15 PM"
+        },
+        {
+          "DTSTART": "20250717",
+          "DTEND": "20250718",
+          "SUMMARY": "Football Matches (Girls Class 9) 4:30 PM"
+        },
+        {
+          "DTSTART": "20250718T140000Z",
+          "DTEND": "20250718T150000Z",
+          "SUMMARY": "Tilicho House Cultural Night"
+        },
+        {
+          "DTSTART": "20250718T104500Z",
+          "DTEND": "20250718T114500Z",
+          "SUMMARY": "Football Matches (Girls Class 5)"
+        },
+        {
+          "DTSTART": "20250718T101500Z",
+          "DTEND": "20250718T111500Z",
+          "SUMMARY": "Football Matches (Girls Class 6)"
+        },
+        {
+          "DTSTART": "20250719",
+          "DTEND": "20250720",
+          "SUMMARY": "Parents- Teachers Meeting for Class 5 9:00 AM"
+        },
+        {
+          "DTSTART": "20250719",
+          "DTEND": "20250720",
+          "SUMMARY": "Intra School MUN (Interact Club)"
+        },
+        {
+          "DTSTART": "20250720T110000Z",
+          "DTEND": "20250720T120000Z",
+          "SUMMARY": "Football Matches (Boys Class 8)"
+        },
+        {
+          "DTSTART": "20250720T101500Z",
+          "DTEND": "20250720T111500Z",
+          "SUMMARY": "Football Matches (Boys Class 9)"
+        },
+        {
+          "DTSTART": "20250720T103000Z",
+          "DTEND": "20250720T113000Z",
+          "SUMMARY": "GC Session for Grade 10 (Assembly Hall)"
+        },
+        {
+          "DTSTART": "20250721",
+          "DTEND": "20250722",
+          "SUMMARY": "School Assembly (BL) Pumori House Presentation 8:10 AM"
+        },
+        {
+          "DTSTART": "20250721T110000Z",
+          "DTEND": "20250721T120000Z",
+          "SUMMARY": "Football Matches (Boys Class 10 )"
+        },
+        {
+          "DTSTART": "20250721",
+          "DTEND": "20250722",
+          "SUMMARY": "Football Matches (Boys Class 7) "
+        },
+        {
+          "DTSTART": "20250722T110000Z",
+          "DTEND": "20250722T120000Z",
+          "SUMMARY": "Football Matches (Girls Class 10 )"
+        },
+        {
+          "DTSTART": "20250722T101500Z",
+          "DTEND": "20250722T111500Z",
+          "SUMMARY": "Football Matches (Boys Class 6)"
+        },
+        {
+          "DTSTART": "20250723T104500Z",
+          "DTEND": "20250723T114500Z",
+          "SUMMARY": "Football Matches Super league"
+        },
+        {
+          "DTSTART": "20250723T110000Z",
+          "DTEND": "20250723T120000Z",
+          "SUMMARY": "Football Matches (Girls Class 8 )"
+        },
+        {
+          "DTSTART": "20250724T024000Z",
+          "DTEND": "20250724T034000Z",
+          "SUMMARY": "School Assembly (SL)"
+        },
+        {
+          "DTSTART": "20250724T101500Z",
+          "DTEND": "20250724T111500Z",
+          "SUMMARY": "Football Matches (Girls Class 5)"
+        },
+        {
+          "DTSTART": "20250724T110000Z",
+          "DTEND": "20250724T120000Z",
+          "SUMMARY": "Football Matches (Girls Class 9 )"
+        },
+        {
+          "DTSTART": "20250725T101500Z",
+          "DTEND": "20250725T111500Z",
+          "SUMMARY": "Football Matches (Boys Class 5)"
+        },
+        {
+          "DTSTART": "20250725T104500Z",
+          "DTEND": "20250725T114500Z",
+          "SUMMARY": "Football Matches (Girls Class 6)"
+        },
+        {
+          "DTSTART": "20250725T111500Z",
+          "DTEND": "20250725T121500Z",
+          "SUMMARY": "Football Matches (Girls Class 7)"
+        },
+        {
+          "DTSTART": "20250725T140000Z",
+          "DTEND": "20250725T150000Z",
+          "SUMMARY": "Jugal House Night"
+        },
+        {
+          "DTSTART": "20250726T033000Z",
+          "DTEND": "20250726T053000Z",
+          "SUMMARY": "Parents- Teachers Meeting for Class 6"
+        },
+        {
+          "DTSTART": "20250726",
+          "DTEND": "20250727",
+          "SUMMARY": "Talent Show 2025 (Creativity Club)"
+        },
+        {
+          "DTSTART": "20250727",
+          "DTEND": "20250728",
+          "SUMMARY": "GC Session for Grade A1/11 (Assembly Hall) 4:00 PM"
+        },
+        {
+          "DTSTART": "20250727",
+          "DTEND": "20250728",
+          "SUMMARY": "Creativity Week begins."
+        },
+        {
+          "DTSTART": "20250728T024000Z",
+          "DTEND": "20250728T034000Z",
+          "SUMMARY": "School Assembly (SL)"
+        },
+        {
+          "DTSTART": "20250728",
+          "DTEND": "20250729",
+          "SUMMARY": "Choyu House Presentation "
+        },
+        {
+          "DTSTART": "20250728",
+          "DTEND": "20250729",
+          "SUMMARY": "Fintoon (FYE and Art Club)"
+        },
+        {
+          "DTSTART": "20250729T110000Z",
+          "DTEND": "20250729T120000Z",
+          "SUMMARY": "Ted Talk (Interact Club)"
+        },
+        {
+          "DTSTART": "20250731",
+          "DTEND": "20250801",
+          "SUMMARY": "End of Second Grade Assessment Period"
+        },
+        {
+          "DTSTART": "20250731T110000Z",
+          "DTEND": "20250731T120000Z",
+          "SUMMARY": "Art Dance Music Competition (Art Club)"
+        },
+        {
+          "DTSTART": "20250801",
+          "DTEND": "20250802",
+          "SUMMARY": "Creativity"
+        },
+        {
+          "DTSTART": "20250801T033000Z",
+          "DTEND": "20250801T043000Z",
+          "SUMMARY": "Debate Competition Grade 4:15 PM"
+        },
+        {
+          "DTSTART": "20250802T033000Z",
+          "DTEND": "20250802T053000Z",
+          "SUMMARY": "Parents Teacher Meeting for Class"
+        },
+        {
+          "DTSTART": "20250802",
+          "DTEND": "20250803",
+          "SUMMARY": "STEM Olympics (ARC\\, Science and Math Club)"
+        },
+        {
+          "DTSTART": "20250803T103000Z",
+          "DTEND": "20250803T113000Z",
+          "SUMMARY": "Nepali Typing Competition Grade 7"
+        },
+        {
+          "DTSTART": "20250804T024000Z",
+          "DTEND": "20250804T034000Z",
+          "SUMMARY": "School Assembly (BL)"
+        },
+        {
+          "DTSTART": "20250805T104500Z",
+          "DTEND": "20250805T114500Z",
+          "SUMMARY": "Grade Review Meeting"
+        },
+        {
+          "DTSTART": "20250805",
+          "DTEND": "20250806",
+          "SUMMARY": "School Play (English ) for SL"
+        },
+        {
+          "DTSTART": "20250806",
+          "DTEND": "20250807",
+          "SUMMARY": "School Play (English ) for BL"
+        },
+        {
+          "DTSTART": "20250807",
+          "DTEND": "20250808",
+          "SUMMARY": "School Play (English ) for other schools"
+        },
+        {
+          "DTSTART": "20250808",
+          "DTEND": "20250809",
+          "SUMMARY": "School Play for parents "
+        },
+        {
+          "DTSTART": "20250808",
+          "DTEND": "20250809",
+          "SUMMARY": "Students may go home after classes. "
+        },
+        {
+          "DTSTART": "20250809",
+          "DTEND": "20250810",
+          "SUMMARY": "Rakshabandhan - A holiday"
+        },
+        {
+          "DTSTART": "20250809",
+          "DTEND": "20250810",
+          "SUMMARY": "BNKS Pitch Desk (FYE)"
+        },
+        {
+          "DTSTART": "20250810",
+          "DTEND": "20250811",
+          "SUMMARY": "Gaijatra - a Holiday"
+        },
+        {
+          "DTSTART": "20250811T023000Z",
+          "DTEND": "20250811T033000Z",
+          "SUMMARY": "Students must return before"
+        },
+        {
+          "DTSTART": "20250811T110000Z",
+          "DTEND": "20250811T120000Z",
+          "SUMMARY": "Original English Poetry Writing Competition for all Climate\\, Youth\\, and Sustainability Week begins (Environment and FYE Club.)"
+        },
+        {
+          "DTSTART": "20250815",
+          "DTEND": "20250816",
+          "SUMMARY": "Climate\\, Youth\\, and Sustainability Environment and FYE Club)."
+        },
+        {
+          "DTSTART": "20250815T140000Z",
+          "DTEND": "20250815T150000Z",
+          "SUMMARY": "RH Cultural Night"
+        },
+        {
+          "DTSTART": "20250816",
+          "DTEND": "20250817",
+          "SUMMARY": "Shrikrishna Janmashtami"
+        },
+        {
+          "DTSTART": "20250816",
+          "DTEND": "20250817",
+          "SUMMARY": "Disaster Risk Management Program (Leo Club)"
+        },
+        {
+          "DTSTART": "20250817T073000Z",
+          "DTEND": "20250817T083000Z",
+          "SUMMARY": "Swim Fest Opening Ceremony"
+        },
+        {
+          "DTSTART": "20250818T024000Z",
+          "DTEND": "20250818T034000Z",
+          "SUMMARY": "School Assembly (BL)( Jugal House Presentation"
+        },
+        {
+          "DTSTART": "20250818T090000Z",
+          "DTEND": "20250818T100000Z",
+          "SUMMARY": "Swim Fest"
+        },
+        {
+          "DTSTART": "20250819T090000Z",
+          "DTEND": "20250819T100000Z",
+          "SUMMARY": "Swim Fest"
+        },
+        {
+          "DTSTART": "20250820T090000Z",
+          "DTEND": "20250820T100000Z",
+          "SUMMARY": "Swim Fest Closing Ceremony"
+        },
+        {
+          "DTSTART": "20250821T024000Z",
+          "DTEND": "20250821T034000Z",
+          "SUMMARY": "School Assembly (SL)"
+        },
+        {
+          "DTSTART": "20250821",
+          "DTEND": "20250822",
+          "SUMMARY": "Nepali Poem Writing Competition f( 5-12/A Level) 4:15 PM"
+        },
+        {
+          "DTSTART": "20250822",
+          "DTEND": "20250823",
+          "SUMMARY": "Block Programming Competition (Grade 6) 4:00 PM"
+        },
+        {
+          "DTSTART": "20250822T140000Z",
+          "DTEND": "20250822T150000Z",
+          "SUMMARY": "CH Cultural Night"
+        },
+        {
+          "DTSTART": "20250823T033000Z",
+          "DTEND": "20250823T053000Z",
+          "SUMMARY": "Parents- Teachers Meeting for Class 10"
+        },
+        {
+          "DTSTART": "20250801T090000Z",
+          "DTEND": "20250801T100000Z",
+          "SUMMARY": "Culinary Workshop (Creativity Club)"
+        },
+        {
+          "DTSTART": "20250823",
+          "DTEND": "20250824",
+          "SUMMARY": " Graphic Design Workshop (ARC and Art)"
+        },
+        {
+          "DTSTART": "20250823",
+          "DTEND": "20250824",
+          "SUMMARY": "Poetry Workshop for SL ( Art Club)"
+        },
+        {
+          "DTSTART": "20250824T104500Z",
+          "DTEND": "20250824T114500Z",
+          "SUMMARY": "A2/12 GC Session-2 (Assembly Hall)"
+        },
+        {
+          "DTSTART": "20250825T024000Z",
+          "DTEND": "20250825T034000Z",
+          "SUMMARY": "School Assembly (SL) R/H Presentation"
+        },
+        {
+          "DTSTART": "20250825",
+          "DTEND": "20250826",
+          "SUMMARY": "Integrated Science Visit for Grade 7"
+        },
+        {
+          "DTSTART": "20250825T110000Z",
+          "DTEND": "20250825T120000Z",
+          "SUMMARY": "Sports Week begins (Sports and Fitness Club)."
+        },
+        {
+          "DTSTART": "20250826",
+          "DTEND": "20250827",
+          "SUMMARY": "Teej "
+        },
+        {
+          "DTSTART": "20250826T110000Z",
+          "DTEND": "20250826T120000Z",
+          "SUMMARY": "Ted Talk (Interact Club)"
+        },
+        {
+          "DTSTART": "20250828",
+          "DTEND": "20250829",
+          "SUMMARY": "School Assembly (BL)"
+        },
+        {
+          "DTSTART": "20250828T024000Z",
+          "DTEND": "20250828T034000Z",
+          "SUMMARY": "Integrated Science Visit for Grade 7"
+        },
+        {
+          "DTSTART": "20250829",
+          "DTEND": "20250830",
+          "SUMMARY": "BNKS National Hackathon (ARC)"
+        },
+        {
+          "DTSTART": "20250829T110000Z",
+          "DTEND": "20250829T120000Z",
+          "SUMMARY": "Culinary Workshop (Creativity Club)"
+        },
+        {
+          "DTSTART": "20250829T140000Z",
+          "DTEND": "20250829T150000Z",
+          "SUMMARY": "P?H Cultural Night"
+        },
+        {
+          "DTSTART": "20250830T033000Z",
+          "DTEND": "20250830T053000Z",
+          "SUMMARY": "Parents- Teachers Meeting for Class 7"
+        },
+        {
+          "DTSTART": "20250830",
+          "DTEND": "20250831",
+          "SUMMARY": "BNKS National Hackathon (ARC)"
+        },
+        {
+          "DTSTART": "20250830",
+          "DTEND": "20250831",
+          "SUMMARY": "Culinary Workshop (Creativity Club) "
+        },
+        {
+          "DTSTART": "20250830",
+          "DTEND": "20250831",
+          "SUMMARY": "SEBS AGM"
+        },
+        {
+          "DTSTART": "20250831",
+          "DTEND": "20250901",
+          "SUMMARY": "Publication of BNKS Chronicle "
+        },
+        {
+          "DTSTART": "20250901T024000Z",
+          "DTEND": "20250901T034000Z",
+          "SUMMARY": "School Assembly (BL) Hiunchuli House Presentition"
+        },
+        {
+          "DTSTART": "20250901",
+          "DTEND": "20250902",
+          "SUMMARY": "Sports Sports and Fitness Club)."
+        },
+        {
+          "DTSTART": "20250902",
+          "DTEND": "20250903",
+          "SUMMARY": "Heads of Departments/ Heads of Houses Meeting 4:15 PM "
+        },
+        {
+          "DTSTART": "20250902T110000Z",
+          "DTEND": "20250902T120000Z",
+          "SUMMARY": "Inspirational Social Worker Talk Show (Social Service Club)"
+        },
+        {
+          "DTSTART": "20250903T103000Z",
+          "DTEND": "20250903T113000Z",
+          "SUMMARY": "Python Programming Competition for Grade 8 and 9"
+        },
+        {
+          "DTSTART": "20250904T103000Z",
+          "DTEND": "20250904T113000Z",
+          "SUMMARY": "English Typing Competition for Grade 5"
+        },
+        {
+          "DTSTART": "20250905T110000Z",
+          "DTEND": "20250905T120000Z",
+          "SUMMARY": "Alumni Talk Show"
+        },
+        {
+          "DTSTART": "20250905",
+          "DTEND": "20250906",
+          "SUMMARY": "Nilgiri House Cultural Night 7:30 PM "
+        },
+        {
+          "DTSTART": "20250906",
+          "DTEND": "20250907",
+          "SUMMARY": "Indrajatra "
+        },
+        {
+          "DTSTART": "20250906T033000Z",
+          "DTEND": "20250906T043000Z",
+          "SUMMARY": "Clothing Drive (Social Service Club)"
+        },
+        {
+          "DTSTART": "20250906T053000Z",
+          "DTEND": "20250906T063000Z",
+          "SUMMARY": "CPR/Basic Life Support Training (YRC)"
+        },
+        {
+          "DTSTART": "20250907",
+          "DTEND": "20250908",
+          "SUMMARY": "English Essay Writing Competition for grades 7 and above"
+        },
+        {
+          "DTSTART": "20250908T024000Z",
+          "DTEND": "20250908T034000Z",
+          "SUMMARY": "School Assembly (SL)"
+        },
+        {
+          "DTSTART": "20250908T083000Z",
+          "DTEND": "20250908T093000Z",
+          "SUMMARY": "College Fair -1 (Foyer and Assembly Hall)"
+        },
+        {
+          "DTSTART": "20250911",
+          "DTEND": "20250912",
+          "SUMMARY": "First Terminal Examination of 8\\,9\\,10\\,12\\, A1&A2 "
+        },
+        {
+          "DTSTART": "20250911T113000Z",
+          "DTEND": "20250911T133000Z",
+          "SUMMARY": "First Semester Examination of begins"
+        },
+        {
+          "DTSTART": "20250914",
+          "DTEND": "20250915",
+          "SUMMARY": "Children's Day - Program by Social Science Dept. "
+        },
+        {
+          "DTSTART": "20250918",
+          "DTEND": "20250919",
+          "SUMMARY": "End of Grade Assessment Period of Grade 11"
+        },
+        {
+          "DTSTART": "20250918",
+          "DTEND": "20250919",
+          "SUMMARY": "Students will go home for vacation."
+        },
+        {
+          "DTSTART": "20250919",
+          "DTEND": "20250920",
+          "SUMMARY": "Constitution Day- a holiday"
+        },
+        {
+          "DTSTART": "20250922",
+          "DTEND": "20250923",
+          "SUMMARY": "Ghatasthapana"
+        },
+        {
+          "DTSTART": "20251027",
+          "DTEND": "20251028",
+          "SUMMARY": "Chhath Parva"
+        },
+        {
+          "DTSTART": "20251029T040000Z",
+          "DTEND": "20251029T050000Z",
+          "SUMMARY": "Teaching staffs and Admin Heads Meeting"
+        },
+        {
+          "DTSTART": "20251029",
+          "DTEND": "20251030",
+          "SUMMARY": "Department and Pastoral Meeting "
+        },
+        {
+          "DTSTART": "20251029T113000Z",
+          "DTEND": "20251029T123000Z",
+          "SUMMARY": "Students must return before"
+        },
+        {
+          "DTSTART": "20251030",
+          "DTEND": "20251031",
+          "SUMMARY": "Winter Timetable Starts."
+        },
+        {
+          "DTSTART": "20251031T103000Z",
+          "DTEND": "20251031T113000Z",
+          "SUMMARY": "Flora of BNKS: A Documentary"
+        },
+        {
+          "DTSTART": "20251031",
+          "DTEND": "20251101",
+          "SUMMARY": "(Photography and Environment Club)"
+        },
+        {
+          "DTSTART": "20251103T025000Z",
+          "DTEND": "20251103T035000Z",
+          "SUMMARY": "School Assembly (BL) Tilicho House Presentation"
+        },
+        {
+          "DTSTART": "20251104T103000Z",
+          "DTEND": "20251104T113000Z",
+          "SUMMARY": "Exam Review Meeting"
+        },
+        {
+          "DTSTART": "20251105",
+          "DTEND": "20251106",
+          "SUMMARY": "Educational Visit for Grade 8 (Nepali Dept.)"
+        },
+        {
+          "DTSTART": "20251106T025000Z",
+          "DTEND": "20251106T035000Z",
+          "SUMMARY": "School Assembly (SL)"
+        },
+        {
+          "DTSTART": "20251107T103000Z",
+          "DTEND": "20251107T113000Z",
+          "SUMMARY": "English Turncoat Debate for Post SEE"
+        },
+        {
+          "DTSTART": "20251107",
+          "DTEND": "20251108",
+          "SUMMARY": "Deadline for submission of articles for Bhanjyang"
+        },
+        {
+          "DTSTART": "20251108",
+          "DTEND": "20251109",
+          "SUMMARY": "Annapurna & Kanchenjunga House Picnic"
+        },
+        {
+          "DTSTART": "20251108",
+          "DTEND": "20251109",
+          "SUMMARY": "Jugal & Tilicho House Day Trek"
+        },
+        {
+          "DTSTART": "20251108",
+          "DTEND": "20251109",
+          "SUMMARY": "National Science Quiz (Science Club)"
+        },
+        {
+          "DTSTART": "20251109",
+          "DTEND": "20251110",
+          "SUMMARY": "Social Science Visit for grade 7"
+        },
+        {
+          "DTSTART": "20251109",
+          "DTEND": "20251110",
+          "SUMMARY": "National Science Quiz (Science Club)"
+        },
+        {
+          "DTSTART": "20251110",
+          "DTEND": "20251111",
+          "SUMMARY": "School Assembly (SL) Byasrishi House Presentation 8:20 AM"
+        },
+        {
+          "DTSTART": "20251110",
+          "DTEND": "20251111",
+          "SUMMARY": "International Sciecne Day Celebration (Sciecnce Club) 4:15 PM"
+        },
+        {
+          "DTSTART": "20251111",
+          "DTEND": "20251112",
+          "SUMMARY": "Ted Talk (Interact Club) 4:00 PM"
+        },
+        {
+          "DTSTART": "20251112",
+          "DTEND": "20251113",
+          "SUMMARY": "Biology Visit for grade 11"
+        },
+        {
+          "DTSTART": "20251113",
+          "DTEND": "20251114",
+          "SUMMARY": "School Assembly (BL) 8:20 AM"
+        },
+        {
+          "DTSTART": "20251114T083000Z",
+          "DTEND": "20251114T103000Z",
+          "SUMMARY": "Exam Report Card Distribution"
+        },
+        {
+          "DTSTART": "20251114",
+          "DTEND": "20251115",
+          "SUMMARY": "Parents Teachers Meeting for Post SEE"
+        },
+        {
+          "DTSTART": "20251115",
+          "DTEND": "20251116",
+          "SUMMARY": "Byasrishi & Gaurishankar House Picnic "
+        },
+        {
+          "DTSTART": "20251115",
+          "DTEND": "20251116",
+          "SUMMARY": "Choyu & Ratnachuli House Day Trek "
+        },
+        {
+          "DTSTART": "20251116T083000Z",
+          "DTEND": "20251116T093000Z",
+          "SUMMARY": "Road Race (BL)"
+        },
+        {
+          "DTSTART": "20251117T025000Z",
+          "DTEND": "20251117T035000Z",
+          "SUMMARY": "School Assembly (BL) Saipal House Presentation"
+        },
+        {
+          "DTSTART": "20251117T083000Z",
+          "DTEND": "20251117T093000Z",
+          "SUMMARY": "Road Race (SL)"
+        },
+        {
+          "DTSTART": "20251118T083000Z",
+          "DTEND": "20251118T093000Z",
+          "SUMMARY": "Nepali Story Writing Competition for 5-12/A Level)"
+        },
+        {
+          "DTSTART": "20251120",
+          "DTEND": "20251121",
+          "SUMMARY": "Cartoon Workshop (Art Department)"
+        },
+        {
+          "DTSTART": "20251121T113000Z",
+          "DTEND": "20251121T163000Z",
+          "SUMMARY": "Mathematics Mastermind ( 4:15 PM"
+        },
+        {
+          "DTSTART": "20251121",
+          "DTEND": "20251122",
+          "SUMMARY": "GH Cultural Night 7:15 PM"
+        },
+        {
+          "DTSTART": "20251122",
+          "DTEND": "20251123",
+          "SUMMARY": "Jugal & Tilicho House Picnic "
+        },
+        {
+          "DTSTART": "20251122",
+          "DTEND": "20251123",
+          "SUMMARY": "Annapurna & Kanchenjunga House Day Trek"
+        },
+        {
+          "DTSTART": "20251122",
+          "DTEND": "20251123",
+          "SUMMARY": "Paralympics (Social Service Club)"
+        },
+        {
+          "DTSTART": "20251123T113000Z",
+          "DTEND": "20251123T143000Z",
+          "SUMMARY": "Spell Bee for grades 3:30 PM"
+        },
+        {
+          "DTSTART": "20251124T025000Z",
+          "DTEND": "20251124T035000Z",
+          "SUMMARY": "School Assembly (SL) Gaurishanker House Presentation"
+        },
+        {
+          "DTSTART": "20251124",
+          "DTEND": "20251125",
+          "SUMMARY": "Integrated Science Visit for Grade 6"
+        },
+        {
+          "DTSTART": "20251125T103000Z",
+          "DTEND": "20251125T113000Z",
+          "SUMMARY": "Leo Awareness Program (Leo Club)"
+        },
+        {
+          "DTSTART": "20251126T103000Z",
+          "DTEND": "20251126T113000Z",
+          "SUMMARY": "Math Puzzle Quest for SL"
+        },
+        {
+          "DTSTART": "20251127",
+          "DTEND": "20251128",
+          "SUMMARY": "School Assembly (BL) 8:20 AM"
+        },
+        {
+          "DTSTART": "20251127",
+          "DTEND": "20251128",
+          "SUMMARY": "Integrated Science Visit for grade 6 8:20 AM"
+        },
+        {
+          "DTSTART": "20251128T134500Z",
+          "DTEND": "20251128T144500Z",
+          "SUMMARY": "B/H Cultural Night"
+        },
+        {
+          "DTSTART": "20251129",
+          "DTEND": "20251130",
+          "SUMMARY": "Nilgiri & Pumori House Picnic "
+        },
+        {
+          "DTSTART": "20251129",
+          "DTEND": "20251130",
+          "SUMMARY": "Hiunchuli & Saipal Day Trek"
+        },
+        {
+          "DTSTART": "20251201",
+          "DTEND": "20251202",
+          "SUMMARY": "School Assembly (BL) Song and Dance 8:20 AM"
+        },
+        {
+          "DTSTART": "20251201T073000Z",
+          "DTEND": "20251201T083000Z",
+          "SUMMARY": "Cross Country Race"
+        },
+        {
+          "DTSTART": "20251203",
+          "DTEND": "20251204",
+          "SUMMARY": "End of Third Grade Assessment Period."
+        },
+        {
+          "DTSTART": "20251203",
+          "DTEND": "20251204",
+          "SUMMARY": "Students may go home after classes."
+        },
+        {
+          "DTSTART": "20251203",
+          "DTEND": "20251204",
+          "SUMMARY": "Pokhara Art Workshop begins (Art Club)."
+        },
+        {
+          "DTSTART": "20251204",
+          "DTEND": "20251205",
+          "SUMMARY": "Udhauli Parva/Jyapupunhi - a Holiday"
+        },
+        {
+          "DTSTART": "20251204",
+          "DTEND": "20251205",
+          "SUMMARY": "Math League begins."
+        },
+        {
+          "DTSTART": "20251204T183000Z",
+          "DTEND": "20251205T183000Z",
+          "SUMMARY": "Leave Weekend"
+        },
+        {
+          "DTSTART": "20251206T113000Z",
+          "DTEND": "20251206T123000Z",
+          "SUMMARY": "Students must return before"
+        },
+        {
+          "DTSTART": "20251206",
+          "DTEND": "20251207",
+          "SUMMARY": "Math League ends."
+        },
+        {
+          "DTSTART": "20251206",
+          "DTEND": "20251207",
+          "SUMMARY": "Pokhara Art Workshop ends (Art Club)"
+        },
+        {
+          "DTSTART": "20251207T100000Z",
+          "DTEND": "20251207T110000Z",
+          "SUMMARY": "ICAFT begins (Sports and fitness Club)"
+        },
+        {
+          "DTSTART": "20251208T025000Z",
+          "DTEND": "20251208T035000Z",
+          "SUMMARY": "School Assembly (SL)"
+        },
+        {
+          "DTSTART": "20251208T100000Z",
+          "DTEND": "20251208T110000Z",
+          "SUMMARY": "ICAFT"
+        },
+        {
+          "DTSTART": "20251208T103000Z",
+          "DTEND": "20251208T113000Z",
+          "SUMMARY": "Bio Geneious Quest for grade 10"
+        },
+        {
+          "DTSTART": "20251209T100000Z",
+          "DTEND": "20251209T110000Z",
+          "SUMMARY": "ICAFT"
+        },
+        {
+          "DTSTART": "20251210T100000Z",
+          "DTEND": "20251210T110000Z",
+          "SUMMARY": "ICAFT"
+        },
+        {
+          "DTSTART": "20251211",
+          "DTEND": "20251212",
+          "SUMMARY": "Junior School Play (Nepali) for BL 7:15 PM"
+        },
+        {
+          "DTSTART": "20251211T100000Z",
+          "DTEND": "20251211T110000Z",
+          "SUMMARY": "ICAFT"
+        },
+        {
+          "DTSTART": "20251212",
+          "DTEND": "20251213",
+          "SUMMARY": "Junior School Play (Nepali) for SL 7:15 PM"
+        },
+        {
+          "DTSTART": "20251212T100000Z",
+          "DTEND": "20251212T110000Z",
+          "SUMMARY": "ICAFT"
+        },
+        {
+          "DTSTART": "20251213T053000Z",
+          "DTEND": "20251213T063000Z",
+          "SUMMARY": "Junior School Play (Nepali) for parents"
+        },
+        {
+          "DTSTART": "20251213T083000Z",
+          "DTEND": "20251213T093000Z",
+          "SUMMARY": "ICAFT ends."
+        },
+        {
+          "DTSTART": "20251214",
+          "DTEND": "20251215",
+          "SUMMARY": "Integrated Science Visit for Grade 5"
+        },
+        {
+          "DTSTART": "20251215T025000Z",
+          "DTEND": "20251215T035000Z",
+          "SUMMARY": "School Assembly (BL) Dhaulagiri House Presentation"
+        },
+        {
+          "DTSTART": "20251215",
+          "DTEND": "20251216",
+          "SUMMARY": "Accounts Educational Visit for Grade 10 "
+        },
+        {
+          "DTSTART": "20251215T103000Z",
+          "DTEND": "20251215T113000Z",
+          "SUMMARY": "C- Programming competition for grade 10"
+        },
+        {
+          "DTSTART": "20251216T103000Z",
+          "DTEND": "20251216T113000Z",
+          "SUMMARY": "Ted Talk (Interact Club)"
+        },
+        {
+          "DTSTART": "20251217",
+          "DTEND": "20251218",
+          "SUMMARY": "Integrated Science Visit For Grade 5 "
+        },
+        {
+          "DTSTART": "20251218",
+          "DTEND": "20251219",
+          "SUMMARY": "School Assembly (SL)"
+        },
+        {
+          "DTSTART": "20251219T134500Z",
+          "DTEND": "20251219T144500Z",
+          "SUMMARY": "SH Cultural Night"
+        },
+        {
+          "DTSTART": "20251219T103000Z",
+          "DTEND": "20251219T113000Z",
+          "SUMMARY": "Mastery in Chemical Equations for grades 9 and 10"
+        },
+        {
+          "DTSTART": "20251220",
+          "DTEND": "20251221",
+          "SUMMARY": "Choyu & Ratnachuli House Picnic "
+        },
+        {
+          "DTSTART": "20251220",
+          "DTEND": "20251221",
+          "SUMMARY": "Byasrishi & Gaurishankar House Day Trek "
+        },
+        {
+          "DTSTART": "20251221T063000Z",
+          "DTEND": "20251221T073000Z",
+          "SUMMARY": "Track and field Meet Opening Ceremony 12"
+        },
+        {
+          "DTSTART": "20251221",
+          "DTEND": "20251222",
+          "SUMMARY": "Track and Field Meet"
+        },
+        {
+          "DTSTART": "20251222T025000Z",
+          "DTEND": "20251222T035000Z",
+          "SUMMARY": "School Assembly (SL)"
+        },
+        {
+          "DTSTART": "20251222T083000Z",
+          "DTEND": "20251222T093000Z",
+          "SUMMARY": "Track and Field Meet"
+        },
+        {
+          "DTSTART": "20251223T083000Z",
+          "DTEND": "20251223T093000Z",
+          "SUMMARY": "Track and field Meet"
+        },
+        {
+          "DTSTART": "20251224T083000Z",
+          "DTEND": "20251224T093000Z",
+          "SUMMARY": "Track and Field Meet"
+        },
+        {
+          "DTSTART": "20251225T083000Z",
+          "DTEND": "20251225T093000Z",
+          "SUMMARY": "Track and Field Meet"
+        },
+        {
+          "DTSTART": "20251226T073000Z",
+          "DTEND": "20251226T083000Z",
+          "SUMMARY": "Blood Donation Program (YRC)"
+        },
+        {
+          "DTSTART": "20251226",
+          "DTEND": "20251227",
+          "SUMMARY": "Course Completion of class 10"
+        },
+        {
+          "DTSTART": "20251227",
+          "DTEND": "20251228",
+          "SUMMARY": "Nilgiri & Pumori Day Trek"
+        },
+        {
+          "DTSTART": "20251227",
+          "DTEND": "20251228",
+          "SUMMARY": "Hiunchuli & Saipal Picnic"
+        },
+        {
+          "DTSTART": "20251228T013000Z",
+          "DTEND": "20251228T023000Z",
+          "SUMMARY": "Debate Competition for 3:30 PM"
+        },
+        {
+          "DTSTART": "20251229T025000Z",
+          "DTEND": "20251229T035000Z",
+          "SUMMARY": "School Assembly (BL) Makalu House Presentation"
+        },
+        {
+          "DTSTART": "20251230",
+          "DTEND": "20251231",
+          "SUMMARY": "Publication of BNKS Chronicle"
+        },
+        {
+          "DTSTART": "20260101T073000Z",
+          "DTEND": "20260101T083000Z",
+          "SUMMARY": "Sports Day Rehearsal"
+        },
+        {
+          "DTSTART": "20260103",
+          "DTEND": "20260104",
+          "SUMMARY": "Sports Day "
+        },
+        {
+          "DTSTART": "20260103",
+          "DTEND": "20260104",
+          "SUMMARY": "Students go home after program."
+        },
+        {
+          "DTSTART": "20260103",
+          "DTEND": "20260104",
+          "SUMMARY": "Winter Break begins."
+        },
+        {
+          "DTSTART": "20260104",
+          "DTEND": "20260105",
+          "SUMMARY": "Teachers Workshop"
+        },
+        {
+          "DTSTART": "20260105",
+          "DTEND": "20260106",
+          "SUMMARY": "Teachers Workshop"
+        },
+        {
+          "DTSTART": "20260106",
+          "DTEND": "20260107",
+          "SUMMARY": "Teachers Workshop"
+        },
+        {
+          "DTSTART": "20260108",
+          "DTEND": "20260109",
+          "SUMMARY": "Chitwan Art Workshop begins (Art Club)."
+        },
+        {
+          "DTSTART": "20260109",
+          "DTEND": "20260110",
+          "SUMMARY": "Inter School MUN begins (Interact Club)."
+        },
+        {
+          "DTSTART": "20260110",
+          "DTEND": "20260111",
+          "SUMMARY": "Chitwan Art Workshop ends (Art Club)."
+        },
+        {
+          "DTSTART": "20260111",
+          "DTEND": "20260112",
+          "SUMMARY": "Prithivi Jayanti "
+        },
+        {
+          "DTSTART": "20260111",
+          "DTEND": "20260112",
+          "SUMMARY": "Inter School MUN Ends (Interact Club)"
+        },
+        {
+          "DTSTART": "20260111",
+          "DTEND": "20260112",
+          "SUMMARY": "Beyond the Border - Out of Valley Donation"
+        },
+        {
+          "DTSTART": "20260111",
+          "DTEND": "20260112",
+          "SUMMARY": "Program (Social Service and Leo Club) Day 1"
+        },
+        {
+          "DTSTART": "20260112",
+          "DTEND": "20260113",
+          "SUMMARY": "Beyond the Border - Day 2"
+        },
+        {
+          "DTSTART": "20260113",
+          "DTEND": "20260114",
+          "SUMMARY": "Beyond the Border- Day 3"
+        },
+        {
+          "DTSTART": "20260114",
+          "DTEND": "20260115",
+          "SUMMARY": "Beyond the Border - Day 4 "
+        },
+        {
+          "DTSTART": "20260115",
+          "DTEND": "20260116",
+          "SUMMARY": "Maghi Parva- a Holiday"
+        },
+        {
+          "DTSTART": "20260116T103000Z",
+          "DTEND": "20260116T113000Z",
+          "SUMMARY": "Heads of Departments/Heads of Houses Meeting"
+        },
+        {
+          "DTSTART": "20260119",
+          "DTEND": "20260120",
+          "SUMMARY": "Students must return by 5:00 PM"
+        },
+        {
+          "DTSTART": "20260120T103000Z",
+          "DTEND": "20260120T113000Z",
+          "SUMMARY": "Heads of Departments/ Heads of house Meeting"
+        },
+        {
+          "DTSTART": "20260121",
+          "DTEND": "20260122",
+          "SUMMARY": "Second Terminal Examination (8 & 9) "
+        },
+        {
+          "DTSTART": "20260121",
+          "DTEND": "20260122",
+          "SUMMARY": "Midyear Examination (11\\,12\\,A1\\,A2) and Final Examination (10) begins."
+        },
+        {
+          "DTSTART": "20260123",
+          "DTEND": "20260124",
+          "SUMMARY": "Shri Panchami "
+        },
+        {
+          "DTSTART": "20260124",
+          "DTEND": "20260125",
+          "SUMMARY": "Dhaulagiri & Makalu Day Trek"
+        },
+        {
+          "DTSTART": "20260130",
+          "DTEND": "20260131",
+          "SUMMARY": "Sahid Diwas"
+        },
+        {
+          "DTSTART": "20260130",
+          "DTEND": "20260131",
+          "SUMMARY": "All Examination ends."
+        },
+        {
+          "DTSTART": "20260131",
+          "DTEND": "20260201",
+          "SUMMARY": "Makalu & Dhaulagiri Picnic"
+        },
+        {
+          "DTSTART": "20260202",
+          "DTEND": "20260203",
+          "SUMMARY": "Project Competition for Post SEE (Computer Science Department 4:00 PM"
+        },
+        {
+          "DTSTART": "20260203",
+          "DTEND": "20260204",
+          "SUMMARY": "An Introduction to A! (ARC)"
+        },
+        {
+          "DTSTART": "20260204",
+          "DTEND": "20260205",
+          "SUMMARY": "Summer Time- Table begins "
+        },
+        {
+          "DTSTART": "20260204",
+          "DTEND": "20260205",
+          "SUMMARY": "C.R. Shakya Week"
+        },
+        {
+          "DTSTART": "20260204T113000Z",
+          "DTEND": "20260204T143000Z",
+          "SUMMARY": "(Chart Making Competition for grades 5 to 8 )"
+        },
+        {
+          "DTSTART": "20260205",
+          "DTEND": "20260206",
+          "SUMMARY": "End of Fourth Grade Assessment Period"
+        },
+        {
+          "DTSTART": "20260205",
+          "DTEND": "20260206",
+          "SUMMARY": "C.R. Shakya Week 4:30 PM"
+        },
+        {
+          "DTSTART": "20260205",
+          "DTEND": "20260206",
+          "SUMMARY": "Map Drawing Competition for grades 5 to 9 PM"
+        },
+        {
+          "DTSTART": "20260206T110000Z",
+          "DTEND": "20260206T120000Z",
+          "SUMMARY": "Bio Geneious Quest for grade 9"
+        },
+        {
+          "DTSTART": "20260206",
+          "DTEND": "20260207",
+          "SUMMARY": "C.R. Shakya Week (Quiz Competition grades 5 to 6 )"
+        },
+        {
+          "DTSTART": "20260207",
+          "DTEND": "20260208",
+          "SUMMARY": "Inter school Art Workshop (Art Club)"
+        },
+        {
+          "DTSTART": "20260208",
+          "DTEND": "20260209",
+          "SUMMARY": "C.R. Shakya Week (Quiz Competition for Grades 7 to 8 ) 4:30 AM"
+        },
+        {
+          "DTSTART": "20260208",
+          "DTEND": "20260209",
+          "SUMMARY": "Bio- Panel Discussion for Post SEE:30 PM "
+        },
+        {
+          "DTSTART": "20260209T024000Z",
+          "DTEND": "20260209T034000Z",
+          "SUMMARY": "School Assembly (SL)"
+        },
+        {
+          "DTSTART": "20260209",
+          "DTEND": "20260210",
+          "SUMMARY": "C.R. Shakya Week (Panel Discussion for Grade 9) 8:10 AM"
+        },
+        {
+          "DTSTART": "20260210T104500Z",
+          "DTEND": "20260210T114500Z",
+          "SUMMARY": "Exam/ Grade Review Meeting"
+        },
+        {
+          "DTSTART": "20260210T110000Z",
+          "DTEND": "20260210T120000Z",
+          "SUMMARY": "Ted Talk (Interact Club)"
+        },
+        {
+          "DTSTART": "20260211T110000Z",
+          "DTEND": "20260211T120000Z",
+          "SUMMARY": "Physics Project Competition begins for Post SEE."
+        },
+        {
+          "DTSTART": "20260212",
+          "DTEND": "20260213",
+          "SUMMARY": "Public Speaking Competition for Grades 7 to 9 4:30 PM"
+        },
+        {
+          "DTSTART": "20260212T110000Z",
+          "DTEND": "20260212T120000Z",
+          "SUMMARY": "Physics Projects Competition"
+        },
+        {
+          "DTSTART": "20260213T083000Z",
+          "DTEND": "20260213T093000Z",
+          "SUMMARY": "Report Card Distribution"
+        },
+        {
+          "DTSTART": "20260213",
+          "DTEND": "20260214",
+          "SUMMARY": "Physics Project Competition for Post SEE ends."
+        },
+        {
+          "DTSTART": "20260213T140000Z",
+          "DTEND": "20260213T150000Z",
+          "SUMMARY": "H/H Cultural Night"
+        },
+        {
+          "DTSTART": "20260215",
+          "DTEND": "20260216",
+          "SUMMARY": "Culinary Workshop (Creativity Club)"
+        },
+        {
+          "DTSTART": "20260215",
+          "DTEND": "20260216",
+          "SUMMARY": "Mahashivaratri - a Holiday "
+        },
+        {
+          "DTSTART": "20260216T083000Z",
+          "DTEND": "20260216T093000Z",
+          "SUMMARY": "Exploration in Science 20 82"
+        },
+        {
+          "DTSTART": "20260218",
+          "DTEND": "20260219",
+          "SUMMARY": "School Day "
+        },
+        {
+          "DTSTART": "20260218",
+          "DTEND": "20260219",
+          "SUMMARY": "Students may go home after program."
+        },
+        {
+          "DTSTART": "20260219",
+          "DTEND": "20260220",
+          "SUMMARY": "National Democracy Day - a holiday"
+        },
+        {
+          "DTSTART": "20260219",
+          "DTEND": "20260220",
+          "SUMMARY": "Grade 9 Educational Visit "
+        },
+        {
+          "DTSTART": "20260219",
+          "DTEND": "20260220",
+          "SUMMARY": "Out of Valley Donation Program "
+        },
+        {
+          "DTSTART": "20260219",
+          "DTEND": "20260220",
+          "SUMMARY": "(Sports & Fitness and social Service Club) Day 1 "
+        },
+        {
+          "DTSTART": "20260220",
+          "DTEND": "20260221",
+          "SUMMARY": "Grade 9 Educational Visit"
+        },
+        {
+          "DTSTART": "20260220",
+          "DTEND": "20260221",
+          "SUMMARY": "Out of Valley Donation Program Day - 2 "
+        },
+        {
+          "DTSTART": "20260221",
+          "DTEND": "20260222",
+          "SUMMARY": "Grade 9 Educational Visit"
+        },
+        {
+          "DTSTART": "20260221",
+          "DTEND": "20260222",
+          "SUMMARY": "Out of Valley Donation Program Day-3"
+        },
+        {
+          "DTSTART": "20260221T123000Z",
+          "DTEND": "20260221T133000Z",
+          "SUMMARY": "Students must return by"
+        },
+        {
+          "DTSTART": "20260222T100000Z",
+          "DTEND": "20260222T110000Z",
+          "SUMMARY": "Handball/Kabaddi (Girls Class 6 )"
+        },
+        {
+          "DTSTART": "20260222T100000Z",
+          "DTEND": "20260222T110000Z",
+          "SUMMARY": "Handball/Basketball (Boys Class 5)"
+        },
+        {
+          "DTSTART": "20260222T104500Z",
+          "DTEND": "20260222T114500Z",
+          "SUMMARY": "Handball/ Basketball (Girls Class 8)"
+        },
+        {
+          "DTSTART": "20260222",
+          "DTEND": "20260223",
+          "SUMMARY": "SEE Trial Exam Begins"
+        },
+        {
+          "DTSTART": "20260223T100000Z",
+          "DTEND": "20260223T110000Z",
+          "SUMMARY": "Handball/ Kabaddi (Boys Class 6)"
+        },
+        {
+          "DTSTART": "20260223",
+          "DTEND": "20260224",
+          "SUMMARY": "Handball/Basketball (Girls Class 7) 3:30 PM"
+        },
+        {
+          "DTSTART": "20260223T100000Z",
+          "DTEND": "20260223T110000Z",
+          "SUMMARY": "Handball/ Basketball (Boys Class 5)"
+        },
+        {
+          "DTSTART": "20260223",
+          "DTEND": "20260224",
+          "SUMMARY": "Integrated Science Visit for grade 8 "
+        },
+        {
+          "DTSTART": "20260224T100000Z",
+          "DTEND": "20260224T110000Z",
+          "SUMMARY": "Handball/Kabaddi (Boys Class 8) 4:15 PM"
+        },
+        {
+          "DTSTART": "20260224T100000Z",
+          "DTEND": "20260224T110000Z",
+          "SUMMARY": "Handball/Kabaddi (Boys Class 5)"
+        },
+        {
+          "DTSTART": "20260224",
+          "DTEND": "20260225",
+          "SUMMARY": "Handball/ Basketball (Girls Class 8) 3:30 PM"
+        },
+        {
+          "DTSTART": "20260225T100000Z",
+          "DTEND": "20260225T110000Z",
+          "SUMMARY": "Handball/Kabaddi (Boys Class 6)"
+        },
+        {
+          "DTSTART": "20260225T110000Z",
+          "DTEND": "20260225T120000Z",
+          "SUMMARY": "Integrated Science Visit for grade 8"
+        },
+        {
+          "DTSTART": "20260225",
+          "DTEND": "20260226",
+          "SUMMARY": "Handball/Basketball (Boys Class 9) 4:30 PM"
+        },
+        {
+          "DTSTART": "20260225",
+          "DTEND": "20260226",
+          "SUMMARY": "Handball/Basketball (Girls Class 7) 3:30 PM"
+        },
+        {
+          "DTSTART": "20260226T100000Z",
+          "DTEND": "20260226T110000Z",
+          "SUMMARY": "Handball/ Basketball (Boys Class 8)"
+        },
+        {
+          "DTSTART": "20260226T110000Z",
+          "DTEND": "20260226T120000Z",
+          "SUMMARY": "Handball/ Basketball Super League Boys"
+        },
+        {
+          "DTSTART": "20260226",
+          "DTEND": "20260227",
+          "SUMMARY": "Handball/Kabaddi (Girls Class 7) 3:30 PM"
+        },
+        {
+          "DTSTART": "20260227",
+          "DTEND": "20260228",
+          "SUMMARY": "Course Completion of A1 & A2 "
+        },
+        {
+          "DTSTART": "20260227T110000Z",
+          "DTEND": "20260227T120000Z",
+          "SUMMARY": "Handball/ Basketball Super League Boys"
+        },
+        {
+          "DTSTART": "20260227T110000Z",
+          "DTEND": "20260227T120000Z",
+          "SUMMARY": "Handball/ Kabaddi (Girls Class 7)"
+        },
+        {
+          "DTSTART": "20260227",
+          "DTEND": "20260228",
+          "SUMMARY": "Dhaulagiri and Makalu House Cultural Night 7:30  PM"
+        },
+        {
+          "DTSTART": "20260228",
+          "DTEND": "20260301",
+          "SUMMARY": "Publication of BNKS Chronicle "
+        },
+        {
+          "DTSTART": "20260301T110000Z",
+          "DTEND": "20260301T120000Z",
+          "SUMMARY": "Handball/Kabaddi (Boys Class 9 )"
+        },
+        {
+          "DTSTART": "20260301T110000Z",
+          "DTEND": "20260301T120000Z",
+          "SUMMARY": "Basketball Super League Girls"
+        },
+        {
+          "DTSTART": "20260302",
+          "DTEND": "20260303",
+          "SUMMARY": "Holi Purnima - a Holiday"
+        },
+        {
+          "DTSTART": "20260303T110000Z",
+          "DTEND": "20260303T120000Z",
+          "SUMMARY": "Handball/ Basketball (Girls Class 9 )"
+        },
+        {
+          "DTSTART": "20260304",
+          "DTEND": "20260305",
+          "SUMMARY": "Handball/ Basketball Super League Boys 4:30 PM"
+        },
+        {
+          "DTSTART": "20260304",
+          "DTEND": "20260305",
+          "SUMMARY": "Handball/Kabaddi (Girls Class 6) 3:30 PM"
+        },
+        {
+          "DTSTART": "20260305T110000Z",
+          "DTEND": "20260305T120000Z",
+          "SUMMARY": "Basketball Super League Girls"
+        },
+        {
+          "DTSTART": "20260305T100000Z",
+          "DTEND": "20260305T110000Z",
+          "SUMMARY": "Handball/Kabaddi (Girls Class 5)"
+        },
+        {
+          "DTSTART": "20260306T083000Z",
+          "DTEND": "20260306T093000Z",
+          "SUMMARY": "Course Completion of Class 12 College"
+        },
+        {
+          "DTSTART": "20260308",
+          "DTEND": "20260309",
+          "SUMMARY": "International Women's Day a Holiday"
+        },
+        {
+          "DTSTART": "20260310T024000Z",
+          "DTEND": "20260310T034000Z",
+          "SUMMARY": "School Assembly (BL) Song and Dance"
+        },
+        {
+          "DTSTART": "20260310",
+          "DTEND": "20260311",
+          "SUMMARY": "Trial Examination for A1 & A2 begins"
+        },
+        {
+          "DTSTART": "20260313T113000Z",
+          "DTEND": "20260313T153000Z",
+          "SUMMARY": "Course Completion for Grades"
+        },
+        {
+          "DTSTART": "20260318",
+          "DTEND": "20260319",
+          "SUMMARY": "Ghodejatra"
+        },
+        {
+          "DTSTART": "20260319T113000Z",
+          "DTEND": "20260319T133000Z",
+          "SUMMARY": "Second Semester Exam for Grades"
+        },
+        {
+          "DTSTART": "20260319",
+          "DTEND": "20260320",
+          "SUMMARY": "Final Exam for Grade 9 and\\, Trial Examinations for Grade 12 begins."
+        },
+        {
+          "DTSTART": "20260319",
+          "DTEND": "20260320",
+          "SUMMARY": "Course completion of Class 11"
+        },
+        {
+          "DTSTART": "20260326",
+          "DTEND": "20260327",
+          "SUMMARY": "All the Examinations ends."
+        },
+        {
+          "DTSTART": "20260326",
+          "DTEND": "20260327",
+          "SUMMARY": "Class 11 Trail Examination begins."
+        },
+        {
+          "DTSTART": "20260327",
+          "DTEND": "20260328",
+          "SUMMARY": "Ramnawami - a holiday"
+        },
+        {
+          "DTSTART": "20260403T083000Z",
+          "DTEND": "20260403T093000Z",
+          "SUMMARY": "Report Card Distribution"
+        },
+        {
+          "DTSTART": "20260403",
+          "DTEND": "20260404",
+          "SUMMARY": "Class 11 Trial Examination ends."
+        },
+        {
+          "DTSTART": "20260403",
+          "DTEND": "20260404",
+          "SUMMARY": "New Academic Year 2083 begins on May 2\\, 2026 (Baisakh 20\\, 2083"
+        },
+        {
+          "DTSTART": "20260404",
+          "DTEND": "20260405",
+          "SUMMARY": "Class 5 Fee Payers Entrance Test"
+        }
+      ]
+    }
+  ]
+}

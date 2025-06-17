@@ -21,7 +21,7 @@ export function useVote({ post_id, user_id, post_type, vote_count }: VoteParams)
 			try {
 				if (!user_id || !post_id) return;
 				const response = await axios.get(
-					`http://localhost:3000/api/get_vote/?user_id=${user_id}&post_id=${post_id}`
+					`/api/get_vote/?user_id=${user_id}&post_id=${post_id}`
 				);
 				setActiveVote(response.data.vote.vote as 1 | 0 | -1);
 			} catch (err) {
