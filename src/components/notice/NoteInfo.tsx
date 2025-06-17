@@ -32,16 +32,18 @@ function NoticeInfo({
                 </div>
                 <div className="p-2 sm:p-3 text-sm sm:text-base" dangerouslySetInnerHTML={{ __html: content || '' }}></div>
                 <div className="p-2 sm:p-3">
-                    <Image
-                        src={featuredImage || ''}
-                        alt="Featured Image"
-                        width={0}
-                        height={0}
-                        sizes="100vw"
-                        className="w-full h-auto max-h-64 object-cover"
-                    />
+                    {featuredImage && (
+                        <Image
+                            src={featuredImage || ''}
+                            alt="Featured Image"
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            className="w-full h-auto max-h-64 object-cover"
+                        />
+                    )}
                 </div>
-                <div className="p-2 sm:p-3 flex flex-col sm:flex-row justify-between gap-3">
+                <div className="p-2 sm:p-3 flex flex-col sm:flex-row justify-between gap-3 bg-gray-50 mt-3">
                     {publisher && publishedIn && (
                         <AuthorCard
                             name={publisher[0].name}

@@ -117,7 +117,7 @@ export default async function ArticlePage({ searchParams }: { searchParams: Prom
 							</div>
 						</div>
 					</div>
-					<div className="publisher mt-6 sm:mt-8">
+					<div className="publisher lg:mt-0 sm:mt-10">
 						{article && article.publisher && (
 							<PublisherCard
 								initials={article.publisher[0].name[0]}
