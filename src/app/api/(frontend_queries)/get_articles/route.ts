@@ -7,6 +7,7 @@ import Article, { ArticleDB } from "@/types/post_objects/article";
 import RoleModel from "@/models/Role";
 import PositionModel from "@/models/Positions";
 import { article_link } from "@/config/site-config";
+import { ObjectId } from "mongodb";
 
 export async function GET(request: NextRequest) {
   await dbConnect();
@@ -19,6 +20,7 @@ export async function GET(request: NextRequest) {
   const query_ = searchParams.get("query");
   const date_ = searchParams.get("date");
   const top_articles_ = searchParams.get("top_articles"); // This will be "true" or null
+  const excluding = searchParams.get("excluding");
 
   try {
     let matchConditions: any = {
@@ -46,6 +48,18 @@ export async function GET(request: NextRequest) {
         $gte: selectedDate,
         $lt: nextDay,
       };
+    }
+
+    // Handle excluding parameter
+    if (excluding) {
+      const excludeIds = excluding.split(',').map(id => id.trim());
+      const validObjectIds = excludeIds
+        .filter(id => ObjectId.isValid(id))
+        .map(id => new ObjectId(id));
+      
+      if (validObjectIds.length > 0) {
+        matchConditions._id = { $nin: validObjectIds };
+      }
     }
 
     const totalArticles = await ArticleModel.countDocuments(matchConditions);

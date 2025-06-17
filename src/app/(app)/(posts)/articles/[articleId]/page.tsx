@@ -30,14 +30,14 @@ async function fetchArticle(article_id: string) {
 	}
 }
 
-async function fetchRelatedArticles(category: string) {
+async function fetchRelatedArticles({category, excluding}: {category: string, excluding: string}) {
 	try {
-		const response = await axios.get(`${process.env.SITE_BASE_URI}/api/get_articles?category=${category}&limit=2`);
+		const response = await axios.get(`${process.env.SITE_BASE_URI}/api/get_articles?category=${category}&limit=2&excluding=${excluding}`);
 
 		if (response.data.success) {
 			return response.data.articles;
 		}
-		console.log(`API ${process.env.SITE_BASE_URI}/api/get_articles?category=${category} returned success: false`)
+		console.log(`API ${process.env.SITE_BASE_URI}/api/get_articles?category=${category}&excluding=${excluding} returned success: false`)
 		return []
 	}
 	catch (error: any) {
@@ -57,7 +57,7 @@ export default async function ArticlePage({ searchParams }: { searchParams: Prom
 
 	const article: Article = await fetchArticle(article_id);
 
-	const relatedArticles = await fetchRelatedArticles(article.category);
+	const relatedArticles = await fetchRelatedArticles({ category: article.category, excluding: article_id});
 
 	return (
 		<>
