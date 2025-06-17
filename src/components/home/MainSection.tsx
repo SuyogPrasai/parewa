@@ -13,7 +13,7 @@ export default function MainSection({ notices }: { notices: Notice[] }) {
 
   const updateNotices = (heading: string) => {
     axios
-      .get("/api/get_news?category=" + heading + "&number=4&limit=4")
+      .get("/api/get_news?category=" + heading.toLowerCase() + "&number=4&limit=4")
       .then((response) => {
         if (response.data.success) {
           setNotices(response.data.notices.filter((notice: Notice) => !notice.trashed));
