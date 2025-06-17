@@ -1,4 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
+import { ObjectId } from "mongodb";
 
 import dbConnect from "@/lib/dbConnect";
 
@@ -19,7 +20,7 @@ export async function GET(request: NextRequest) {
   const limit_ = parseInt(searchParams.get("limit") || "8", 10);
   const query_ = searchParams.get("query");
   const date_ = searchParams.get("date");
-  const exclude_ = searchParams.get("exclude");
+  const excluding = searchParams.get("excluding");
 
   if (!category_) {
     return NextResponse.json(
@@ -34,11 +35,15 @@ export async function GET(request: NextRequest) {
       category: category_,
     };
 
-    // Handle exclude parameter - can be single ID or comma-separated IDs
-    if (exclude_) {
-      const excludeIds = exclude_.split(',').map(id => id.trim()).filter(id => id);
-      if (excludeIds.length > 0) {
-        matchConditions._id = { $nin: excludeIds };
+    // Handle excluding parameter
+    if (excluding) {
+      const excludeIds = excluding.split(',').map(id => id.trim());
+      const validObjectIds = excludeIds
+        .filter(id => ObjectId.isValid(id))
+        .map(id => new ObjectId(id));
+      
+      if (validObjectIds.length > 0) {
+        matchConditions._id = { $nin: validObjectIds };
       }
     }
 
