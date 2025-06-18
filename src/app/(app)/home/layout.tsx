@@ -47,6 +47,7 @@ interface RootLayoutProps {
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
+  
   return (
     <html lang="en">
       <body className={`${roboto.variable} ${lato.variable} ${oswald.variable} ${bebas_neue.variable}`}>
@@ -56,8 +57,6 @@ export default async function RootLayout({ children }: RootLayoutProps) {
               <AppSidebar />
               <SidebarInset>
                 <AnnouncementCard />
-                
-
                 {/* Main content area */}
                 <main className="">
                   {children}
