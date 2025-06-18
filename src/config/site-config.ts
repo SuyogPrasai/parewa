@@ -11,20 +11,20 @@ export const slides = [
   {
     id: 1,
     image: "/carousel_background_2.jpg",
-    title: "Sadness is but a wall between two gardens",
-    author: "Kahlil Gibran",
+    title: "Your world, your news, know what matters",
+    author: "",
   },
   {
     id: 2,
-    image: "/carousel_background_2.jpg",
-    title: "Sadness is but a wall between two gardens",
-    author: "Kahlil Gibran",
+    image: "/crop.jpg",
+    title: "I think that I shall never see A poem lovely as a tree",
+    author: "Joyce Kilmer",
   },
   {
     id: 3,
-    image: "/carousel_background_2.jpg",
-    title: "Sadness is but a wall between two gardens",
-    author: "Kahlil Gibran",
+    image: "/trophy.jpg",
+    title: "Winning isn’t everything, but wanting to win is",
+    author: "Vince Lombardi",
   },
 ];
 

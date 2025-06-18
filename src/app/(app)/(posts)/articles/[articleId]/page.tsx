@@ -107,7 +107,7 @@ export default async function ArticlePage({ searchParams }: { searchParams: Prom
 										/>
 									</div>
 									<div
-										className="prose prose-sm sm:prose-base lg:prose-lg max-w-none mt-4 mb-8 sm:mb-10"
+										className="prose prose-sm sm:prose-base lg:prose-lg max-w-none mt-4 lg:mb-4 sm:mb-10"
 										dangerouslySetInnerHTML={{ __html: article?.content || '' }}
 									></div>
 								</div>
