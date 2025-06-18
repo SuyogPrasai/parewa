@@ -15,6 +15,7 @@ import { Header } from "@/components/layout/Header";
 import AnnouncementCard from "@/components/layout/Announcement";
 
 import { main_metadata, slides } from "@/config/site-config";
+import Preloader from "@/components/shared/Loader";
 import Announcement from "@/types/post_objects/announcement";
 
 const roboto = Roboto({
@@ -50,30 +51,28 @@ interface RootLayoutProps {
 export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} ${lato.variable}  ${oswald.variable} ${bebas_neue.variable}`}>
+      <body className={`${roboto.variable} ${lato.variable} ${oswald.variable} ${bebas_neue.variable}`}>
         <AuthProvider>
-          {/* PreloaderWrapper is commented out as per original code */}
-          {/* <PreloaderWrapper> */}
-          <SidebarProvider defaultOpen={false}>
-            <AppSidebar />
-            <SidebarInset>
-
-              <AnnouncementCard />
-
-              {/* Header with sidebar trigger and branding */}
-              <Header />
-              {/* Carousel as the background */}
-              <CarouselHome slides={slides} />
-              <Separator orientation="horizontal" />
-              {/* Main content area */}
-              <main className="w-full px-1 *:lg:px-5 min-h-screen">
-                {children}
-              </main>
-              <Footer />
-              <Toaster />
-            </SidebarInset>
-          </SidebarProvider>
-          {/* </PreloaderWrapper> */}
+          <Preloader>
+            <SidebarProvider defaultOpen={false}>
+              <AppSidebar />
+              <SidebarInset>
+                <AnnouncementCard />
+                
+                {/* Header with sidebar trigger and branding */}
+                <Header />
+                {/* Carousel as the background */}
+                <CarouselHome slides={slides} />
+                <Separator orientation="horizontal" />
+                {/* Main content area */}
+                <main className="w-full px-1 *:lg:px-5 min-h-screen">
+                  {children}
+                </main>
+                <Footer />
+                <Toaster />
+              </SidebarInset>
+            </SidebarProvider>
+          </Preloader>
         </AuthProvider>
       </body>
     </html>
