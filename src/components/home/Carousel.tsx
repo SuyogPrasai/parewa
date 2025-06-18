@@ -34,7 +34,7 @@ const SlideContent: React.FC<Slide> = ({ image, title, author }) => (
       {/* Text Content */}
       <div className="lg:ml-10 absolute bottom-4 left-4 md:bottom-10 md:left-12 max-w-3xl text-white space-y-2">
         <h1 className="text-3xl  lg:text-7xl font-bold leading-tight font-bebas_neue">{title.toUpperCase()}</h1>
-        <p className="text-xs md:text-sm lg:text-base italic text-primary">{author}</p>
+        <p className="text-xs md:text-sm lg:text-base italic text-gray-300">{author}</p>
       </div>
     </CardContent>
   </Card>

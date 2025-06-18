@@ -10,7 +10,7 @@ import AuthorCard from '@/components/articles/AuthorDetailsCard';
 import PublisherCard from '@/components/shared/PublisherCard';
 import SideArticleList from '@/components/articles/ArticleCollection';
 import Article from "@/types/post_objects/article";
-
+import { Badge } from "@/components/ui/badge";
 
 
 async function fetchArticle(article_id: string) {
@@ -30,14 +30,14 @@ async function fetchArticle(article_id: string) {
 	}
 }
 
-async function fetchRelatedArticles(category: string) {
+async function fetchRelatedArticles({category, excluding}: {category: string, excluding: string}) {
 	try {
-		const response = await axios.get(`${process.env.SITE_BASE_URI}/api/get_articles?category=${category}&limit=2`);
+		const response = await axios.get(`${process.env.SITE_BASE_URI}/api/get_articles?category=${category}&limit=2&excluding=${excluding}`);
 
 		if (response.data.success) {
 			return response.data.articles;
 		}
-		console.log(`API ${process.env.SITE_BASE_URI}/api/get_articles?category=${category} returned success: false`)
+		console.log(`API ${process.env.SITE_BASE_URI}/api/get_articles?category=${category}&excluding=${excluding} returned success: false`)
 		return []
 	}
 	catch (error: any) {
@@ -57,13 +57,13 @@ export default async function ArticlePage({ searchParams }: { searchParams: Prom
 
 	const article: Article = await fetchArticle(article_id);
 
-	const relatedArticles = await fetchRelatedArticles(article.category);
+	const relatedArticles = await fetchRelatedArticles({ category: article.category, excluding: article_id});
 
 	return (
 		<>
 			<div className="min-h-screen bg-white">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="flex flex-col py-4 sm:pt-6">
+					<div className="flex flex-col pt-4 sm:pt-6">
 
 						<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-oswald font-bold uppercase mt-4 sm:mt-6 max-w-full sm:max-w-[80%] md:max-w-[70%] lg:max-w-[90%] underline underline-offset-4 decoration-1 decoration-gray-200 leading-tight">
 							{article.title}
@@ -76,16 +76,29 @@ export default async function ArticlePage({ searchParams }: { searchParams: Prom
 								</p>
 								<div className="flex flex-col sm:flex-row sm:justify-between py-3 sm:py-4 gap-4">
 									{article && (
-										<AuthorCard initials={article.author[0]} name={article.author} timestamp={`${article.publishedIn}`} />
+										<div className="flex flex-col">
+
+											<AuthorCard initials={article.author[0]} name={article.author} timestamp={`${article.publishedIn}`} />
+											<div className="flex flex-wrap items-center gap-2 mt-2 pl-2 sm:pl-3">
+												{article.postTags.map((tag, index) => (
+													<Badge key={index} variant="secondary" className="text-xs sm:text-sm font-medium px-1.5 sm:px-2 py-0.5">
+														#{tag}
+													</Badge>
+												))}
+											</div>
+										</div>
+
 									)}
-									<VoteComponent orientation="horizontal" voteCount={article.voteCount || 0} post_id={article._id || ""} post_type={"article"} />								</div>
+									<VoteComponent orientation="horizontal" voteCount={article.voteCount || 0} post_id={article._id || ""} post_type={"article"} />
+								</div>
+
 							</div>
-							<div className="flex flex-col lgplus:flex-row gap-5 lg:gap-10 lgplus:w-[105%] mt-6 lg:max-w-[1400px]">
+							<div className="flex flex-col lgplus:flex-row gap-5 lg:gap-10 lgplus:w-[105%] lg:max-w-[1400px]">
 								<div className="content-component w-full ">
 									<Separator className="my-4" />
 									<div className="relative w-full aspect-[16/9]">
 										<Image
-											src={article.featuredImage}
+											src={article.featuredImage || ''}
 											alt="Featured Image"
 											fill
 											className="object-cover w-full h-full"
@@ -94,7 +107,7 @@ export default async function ArticlePage({ searchParams }: { searchParams: Prom
 										/>
 									</div>
 									<div
-										className="prose prose-sm sm:prose-base lg:prose-lg max-w-none mt-4 mb-8 sm:mb-10"
+										className="prose prose-sm sm:prose-base lg:prose-lg max-w-none mt-4 lg:mb-4 sm:mb-10"
 										dangerouslySetInnerHTML={{ __html: article?.content || '' }}
 									></div>
 								</div>
@@ -104,7 +117,7 @@ export default async function ArticlePage({ searchParams }: { searchParams: Prom
 							</div>
 						</div>
 					</div>
-					<div className="publisher mt-6 sm:mt-8">
+					<div className="publisher lg:mt-0 sm:mt-10">
 						{article && article.publisher && (
 							<PublisherCard
 								initials={article.publisher[0].name[0]}

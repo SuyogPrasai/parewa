@@ -1,4 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
+import { ObjectId } from "mongodb";
 
 import dbConnect from "@/lib/dbConnect";
 
@@ -7,6 +8,7 @@ import RoleModel from "@/models/Role";
 
 import Notice from "@/types/post_objects/notice";
 import PositionModel from "@/models/Positions";
+import { notice_link } from "@/config/site-config";
 
 export async function GET(request: NextRequest) {
   await dbConnect();
@@ -18,6 +20,7 @@ export async function GET(request: NextRequest) {
   const limit_ = parseInt(searchParams.get("limit") || "8", 10);
   const query_ = searchParams.get("query");
   const date_ = searchParams.get("date");
+  const excluding = searchParams.get("excluding");
 
   if (!category_) {
     return NextResponse.json(
@@ -31,6 +34,18 @@ export async function GET(request: NextRequest) {
       trashed: false,
       category: category_,
     };
+
+    // Handle excluding parameter
+    if (excluding) {
+      const excludeIds = excluding.split(',').map(id => id.trim());
+      const validObjectIds = excludeIds
+        .filter(id => ObjectId.isValid(id))
+        .map(id => new ObjectId(id));
+      
+      if (validObjectIds.length > 0) {
+        matchConditions._id = { $nin: validObjectIds };
+      }
+    }
 
     if (query_) {
       matchConditions.$or = [
@@ -102,28 +117,33 @@ export async function GET(request: NextRequest) {
       position_name = publisher_position?.name;
     }
 
-    const transformed_notices: Notice[] = notices.map((notice: any) => ({
-      _id: notice._id,
-      wp_id: notice.wp_id,
-      title: notice.title,
-      content: summarizeText(notice.content),
-      publishedIn: notice.publishedIn,
-      featuredImage: notice.featuredImage,
-      publisherID: notice.publisherID,
-      voteCount: notice.voteCount,
-      postTags: notice.postTags,
-      updatedAt: notice.updatedAt,
-      category: notice.category,
-      link: `/notices/${notice._id}`,
-      publisher: [
-        {
-          name: notice.publisher?.[0]?.name || "",
-          username: notice.publisher?.[0]?.username || "Unknown",
-          role: role_name || "",
-          position: position_name || "",
-        },
-      ],
-    }));
+    const transformed_notices: Notice[] = notices.map((notice: any) => {
+
+     const link = notice_link + notice._id  
+
+      return {
+        _id: notice._id,
+        wp_id: notice.wp_id,
+        title: notice.title,
+        content: summarizeText(notice.content),
+        publishedIn: notice.publishedIn,
+        featuredImage: notice.featuredImage,
+        publisherID: notice.publisherID,
+        voteCount: notice.voteCount,
+        postTags: notice.postTags,
+        updatedAt: notice.updatedAt,
+        category: notice.category,
+        link: link,
+        publisher: [
+          {
+            name: notice.publisher?.[0]?.name || "",
+            username: notice.publisher?.[0]?.username || "Unknown",
+            role: role_name || "",
+            position: position_name || "",
+          },
+        ],
+      }
+    });
 
     return NextResponse.json(
       {

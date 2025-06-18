@@ -1,14 +1,7 @@
 import Link from "next/link";
 
-import {
-  X,
-  Facebook, // Import Facebook icon
-  Twitter, // Import Twitter icon (often represented by the 'X' logo now)
-  Youtube, // Import Youtube icon
-  Instagram, // Import Instagram icon
-  Linkedin, // Import LinkedIn icon
-  MoreHorizontal, // For the '...' or general "more" if you don't have a specific icon
-} from "lucide-react";
+import { Instagram, Youtube, Github, X } from 'lucide-react';
+
 
 import {
   Sidebar,
@@ -46,6 +39,13 @@ const finalNavItems = [
   { title: "JOBS", url: "https://forms.gle/cybYghNXgoumfKfP6" },
   { title: "CREDITS", url: "#" },
 ];
+
+const socialIcons = [
+  { Icon: Instagram, href: "https://www.instagram.com/parewa_bnks" },
+  { Icon: Github, href: "https://github.com/suyogprasai/parewa" },
+  { Icon: Youtube, href: "https://www.youtube.com/@parewa_bnks" },
+];
+
 
 export function AppSidebar() {
   return (
@@ -112,16 +112,9 @@ export function AppSidebar() {
             <div className="mt-6 p-4 border-gray-200">
               <div className="flex items-center gap-4 mb-5">
                 {/* Social Media Icons using Lucide React */}
-                <a href="#" aria-label="Facebook"><Facebook className="h-5 w-5 text-gray-500" /></a>
-                <a href="#" aria-label="Twitter"><Twitter className="h-5 w-5 text-gray-500" /></a>
-                {/* For 'M', you might use a generic media icon or keep it as text if no suitable icon */}
-                <a href="#" aria-label="Medium?"><span className="text-gray-500 text-xl font-bold">M</span></a>
-                <a href="#" aria-label="YouTube"><Youtube className="h-5 w-5 text-gray-500" /></a>
-                <a href="#" aria-label="Instagram"><Instagram className="h-5 w-5 text-gray-500" /></a>
-                <a href="#" aria-label="LinkedIn"><Linkedin className="h-5 w-5 text-gray-500" /></a>
-                {/* For the bullet point and parenthesis, you might use MoreHorizontal or just keep them as text */}
-                <a href="#" aria-label="More"><MoreHorizontal className="h-5 w-5 text-gray-500" /></a>
-                <a href="#" aria-label="Parenthesis"><span className="text-gray-500 text-xl font-bold">)</span></a>
+                <a href="https://github.com/suyogprasai/parewa" aria-label="Facebook"><Github className="h-5 w-5 text-gray-500" /></a>
+                <a href="https://www.instagram.com/parewa_bnks" aria-label="Twitter"><Instagram className="h-5 w-5 text-gray-500" /></a>
+                <a href="https://www.youtube.com/@parewa_bnks" aria-label="YouTube"><Youtube className="h-5 w-5 text-gray-500" /></a>
 
               </div>
               <div className="flex flex-col justify-center">

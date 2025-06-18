@@ -11,6 +11,10 @@ import MainSection from '@/components/home/MainSection';
 import ArticlesSection from '@/components/articles/ArticleSection';
 import { Separator } from '@/components/ui/separator';
 import NewsletterSignup from '@/components/home/NewsletterSection';
+import { Header } from '@/components/layout/Header';
+import { slides } from '@/config/site-config';
+import Footer from '@/components/layout/Footer';
+import { CarouselHome } from '@/components/home/Carousel';
 
 const BASE_URL = process.env.SITE_BASE_URI
 
@@ -72,7 +76,12 @@ export default async function Page() {
 
     return (
         <>
-            <div className="relative">
+            {/* Header with sidebar trigger and branding */}
+            <Header />
+            {/* Carousel as the background */}
+            <CarouselHome slides={slides} />
+            <Separator orientation="horizontal" />
+            <div className="w-full px-1 *:lg:px-5 min-h-screen">
 
                 <MainSection notices={notices} />
 
@@ -113,6 +122,7 @@ export default async function Page() {
                     className="object-contain absolute bottom-0 left-[3%] w-[20%] min-w-[250px] max-w-[300px]"
                 />
             </div>
+            <Footer />
         </>
     )
 }
