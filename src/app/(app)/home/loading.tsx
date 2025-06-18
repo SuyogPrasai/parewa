@@ -3,17 +3,26 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
-export default function Preloader({ children }: { children: React.ReactNode }) {
+export default function Preloader() {
     const [loading, setLoading] = useState(false);
+    const [hasLoadedBefore, setHasLoadedBefore] = useState(false);
     const pathname = usePathname();
 
     useEffect(() => {
         if (pathname !== '/home') return;
 
-        setLoading(true);
-        const timer = setTimeout(() => setLoading(false), 3000);
-        return () => clearTimeout(timer);
-    }, [pathname]);
+        // Always show on first load, then 10% chance on subsequent loads
+        const shouldShowPreloader = !hasLoadedBefore || Math.random() < 0.1;
+        
+        if (shouldShowPreloader) {
+            setLoading(true);
+            const timer = setTimeout(() => {
+                setLoading(false);
+                setHasLoadedBefore(true);
+            }, 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [pathname, hasLoadedBefore]);
 
     if (loading) {
         return (
@@ -49,6 +58,4 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
             </div>
         );
     }
-
-    return <>{children}</>;
 }
