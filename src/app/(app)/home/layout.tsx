@@ -4,14 +4,9 @@ import "@/app/globals.css";
 import { Roboto, Lato, Oswald, Bebas_Neue } from "next/font/google";
 import AuthProvider from "@/context/AuthProvider";
 
-import Footer from "@/components/layout/Footer";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/toaster";
-import { Separator } from "@/components/ui/separator";
 import { AppSidebar } from "@/components/layout/sidebar/Sidebar";
-import axios from "axios";
-import { CarouselHome } from "@/components/home/Carousel";
-import { Header } from "@/components/layout/Header";
 import AnnouncementCard from "@/components/layout/Announcement";
 
 import { main_metadata, slides } from "@/config/site-config";
@@ -47,6 +42,7 @@ interface RootLayoutProps {
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
+  
   return (
     <html lang="en">
       <body className={`${roboto.variable} ${lato.variable} ${oswald.variable} ${bebas_neue.variable}`}>
@@ -56,8 +52,6 @@ export default async function RootLayout({ children }: RootLayoutProps) {
               <AppSidebar />
               <SidebarInset>
                 <AnnouncementCard />
-                
-
                 {/* Main content area */}
                 <main className="">
                   {children}

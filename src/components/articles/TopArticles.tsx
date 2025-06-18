@@ -30,7 +30,7 @@ function SideArticleCard({ article, rank }: { article: Article; rank: number }) 
 
             <Link href={article.link || "#"} className="flex flex-col md:flex-row h-full flex-1">
                 <div className="relative w-full md:w-[50%] flex-shrink-0">
-                    <Image src={article.featuredImage} alt={article.title} fill className="object-cover" />
+                    <Image src={article.featuredImage || ""} alt={article.title} fill className="object-cover" />
                 </div>
                 <CardContent className="px-4 pt-4 flex-1 bg-white relative">
                     <div className="relative bg-black w-[40%] rounded-lg h-[0.15rem] mb-2"></div>

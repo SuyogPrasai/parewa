@@ -16,6 +16,8 @@ import { slides } from '@/config/site-config';
 import Footer from '@/components/layout/Footer';
 import { CarouselHome } from '@/components/home/Carousel';
 
+export const dynamic = 'force-dynamic';
+
 const BASE_URL = process.env.SITE_BASE_URI
 
 async function fetchArticlesByCategory(category: string) {
@@ -43,8 +45,6 @@ async function fetchArticlesByCategory(category: string) {
     }
 }
 
-
-
 async function fetchNotices(category = 'general'): Promise<Notice[]> {
     try {
         const response = await axios.get<NoticesResponse>(
@@ -63,16 +63,24 @@ async function fetchNotices(category = 'general'): Promise<Notice[]> {
 }
 
 export default async function Page() {
-
+    
     const categories = ['BNKS', 'World', 'National'];
-
+    
     const articlesDataPromises = categories.map((category: string) => fetchArticlesByCategory(category.toLocaleLowerCase()));
-
+    
     const articlesData = await Promise.all(articlesDataPromises);
 
+    console.log(articlesData)
+    
     const topArticlesData = await fetchTopArticles();
-
+    
+    console.log(topArticlesData)
+    
     const notices = await fetchNotices();
+
+    console.log(notices)
+
+    console.log(BASE_URL)
 
     return (
         <>

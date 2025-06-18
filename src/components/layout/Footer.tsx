@@ -70,7 +70,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 justify-center">
             {/* Logo and Description - occupies 1 column on small screens, 1 on medium+ */}
             <div className="md:col-span-1 ">
-              <h2 className="text-4xl font-bold mb-4 font-oswald text-white mx-auto">PAREWA</h2>
+              <h2 className="text-4xl font-bold mb-4 font-oswald text-white text-center md:text-left">PAREWA</h2>
               <p className="text-sm text-gray-300 mb-6 font-roboto mx-auto md:mx-0 max-w-xs text-center md:text-left "> {/* Added mx-auto for centering */}
                 Parewa is a student-driven information delivery platform developed entirely by the students of Budhanilkantha School. <strong>Your news, Your way</strong>
               </p>

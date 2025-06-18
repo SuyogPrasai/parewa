@@ -119,7 +119,7 @@ export function AppSidebar() {
               </div>
               <div className="flex flex-col justify-center">
 
-                <p className="text-xs text-gray-600 mb-3">© PAREWA</p>
+                <p className="text-xs text-gray-600 mb-3 ">© PAREWA</p>
                 <p className="text-xs text-gray-600 mb-3">ALL RIGHTS RESERVED</p>
                 <div className="flex space-x-4">
                   <a href="#" className="text-xs text-gray-500">TERMS OF USE</a>
