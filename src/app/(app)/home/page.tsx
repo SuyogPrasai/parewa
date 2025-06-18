@@ -18,9 +18,6 @@ import { CarouselHome } from '@/components/home/Carousel';
 
 const BASE_URL = process.env.SITE_BASE_URI
 
-// Helper function for delay
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
 async function fetchArticlesByCategory(category: string) {
     try {
         const response = await axios.get<ArticlesResponse>(`${BASE_URL}/api/get_articles`, {

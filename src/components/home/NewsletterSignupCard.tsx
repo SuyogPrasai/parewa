@@ -53,7 +53,7 @@ export default function NewsletterSignupCard() {
   };
 
   return (
-    <Card className="relative w-full mx-auto lg:mx-0 max-w-[400px] lg:max-w-sm bg-white text-gray-800 p-10 rounded-none mt-10 lgplus:mt-0">
+    <Card className="relative w-full mx-auto lgplus:mx-0 max-w-[400px] lg:max-w-sm bg-white text-gray-800 p-10 rounded-none mt-10 lgplus:mt-0">
       <CardHeader className="p-0 mb-6">
         <CardTitle className="text-gray-900 text-3xl font-extrabold leading-tight mt-2">
           Join the Newsletter
