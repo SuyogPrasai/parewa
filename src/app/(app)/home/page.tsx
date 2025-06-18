@@ -18,6 +18,9 @@ import { CarouselHome } from '@/components/home/Carousel';
 
 const BASE_URL = process.env.SITE_BASE_URI
 
+// Helper function for delay
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
 async function fetchArticlesByCategory(category: string) {
     try {
         const response = await axios.get<ArticlesResponse>(`${BASE_URL}/api/get_articles`, {
@@ -43,8 +46,6 @@ async function fetchArticlesByCategory(category: string) {
     }
 }
 
-
-
 async function fetchNotices(category = 'general'): Promise<Notice[]> {
     try {
         const response = await axios.get<NoticesResponse>(
@@ -63,15 +64,15 @@ async function fetchNotices(category = 'general'): Promise<Notice[]> {
 }
 
 export default async function Page() {
-
+    
     const categories = ['BNKS', 'World', 'National'];
-
+    
     const articlesDataPromises = categories.map((category: string) => fetchArticlesByCategory(category.toLocaleLowerCase()));
-
+    
     const articlesData = await Promise.all(articlesDataPromises);
-
+    
     const topArticlesData = await fetchTopArticles();
-
+    
     const notices = await fetchNotices();
 
     return (
