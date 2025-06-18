@@ -13,7 +13,10 @@ const AnnouncementSchema: Schema<AnnouncementDB> = new Schema(
     publisherID: { type: String, ref: "User", required: true }, // User ID reference
     trashed: { type: Boolean, default: false },
     link: { type: String, required: false },
+    author: { type: String, required: true },
+    show: { type: Boolean, required: true },
   },
+
   {
     timestamps: true, // Adds createdAt and updatedAt fields automatically
   }

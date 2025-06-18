@@ -15,10 +15,9 @@ export async function GET(request: NextRequest) {
         return NextResponse.json({ success: false, message: "Date is required" }, { status: 400 });
     }
 
-    const events = await EventModel.find({ start_date: date });
+    const events = await EventModel.find({ startDate: date});
 
     try {
-    
         return NextResponse.json(
             { success: true, events: events},
             { status: 200 }

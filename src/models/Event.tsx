@@ -3,8 +3,8 @@ import mongoose, { Schema, Document } from "mongoose";
 // Defining the interface for the Notice model
 export interface Event extends Document {
     title: string;
-    start_date: Date;
-    end_date: Date;
+    startDate: string;
+    endDate: string;
     createdAt: Date;
     updatedAt: Date;
 }
@@ -13,8 +13,8 @@ export interface Event extends Document {
 const EventSchema: Schema<Event> = new Schema(
     {
         title: { type: String, required: true, trim: true },
-        start_date: { type: Date, required: true },
-        end_date: { type: Date, required: true },
+        startDate: { type: String, required: true },
+        endDate: { type: String, required: true },
     },
     {
         timestamps: true, // Adds createdAt and updatedAt fields automatically

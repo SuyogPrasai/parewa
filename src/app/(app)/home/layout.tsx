@@ -2,15 +2,17 @@ import { ReactNode } from "react";
 import "@/app/globals.css";
 
 import { Roboto, Lato, Oswald, Bebas_Neue } from "next/font/google";
-import AuthProvider  from "@/context/AuthProvider";
+import AuthProvider from "@/context/AuthProvider";
 
-import  Footer  from "@/components/layout/Footer";
+import Footer from "@/components/layout/Footer";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/toaster";
 import { Separator } from "@/components/ui/separator";
 import { AppSidebar } from "@/components/layout/sidebar/Sidebar";
+import axios from "axios";
 import { CarouselHome } from "@/components/home/Carousel";
 import { Header } from "@/components/layout/Header";
+import AnnouncementCard from "@/components/layout/Announcement";
 
 import { main_metadata, slides } from "@/config/site-config";
 
@@ -44,30 +46,26 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} ${lato.variable}  ${oswald.variable} ${bebas_neue.variable}`}>
+      <body className={`${roboto.variable} ${lato.variable} ${oswald.variable} ${bebas_neue.variable}`}>
         <AuthProvider>
-          {/* PreloaderWrapper is commented out as per original code */}
-          {/* <PreloaderWrapper> */}
-          <SidebarProvider defaultOpen={false}>
-            <AppSidebar />
-            <SidebarInset>
-              {/* Header with sidebar trigger and branding */}
-              <Header />
-              {/* Carousel as the background */}
-              <CarouselHome slides={slides} />
-              <Separator orientation="horizontal" />
-              {/* Main content area */}
-              <main className="w-full px-1 *:lg:px-5 min-h-screen">
-                {children}
-              </main>
-              <Footer />
-              <Toaster />
-            </SidebarInset>
-          </SidebarProvider>
-          {/* </PreloaderWrapper> */}
+          {/* <Preloader> */}
+            <SidebarProvider defaultOpen={false}>
+              <AppSidebar />
+              <SidebarInset>
+                <AnnouncementCard />
+                
+
+                {/* Main content area */}
+                <main className="">
+                  {children}
+                </main>
+                <Toaster />
+              </SidebarInset>
+            </SidebarProvider>
+          {/* </Preloader> */}
         </AuthProvider>
       </body>
     </html>

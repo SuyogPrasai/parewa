@@ -13,7 +13,7 @@ export default function MainSection({ notices }: { notices: Notice[] }) {
 
   const updateNotices = (heading: string) => {
     axios
-      .get("/api/get_news?category=" + heading + "&number=4&limit=4")
+      .get("/api/get_news?category=" + heading.toLowerCase() + "&number=4&limit=4")
       .then((response) => {
         if (response.data.success) {
           setNotices(response.data.notices.filter((notice: Notice) => !notice.trashed));
@@ -26,7 +26,7 @@ export default function MainSection({ notices }: { notices: Notice[] }) {
     <>
       <Navbar header_click={updateNotices} />
       <div className="flex flex-col mb-10 w-full pt-10  relative">
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 justify-center">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-5 justify-center">
           {/* Main content section */}
           <NoticeSection notices={notices_} />
 

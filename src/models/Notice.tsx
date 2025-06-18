@@ -15,7 +15,6 @@ const NoticeSchema: Schema<NoticeDB> = new Schema(
     postTags: [{ type: String }],
     trashed: { type: Boolean, default: false },
     category: { type: String, required: true },
-    link: { type: String, required: false },
   },
   {
     timestamps: true, // Adds createdAt and updatedAt fields automatically

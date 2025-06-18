@@ -7,7 +7,7 @@ import { NoticeCard } from "./Notice";
 export default function NoticeSection({ notices } : { notices: Notice[] }) {
 
   return (
-    <div className="lg:w-[80vw] mx-0  md:mx-auto lg:mx-0 w-full max-w-2xl flex flex-col items-center gap-4">
+    <div className=" mx-0  md:mx-auto lg:mx-0 w-full max-w-2xl flex flex-col items-center gap-4">
       {notices.length > 0 ? (
         notices.map((notice) => (
           <NoticeCard

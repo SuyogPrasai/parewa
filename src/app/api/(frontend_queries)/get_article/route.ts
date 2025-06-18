@@ -10,6 +10,7 @@ import PositionModel from "@/models/Positions";
 import { parseHTML } from "@/lib/htmlParser";
 import { article_options } from "@/config/parsing-options";
 import Article from "@/types/post_objects/article";
+import { article_link } from "@/config/site-config";
 
 export async function GET(request: NextRequest) {
     await dbConnect();
@@ -60,6 +61,8 @@ export async function GET(request: NextRequest) {
             position_name = publisher_position?.name;
         }
 
+        const link = article_link + article._id
+
         const response_article_: Article = {
             '_id': article._id,
             'wp_id': article.wp_id,
@@ -74,7 +77,7 @@ export async function GET(request: NextRequest) {
             'updatedAt': article.updatedAt,
             'category': article.category,
             'author': article.author,
-            'link': article.link,
+            'link': link,
             'publisher': [{
                 'name': publisher_name,
                 'username': publisher_username,

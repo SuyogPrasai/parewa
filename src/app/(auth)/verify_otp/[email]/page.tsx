@@ -144,12 +144,18 @@ export default function OTPPage() {
                 >
                   {form.formState.isSubmitting ? "Verifying..." : "Verify OTP"}
                 </Button>
+                <div>
+                  
                 <p className="text-sm text-muted-foreground text-center">
                   Didn&apos;t receive a code?{" "}
                   <a href="#" className="text-foreground">
                     Resend
                   </a>
                 </p>
+                <p className="text-sm text-muted-foreground text-center">
+                  You may want to check your spam
+                </p>
+                </div>
               </CardFooter>
             </form>
           </Form>

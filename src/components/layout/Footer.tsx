@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Instagram, Facebook, X, Linkedin } from 'lucide-react';
+import { Instagram, Youtube, Github } from 'lucide-react';
 import FooterNewsletter from "./FooterNewsletter";
 
 type SocialIconProps = {
@@ -56,10 +56,9 @@ const Notices = [
 ];
 
 const socialIcons = [
-  { Icon: Instagram, href: "https://instagram.com" },
-  { Icon: Facebook, href: "https://facebook.com" },
-  { Icon: X, href: "https://x.com" },
-  { Icon: Linkedin, href: "https://linkedin.com" },
+  { Icon: Instagram, href: "https://www.instagram.com/parewa_bnks" },
+  { Icon: Github, href: "https://github.com/suyogprasai/parewa" },
+  { Icon: Youtube, href: "https://www.youtube.com/@parewa_bnks" },
 ];
 
 export default function Footer() {
@@ -68,14 +67,14 @@ export default function Footer() {
       <div className="max-w-4xl mx-auto">
         {/* Main Footer Content */}
         <div className="flex flex-col mx-auto max-w-screen-lg"> {/* Removed justify-center here */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 justify-center">
             {/* Logo and Description - occupies 1 column on small screens, 1 on medium+ */}
-            <div className="md:col-span-1">
-              <h2 className="text-4xl font-bold mb-4 font-oswald text-white">PAREWA</h2>
-              <p className="text-sm text-gray-300 mb-6 font-roboto mx-auto md:mx-0 max-w-xs"> {/* Added mx-auto for centering */}
+            <div className="md:col-span-1 ">
+              <h2 className="text-4xl font-bold mb-4 font-oswald text-white mx-auto">PAREWA</h2>
+              <p className="text-sm text-gray-300 mb-6 font-roboto mx-auto md:mx-0 max-w-xs text-center md:text-left "> {/* Added mx-auto for centering */}
                 Parewa is a student-driven information delivery platform developed entirely by the students of Budhanilkantha School. <strong>Your news, Your way</strong>
               </p>
-              <div className="flex gap-4 ">
+              <div className="flex gap-4 justify-center md:justify-start">
                 {socialIcons.map(({ Icon, href }, index) => (
                   <SocialIcon key={index} Icon={Icon} href={href} />
                 ))}
