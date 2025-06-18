@@ -72,10 +72,10 @@ export default function VoteComponent({
 				variant="ghost"
 				size="icon"
 				className={`
-          h-9 w-9 rounded-md transition-all duration-200 ease-in-out
+          h-9 w-9 rounded-md transition-all duration-200 ease-in-out 
           ${isUpVoted
-						? 'bg-green-100 text-green-600 hover:bg-green-200'
-						: 'text-gray-500 hover:bg-gray-100 hover:text-green-500'
+						? 'bg-green-100 text-green-600 hover:bg-green-200 active:bg-green-100'
+						: 'text-gray-500 hover:bg-gray-100 hover:text-green-500 active:bg-gray-100'
 					}
         `}
 				onClick={() => handleVoteClick(1)}
