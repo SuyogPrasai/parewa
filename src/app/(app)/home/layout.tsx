@@ -15,8 +15,6 @@ import { Header } from "@/components/layout/Header";
 import AnnouncementCard from "@/components/layout/Announcement";
 
 import { main_metadata, slides } from "@/config/site-config";
-import Preloader from "@/components/shared/Loader";
-import Announcement from "@/types/post_objects/announcement";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -53,26 +51,21 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body className={`${roboto.variable} ${lato.variable} ${oswald.variable} ${bebas_neue.variable}`}>
         <AuthProvider>
-          <Preloader>
+          {/* <Preloader> */}
             <SidebarProvider defaultOpen={false}>
               <AppSidebar />
               <SidebarInset>
                 <AnnouncementCard />
                 
-                {/* Header with sidebar trigger and branding */}
-                <Header />
-                {/* Carousel as the background */}
-                <CarouselHome slides={slides} />
-                <Separator orientation="horizontal" />
+
                 {/* Main content area */}
-                <main className="w-full px-1 *:lg:px-5 min-h-screen">
+                <main className="">
                   {children}
                 </main>
-                <Footer />
                 <Toaster />
               </SidebarInset>
             </SidebarProvider>
-          </Preloader>
+          {/* </Preloader> */}
         </AuthProvider>
       </body>
     </html>
