@@ -15,12 +15,12 @@ import { Badge } from "@/components/ui/badge";
 
 async function fetchArticle(article_id: string) {
 	try {
-		const response = await axios.get(`${process.env.SITE_BASE_URI}/api/get_article/?id=${article_id}`);
+		const response = await axios.get(`${process.env.PAREWA_BASE_URI}/api/get_article/?id=${article_id}`);
 
 		if (response.data.success) {
 			return response.data.article;
 		}
-		console.log(`API ${process.env.SITE_BASE_URI}/api/get_article/?id=${article_id} returned success: false`)
+		console.log(`API ${process.env.PAREWA_BASE_URI}/api/get_article/?id=${article_id} returned success: false`)
 		return null
 	}
 	catch (error: any) {
@@ -32,12 +32,12 @@ async function fetchArticle(article_id: string) {
 
 async function fetchRelatedArticles({category, excluding}: {category: string, excluding: string}) {
 	try {
-		const response = await axios.get(`${process.env.SITE_BASE_URI}/api/get_articles?category=${category}&limit=2&excluding=${excluding}`);
+		const response = await axios.get(`${process.env.PAREWA_BASE_URI}/api/get_articles?category=${category}&limit=2&excluding=${excluding}`);
 
 		if (response.data.success) {
 			return response.data.articles;
 		}
-		console.log(`API ${process.env.SITE_BASE_URI}/api/get_articles?category=${category}&excluding=${excluding} returned success: false`)
+		console.log(`API ${process.env.PAREWA_BASE_URI}/api/get_articles?category=${category}&excluding=${excluding} returned success: false`)
 		return []
 	}
 	catch (error: any) {

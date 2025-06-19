@@ -34,7 +34,7 @@ export async function fetchArticles(params: ArticleQueryParams = {}): Promise<{
 			})
 			.join('&');
 
-		const url = `${process.env.SITE_BASE_URI}/api/get_articles${queryString ? `?${queryString}` : ''}`;
+		const url = `${process.env.PAREWA_BASE_URI}/api/get_articles${queryString ? `?${queryString}` : ''}`;
 
 		const response = await axios.get<ArticlesResponse>(url);
 
