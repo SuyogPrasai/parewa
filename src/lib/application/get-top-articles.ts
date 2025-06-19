@@ -5,7 +5,7 @@ import { ArticlesResponse } from "@/types/api-responses";
 
 export async function fetchTopArticles(): Promise<Article[]> {
     try {
-        const response = await axios.get<ArticlesResponse>(`${process.env.SITE_BASE_URI}/api/get_articles?top_articles=true`);
+        const response = await axios.get<ArticlesResponse>(`${process.env.PAREWA_BASE_URI}/api/get_articles?top_articles=true`);
 
         if (response.data.success) {
             return response.data.articles;

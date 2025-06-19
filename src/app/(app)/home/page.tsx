@@ -18,7 +18,7 @@ import { CarouselHome } from '@/components/home/Carousel';
 
 export const dynamic = 'force-dynamic';
 
-const BASE_URL = process.env.SITE_BASE_URI
+const BASE_URL = process.env.PAREWA_BASE_URI
 
 async function fetchArticlesByCategory(category: string) {
     try {

@@ -7,12 +7,12 @@ import NoticeDetail from "@/components/notice/NoticeDetail";
 
 async function fetchNotice(notice_id: string) {
 	try {
-		const response = await axios.get(`${process.env.SITE_BASE_URI}/api/get_notice/?id=${notice_id}`);
+		const response = await axios.get(`${process.env.PAREWA_BASE_URI}/api/get_notice/?id=${notice_id}`);
 
 		if (response.data.success) {
 			return response.data.notice;
 		}
-		console.log(`API ${process.env.SITE_BASE_URI}/api/get_notice/?id=${notice_id} returned success: false`)
+		console.log(`API ${process.env.PAREWA_BASE_URI}/api/get_notice/?id=${notice_id} returned success: false`)
 		return null
 	}
 	catch (error: any) {
@@ -25,12 +25,12 @@ async function fetchNotice(notice_id: string) {
 
 async function fetchRelatedNotices({ category, excluding }: { category: string, excluding: string }) {
 	try {
-		const response = await axios.get(`${process.env.SITE_BASE_URI}/api/get_news?category=${category}&limit=3&excluding=${excluding}`);
+		const response = await axios.get(`${process.env.PAREWA_BASE_URI}/api/get_news?category=${category}&limit=3&excluding=${excluding}`);
 
 		if (response.data.success) {
 			return response.data.notices;
 		}
-		console.log(`API ${process.env.SITE_BASE_URI}/api/get_news?category=${category}&excluding=${excluding} returned success: false`)
+		console.log(`API ${process.env.PAREWA_BASE_URI}/api/get_news?category=${category}&excluding=${excluding} returned success: false`)
 		return []
 	}
 	catch (error: any) {
