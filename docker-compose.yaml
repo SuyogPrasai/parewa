@@ -50,9 +50,8 @@ services:
     volumes:
       - mongodb_data:/data/db
     restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_ROOT_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_ROOT_PASSWORD}
+    ports:
+      - "27014:27017"
 
 volumes:
   wordpress_data:
