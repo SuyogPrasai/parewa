@@ -33,7 +33,7 @@ export async function fetchNotices(params: NoticeQueryParams = {}): Promise<{
       })
       .join('&');
 
-    const url = `${process.env.SITE_BASE_URI}/api/get_news${queryString ? `?${queryString}` : ''}`;
+    const url = `${process.env.PAREWA_BASE_URI}/api/get_news${queryString ? `?${queryString}` : ''}`;
 
     const response = await axios.get<NoticesResponse>(url);
 
