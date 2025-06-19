@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  wordpress:
+    image: ghcr.io/suyogprasai/parewa_cms/parewa-wordpress:latest
+    depends_on:
+      - wordpress_db
+    ports:
+      - "8000:80"
+    environment:
+      WORDPRESS_DB_HOST: wordpress_db:3306
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_TABLE_PREFIX: wp_
+    volumes:
+      - wordpress_data:/var/www/html
+    restart: always
+
+  wordpress_db:
+    image: ghcr.io/suyogprasai/parewa_cms/parewa-wordpress-mariadb:latest
+    environment:
+      MYSQL_DATABASE: ${WORDPRESS_DB_NAME}
+      MYSQL_USER: ${WORDPRESS_DB_USER}
+      MYSQL_ROOT_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      MYSQL_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+    volumes:
+      - wordpress_db_data:/var/lib/mysql
+    restart: always
+
+  parewa_nextjs:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - mongodb
+    ports:
+      - "3000:3000"
+    environment:
+      MONGODB_URI: ${MONGODB_URI}
+      NEXT_WORDPRESS_API: ${NEXT_WORDPRESS_API}
+      GMAIL_API: ${GMAIL_API}
+      GMAIL_EMAIL: ${GMAIL_EMAIL}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      PAREWA_BASE_URI: ${PAREWA_BASE_URI}
+    restart: always
+
+  mongodb:
+    image: mongo:latest
+    volumes:
+      - mongodb_data:/data/db
+    restart: always
+
+volumes:
+  wordpress_data:
+  wordpress_db_data:
+  mongodb_data:
