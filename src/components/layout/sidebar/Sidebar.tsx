@@ -72,7 +72,7 @@ export function AppSidebar() {
             </SidebarMenu>
             <Separator className="bg-black h-[0.0125rem]" />
             <div className="my-4 w-[75%]">
-              <Link href={`${process.env.WORDPRESS_SITE_IP}/wp-admin` || "http://172.16.1.230:8000//wp-admin"}>
+              <Link href={process.env.WORDPRESS_SITE_IP || "http://localhost:8080/wp-admin"}>
               <button className="bg-primary text-white py-2 px-4 w-full flex items-center justify-center font-sans font-bold">
                 SUBMIT NOTICE <span className="ml-2 text-lg">→</span>
               </button>
