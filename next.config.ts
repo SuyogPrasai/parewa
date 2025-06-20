@@ -6,8 +6,10 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'http',
-        hostname: 'localhost',
-        port: '8080',
+        hostname: '172.16.1.230',
+        // hostname: 'localhost',
+        // port: '8080',
+        port: '8000',
         pathname: '/wp-content/uploads/**',
       },
     ],
