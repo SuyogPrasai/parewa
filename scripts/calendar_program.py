@@ -4,7 +4,7 @@ from datetime import datetime
 import re
 
 # Connect to MongoDB
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb://172.16.1.230:27014/")
 
 db = client["parewa_backend"]
 collection = db["events"]

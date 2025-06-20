@@ -100,7 +100,7 @@ function Navbar({ header_click }: any) {
                 fontFamily: "monospace, sans-serif",
               }}
             >
-              <Link href="http://localhost:8080/wp-login.php" target="_blank">
+              <Link href={process.env.WORDPRESS_SITE_IP || "http://172.16.1.230:8000/"} target="_blank">
               SUBMIT
               </Link>
             </div>
