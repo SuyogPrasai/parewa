@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
 
         let publisher_id = "";
         if (requestBody['publisher'] !== "") {
-            const user: User | null = await UserModel.findOne({ username: requestBody['publisher_name'] });
+            const user: User | null = await UserModel.findOne({ name: requestBody['publisher_name'] });
             if (!user) {
                 console.error(`Publisher not found: ${requestBody['publisher_name']}`);
                 return NextResponse.json(
