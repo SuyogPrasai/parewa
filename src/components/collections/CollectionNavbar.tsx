@@ -103,7 +103,7 @@ export function Navbar({ navLinks, type }: NavbarProps) {
                   letterSpacing: '0.05em',
                   fontFamily: 'oswald, sans-serif',
                 }}
-                onClick={() => router.push(`${process.env.WORDPRESS_SITE_IP}/wp-admin` || "http://172.16.1.230:8000//wp-admin")}
+                onClick={() => router.push(process.env.WORDPRESS_SITE_IP || "http://localhost:8080/wp-admin")}
               >
                 SUBMIT
               </div>
