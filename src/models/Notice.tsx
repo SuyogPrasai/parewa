@@ -9,6 +9,7 @@ const NoticeSchema: Schema<NoticeDB> = new Schema(
     title: { type: String, required: true, trim: true },
     content: { type: String, required: false },
     publishedIn: { type: Date, required: true },
+    published_for: { type: String, required: true },
     featuredImage: { type: String, required: false }, // Path to the featured image
     publisherID: { type: String, ref: "User", required: true }, // User ID reference
     voteCount: { type: Number, default: 0 },
