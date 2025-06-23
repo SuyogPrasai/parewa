@@ -12,8 +12,14 @@ export default function MainSection({ notices }: { notices: Notice[] }) {
   const [notices_, setNotices] = useState<Notice[]>(notices);
 
   const updateNotices = (heading: string) => {
+    let url = "/api/get_news?number=4&limit=4";
+    
+    if (heading.toLowerCase() !== "general") {
+      url += "&category=" + heading.toLowerCase();
+    }
+
     axios
-      .get("/api/get_news?category=" + heading.toLowerCase() + "&number=4&limit=4")
+      .get(url)
       .then((response) => {
         if (response.data.success) {
           setNotices(response.data.notices.filter((notice: Notice) => !notice.trashed));
