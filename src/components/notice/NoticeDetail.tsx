@@ -8,6 +8,7 @@ import NoticeSection from "@/components/notice/NoticeSection";
 
 
 export default function NoticeDetail({ Notice, Articles, Notices }: { Notice: Notice, Articles: Article[], Notices: Notice[] }) {
+    console.log(Notice)
     return (
         <div className="flex flex-col gap-4 max-w-7xl px-2  min-h-screen">
             <div className="flex flex-col lgplus:flex-row gap-1">

@@ -23,9 +23,7 @@ function NoticeInfo({
         <>
             <div className="w-full max-w-[650px] mx-auto lgplus:mx-0 bg-white lgplus:p-2 sm:p-4 md:py-6 min-h-fit">
                 <div className="p-2 sm:p-3 font-oswald text-xl sm:text-2xl md:text-3xl">{title}</div>
-                <Badge variant="destructive" className="text-xs font-medium px-1.5 py-0.5 mb-2">
-                    For {published_for}
-                </Badge>
+
 
                 <div className="flex flex-wrap items-center gap-2 mt-2 pl-2 sm:pl-3">
                     {postTags.map((tag, index) => (
@@ -33,6 +31,9 @@ function NoticeInfo({
                             #{tag}
                         </Badge>
                     ))}
+                    <Badge variant="destructive" className="text-xs sm:text-xs font-medium px-1.5 sm:px-2 py-0.5">
+                        For {published_for}
+                    </Badge>
                 </div>
                 <div className="p-2 sm:p-3 text-sm sm:text-base" dangerouslySetInnerHTML={{ __html: content || '' }}></div>
                 <div className="p-2 sm:p-3">

@@ -100,7 +100,7 @@ function Navbar({ header_click }: any) {
                 fontFamily: "monospace, sans-serif",
               }}
             >
-              <Link href={process.env.WORDPRESS_SITE_IP || "http://locahost:8080/wp-admin"} target="_blank">
+              <Link href={process.env.WORDPRESS_SITE_IP || ""} target="_blank">
               SUBMIT
               </Link>
             </div>
