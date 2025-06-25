@@ -1,7 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 
 import dbConnect from "@/lib/dbConnect";
-import { sendNoticeNewsLetters } from "@/lib/emails/send-notice-newsletters-emails";
+// import { sendNoticeNewsLetters } from "@/lib/emails/send-notice-newsletters-emails";
 import { sendAnnouncementNewsLetters } from "@/lib/emails/send-annoucment-newsletters-email";
 
 import { NoticeDB } from "@/types/post_objects/notice";
@@ -308,7 +308,7 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
 
         let notice = await NoticeModel.create(NoticeData);
 
-        await sendNoticeNewsLetters(notice);
+        // await sendNoticeNewsLetters(notice);
 
     } else if (type === "announcement") {
         const {
@@ -337,7 +337,7 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
         };
         let announcement = await AnnouncementModel.create(AnnouncementData);
 
-        // await sendAnnouncementNewsLetters(announcement);
+        await sendAnnouncementNewsLetters(announcement);
     }
 }
 
