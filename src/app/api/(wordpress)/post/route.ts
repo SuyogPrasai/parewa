@@ -1,7 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 
 import dbConnect from "@/lib/dbConnect";
-import { sendNoticeNewsLetters } from "@/lib/emails/send-notice-newsletters-emails";
+// import { sendNoticeNewsLetters } from "@/lib/emails/send-notice-newsletters-emails";
 import { sendAnnouncementNewsLetters } from "@/lib/emails/send-annoucment-newsletters-email";
 
 import { NoticeDB } from "@/types/post_objects/notice";
@@ -44,6 +44,7 @@ export async function POST(request: NextRequest) {
                 featuredImage: requestBody['featuredImage'],
                 postTags: requestBody['postTags'],
                 category: requestBody['category'],
+                published_for: requestBody['published_for'],
             } as NoticeDB;
         } else if (requestBody['type'] === "article") {
             post_object = {
@@ -199,6 +200,7 @@ async function handleModifiedEvent(type: string, id: string, data: ArticleDB | N
             postTags,
             category,
             publisherID,
+            published_for,
         } = data as NoticeDB;
 
         const createFields = {
@@ -208,6 +210,7 @@ async function handleModifiedEvent(type: string, id: string, data: ArticleDB | N
             postTags,
             category: category.toLowerCase(),
             publisherID,
+            published_for,
         };
 
         const notice = await NoticeModel.findOneAndUpdate({ id }, createFields, { new: true });
@@ -285,6 +288,7 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
             postTags,
             category,
             publisherID,
+            published_for,
         } = data as NoticeDB;
 
         const NoticeData = {
@@ -299,12 +303,12 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
             postTags,
             trashed: false,
             category: category.toLowerCase(),
-
+            published_for
         };
 
         let notice = await NoticeModel.create(NoticeData);
 
-        await sendNoticeNewsLetters(notice);
+        // await sendNoticeNewsLetters(notice);
 
     } else if (type === "announcement") {
         const {
@@ -333,7 +337,7 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
         };
         let announcement = await AnnouncementModel.create(AnnouncementData);
 
-        // await sendAnnouncementNewsLetters(announcement);
+        await sendAnnouncementNewsLetters(announcement);
     }
 }
 

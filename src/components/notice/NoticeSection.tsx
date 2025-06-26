@@ -19,6 +19,7 @@ export default function NoticeSection({ notices } : { notices: Notice[] }) {
             tags={notice.postTags}
             initialVotes={notice.voteCount || 0}
             id={notice._id || ""}
+            published_for={notice.published_for || ""}
           />
         ))
       ) : (

@@ -14,6 +14,7 @@ interface NoticeCardProps {
   tags: string[];
   initialVotes: number;
   id: string;
+  published_for: string;
 }
 
 export function NoticeCard({
@@ -23,23 +24,30 @@ export function NoticeCard({
   username,
   tags,
   initialVotes,
-  id
+  id,
+  published_for
 }: NoticeCardProps) {
 
   return (
-
     <Card className="w-[100%] p-4 bg-background shadow-sm hover:shadow-md transition-shadow mb-3">
-
       <div className="flex justify-between items-start gap-3">
         <div className="flex-1">
           <Link href={"/notices/notice?id=" + id}>
-            <div className="flex justify-between items-center mb-1">
-              <h3 className="text-base font-semibold text-foreground">{title}</h3>
-              {/* <span className="text-xs text-muted-foreground">{timestamp}</span> */}
+            <div className="flex flex-col md:flex-row justify-between items-center mb-1">
+              <div className="flex md:flex-row gap-2 flex-col">
+                <h3 className="text-base font-semibold text-foreground">{title}</h3>
+                <Badge variant="destructive" className="text-xs font-medium px-1.5 py-0.5 mb-2">
+                  For {published_for}
+                </Badge>
+              </div>
+              <span className="text-xs text-muted-foreground">{timestamp}</span>
             </div>
 
             <p className="text-xs text-muted-foreground mb-2 cursor-pointer hover:underline">
               @{username}
+            </p>
+            <p className="text-xs text-muted-foreground mb-2 cursor-pointer hover:underline">
+
             </p>
 
             <p className="text-sm text-foreground leading-snug mb-2">{description}</p>
@@ -54,7 +62,7 @@ export function NoticeCard({
 
           </Link>
         </div>
-        <VoteComponent orientation="vertical" voteCount={initialVotes} post_id={id} post_type={"notice"}/>
+        <VoteComponent orientation="vertical" voteCount={initialVotes} post_id={id} post_type={"notice"} />
       </div>
     </Card>
   );

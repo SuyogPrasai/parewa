@@ -45,10 +45,10 @@ async function fetchArticlesByCategory(category: string) {
     }
 }
 
-async function fetchNotices(category = 'general'): Promise<Notice[]> {
+async function fetchNotices(): Promise<Notice[]> {
     try {
         const response = await axios.get<NoticesResponse>(
-            `${BASE_URL}/api/get_news?category=${category}&number=4&limit=4`
+            `${BASE_URL}/api/get_news?&number=4&limit=4`
         );
         if (response.data.success) {
             return response.data.notices.filter((notice: Notice) => !notice.trashed);
@@ -70,17 +70,9 @@ export default async function Page() {
     
     const articlesData = await Promise.all(articlesDataPromises);
 
-    console.log(articlesData)
-    
     const topArticlesData = await fetchTopArticles();
     
-    console.log(topArticlesData)
-    
     const notices = await fetchNotices();
-
-    console.log(notices)
-
-    console.log(BASE_URL)
 
     return (
         <>

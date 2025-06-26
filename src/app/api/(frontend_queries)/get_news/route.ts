@@ -22,18 +22,15 @@ export async function GET(request: NextRequest) {
   const date_ = searchParams.get("date");
   const excluding = searchParams.get("excluding");
 
-  if (!category_) {
-    return NextResponse.json(
-      { success: false, message: "Category is required" },
-      { status: 400 }
-    );
-  }
-
   try {
     let matchConditions: any = {
       trashed: false,
-      category: category_,
     };
+
+    // Only add category filter if category is provided
+    if (category_) {
+      matchConditions.category = category_;
+    }
 
     // Handle excluding parameter
     if (excluding) {
@@ -92,7 +89,9 @@ export async function GET(request: NextRequest) {
     if (notices.length === 0) {
       const message =
         totalNotices === 0
-          ? "No notices found for this category."
+          ? category_ 
+            ? "No notices found for this category."
+            : "No notices found."
           : "No notices found for this page.";
       return NextResponse.json(
         {
@@ -130,6 +129,7 @@ export async function GET(request: NextRequest) {
         publishedIn: notice.publishedIn,
         featuredImage: notice.featuredImage,
         publisherID: notice.publisherID,
+        published_for: notice.published_for,
         voteCount: notice.voteCount,
         postTags: notice.postTags,
         updatedAt: notice.updatedAt,
