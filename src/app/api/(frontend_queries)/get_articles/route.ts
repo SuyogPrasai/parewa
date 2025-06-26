@@ -35,6 +35,8 @@ export async function GET(request: NextRequest) {
       matchConditions.$or = [
         { title: { $regex: query_, $options: "i" } },
         { content: { $regex: query_, $options: "i" } },
+        { postTags: { $regex: query_, $options: "i" } },
+        { author: { $regex: query_, $options: "i" } },
       ];
     }
 
