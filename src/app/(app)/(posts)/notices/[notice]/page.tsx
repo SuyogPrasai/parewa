@@ -3,6 +3,7 @@ import axios from "axios";
 
 import { fetchTopArticles } from "@/lib/application/get-top-articles";
 import NoticeDetail from "@/components/notice/NoticeDetail";
+import { notFound } from 'next/navigation';
 
 
 async function fetchNotice(notice_id: string) {
@@ -17,6 +18,7 @@ async function fetchNotice(notice_id: string) {
 	}
 	catch (error: any) {
 		console.error('Error fetching notice:', error.message);
+		notFound();
 		return null
 
 	}

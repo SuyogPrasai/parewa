@@ -11,6 +11,7 @@ import PublisherCard from '@/components/shared/PublisherCard';
 import SideArticleList from '@/components/articles/ArticleCollection';
 import Article from "@/types/post_objects/article";
 import { Badge } from "@/components/ui/badge";
+import { notFound } from "next/navigation";
 
 
 async function fetchArticle(article_id: string) {
@@ -24,6 +25,7 @@ async function fetchArticle(article_id: string) {
 		return null
 	}
 	catch (error: any) {
+		notFound()
 		console.error('Error fetching article:', error.message);
 		return null
 
