@@ -75,6 +75,7 @@ export async function GET(request: NextRequest) {
             'postTags': notice.postTags,         // Assuming notices might have tags
             'updatedAt': notice.updatedAt,
             'category': notice.category,
+            'published_for': notice.published_for,
             'link': link,
             'publisher': [{
                 'name': publisher_name,

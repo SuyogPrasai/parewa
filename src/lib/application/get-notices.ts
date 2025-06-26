@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Notice from '@/types/post_objects/notice';
 import { NoticesResponse } from '@/types/api-responses';
+
 // Define the type for query parameters
 interface NoticeQueryParams {
   category?: string;
@@ -22,6 +23,11 @@ export async function fetchNotices(params: NoticeQueryParams = {}): Promise<{
       limit: 8,
       ...params,
     };
+
+    // Remove category if it's "general"
+    if (defaultParams.category?.toLowerCase() === 'general') {
+      delete defaultParams.category;
+    }
 
     // Convert params to query string, handling Date objects and filtering undefined values
     const queryString = Object.entries(defaultParams)
