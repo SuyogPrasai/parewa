@@ -30,7 +30,7 @@ export const main_metadata: Metadata = {
 export const slides = [
   {
     id: 1,
-    image: "/carousel_background_2.jpg",
+    image: "/carousel_backend_3.jpg",
     title: "Your world, your news, know what matters",
     author: "",
   },

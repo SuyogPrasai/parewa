@@ -42,3 +42,6 @@ export function parseHTML(rawHTML: string, tagStyles: TagStyleConfig): string {
 function toKebabCase(str: string): string {
   return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
 }
+
+export const stripHTML = (html: string): string =>
+  html.replace(/<[^>]+>/g, '').trim();

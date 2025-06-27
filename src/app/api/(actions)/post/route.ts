@@ -14,6 +14,8 @@ import ArticleModel from "@/models/Article";
 import UserModel from "@/models/User";
 import { User } from "@/models/User";
 import AnnouncementModel from "@/models/Announcements";
+import { parseHTML, stripHTML } from "@/lib/htmlParser";
+import { notice_options } from "@/config/parsing-options";
 
 export async function POST(request: NextRequest) {
     const API_KEY = process.env.NEXT_WORDPRESS_API;
@@ -311,8 +313,8 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
         const url = `${process.env.PAREWA_BASE_URI}/notices/notice?id=${notice.id}`;
 
         await sendNotifications({
-            title: "📢 परेवा_ | Notice Alert - " + publisher_name,
-            body: notice.title,
+            title: `परेवा_ Notice | ${notice.title} by ${publisher_name}`,
+            body: stripHTML(notice.content || ""),
             url
         })
 
@@ -342,6 +344,11 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
             author,
         };
         let announcement = await AnnouncementModel.create(AnnouncementData);
+
+        await sendNotifications({
+            title: `परेवा_ Announcement | ${announcement.title} by ${publisher_name}`,
+            body: stripHTML(announcement.content || ""),
+        })
 
         await sendAnnouncementNewsLetters(announcement);
     }
