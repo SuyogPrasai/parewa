@@ -3,6 +3,7 @@ import { NextResponse, NextRequest } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 // import { sendNoticeNewsLetters } from "@/lib/emails/send-notice-newsletters-emails";
 import { sendAnnouncementNewsLetters } from "@/lib/emails/send-annoucment-newsletters-email";
+import { sendNotifications } from "@/lib/send-notification";
 
 import { NoticeDB } from "@/types/post_objects/notice";
 import { ArticleDB } from "@/types/post_objects/article";
@@ -110,7 +111,7 @@ export async function POST(request: NextRequest) {
                 );
 
             case "published":
-                await handlePublishedEvent(requestBody['type'], post_object.wp_id, post_object);
+                await handlePublishedEvent(requestBody['type'], post_object.wp_id, post_object, requestBody['publisher_name']);
                 console.log(`Post Published with ID: ${post_object.wp_id}`);
                 return NextResponse.json(
                     { success: true, message: `${requestBody['type']} Published with ID: ${post_object.wp_id}` },
@@ -246,7 +247,7 @@ async function handleModifiedEvent(type: string, id: string, data: ArticleDB | N
     }
 }
 
-async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB | NoticeDB | AnnouncementDB) {
+async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB | NoticeDB | AnnouncementDB, publisher_name: string) {
     if (type === "article") {
         const {
             wp_id,
@@ -307,8 +308,14 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
         };
 
         let notice = await NoticeModel.create(NoticeData);
+        const url = `${process.env.PAREWA_BASE_URI}/notices/notice?id=${notice.id}`;
 
-        // await sendNoticeNewsLetters(notice);
+        await sendNotifications({
+            type: "news",
+            title: "📢 परेवा_ | Notice Alert - " + publisher_name,
+            body: notice.title,
+            url
+        })
 
     } else if (type === "announcement") {
         const {

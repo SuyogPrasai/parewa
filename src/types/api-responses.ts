@@ -25,3 +25,11 @@ export interface NoticesResponse extends ApiResponse {
   notices: Notice[];
   totalPages?: number;
 }
+
+export interface NotificationResult {
+    success: boolean;
+    message?: string;
+    successCount?: number;
+    failureCount?: number;
+    error?: any;
+}

@@ -4,9 +4,11 @@ import React, { useEffect, useCallback } from 'react';
 import { useToast } from '@/hooks/useToast';
 import { Button } from '../ui/button';
 import { Bell, Check, X } from 'lucide-react';
+import useFcmToken from '@/hooks/useFcmToken';
 
 export default function PushManager() {
     const { toast } = useToast();
+    const { token, notificationPermissionStatus } = useFcmToken();
 
     const handlePermission = useCallback(async (allow: boolean) => {
 
@@ -60,7 +62,7 @@ export default function PushManager() {
 
     useEffect(() => {
         console.log('PushManager mounted, showing toast'); // Debug log
-        if ( Notification.permission === "granted") {
+        if (Notification.permission === "granted") {
             return;
         }
 
@@ -83,7 +85,7 @@ export default function PushManager() {
                                     </p>
                                 </div>
                             </div>
-    
+
                             <div className="flex gap-3 mt-0">
                                 <Button
                                     onClick={() => {
@@ -109,7 +111,7 @@ export default function PushManager() {
                                     Not Now
                                 </Button>
                             </div>
-    
+
                             <p className="text-xs text-gray-500 leading-relaxed">
                                 You can change this setting anytime in your browser preferences.
                             </p>
@@ -119,7 +121,7 @@ export default function PushManager() {
                     className: "max-w-md",
                 });
             }, 1000);
-    
+
             return () => clearTimeout(timer);
         }
     }, [toast, handlePermission]);
