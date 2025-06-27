@@ -31,7 +31,7 @@ messaging.onBackgroundMessage((payload) => {
   const notificationTitle = payload.data.title;
   const notificationOptions = {
     body: payload.data.body,
-    icon: "./logo.png",
+    badge: '/logo.png',
     data: { url: link },
   };
   self.registration.showNotification(notificationTitle, notificationOptions);
