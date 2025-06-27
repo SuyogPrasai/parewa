@@ -12,6 +12,7 @@ import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/s
 import { AppSidebar } from '@/components/layout/sidebar/Sidebar';
 import { Separator } from '@/components/ui/separator';
 import { Navbar } from '@/components/collections/CollectionNavbar';
+import { main_metadata } from "@/config/site-config";
 
 // Font configurations
 const roboto = Roboto({
@@ -38,10 +39,8 @@ const lato = Lato({
 	variable: '--font-lato',
 });
 
-export const metadata: Metadata = {
-	title: "परेवा_ - Your Source for Notices, Articles & News",
-	description: "Parewa is a media platform developed and managed by the students of BNKS",
-};
+export const metadata = main_metadata;
+
 
 const wordpress_ip = process.env.WORDPRESS_SITE_IP || "";
 
