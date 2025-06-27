@@ -72,7 +72,7 @@ export default async function Page() {
     const articlesData = await Promise.all(articlesDataPromises);
 
     const topArticlesData = await fetchTopArticles();
-
+    
     const notices = await fetchNotices();
     
     const wordpress_ip = process.env.WORDPRESS_SITE_IP || "";

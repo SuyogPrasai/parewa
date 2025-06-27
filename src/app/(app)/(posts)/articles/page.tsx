@@ -22,7 +22,8 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
     const query = SearchParams.query || '';
     const date = SearchParams.date || '';
 
-    const { articles, totalPages } = await fetchArticles({ category: category.toLocaleLowerCase(), page, query, date });
+    const { articles, totalPages, error } = await fetchArticles({ category, page, query, date });
+
 
     return (
         <>

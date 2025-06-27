@@ -28,7 +28,6 @@ export function Navbar({ navLinks, type, wordpress_ip }: NavbarProps) {
   const handleLinkClick = useCallback(
     (linkName: string) => {
       setActiveLink(linkName);
-
       if (type === "article") {
         router.push(`/articles?category=${encodeURIComponent(linkName)}`);
       } else if (type === "notice") {
