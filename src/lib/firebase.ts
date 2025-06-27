@@ -1,3 +1,4 @@
+import axios from "axios";
 import { getApp, getApps, initializeApp } from "firebase/app";
 import { getMessaging, getToken, isSupported } from "firebase/messaging";
 
@@ -27,6 +28,8 @@ export const fetchToken = async () => {
       const token = await getToken(fcmMessaging, {
         vapidKey: process.env.NEXT_PUBLIC_FIREBASE_FCM_VAPID_KEY,
       });
+      
+      await axios.post("/api/store-fcm-token", { token });
       return token;
     }
     return null;
