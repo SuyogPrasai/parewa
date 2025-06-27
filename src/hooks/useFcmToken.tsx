@@ -106,7 +106,7 @@ const useFcmToken = () => {
 
         if (link) {
           toast.info(
-            `${payload.notification?.title}: ${payload.notification?.body}`,
+            `${payload.data?.title}: ${payload.data?.body}`,
             {
               action: {
                 label: "Visit",
@@ -121,16 +121,16 @@ const useFcmToken = () => {
           );
         } else {
           toast.info(
-            `${payload.notification?.title}: ${payload.notification?.body}`
+            `${payload.data?.title}: ${payload.data?.body}`
           );
         }
 
         // --------------------------------------------
         // Disable this if you only want toast notifications.
         const n = new Notification(
-          payload.notification?.title || "New message",
+          payload.data?.title || "New message",
           {
-            body: payload.notification?.body || "This is a new message",
+            body: payload.data?.body || "This is a new message",
             data: link ? { url: link } : undefined,
           }
         );

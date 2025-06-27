@@ -69,13 +69,16 @@ interface DashboardLayoutProps {
   children: ReactNode;
 }
 
+const wordpress_ip = process.env.WORDPRESS_SITE_IP || "";
+
+
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <html lang="en">
       <body className={`${roboto.variable} ${oswald.variable} ${bebasNeue.variable} ${lato.variable}`}>
         <AuthProvider>
           <SidebarProvider defaultOpen={false}>
-            <AppSidebar />
+            <AppSidebar wordpress_ip={wordpress_ip} />
             <SidebarInset>
               <div className="flex flex-col  lg:flex-row lgplus:max-w-[1400px]">
                 <div className="flex flex-col w-full lg:w-auto">
@@ -85,7 +88,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                 <Separator orientation='vertical' className='hidden lg:block lg:h-auto lg:w-[1px] bg-gray-200' />
                 <main className="w-full h-full lg:pl-4">
                   <Suspense fallback={<div>Loading...</div>}>
-                    <Navbar navLinks={navLinks} type="article" />
+                    <Navbar navLinks={navLinks} type="article" wordpress_ip={wordpress_ip} />
                   </Suspense>
                   {children}
                 </main>

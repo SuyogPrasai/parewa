@@ -74,6 +74,8 @@ export default async function Page() {
     const topArticlesData = await fetchTopArticles();
 
     const notices = await fetchNotices();
+    
+    const wordpress_ip = process.env.WORDPRESS_SITE_IP || "";
 
     return (
         <>
@@ -85,7 +87,7 @@ export default async function Page() {
             <Separator orientation="horizontal" />
             <div className="w-full px-1 *:lg:px-5 min-h-screen">
 
-                <MainSection notices={notices} />
+                <MainSection notices={notices} wordpress_ip={wordpress_ip} />
 
                 <Separator orientation="horizontal" className="" />
 

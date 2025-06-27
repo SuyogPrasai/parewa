@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import admin from "firebase-admin";
 import { Message } from "firebase-admin/messaging";
 import FcmTokenModel from "@/models/FcmTokens";
+import dbConnect from "@/lib/dbConnect";
 
 // Initialize Firebase Admin SDK
 if (!admin.apps.length) {
@@ -12,9 +13,10 @@ if (!admin.apps.length) {
 }
 
 export async function POST(request: NextRequest) {
-  const { type, title, body, url, data } = await request.json();
+  const { title, body, url, data } = await request.json();
 
   try {
+    await dbConnect();
     const fcmTokens = await FcmTokenModel.find();
 
     if (fcmTokens.length === 0) {
@@ -28,10 +30,9 @@ export async function POST(request: NextRequest) {
 
     const basePayload = {
       data: {
-        type,
         title,
         body,
-        ...(url && { link: url }), // rename to `link` to use consistently in your service worker
+        ...(url && { link: url }),
         ...data,
       },
       ...(url && {

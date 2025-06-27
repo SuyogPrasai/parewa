@@ -24,7 +24,6 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
 
     const { articles, totalPages } = await fetchArticles({ category: category.toLocaleLowerCase(), page, query, date });
 
-
     return (
         <>
             <div className="min-h-screen flex flex-col">

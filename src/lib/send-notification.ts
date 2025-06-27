@@ -1,7 +1,6 @@
 import axios from "axios";
 
 interface NotificationPayload {
-  type: string;
   title: string;
   body: string;
   url?: string;

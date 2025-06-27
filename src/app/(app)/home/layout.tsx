@@ -41,6 +41,8 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 
+const wordpress_ip = process.env.WORDPRESS_SITE_IP || "";
+
 export default async function RootLayout({ children }: RootLayoutProps) {
   
   return (
@@ -49,7 +51,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         <AuthProvider>
           {/* <Preloader> */}
             <SidebarProvider defaultOpen={false}>
-              <AppSidebar />
+              <AppSidebar wordpress_ip={wordpress_ip} />
               <SidebarInset>
                 <AnnouncementCard />
                 {/* Main content area */}

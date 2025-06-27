@@ -46,8 +46,7 @@ const socialIcons = [
   { Icon: Youtube, href: "https://www.youtube.com/@parewa_bnks" },
 ];
 
-
-export function AppSidebar() {
+export function AppSidebar({ wordpress_ip }: { wordpress_ip: string }) {
   return (
     <Sidebar variant="sidebar" collapsible="offcanvas">
       <SidebarContent>
@@ -72,10 +71,11 @@ export function AppSidebar() {
             </SidebarMenu>
             <Separator className="bg-black h-[0.0125rem]" />
             <div className="my-4 w-[75%]">
-              <Link href={process.env.WORDPRESS_SITE_IP || ""}>
-              <button className="bg-primary text-white py-2 px-4 w-full flex items-center justify-center font-sans font-bold">
-                SUBMIT NOTICE <span className="ml-2 text-lg">→</span>
-              </button>
+
+              <Link href={wordpress_ip || ""}>
+                <button className="bg-primary text-white py-2 px-4 w-full flex items-center justify-center font-sans font-bold">
+                  SUBMIT NOTICE <span className="ml-2 text-lg">→</span>
+                </button>
               </Link>
             </div>
             <Separator className="bg-black h-[0.0125rem]" />
@@ -107,7 +107,7 @@ export function AppSidebar() {
                 ))}
               </SidebarMenu>
             </div>
-            
+
             {/* Footer section */}
             <div className="mt-6 p-4 border-gray-200">
               <div className="flex items-center gap-4 mb-5">

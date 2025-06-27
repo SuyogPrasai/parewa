@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/navigation-menu";
 
 
-function Navbar({ header_click }: any) {
+function Navbar({ header_click, wordpress_ip }: any) {
   const [activeLink, setActiveLink] = useState("General"); // State to track active link
 
   const handleLinkClick = (linkName: string) => {
@@ -83,7 +83,7 @@ function Navbar({ header_click }: any) {
               }}
             >
               <Link href="https://github.com/SuyogPrasai/parewa" target="_blank">
-              ABOUT
+                ABOUT
               </Link>
             </div>
             <div
@@ -100,8 +100,9 @@ function Navbar({ header_click }: any) {
                 fontFamily: "monospace, sans-serif",
               }}
             >
-              <Link href={process.env.WORDPRESS_SITE_IP || ""} target="_blank">
-              SUBMIT
+
+              <Link href={wordpress_ip || ""} target="_blank">
+                SUBMIT
               </Link>
             </div>
           </div>

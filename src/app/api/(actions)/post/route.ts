@@ -311,7 +311,6 @@ async function handlePublishedEvent(type: string, wp_id: string, data: ArticleDB
         const url = `${process.env.PAREWA_BASE_URI}/notices/notice?id=${notice.id}`;
 
         await sendNotifications({
-            type: "news",
             title: "📢 परेवा_ | Notice Alert - " + publisher_name,
             body: notice.title,
             url

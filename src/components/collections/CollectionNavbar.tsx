@@ -17,9 +17,10 @@ interface NavLink {
 interface NavbarProps {
   navLinks: NavLink[];
   type: string;
+  wordpress_ip: string;
 }
 
-export function Navbar({ navLinks, type }: NavbarProps) {
+export function Navbar({ navLinks, type, wordpress_ip }: NavbarProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [activeLink, setActiveLink] = useState('General'); // State to track active link
@@ -27,7 +28,7 @@ export function Navbar({ navLinks, type }: NavbarProps) {
   const handleLinkClick = useCallback(
     (linkName: string) => {
       setActiveLink(linkName);
-      
+
       if (type === "article") {
         router.push(`/articles?category=${encodeURIComponent(linkName)}`);
       } else if (type === "notice") {
@@ -90,6 +91,7 @@ export function Navbar({ navLinks, type }: NavbarProps) {
               >
                 ABOUT
               </div>
+
               <div
                 className="py-2 px-6 flex items-center justify-center hover:cursor-pointer text-white text-lg font-bold"
                 style={{
@@ -103,10 +105,11 @@ export function Navbar({ navLinks, type }: NavbarProps) {
                   letterSpacing: '0.05em',
                   fontFamily: 'oswald, sans-serif',
                 }}
-                onClick={() => router.push(process.env.WORDPRESS_SITE_IP || "")}
+                onClick={() => router.push(wordpress_ip)}
               >
                 SUBMIT
               </div>
+
             </div>
           </nav>
         </div>
