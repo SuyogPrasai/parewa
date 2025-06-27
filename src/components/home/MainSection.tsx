@@ -8,7 +8,7 @@ import Notice from "@/types/post_objects/notice";
 import NoticeSection from "@/components/notice/NoticeSection";
 import SideCalendar from "@/components/layout/sidebar/SideCalendar";
 
-export default function MainSection({ notices }: { notices: Notice[] }) {
+export default function MainSection({ notices, wordpress_ip }: { notices: Notice[], wordpress_ip: string }) {
   const [notices_, setNotices] = useState<Notice[]>(notices);
 
   const updateNotices = (heading: string) => {
@@ -30,7 +30,7 @@ export default function MainSection({ notices }: { notices: Notice[] }) {
   return (
 
     <>
-      <Navbar header_click={updateNotices} />
+      <Navbar header_click={updateNotices} wordpress_ip={wordpress_ip} />
       <div className="flex flex-col mb-10 w-full pt-10  relative">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-5 justify-center">
           {/* Main content section */}

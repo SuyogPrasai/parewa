@@ -15,6 +15,7 @@ import { Header } from '@/components/layout/Header';
 import { slides } from '@/config/site-config';
 import Footer from '@/components/layout/Footer';
 import { CarouselHome } from '@/components/home/Carousel';
+import NotificationManager from '@/components/shared/NotificationManager';
 
 export const dynamic = 'force-dynamic';
 
@@ -63,16 +64,18 @@ async function fetchNotices(): Promise<Notice[]> {
 }
 
 export default async function Page() {
-    
+
     const categories = ['BNKS', 'World', 'National'];
-    
+
     const articlesDataPromises = categories.map((category: string) => fetchArticlesByCategory(category.toLocaleLowerCase()));
-    
+
     const articlesData = await Promise.all(articlesDataPromises);
 
     const topArticlesData = await fetchTopArticles();
     
     const notices = await fetchNotices();
+    
+    const wordpress_ip = process.env.WORDPRESS_SITE_IP || "";
 
     return (
         <>
@@ -80,10 +83,11 @@ export default async function Page() {
             <Header />
             {/* Carousel as the background */}
             <CarouselHome slides={slides} />
+            <NotificationManager />
             <Separator orientation="horizontal" />
             <div className="w-full px-1 *:lg:px-5 min-h-screen">
 
-                <MainSection notices={notices} />
+                <MainSection notices={notices} wordpress_ip={wordpress_ip} />
 
                 <Separator orientation="horizontal" className="" />
 

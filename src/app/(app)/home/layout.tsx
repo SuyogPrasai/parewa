@@ -41,24 +41,27 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 
+const wordpress_ip = process.env.WORDPRESS_SITE_IP || "";
+
 export default async function RootLayout({ children }: RootLayoutProps) {
-  
+
   return (
     <html lang="en">
+
       <body className={`${roboto.variable} ${lato.variable} ${oswald.variable} ${bebas_neue.variable}`}>
         <AuthProvider>
           {/* <Preloader> */}
-            <SidebarProvider defaultOpen={false}>
-              <AppSidebar />
-              <SidebarInset>
-                <AnnouncementCard />
-                {/* Main content area */}
-                <main className="">
-                  {children}
-                </main>
-                <Toaster />
-              </SidebarInset>
-            </SidebarProvider>
+          <SidebarProvider defaultOpen={false}>
+            <AppSidebar wordpress_ip={wordpress_ip} />
+            <SidebarInset>
+              <AnnouncementCard />
+              {/* Main content area */}
+              <main className="">
+                {children}
+              </main>
+              <Toaster />
+            </SidebarInset>
+          </SidebarProvider>
           {/* </Preloader> */}
         </AuthProvider>
       </body>

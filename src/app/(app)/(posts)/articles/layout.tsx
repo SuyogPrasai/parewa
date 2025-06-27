@@ -3,7 +3,6 @@ import '@/app/globals.css';
 
 import AuthProvider from '@/context/AuthProvider';
 import Link from 'next/link';
-import { Metadata } from 'next';
 import { Roboto, Oswald, Bebas_Neue, Lato } from 'next/font/google';
 
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
@@ -12,6 +11,8 @@ import Footer from '@/components/collections/CollectionsFooter';
 import { Separator } from '@/components/ui/separator';
 import ScrollFadeIn from '@/components/home/ScrollDown';
 import { Navbar } from '@/components/collections/CollectionNavbar';
+import { main_metadata } from "@/config/site-config";
+
 
 // Font configurations
 const roboto = Roboto({
@@ -38,10 +39,7 @@ const lato = Lato({
   variable: '--font-lato',
 })
 
-export const metadata: Metadata = {
-  title: "परेवा_ - Your Source for Notices, Articles & News",
-  description: "Parewa is a media platform developed and managed by the students of BNKS",
-};
+export const metadata = main_metadata;
 
 // Header component
 const DashboardHeader: React.FC = () => (
@@ -69,13 +67,16 @@ interface DashboardLayoutProps {
   children: ReactNode;
 }
 
+const wordpress_ip = process.env.WORDPRESS_SITE_IP || "";
+
+
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <html lang="en">
       <body className={`${roboto.variable} ${oswald.variable} ${bebasNeue.variable} ${lato.variable}`}>
         <AuthProvider>
           <SidebarProvider defaultOpen={false}>
-            <AppSidebar />
+            <AppSidebar wordpress_ip={wordpress_ip} />
             <SidebarInset>
               <div className="flex flex-col  lg:flex-row lgplus:max-w-[1400px]">
                 <div className="flex flex-col w-full lg:w-auto">
@@ -85,7 +86,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                 <Separator orientation='vertical' className='hidden lg:block lg:h-auto lg:w-[1px] bg-gray-200' />
                 <main className="w-full h-full lg:pl-4">
                   <Suspense fallback={<div>Loading...</div>}>
-                    <Navbar navLinks={navLinks} type="article" />
+                    <Navbar navLinks={navLinks} type="article" wordpress_ip={wordpress_ip} />
                   </Suspense>
                   {children}
                 </main>

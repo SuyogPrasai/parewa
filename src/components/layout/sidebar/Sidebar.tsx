@@ -14,6 +14,7 @@ import {
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
 import AuthButton from "@/components/shared/AuthButton";
+import Image from "next/image";
 
 
 const navItems = [
@@ -46,8 +47,7 @@ const socialIcons = [
   { Icon: Youtube, href: "https://www.youtube.com/@parewa_bnks" },
 ];
 
-
-export function AppSidebar() {
+export function AppSidebar({ wordpress_ip }: { wordpress_ip: string }) {
   return (
     <Sidebar variant="sidebar" collapsible="offcanvas">
       <SidebarContent>
@@ -56,7 +56,13 @@ export function AppSidebar() {
             <SidebarTrigger sidebarVariant="opened">
               <X className="h-5 w-5 text-gray-500" />
             </SidebarTrigger>
-            <Link href="/" className="text-2xl font-bold p-5">परेवा_</Link>
+            <div className="flex items-center justify-center">
+              <Link href="/" className="text-2xl font-bold p-5 flex items-center justify-center gap-2">
+                <Image src="/logo.png" alt="Parewa Logo" width={64} height={64} />
+                परेवा_
+              </Link>
+            </div>
+
           </div>
           <div className="mx-10">
             <SidebarMenu className="mb-4">
@@ -72,10 +78,11 @@ export function AppSidebar() {
             </SidebarMenu>
             <Separator className="bg-black h-[0.0125rem]" />
             <div className="my-4 w-[75%]">
-              <Link href={process.env.WORDPRESS_SITE_IP || ""}>
-              <button className="bg-primary text-white py-2 px-4 w-full flex items-center justify-center font-sans font-bold">
-                SUBMIT NOTICE <span className="ml-2 text-lg">→</span>
-              </button>
+
+              <Link href={wordpress_ip || ""}>
+                <button className="bg-primary text-white py-2 px-4 w-full flex items-center justify-center font-sans font-bold">
+                  SUBMIT NOTICE <span className="ml-2 text-lg">→</span>
+                </button>
               </Link>
             </div>
             <Separator className="bg-black h-[0.0125rem]" />
@@ -107,7 +114,7 @@ export function AppSidebar() {
                 ))}
               </SidebarMenu>
             </div>
-            
+
             {/* Footer section */}
             <div className="mt-6 p-4 border-gray-200">
               <div className="flex items-center gap-4 mb-5">

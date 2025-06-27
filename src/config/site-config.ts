@@ -1,16 +1,36 @@
 // src/config/site-config.ts
 import type { Metadata } from "next";
 
+
 export const main_metadata: Metadata = {
   title: "परेवा_ - Your Source for Notices, Articles & News",
   description: "Parewa is a media platform developed and managed by the students of BNKS",
+  icons: {
+    icon: [
+      { url: "/favicon/favicon.ico" },
+      { url: "/favicon/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/favicon/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/favicon/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      {
+        rel: "manifest",
+        url: "/favicon/site.webmanifest",
+      },
+    ],
+  },
+  other: {
+    "apple-mobile-web-app-title": "परेवा_",
+  },
 };
 
 
 export const slides = [
   {
     id: 1,
-    image: "/carousel_background_2.jpg",
+    image: "/carousel_backend_3.jpg",
     title: "Your world, your news, know what matters",
     author: "",
   },
