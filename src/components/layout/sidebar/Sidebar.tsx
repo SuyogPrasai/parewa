@@ -14,6 +14,7 @@ import {
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
 import AuthButton from "@/components/shared/AuthButton";
+import Image from "next/image";
 
 
 const navItems = [
@@ -55,7 +56,13 @@ export function AppSidebar({ wordpress_ip }: { wordpress_ip: string }) {
             <SidebarTrigger sidebarVariant="opened">
               <X className="h-5 w-5 text-gray-500" />
             </SidebarTrigger>
-            <Link href="/" className="text-2xl font-bold p-5">परेवा_</Link>
+            <div className="flex items-center justify-center">
+              <Link href="/" className="text-2xl font-bold p-5 flex items-center justify-center gap-2">
+                <Image src="/logo.png" alt="Parewa Logo" width={64} height={64} />
+                परेवा_
+              </Link>
+            </div>
+
           </div>
           <div className="mx-10">
             <SidebarMenu className="mb-4">
