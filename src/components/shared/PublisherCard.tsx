@@ -5,10 +5,9 @@ interface PublisherInformationProps {
   initials: string;
   name: string;
   established?: string; // Optional, as not all publishers provide this
-  link?: string; // Optional URL for publisher's website or profile
 }
 
-const PublisherInformation: React.FC<PublisherInformationProps> = ({ initials, name, established, link }) => {
+const PublisherInformation: React.FC<PublisherInformationProps> = ({ initials, name, established }) => {
   let formattedDate = '';
 
   if (established && !isNaN(Date.parse(established))) {
@@ -37,18 +36,15 @@ const PublisherInformation: React.FC<PublisherInformationProps> = ({ initials, n
       <div>
         <p className="text-sm text-gray-600 font-mono">Publisher of this article</p>
         <h2 className="text-xl font-semibold text-black font-mono">
-          {link ? (
-            <a href={link} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
-              {capitalizedName}
-            </a>
-          ) : (
-            capitalizedName
-          )}
+          <div className="text-black-600 hover:underline">
+            {capitalizedName}
+          </div>
         </h2>
         {formattedDate && (
-          <p className="text-sm text-gray-600 font-mono">Established: {formattedDate}</p>
+          <p className="text-sm text-gray-600 font-mono">Published: {formattedDate}</p>
         )}
       </div>
+      
     </div>
   );
 };

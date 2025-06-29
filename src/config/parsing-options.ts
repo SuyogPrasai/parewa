@@ -6,7 +6,7 @@ const article_options = {
 
 const notice_options = {
     p: {
-        className: 'mt-4 font-roboto text-xl',
+        className: 'mt-4 font-roboto text-md',
     }
 }
 

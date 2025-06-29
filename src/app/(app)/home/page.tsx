@@ -74,18 +74,18 @@ export default async function Page() {
     const topArticlesData = await fetchTopArticles();
 
     const notices = await fetchNotices();
-    
+
     const wordpress_ip = process.env.WORDPRESS_SITE_IP || "";
 
     return (
-        <>
+        <div className='relative'>
             {/* Header with sidebar trigger and branding */}
             <Header />
             {/* Carousel as the background */}
             <CarouselHome slides={slides} />
             <NotificationManager />
             <Separator orientation="horizontal" />
-            <div className="w-full px-1 *:lg:px-5 min-h-screen">
+            <div className="w-full px-1 *:lg:px-5 min-h-screen relative select-none">
 
                 <MainSection notices={notices} wordpress_ip={wordpress_ip} />
 
@@ -119,14 +119,21 @@ export default async function Page() {
                 </div>
 
                 <Image
-                    src="/lightning - reversed.png"
+                    src="/lightning_reversed.png"
                     alt="Lightning Reversed"
                     width={150}
                     height={150}
-                    className="object-contain absolute bottom-0 left-[3%] w-[20%] min-w-[250px] max-w-[300px]"
+                    style={{
+                        userSelect: 'none',
+                        WebkitUserSelect: 'none',
+                        MozUserSelect: 'none',
+                        msUserSelect: 'none',
+                    }}
+                    draggable={false}
+                    className="w-[20%] max-w-[300px] absolute bottom-0"
                 />
             </div>
             <Footer />
-        </>
+        </div>
     )
 }

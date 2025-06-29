@@ -114,7 +114,8 @@ function Navbar({ header_click, wordpress_ip }: any) {
           alt="Eagle Logo"
           width={150}
           height={150}
-          className="hidden lg:block object-contain absolute left-[5%] top-0 w-[20%] max-w-[300px] 3xl:right-none"
+          className="hidden lg:block object-contain absolute left-[5%] top-0 w-[20%] max-w-[300px] 3xl:right-none select-none"
+          draggable={false}
         />
       </div>
     </div>

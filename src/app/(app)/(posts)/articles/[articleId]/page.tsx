@@ -74,13 +74,13 @@ export default async function ArticlePage({ searchParams }: { searchParams: Prom
 						<div className="flex flex-col mt-4 sm:mt-6 max-w-[1400px]">
 							<div className="details-card w-full md:max-w-2xl lg:max-w-2xl">
 								<p className="text-gray-600 font-roboto text-base sm:text-lg md:text-xl leading-relaxed">
-									Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam porro eveniet soluta explicabo. Ratione, itaque?
+									{article.oneLiner}
 								</p>
 								<div className="flex flex-col sm:flex-row sm:justify-between py-3 sm:py-4 gap-4">
 									{article && (
 										<div className="flex flex-col">
 
-											<AuthorCard initials={article.author[0]} name={article.author} timestamp={`${article.publishedIn}`} />
+											<AuthorCard initials={article.author[0]} name={article.author} timestamp={`${article.publishedIn}`} type="article" />
 											<div className="flex flex-wrap items-center gap-2 mt-2 pl-2 sm:pl-3">
 												{article.postTags.map((tag, index) => (
 													<Badge key={index} variant="secondary" className="text-xs sm:text-sm font-medium px-1.5 sm:px-2 py-0.5">
