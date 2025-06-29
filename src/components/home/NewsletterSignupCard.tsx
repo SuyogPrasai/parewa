@@ -112,15 +112,17 @@ export default function NewsletterSignupCard() {
         <p className="text-xs mt-6 text-left mx-auto text-gray-600 w-[80%] lgplus:w-[95%] ml-3">
           By signing up, I agree to receive emails from Parewa and to the{" "}
           <a
-            href="#"
+            href="/terms_and_conditions.pdf"
             className="underline font-bold text-primary-block hover:text-primary-dark"
+            target="_blank"
           >
             Privacy Policy
           </a>{" "}
           and{" "}
           <a
-            href="#"
+            href="/terms_and_conditions.pdf"
             className="underline font-bold text-primary-block hover:text-primary-dark"
+            target="_blank"
           >
             Terms of Use
           </a>

@@ -33,7 +33,7 @@ async function fetchArticle(article_id: string) {
 	}
 }
 
-async function fetchRelatedArticles({category, excluding}: {category: string, excluding: string}) {
+async function fetchRelatedArticles({ category, excluding }: { category: string, excluding: string }) {
 	try {
 		const response = await axios.get(`${process.env.PAREWA_BASE_URI}/api/get_articles?category=${category}&limit=2&excluding=${excluding}`);
 
@@ -60,7 +60,7 @@ export default async function ArticlePage({ searchParams }: { searchParams: Prom
 
 	const article: Article = await fetchArticle(article_id);
 
-	const relatedArticles = await fetchRelatedArticles({ category: article.category, excluding: article_id});
+	const relatedArticles = await fetchRelatedArticles({ category: article.category, excluding: article_id });
 
 	return (
 		<>

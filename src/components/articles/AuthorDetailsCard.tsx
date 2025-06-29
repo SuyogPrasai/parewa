@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { format } from 'date-fns';
 import { Badge } from '../ui/badge';
 
 interface AuthorCardProps {
@@ -16,18 +15,30 @@ const AuthorCard: React.FC<AuthorCardProps> = ({ initials, name, timestamp, type
 
   if (timestamp && !isNaN(Date.parse(timestamp))) {
     try {
-      date_formatted = format(new Date(timestamp), 'MMMM d yyyy, h:mm a');
+      // Convert to Nepal timezone (UTC+5:45)
+      const date = new Date(timestamp);
+      date_formatted = date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        timeZone: 'Asia/Kathmandu'
+      }) + ', ' + date.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+        timeZone: 'Asia/Kathmandu'
+      });
     } catch (error) {
       console.error("Error formatting date:", error);
     }
   } else {
     console.warn("Invalid or missing timestamp:", timestamp);
   }
+  
   const capitalizedName = name
     .split(' ')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(' ');
-
 
   return (
     <div className="flex items-center space-x-2">

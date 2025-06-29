@@ -100,7 +100,7 @@ export default async function NoticePage({ searchParams }: { searchParams: Promi
 											<div className="p-2 sm:p-3 flex flex-col sm:flex-row justify-between gap-3 bg-gray-50 mt-3">
 												<AuthorCard
 													name={notice.publisher[0].name}
-													timestamp={notice.publishedIn.toString()}
+													timestamp={notice.publishedIn.toLocaleString()}
 													initials={getInitial(notice.publisher[0].name)}
 													type="notice"
 													position={notice.publisher[0].position || ''}

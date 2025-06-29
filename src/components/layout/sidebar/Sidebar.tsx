@@ -129,8 +129,8 @@ export function AppSidebar({ wordpress_ip }: { wordpress_ip: string }) {
                 <p className="text-xs text-gray-600 mb-3 ">© PAREWA</p>
                 <p className="text-xs text-gray-600 mb-3">ALL RIGHTS RESERVED</p>
                 <div className="flex space-x-4">
-                  <a href="#" className="text-xs text-gray-500">TERMS OF USE</a>
-                  <a href="#" className="text-xs text-gray-500">PRIVACY</a>
+                  <a href="/terms_and_conditions.pdf" target="_blank" className="text-xs text-gray-500">TERMS OF USE</a>
+                  <a href="/terms_and_conditions.pdf" target="_blank" className="text-xs text-gray-500">PRIVACY</a>
                 </div>
               </div>
             </div>
