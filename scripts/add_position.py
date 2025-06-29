@@ -5,7 +5,7 @@ import sys
 def connect_to_mongodb():
     try:
         # Connect to MongoDB (update the connection string as needed)
-        client = MongoClient('mongodb://172.16.1.230:27014/')
+        client = MongoClient('mongodb://localhost:27014/')
         db = client['parewa_backend']  # Replace with your database name
         collection = db['positions']   # Matches the Mongoose model name
         return collection

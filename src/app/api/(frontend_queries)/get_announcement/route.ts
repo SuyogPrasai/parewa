@@ -17,10 +17,10 @@ export async function GET(request: NextRequest) {
         if (!announcement) {
             return NextResponse.json(
                 {
-                    success: false,
+                    success: true,
                     message: "No active announcement found",
                 },
-                { status: 404 }
+                { status: 200 }
             );
         }
 
