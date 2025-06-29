@@ -2,7 +2,6 @@ import { ReactNode, Suspense } from 'react';
 import '@/app/globals.css';
 
 import Link from 'next/link';
-import { Metadata } from 'next';
 import AuthProvider from '@/context/AuthProvider';
 import { Roboto, Oswald, Bebas_Neue, Lato } from 'next/font/google';
 
@@ -40,7 +39,6 @@ const lato = Lato({
 });
 
 export const metadata = main_metadata;
-
 
 const wordpress_ip = process.env.WORDPRESS_SITE_IP || "";
 

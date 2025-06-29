@@ -3,7 +3,6 @@ import '@/app/globals.css';
 
 import AuthProvider from '@/context/AuthProvider';
 import Link from 'next/link';
-import { Metadata } from 'next';
 import { Roboto, Oswald, Bebas_Neue, Lato } from 'next/font/google';
 
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
@@ -41,7 +40,6 @@ const lato = Lato({
 })
 
 export const metadata = main_metadata;
-
 
 // Header component
 const DashboardHeader: React.FC = () => (
