@@ -40,11 +40,11 @@ const AuthorCard: React.FC<AuthorCardProps> = ({ initials, name, timestamp, type
         ) : (
           <p className="text-sm text-gray-600 font-mono">Author of this Notice</p>
         )}
-        <h2 className="text-lg font-semibold text-black font-mono">        <h2 className="text-xl font-semibold text-black font-mono">
+        <h2 className="text-lg font-semibold text-black font-mono">
           <div className="text-black-600 hover:underline">
             {capitalizedName}
           </div>
-        </h2></h2>
+        </h2>
         <p className="text-sm text-gray-500 font-mono">Published: {date_formatted}</p>
       </div>
     </div>

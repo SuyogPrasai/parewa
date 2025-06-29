@@ -9,6 +9,8 @@ import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import ArticleRankings from "@/components/collections/CollectionsTopArticles";
 import NoticeSection from "@/components/notice/NoticeSection";
+import getInitial from "@/helpers/get-initials";
+import PopImage from "@/components/shared/ImagePop";
 
 async function fetchNotice(notice_id: string) {
 	try {
@@ -68,13 +70,14 @@ export default async function NoticePage({ searchParams }: { searchParams: Promi
 					<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 						<div className="flex flex-col pt-4 sm:pt-6">
 
-							<h1 className="text-3xl sm:text-4xl lg:5xl font-oswald font-bold uppercase mt-4 max-w-full sm:max-w-[80%] md:max-w-[70%] lg:max-w-[90%] leading-tight">
-								{notice.title}
-							</h1>
+
 
 							<div className="flex flex-col max-w-[1400px]">
 								<div className="flex flex-col lgplus:flex-row gap-5 lg:gap-10 lgplus:w-[110%] lg:max-w-[1400px]">
 									<div className="content-component w-full">
+										<h1 className="text-3xl sm:text-4xl lg:5xl font-oswald font-bold uppercase mt-4 max-w-full sm:max-w-[80%] md:max-w-[70%] lg:max-w-[90%] leading-tight">
+											{notice.title}
+										</h1>
 										<Separator className="my-4" />
 										<div
 											className="prose prose-sm sm:prose-base lg:prose-lg max-w-none lg:mb-4 sm:mb-10 text-justify"
@@ -82,7 +85,7 @@ export default async function NoticePage({ searchParams }: { searchParams: Promi
 										></div>
 										{notice.featuredImage && (
 											<div className="relative w-full aspect-[16/9] mt-5">
-												<Image
+												<PopImage
 													src={notice.featuredImage || ''}
 													alt="Featured Image"
 													fill
@@ -98,7 +101,7 @@ export default async function NoticePage({ searchParams }: { searchParams: Promi
 												<AuthorCard
 													name={notice.publisher[0].name}
 													timestamp={notice.publishedIn.toString()}
-													initials={notice.publisher[0].name[0].toUpperCase()}
+													initials={getInitial(notice.publisher[0].name)}
 													type="notice"
 												/>
 												<VoteComponent orientation="horizontal" voteCount={notice.voteCount} post_id={notice._id || ''} post_type={"notice"} />
@@ -113,9 +116,9 @@ export default async function NoticePage({ searchParams }: { searchParams: Promi
 							</div>
 						</div>
 						<div className="mb-8 mt-8 sm:mt-10 max-w-full md:max-w-2xl lg:max-w-3xl">
-							<h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-4xl font-oswald font-bold uppercase text-gray-900 underline underline-offset-8 decoration-gray-200 decoration-1 mb-4 sm:mb-6">
+							<div className="text-3xl sm:text-4xl md:text-4xl lg:text-4xl font-oswald font-bold uppercase text-gray-900 underline underline-offset-8 decoration-gray-200 decoration-1 mb-4 sm:mb-6">
 								{`Similar Notices in ${notice.category}`}
-							</h2>
+							</div>
 							<NoticeSection notices={relatedNotices} />
 						</div>
 					</div>

@@ -130,7 +130,7 @@ export default async function Page() {
                         msUserSelect: 'none',
                     }}
                     draggable={false}
-                    className="w-[20%] max-w-[300px] absolute bottom-0"
+                    className="w-[20%] max-w-[300px] absolute hidden lg:block bottom-0"
                 />
             </div>
             <Footer />

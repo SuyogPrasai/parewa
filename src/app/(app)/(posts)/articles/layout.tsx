@@ -50,7 +50,7 @@ const DashboardHeader: React.FC = () => (
       <div className="flex items-center gap-2">
         <SidebarTrigger className="mr-2" />
         <Link href="/">
-          <p className="text-xl font-sans md:text-4xl font-bold">परेवा_</p>
+          <p className="text-3xl md:text-4xl font-sans font-bold">परेवा_</p>
         </Link>
       </div>
     </div>

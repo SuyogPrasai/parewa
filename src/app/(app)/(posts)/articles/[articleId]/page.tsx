@@ -12,6 +12,7 @@ import SideArticleList from '@/components/articles/ArticleCollection';
 import Article from "@/types/post_objects/article";
 import { Badge } from "@/components/ui/badge";
 import { notFound } from "next/navigation";
+import getInitial from "@/helpers/get-initials";
 
 
 async function fetchArticle(article_id: string) {
@@ -80,7 +81,7 @@ export default async function ArticlePage({ searchParams }: { searchParams: Prom
 									{article && (
 										<div className="flex flex-col">
 
-											<AuthorCard initials={article.author[0]} name={article.author} timestamp={`${article.publishedIn}`} type="article" />
+											<AuthorCard initials={getInitial(article.author)} name={article.author} timestamp={`${article.publishedIn}`} type="article" />
 											<div className="flex flex-wrap items-center gap-2 mt-2 pl-2 sm:pl-3">
 												{article.postTags.map((tag, index) => (
 													<Badge key={index} variant="secondary" className="text-xs sm:text-sm font-medium px-1.5 sm:px-2 py-0.5">
