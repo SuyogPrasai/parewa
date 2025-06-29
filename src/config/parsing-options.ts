@@ -1,12 +1,21 @@
 const article_options = {
     p: {
-        className: 'mt-4 font-serif text-xl',
+        className: 'mt-4 font-serif text-md lg:text-xl',
     }
 }
 
 const notice_options = {
     p: {
-        className: 'mt-4 font-roboto text-xl',
+        className: 'font-roboto text-md',
+    },
+    li: {
+        className: 'font-roboto text-md',
+    },
+    div: {
+        className: 'font-roboto text-md',
+    },
+    span: {
+        className: 'font-roboto text-md',
     }
 }
 

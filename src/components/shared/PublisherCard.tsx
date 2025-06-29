@@ -1,14 +1,15 @@
 import React from 'react';
 import { format } from 'date-fns';
+import { Badge } from '../ui/badge';
 
 interface PublisherInformationProps {
   initials: string;
   name: string;
   established?: string; // Optional, as not all publishers provide this
-  link?: string; // Optional URL for publisher's website or profile
+  position?: string;
 }
 
-const PublisherInformation: React.FC<PublisherInformationProps> = ({ initials, name, established, link }) => {
+const PublisherInformation: React.FC<PublisherInformationProps> = ({ initials, name, established, position }) => {
   let formattedDate = '';
 
   if (established && !isNaN(Date.parse(established))) {
@@ -36,19 +37,21 @@ const PublisherInformation: React.FC<PublisherInformationProps> = ({ initials, n
       {/* Publisher information */}
       <div>
         <p className="text-sm text-gray-600 font-mono">Publisher of this article</p>
-        <h2 className="text-xl font-semibold text-black font-mono">
-          {link ? (
-            <a href={link} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
-              {capitalizedName}
-            </a>
-          ) : (
-            capitalizedName
+        <h2 className="text-xl font-semibold text-black font-mono flex gap-3">
+          {position && (
+            <Badge className="text-xs text-gray-500 font-mono bg-white hover:bg-white">
+              {position}
+            </Badge>
           )}
+          <div className="text-black-600 hover:underline">
+            {capitalizedName}
+          </div>
         </h2>
         {formattedDate && (
-          <p className="text-sm text-gray-600 font-mono">Established: {formattedDate}</p>
+          <p className="text-sm text-gray-600 font-mono mt-1">Published: {formattedDate}</p>
         )}
       </div>
+
     </div>
   );
 };

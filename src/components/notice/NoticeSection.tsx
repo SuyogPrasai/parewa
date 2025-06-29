@@ -1,13 +1,15 @@
-import React from "react";
+"use client";
 
+import React from "react";
+import dynamic from "next/dynamic";
 import Notice from "@/types/post_objects/notice";
 
-import { NoticeCard } from "./Notice";
+// Disable SSR for NoticeCard
+const NoticeCard = dynamic(() => import("./Notice").then(mod => mod.NoticeCard), { ssr: false });
 
-export default function NoticeSection({ notices } : { notices: Notice[] }) {
-
+export default function NoticeSection({ notices }: { notices: Notice[] }) {
   return (
-    <div className=" mx-0  md:mx-auto lg:mx-0 w-full max-w-2xl flex flex-col items-center ">
+    <div className="mx-0 md:mx-auto lg:mx-0 w-full max-w-2xl flex flex-col items-center">
       {notices.length > 0 ? (
         notices.map((notice) => (
           

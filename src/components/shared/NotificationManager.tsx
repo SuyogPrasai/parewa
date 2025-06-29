@@ -55,7 +55,7 @@ export default function PushManager() {
             console.log('Permission skipped');
             toast({
                 title: 'Permission Skipped',
-                description: 'You can enable notifications later in settings.',
+                description: 'If the pop up asking you for the permission didn\'t appear, please enable notifications manually from settings.',
             });
         }
     }, [toast]);
