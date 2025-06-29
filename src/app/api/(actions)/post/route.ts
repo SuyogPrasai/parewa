@@ -216,7 +216,7 @@ async function handleModifiedEvent(type: string, id: string, data: ArticleDB | N
             published_for,
         };
 
-        const notice = await NoticeModel.findOneAndUpdate({ id }, createFields, { new: true });
+        const notice = await NoticeModel.findOneAndUpdate({ wp_id }, createFields, { new: true });
         if (!notice) throw new Error("Failed to find the Notice");
         return notice;
     } else if (type === "announcement") {
