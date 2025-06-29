@@ -2,16 +2,12 @@
 import axios from "axios";
 
 import { fetchTopArticles } from "@/lib/application/get-top-articles";
-import NoticeDetail from "@/components/notice/NoticeDetail";
 import { notFound } from 'next/navigation';
-import SideArticleList from "@/components/articles/ArticleCollection";
 import AuthorCard from "@/components/articles/AuthorDetailsCard";
-import { Badge } from "@/components/ui/badge";
 import VoteComponent from "@/components/articles/VotingComponent";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import ArticleRankings from "@/components/collections/CollectionsTopArticles";
-import PublisherCard from "@/components/shared/PublisherCard";
 import NoticeSection from "@/components/notice/NoticeSection";
 
 async function fetchNotice(notice_id: string) {
@@ -77,11 +73,11 @@ export default async function NoticePage({ searchParams }: { searchParams: Promi
 							</h1>
 
 							<div className="flex flex-col max-w-[1400px]">
-								<div className="flex flex-col lgplus:flex-row gap-5 lg:gap-10 lgplus:w-[105%] lg:max-w-[1400px]">
+								<div className="flex flex-col lgplus:flex-row gap-5 lg:gap-10 lgplus:w-[110%] lg:max-w-[1400px]">
 									<div className="content-component w-full">
 										<Separator className="my-4" />
 										<div
-											className="prose prose-sm sm:prose-base lg:prose-lg max-w-none lg:mb-4 sm:mb-10"
+											className="prose prose-sm sm:prose-base lg:prose-lg max-w-none lg:mb-4 sm:mb-10 text-justify"
 											dangerouslySetInnerHTML={{ __html: notice?.content || '' }}
 										></div>
 										{notice.featuredImage && (

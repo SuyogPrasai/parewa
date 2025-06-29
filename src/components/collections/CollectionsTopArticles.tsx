@@ -40,7 +40,7 @@ const SideArticleCard = ({ article, rank }: { article: Article; rank: number }) 
     }
 
     return (
-        <Card className="h-[75px] sm:h-[85px] rounded-lg flex lgplus:max-w-[290px] border border-gray-200 p-2 py-3 items-center transition-all duration-300 ease-in-out hover:shadow-md">
+        <Card className="h-[75px] sm:h-[85px] rounded-lg flex lgplus:max-w-[320px] border border-gray-200 p-2 py-3 items-center transition-all duration-300 ease-in-out hover:shadow-md">
             <Link href={article.link || "#"} className="flex flex-row justify-start w-full overflow-hidden">
                 <span
                     className={`text-base sm:text-lg p-2 mr-2 font-lato ${rank === 1

@@ -95,7 +95,7 @@ export default async function ArticlePage({ searchParams }: { searchParams: Prom
 								</div>
 
 							</div>
-							<div className="flex flex-col lgplus:flex-row gap-5 lg:gap-10 lgplus:w-[105%] lg:max-w-[1400px]">
+							<div className="flex flex-col lgplus:flex-row gap-5 lg:gap-10 lgplus:w-[110%] lg:max-w-[1400px]">
 								<div className="content-component w-full ">
 									<Separator className="my-4" />
 									<div className="relative w-full aspect-[16/9]">
