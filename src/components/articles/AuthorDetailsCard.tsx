@@ -1,15 +1,17 @@
 import React from 'react';
 
 import { format } from 'date-fns';
+import { Badge } from '../ui/badge';
 
 interface AuthorCardProps {
   initials: string;
   name: string;
   timestamp: string;
   type: string;
+  position?: string;
 }
 
-const AuthorCard: React.FC<AuthorCardProps> = ({ initials, name, timestamp, type }) => {
+const AuthorCard: React.FC<AuthorCardProps> = ({ initials, name, timestamp, type, position }) => {
   let date_formatted = "";
 
   if (timestamp && !isNaN(Date.parse(timestamp))) {
@@ -40,12 +42,17 @@ const AuthorCard: React.FC<AuthorCardProps> = ({ initials, name, timestamp, type
         ) : (
           <p className="text-sm text-gray-600 font-mono">Author of this Notice</p>
         )}
-        <h2 className="text-lg font-semibold text-black font-mono">
+        <h2 className="text-lg font-semibold text-black font-mono flex gap-2">
+          {position && (
+            <Badge className="text-xs text-gray-500 font-mono bg-white hover:bg-white">
+              {position}
+            </Badge>
+          )}
           <div className="text-black-600 hover:underline">
             {capitalizedName}
           </div>
         </h2>
-        <p className="text-sm text-gray-500 font-mono">Published: {date_formatted}</p>
+        <p className="text-sm text-gray-500 font-mono mt-1">Published: {date_formatted}</p>
       </div>
     </div>
   );

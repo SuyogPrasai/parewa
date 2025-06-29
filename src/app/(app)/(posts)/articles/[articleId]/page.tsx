@@ -81,7 +81,7 @@ export default async function ArticlePage({ searchParams }: { searchParams: Prom
 									{article && (
 										<div className="flex flex-col">
 
-											<AuthorCard initials={getInitial(article.author)} name={article.author} timestamp={`${article.publishedIn}`} type="article" />
+											<AuthorCard initials={getInitial(article.author)} name={article.author} timestamp={`${article.publishedIn}`} type="article" position={""} />
 											<div className="flex flex-wrap items-center gap-2 mt-2 pl-2 sm:pl-3">
 												{article.postTags.map((tag, index) => (
 													<Badge key={index} variant="secondary" className="text-xs sm:text-sm font-medium px-1.5 sm:px-2 py-0.5">
@@ -126,6 +126,7 @@ export default async function ArticlePage({ searchParams }: { searchParams: Prom
 								initials={article.publisher[0].name[0]}
 								name={article.publisher[0].name}
 								established={article.publishedIn.toString()}
+								position={article.publisher[0].position}
 							/>
 						)}
 					</div>

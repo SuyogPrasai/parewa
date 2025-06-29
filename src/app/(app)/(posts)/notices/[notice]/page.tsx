@@ -103,6 +103,7 @@ export default async function NoticePage({ searchParams }: { searchParams: Promi
 													timestamp={notice.publishedIn.toString()}
 													initials={getInitial(notice.publisher[0].name)}
 													type="notice"
+													position={notice.publisher[0].position || ''}
 												/>
 												<VoteComponent orientation="horizontal" voteCount={notice.voteCount} post_id={notice._id || ''} post_type={"notice"} />
 											</div>
