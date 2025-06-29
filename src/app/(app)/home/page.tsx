@@ -74,8 +74,6 @@ export default async function Page() {
     const topArticlesData = await fetchTopArticles();
     
     const notices = await fetchNotices();
-    
-    const wordpress_ip = process.env.WORDPRESS_SITE_IP || "";
 
     const wordpress_ip = process.env.WORDPRESS_SITE_IP || "";
 
