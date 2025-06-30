@@ -46,3 +46,6 @@ venv
 certificates
 service_key.json
 basic.json
+certs
+*.crt
+*.key

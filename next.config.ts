@@ -12,6 +12,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'http',
+        hostname: '192.168.105.112',
+        port: '8000',
+        pathname: '/wp-content/uploads/**',
+      },
+      {
+        protocol: 'http',
         hostname: 'localhost',
         port: '8000',
         pathname: '/wp-content/uploads/**',
