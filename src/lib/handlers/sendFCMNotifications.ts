@@ -2,9 +2,16 @@ import admin from "firebase-admin";
 import { Message } from "firebase-admin/messaging";
 import FcmTokenModel from "@/models/FcmTokens";
 import dbConnect from "@/lib/dbConnect";
+import fs from 'fs';
+
 
 if (!admin.apps.length) {
-  const serviceAccount = require("@/../service_key.json");
+  let serviceAccount;
+  if (fs.existsSync("@/../service_key.json")) {
+    serviceAccount = require("@/../service_key.json");
+  } else {
+    serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || '{}')
+  }
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
   });
