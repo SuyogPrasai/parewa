@@ -67,7 +67,7 @@ export default function FooterNewsletter() {
       )}
       <p className="text-xs text-gray-300 mt-2 sm:mt-0">
         By subscribing, you agree to our{" "}
-        <a href="#" className="underline hover:text-white">
+        <a href="/terms_and_conditions.pdf" className="underline hover:text-white">
           Privacy Policy
         </a>
       </p>

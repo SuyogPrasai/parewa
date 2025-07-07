@@ -86,9 +86,9 @@ export function Navbar({ navLinks, type, wordpress_ip }: NavbarProps) {
                   letterSpacing: '0.05em',
                   fontFamily: 'oswald, sans-serif',
                 }}
-                onClick={() => router.push('https://github.com/SuyogPrasai/parewa')}
+                onClick={() => router.push('/credits')}
               >
-                ABOUT
+                CREDITS
               </div>
 
               <div
@@ -108,6 +108,7 @@ export function Navbar({ navLinks, type, wordpress_ip }: NavbarProps) {
               >
                 SUBMIT
               </div>
+              
 
             </div>
           </nav>

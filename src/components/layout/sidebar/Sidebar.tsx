@@ -38,7 +38,7 @@ const finalNavItems = [
   { title: "WAYS TO CONTRIBUTE", url: "#" },
   { title: "REPORT A BUG", url: "https://forms.gle/e7LWQa73WBmnsiDS8" },
   { title: "JOBS", url: "https://forms.gle/cybYghNXgoumfKfP6" },
-  { title: "CREDITS", url: "#" },
+  { title: "CREDITS", url: "/credits" },
 ];
 
 const socialIcons = [

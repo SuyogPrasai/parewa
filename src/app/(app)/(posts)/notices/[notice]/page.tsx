@@ -65,7 +65,7 @@ export default async function NoticePage({ searchParams }: { searchParams: Promi
 					<div className="container mx-auto px-4 sm:px-6 lg:pr-8">
 						<div className="flex flex-col pt-4 sm:pt-6">
 
-							<div className="flex flex-col max-w-[1000px]">
+							<div className="flex flex-col max-w-[900px]">
 								<div className="flex flex-col lgplus:flex-row gap-5 lg:gap-10 lgplus:w-[110%] lg:max-w-[1400px]">
 									<div className="lg:w-[575px]">
 										<div className="content-component w-full">
