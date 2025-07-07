@@ -4,8 +4,19 @@ import { NextRequest, NextResponse } from "next/server";
 
 // Initialize Firebase Admin SDK
 if (!admin.apps.length) {
-  const serviceAccount = require("@/../service_key.json") || JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || '{}');
-  admin.initializeApp({
+  let serviceAccount;
+
+  try {
+    // Try to require the JSON file
+    serviceAccount = require("@/../service_key.json");
+  } catch (e) {
+    // If that fails, try parsing from environment variable
+    try {
+      serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || '{}');
+    } catch (err) {
+      serviceAccount = null;
+    }
+  } admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
   });
 }
