@@ -1,6 +1,5 @@
-import axios from 'axios';
-import { ArticlesResponse } from '@/types/api-responses';
-import Article from '@/types/post_objects/article';
+import { getArticlesHandler } from "@/lib/handlers/getArticles";
+import Article from "@/types/post_objects/article";
 
 // Define the type for query parameters
 interface ArticleQueryParams {
@@ -9,7 +8,7 @@ interface ArticleQueryParams {
 	query?: string;
 	date?: string | Date;
 	limit?: number;
-	[key: string]: string | number | Date | undefined; // Allow additional params
+	[key: string]: string | number | Date | undefined;
 }
 
 export async function fetchArticles(params: ArticleQueryParams = {}): Promise<{
@@ -18,46 +17,48 @@ export async function fetchArticles(params: ArticleQueryParams = {}): Promise<{
 	error: string | null;
 }> {
 	try {
-		// Default parameters
 		const defaultParams = {
 			limit: 8,
 			...params,
 		};
 
-		// Convert params to query string, handling Date objects and filtering undefined values
-		const queryString = Object.entries(defaultParams)
-			.filter(([_, value]) => value !== undefined && value !== null)
-			.map(([key, value]) => {
-				const encodedValue =
-					value instanceof Date ? value.toISOString().split('T')[0] : String(value);
-				return `${encodeURIComponent(key)}=${encodeURIComponent(encodedValue)}`;
-			})
-			.join('&');
+		// Convert date to string if necessary
+		const processedParams: Record<string, string | number> = {};
+		for (const [key, value] of Object.entries(defaultParams)) {
+			if (value !== undefined && value !== null) {
+				processedParams[key] =
+					value instanceof Date ? value.toISOString().split("T")[0] : value;
+			}
+		}
 
-		const url = `${process.env.PAREWA_BASE_URI}/api/get_articles${queryString ? `?${queryString}` : ''}`;
+		const searchParams = new URLSearchParams(
+			Object.entries(processedParams).reduce<Record<string, string>>((acc, [key, value]) => {
+				acc[key] = String(value);
+				return acc;
+			}, {})
+		);
+		const response = await getArticlesHandler(searchParams);
 
-		const response = await axios.get<ArticlesResponse>(url);
-
-		if (response.data.success) {
+		if (response.success && Array.isArray(response.articles)) {
 			return {
-				articles: response.data.articles,
-				totalPages: response.data.totalPages || 1, // Fallback to 1 if not provided
+				articles: response.articles,
+				totalPages: response.totalPages ?? 1,
 				error: null,
 			};
 		}
 
-		console.log(`API ${url} returned success: false`);
+		console.log(`getArticlesHandler returned success: false with params`, processedParams);
 		return {
 			articles: [],
 			totalPages: 1,
-			error: 'API request failed',
+			error: "Handler returned unsuccessful response",
 		};
 	} catch (error: any) {
-		console.error('Error fetching articles:', error.message);
+		console.error("Error fetching articles:", error.message);
 		return {
 			articles: [],
 			totalPages: 1,
-			error: error.message || 'Failed to fetch articles',
+			error: error.message || "Failed to fetch articles",
 		};
 	}
 }

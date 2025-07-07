@@ -1,22 +1,17 @@
 import Announcement from "@/types/post_objects/announcement";
 import axios from "axios";
 import AnnoucementClient from "./AnnoucementClient";
+import { getActiveAnnouncementHandler } from "@/lib/handlers/getAnnouncement";
 
+async function fetchAnnoucment(): Promise<Announcement | undefined> {
+	const response = await getActiveAnnouncementHandler();
 
-async function fetchAnnoucment(): Promise<Announcement | null> {
-	try {
-		const response = await axios.get(`${process.env.PAREWA_BASE_URI}/api/get_announcement`);
-
-		if (response.data.success) {
-			return response.data.announcement;
-		}
-		console.log(`API ${process.env.PAREWA_BASE_URI}/api/get_announcement returned success: false`)
-		return null
+	if (response.success && response.announcement) {
+		return response.announcement;
 	}
-	catch (error: any) {
-		console.error('Error fetching announcement:', error.message);
-		return null
-	}
+
+	console.log(`API /api/get_announcement returned success: false`);
+	return undefined;
 }
 
 export default async function AnnouncementCard() {
@@ -29,7 +24,6 @@ export default async function AnnouncementCard() {
 	return (
 		<>
 			<AnnoucementClient announcement={announcement} />
-
 		</>
 	);
 }

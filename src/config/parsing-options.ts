@@ -6,16 +6,16 @@ const article_options = {
 
 const notice_options = {
     p: {
-        className: 'font-roboto text-md',
+        className: 'font-sans text-md mb-3',
     },
     li: {
-        className: 'font-roboto text-md',
+        className: 'font-sans text-md',
     },
     div: {
-        className: 'font-roboto text-md',
+        className: 'font-sans text-md',
     },
     span: {
-        className: 'font-roboto text-md',
+        className: 'font-sans text-md',
     }
 }
 

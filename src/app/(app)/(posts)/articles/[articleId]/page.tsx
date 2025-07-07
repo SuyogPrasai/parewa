@@ -13,40 +13,36 @@ import Article from "@/types/post_objects/article";
 import { Badge } from "@/components/ui/badge";
 import { notFound } from "next/navigation";
 import getInitial from "@/helpers/get-initials";
+import { getSingleArticleHandler } from "@/lib/handlers/getArticle";
+import { getArticlesHandler } from "@/lib/handlers/getArticles";
 
 
-async function fetchArticle(article_id: string) {
-	try {
-		const response = await axios.get(`${process.env.PAREWA_BASE_URI}/api/get_article/?id=${article_id}`);
+async function fetchArticle(article_id: string): Promise<Article> {
+	const response = await getSingleArticleHandler(article_id);
 
-		if (response.data.success) {
-			return response.data.article;
-		}
-		console.log(`API ${process.env.PAREWA_BASE_URI}/api/get_article/?id=${article_id} returned success: false`)
-		return null
+	if (response.success && response.article) {
+		return response.article;
 	}
-	catch (error: any) {
-		notFound()
-		console.error('Error fetching article:', error.message);
-		return null
 
-	}
+	console.log(`API /api/get_article/?id=${article_id} returned success: false`);
+	notFound(); // throws and never returns
+
 }
 
-async function fetchRelatedArticles({ category, excluding }: { category: string, excluding: string }) {
+async function fetchRelatedArticles({ category, excluding }: { category: string, excluding: string }): Promise<Article[]> {
 	try {
-		const response = await axios.get(`${process.env.PAREWA_BASE_URI}/api/get_articles?category=${category}&limit=2&excluding=${excluding}`);
+		const params = new URLSearchParams({ category, limit: "2", excluding });
+		const response = await getArticlesHandler(params);
 
-		if (response.data.success) {
-			return response.data.articles;
+		if (response.success && Array.isArray(response.articles)) {
+			return response.articles as Article[];
 		}
-		console.log(`API ${process.env.PAREWA_BASE_URI}/api/get_articles?category=${category}&excluding=${excluding} returned success: false`)
-		return []
-	}
-	catch (error: any) {
-		console.error('Error fetching articles:', error.message);
-		return []
 
+		console.log(`Handler returned success: false for category=${category} excluding=${excluding}`);
+		return [];
+	} catch (error: any) {
+		console.error("Error fetching related articles:", error.message);
+		return [];
 	}
 }
 
@@ -92,31 +88,33 @@ export default async function ArticlePage({ searchParams }: { searchParams: Prom
 										</div>
 
 									)}
-									<VoteComponent orientation="horizontal" voteCount={article.voteCount || 0} post_id={article._id || ""} post_type={"article"} />
+									<VoteComponent orientation="horizontal" voteCount={article.voteCount || 0} post_id={article._id?.toString() || ""} post_type={"article"} />
 								</div>
 
 							</div>
-							<div className="flex flex-col lgplus:flex-row gap-5 lg:gap-10 lgplus:w-[110%] lg:max-w-[1400px]">
-								<div className="content-component w-full ">
-									<Separator className="my-4" />
-									<div className="relative w-full aspect-[16/9]">
-										<Image
-											src={article.featuredImage || ''}
-											alt="Featured Image"
-											fill
-											className="object-cover w-full h-full"
-											sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-											priority
-										/>
+							<div className="flex flex-col lgplus:flex-row gap-5 lg:gap-10 lgplus:w-[1000px] lg:max-w-[1400px]">
+								<div className="lgplus:w-[700px]">
+									<div className="content-component w-full ">
+										<Separator className="my-4" />
+										<div className="relative w-full aspect-[16/9]">
+											<Image
+												src={article.featuredImage || ''}
+												alt="Featured Image"
+												fill
+												className="object-cover w-full h-full"
+												sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+												priority
+											/>
+										</div>
+										<div
+											className="prose prose-sm sm:prose-base lg:prose-lg max-w-none mt-4 lg:mb-4 sm:mb-10"
+											dangerouslySetInnerHTML={{ __html: article?.content || '' }}
+										></div>
 									</div>
-									<div
-										className="prose prose-sm sm:prose-base lg:prose-lg max-w-none mt-4 lg:mb-4 sm:mb-10"
-										dangerouslySetInnerHTML={{ __html: article?.content || '' }}
-									></div>
 								</div>
-								<div>
+								{/* <div>
 									<ArticleRankings articles={topArticles} />
-								</div>
+								</div> */}
 							</div>
 						</div>
 					</div>

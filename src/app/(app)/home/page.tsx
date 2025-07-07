@@ -16,52 +16,55 @@ import { slides } from '@/config/site-config';
 import Footer from '@/components/layout/Footer';
 import { CarouselHome } from '@/components/home/Carousel';
 import NotificationManager from '@/components/shared/NotificationManager';
+import { getNoticesHandler } from '@/lib/handlers/getNotices';
+import { getArticlesHandler } from '@/lib/handlers/getArticles';
 
 export const dynamic = 'force-dynamic';
 
-const BASE_URL = process.env.PAREWA_BASE_URI
 
-async function fetchArticlesByCategory(category: string) {
-    try {
-        const response = await axios.get<ArticlesResponse>(`${BASE_URL}/api/get_articles`, {
-            params: {
-                query: '',
-                category,
-                page: 1,
-                limit: 4,
-            }
-        });
+async function fetchArticlesByCategory(category: string): Promise<{ category: string; articles: Article[] }> {
+	try {
+		const params = new URLSearchParams({
+			query: '',
+			category,
+			page: '1',
+			limit: '4',
+		});
 
-        if (response.data.success && response.data.articles.length > 0) {
-            return {
-                category,
-                articles: response.data.articles,
-            };
-        }
-        return { category, articles: [] };
+		const response = await getArticlesHandler(params);
 
-    } catch (error: any) {
-        console.error(`Error fetching articles for category ${category}:`, error);
-        return { category, articles: [] };
-    }
+		if (response.success && Array.isArray(response.articles)) {
+			return {
+				category,
+				articles: response.articles as Article[],
+			};
+		}
+
+		console.log(`Handler returned success: false or no articles for category=${category}`);
+		return { category, articles: [] };
+	} catch (error: any) {
+		console.error(`Error fetching articles for category ${category}:`, error.message);
+		return { category, articles: [] };
+	}
 }
 
 async function fetchNotices(): Promise<Notice[]> {
-    try {
-        const response = await axios.get<NoticesResponse>(
-            `${BASE_URL}/api/get_news?&number=4&limit=4`
-        );
-        if (response.data.success) {
-            return response.data.notices.filter((notice: Notice) => !notice.trashed);
-        }
-        return [];
+	try {
+		const params = new URLSearchParams({ number: "4", limit: "4" });
+		const response = await getNoticesHandler(params);
 
-    } catch (error) {
-        console.error('Error fetching notices:', error);
-        return [];
+		if (response.success && Array.isArray(response.notices)) {
+			return response.notices.filter((notice: Notice) => !notice.trashed);
+		}
 
-    }
+		console.log("Handler returned success: false for fetchNotices");
+		return [];
+	} catch (error: any) {
+		console.error("Error fetching notices:", error.message);
+		return [];
+	}
 }
+
 
 export default async function Page() {
 

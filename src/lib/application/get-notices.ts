@@ -1,6 +1,5 @@
-import axios from 'axios';
-import Notice from '@/types/post_objects/notice';
-import { NoticesResponse } from '@/types/api-responses';
+import { getNoticesHandler } from "@/lib/handlers/getNotices";
+import Notice from "@/types/post_objects/notice";
 
 // Define the type for query parameters
 interface NoticeQueryParams {
@@ -9,7 +8,7 @@ interface NoticeQueryParams {
   query?: string;
   date?: string | Date;
   limit?: number;
-  [key: string]: string | number | Date | undefined; // Allow additional params
+  [key: string]: string | number | Date | undefined;
 }
 
 export async function fetchNotices(params: NoticeQueryParams = {}): Promise<{
@@ -18,51 +17,53 @@ export async function fetchNotices(params: NoticeQueryParams = {}): Promise<{
   error: string | null;
 }> {
   try {
-    // Default parameters
     const defaultParams = {
       limit: 8,
       ...params,
     };
 
-    // Remove category if it's "general"
-    if (defaultParams.category?.toLowerCase() === 'general') {
+    // Remove "general" category
+    if (defaultParams.category?.toLowerCase() === "general") {
       delete defaultParams.category;
     }
 
-    // Convert params to query string, handling Date objects and filtering undefined values
-    const queryString = Object.entries(defaultParams)
-      .filter(([_, value]) => value !== undefined && value !== null)
-      .map(([key, value]) => {
-        const encodedValue =
-          value instanceof Date ? value.toISOString().split('T')[0] : String(value);
-        return `${encodeURIComponent(key)}=${encodeURIComponent(encodedValue)}`;
-      })
-      .join('&');
+    // Convert Date objects to string, filter undefined/null
+    const processedParams: Record<string, string | number> = {};
+    for (const [key, value] of Object.entries(defaultParams)) {
+      if (value !== undefined && value !== null) {
+        processedParams[key] =
+          value instanceof Date ? value.toISOString().split("T")[0] : value;
+      }
+    }
 
-    const url = `${process.env.PAREWA_BASE_URI}/api/get_news${queryString ? `?${queryString}` : ''}`;
+    const searchParams = new URLSearchParams(
+      Object.entries(processedParams).reduce<Record<string, string>>((acc, [key, value]) => {
+        acc[key] = String(value);
+        return acc;
+      }, {})
+    );
+    const response = await getNoticesHandler(searchParams);
 
-    const response = await axios.get<NoticesResponse>(url);
-
-    if (response.data.success) {
+    if (response.success && Array.isArray(response.notices)) {
       return {
-        notices: response.data.notices,
-        totalPages: response.data.totalPages || 1, // Fallback to 1 if not provided
+        notices: response.notices,
+        totalPages: response.totalPages ?? 1,
         error: null,
       };
     }
 
-    console.log(`API ${url} returned success: false`);
+    console.log("getNoticesHandler returned success: false", processedParams);
     return {
       notices: [],
       totalPages: 1,
-      error: 'API request failed',
+      error: "Handler returned unsuccessful response",
     };
   } catch (error: any) {
-    console.error('Error fetching notices:', error.message);
+    console.error("Error fetching notices:", error.message);
     return {
       notices: [],
       totalPages: 1,
-      error: error.message || 'Failed to fetch notices',
+      error: error.message || "Failed to fetch notices",
     };
   }
 }

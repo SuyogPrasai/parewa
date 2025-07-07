@@ -1,22 +1,19 @@
-import axios from "axios";
-
+import { getArticlesHandler } from "@/lib/handlers/getArticles";
 import Article from "@/types/post_objects/article";
-import { ArticlesResponse } from "@/types/api-responses";
 
 export async function fetchTopArticles(): Promise<Article[]> {
-    try {
-        const response = await axios.get<ArticlesResponse>(`${process.env.PAREWA_BASE_URI}/api/get_articles?top_articles=true`);
+  try {
+    const params = new URLSearchParams({ top_articles: "true" });
+    const response = await getArticlesHandler(params);
 
-        if (response.data.success) {
-            return response.data.articles;
-
-        }
-        console.log("API /api/get_articles?top_articles=true returned success: false")
-        return [];
-
-    } catch (error: any) {
-        console.error("Error fetching notices:", error);
-        return [];
-
+    if (response.success && Array.isArray(response.articles)) {
+      return response.articles as Article[];
     }
+
+    console.log("Handler for top_articles returned success: false");
+    return [];
+  } catch (error: any) {
+    console.error("Error fetching top articles:", error.message);
+    return [];
+  }
 }
