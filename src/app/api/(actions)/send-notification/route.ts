@@ -1,25 +1,35 @@
 import admin from "firebase-admin";
-import { Message } from "firebase-admin/messaging";
 import { NextRequest, NextResponse } from "next/server";
+import { Message } from "firebase-admin/messaging";
+import fs from "fs";
+import path from "path";
 
-// Initialize Firebase Admin SDK
 if (!admin.apps.length) {
+  // Adjust this relative path based on your file location and service_key.json location
+  const serviceKeyPath = path.resolve(process.cwd(), "service_key.json");
+
   let serviceAccount;
 
-  try {
-    // Try to require the JSON file
-    serviceAccount = require("@/../service_key.json");
-  } catch (e) {
-    // If that fails, try parsing from environment variable
+  if (fs.existsSync(serviceKeyPath)) {
+    serviceAccount = require(serviceKeyPath);
+  } else {
     try {
       serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || '{}');
-    } catch (err) {
+    } catch {
       serviceAccount = null;
     }
-  } admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-  });
+  }
+
+  if (serviceAccount && Object.keys(serviceAccount).length > 0) {
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount),
+    });
+  } else {
+    console.error("Firebase service account not found or invalid!");
+    // Optionally throw error or handle it based on your use case
+  }
 }
+
 
 export async function POST(request: NextRequest) {
   const { token, title, message, link } = await request.json();
