@@ -15,6 +15,30 @@ export default async function CredtsPage() {
                 </h1>
                 <div className="categories my-10 mx-5 flex flex-col gap-5">
                     <CreditsCard
+                        name="6229 Suyog"
+                        role="The Main Programmer"
+                        bio="I'm Suyog Prasai—just a student with Wi-Fi, a vision, and too much caffeine. I built Parewa to turn boring school notices into something you'd actually want to read. Code is my canvas, and clean UI is my love language. Let’s just say—I debug for fun."
+                        imageUrl="/team/Suyog.jpg"
+                        tags={['design', 'logic', 'vibecoder']}
+                        photoPosition="left"
+                        socialLinks={{
+                            github: 'https://github.com/suyogprasai',
+                            linkedin: 'https://www.linkedin.com/in/suyogprasai/',
+                        }}
+                    />
+                    <CreditsCard
+                        name="6202 Shreya"
+                        role="Creative Head"
+                        bio="A proactive and committed member of the Parewa team, known for her reliability, initiative, and strong sense of responsibility. She consistently meets deadlines, communicates effectively, and contributes meaningfully to team goals. Shreya maintains a positive working relationship with peers and coordinators, often stepping up to support tasks beyond her role. Her performance reflects a high level of trustworthiness and dedication to the team's mission. "
+                        imageUrl="/team/Shreya.png"
+                        tags={['design', 'illustration', 'uiux']}
+                        photoPosition="right"
+                        socialLinks={{
+                            linkedin: 'https://www.linkedin.com/in/shreya-paudel202/',
+                            instagram: 'https://www.instagram.com/shrewaaaaah/',
+                        }}
+                    />
+                    <CreditsCard
                         name="Niva Sharma"
                         role="Creative Head"
                         bio="Designs UI/UX with emotion. Creates interfaces that speak to users."
@@ -23,7 +47,6 @@ export default async function CredtsPage() {
                         photoPosition="left"
                         socialLinks={{
                             github: 'https://github.com/niva',
-                            twitter: 'https://twitter.com/nivadesigns',
                             linkedin: 'https://linkedin.com/in/nivasharma',
                         }}
                     />
@@ -36,7 +59,6 @@ export default async function CredtsPage() {
                         photoPosition="right"
                         socialLinks={{
                             github: 'https://github.com/niva',
-                            twitter: 'https://twitter.com/nivadesigns',
                             linkedin: 'https://linkedin.com/in/nivasharma',
                         }}
                     />
@@ -49,7 +71,6 @@ export default async function CredtsPage() {
                         photoPosition="left"
                         socialLinks={{
                             github: 'https://github.com/niva',
-                            twitter: 'https://twitter.com/nivadesigns',
                             linkedin: 'https://linkedin.com/in/nivasharma',
                         }}
                     />
@@ -62,33 +83,6 @@ export default async function CredtsPage() {
                         photoPosition="right"
                         socialLinks={{
                             github: 'https://github.com/niva',
-                            twitter: 'https://twitter.com/nivadesigns',
-                            linkedin: 'https://linkedin.com/in/nivasharma',
-                        }}
-                    />
-                    <CreditsCard
-                        name="Niva Sharma"
-                        role="Creative Head"
-                        bio="Designs UI/UX with emotion. Creates interfaces that speak to users."
-                        imageUrl="/notification_icon.png"
-                        tags={['design', 'illustration', 'uiux']}
-                        photoPosition="left"
-                        socialLinks={{
-                            github: 'https://github.com/niva',
-                            twitter: 'https://twitter.com/nivadesigns',
-                            linkedin: 'https://linkedin.com/in/nivasharma',
-                        }}
-                    />
-                    <CreditsCard
-                        name="Niva Sharma"
-                        role="Creative Head"
-                        bio="Designs UI/UX with emotion. Creates interfaces that speak to users."
-                        imageUrl="/notification_icon.png"
-                        tags={['design', 'illustration', 'uiux']}
-                        photoPosition="right"
-                        socialLinks={{
-                            github: 'https://github.com/niva',
-                            twitter: 'https://twitter.com/nivadesigns',
                             linkedin: 'https://linkedin.com/in/nivasharma',
                         }}
                     />

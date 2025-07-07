@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Github, Twitter, Linkedin } from 'lucide-react';
+import { Github, Linkedin, Instagram } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 type CreditsCardProps = {
@@ -12,7 +12,7 @@ type CreditsCardProps = {
   tags: string[];
   socialLinks: {
     github?: string;
-    twitter?: string;
+    instagram?: string;
     linkedin?: string;
   };
   photoPosition?: 'left' | 'right';
@@ -94,28 +94,28 @@ export function CreditsCard({
               aria-label="GitHub"
               whileHover={{
                 scale: 1.3,
-                color: '#6e5494',
-                filter: 'drop-shadow(0 0 5px #6e5494)',
+                color: '#1e8494',
+                filter: 'drop-shadow(0 0 5px #1e8494)',
               }}
               transition={{ duration: 0.3 }}
             >
               <Github className="w-5 h-5" />
             </motion.a>
           )}
-          {socialLinks.twitter && (
+          {socialLinks.instagram && (
             <motion.a
-              href={socialLinks.twitter}
+              href={socialLinks.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Twitter"
+              aria-label="Instagram"
               whileHover={{
                 scale: 1.3,
-                color: '#1DA1F2',
-                filter: 'drop-shadow(0 0 5px #1DA1F2)',
+                color: '#6e5494',
+                filter: 'drop-shadow(0 0 5px #6e5494)',
               }}
               transition={{ duration: 0.3 }}
             >
-              <Twitter className="w-5 h-5" />
+              <Instagram className="w-5 h-5" />
             </motion.a>
           )}
           {socialLinks.linkedin && (
