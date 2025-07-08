@@ -39,10 +39,6 @@ Designed to digitalize internal communication within the school and ensure an ef
 [![Featured Image](./featured_image.png)](https://www.youtube.com/watch?v=1G9VCFo4SHo)
 <p align="center"><i>Click the image for video of the site</i></p>
 
-<br/>
-
-
-
 # Our Features
 Parewa empowers seamless communication and engagement with a versatile platform designed for schools. From broadcasting targeted announcements to specific groups to publishing polished articles for the entire community, Parewa offers a comprehensive solution for all your communication needs.
 
@@ -95,6 +91,8 @@ You can checkout the scripts on `/scripts` folder on the repository for scripts 
 Parewa is made primarily as a two server system with next js acting as the main frontend for the website with wordpress as the headless cms for content management of the site. This allows us for using proper management and segregation of the data and the system. 
 ![Featured Image](public/github_images/architecture.svg)
 
+
+<br/>
 
 ### Post Sync Plugin 
 
