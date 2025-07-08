@@ -76,7 +76,7 @@ export default async function CredtsPage() {
                     />
                     <CreditsCard
                         name="XXXX Nigma"
-                        role="Creative Head"
+                        role=""
                         bio="Designs UI/UX with emotion. Creates interfaces that speak to users."
                         imageUrl="/notification_icon.png"
                         tags={['design', 'illustration', 'uiux']}
