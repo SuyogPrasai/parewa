@@ -4,9 +4,9 @@ from datetime import datetime
 import re
 
 # Connect to MongoDB
-client = MongoClient("mongodb://localhost:27014/")
+client = MongoClient("mongodb+srv://suyog:wWpm3CcRrwUpVLhw@parewa.25iuzoa.mongodb.net/?retryWrites=true&w=majority&appName=parewa")
 
-db = client["parewa_backend"]
+db = client["parewa"]
 collection = db["events"]
 
 # Function to parse date strings with improved handling
