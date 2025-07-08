@@ -6,17 +6,12 @@ import fs from 'fs';
 
 
 if (!admin.apps.length) {
-  let serviceAccount;
-  if (fs.existsSync("@/../service_key.json")) {
-    serviceAccount = require("@/../service_key.json");
-  } else {
-    serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || '{}')
-  }
+  const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || '{}');
+
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
   });
 }
-
 interface NotificationPayload {
   title: string;
   body: string;
