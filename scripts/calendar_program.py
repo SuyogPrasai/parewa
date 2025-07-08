@@ -4,7 +4,7 @@ from datetime import datetime
 import re
 
 # Connect to MongoDB
-client = MongoClient("mongodb+srv://suyog:wWpm3CcRrwUpVLhw@parewa.25iuzoa.mongodb.net/?retryWrites=true&w=majority&appName=parewa")
+client = MongoClient("")
 
 db = client["parewa"]
 collection = db["events"]
