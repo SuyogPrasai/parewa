@@ -17,7 +17,7 @@ export default async function CredtsPage() {
                     <CreditsCard
                         name="6229 Suyog"
                         role="The Main Programmer"
-                        bio="I'm Suyog Prasai—just a student with Wi-Fi, a vision, and too much caffeine. I built Parewa to turn boring school notices into something you'd actually want to read. Code is my canvas, and clean UI is my love language. Let’s just say—I debug for fun."
+                        bio="I'm Suyog Prasai—just a student with Wi-Fi, a vision, and too much caffeine. I built Parewa to turn boring school notices into something you'd actually want to read. Let’s just say—I debug for fun."
                         imageUrl="/team/Suyog.jpg"
                         tags={['design', 'logic', 'vibecoder']}
                         photoPosition="left"
@@ -29,7 +29,7 @@ export default async function CredtsPage() {
                     <CreditsCard
                         name="6202 Shreya"
                         role="Creative Head"
-                        bio="A proactive and committed member of the Parewa team, known for her reliability, initiative, and strong sense of responsibility. She consistently meets deadlines, communicates effectively, and contributes meaningfully to team goals. Shreya maintains a positive working relationship with peers and coordinators, often stepping up to support tasks beyond her role. Her performance reflects a high level of trustworthiness and dedication to the team's mission. "
+                        bio="Handles both documentation and social media at Parewa with consistency and creativity. From drafting clear content to managing engaging posts, she ensures timely delivery and maintains quality. A dependable contributor who supports the team’s communication efforts while aligning with Parewa’s voice and goals."
                         imageUrl="/team/Shreya.png"
                         tags={['design', 'illustration', 'uiux']}
                         photoPosition="right"
@@ -39,22 +39,23 @@ export default async function CredtsPage() {
                         }}
                     />
                     <CreditsCard
-                        name="Niva Sharma"
-                        role="Creative Head"
-                        bio="Designs UI/UX with emotion. Creates interfaces that speak to users."
-                        imageUrl="/notification_icon.png"
-                        tags={['design', 'illustration', 'uiux']}
+                        name="6223 Adish"
+                        role="Video Logistics"
+                        bio="Aspiring Mathematician"
+                        imageUrl="/team/Adish.jpg"
+                        tags={['video', 'youtube', 'uiux']}
                         photoPosition="left"
                         socialLinks={{
-                            github: 'https://github.com/niva',
-                            linkedin: 'https://linkedin.com/in/nivasharma',
+                            github: 'https://github.com/Valorant-rocks',
+                            linkedin: 'https://www.linkedin.com/in/adish-uprety-a3b081304/',
+                            instagram: 'https://www.instagram.com/disw__/',
                         }}
                     />
                     <CreditsCard
-                        name="Niva Sharma"
+                        name="6199 Anjelita"
                         role="Creative Head"
-                        bio="Designs UI/UX with emotion. Creates interfaces that speak to users."
-                        imageUrl="/notification_icon.png"
+                        bio="Anjelita actively contributed to the Parewa project by supporting the documentation process. She prepared and refined clear, user-friendly materials explaining the software’s features and usage. Through this collaboration with Class 12 students, she enhanced her communication skills and gained valuable insight into software development and teamwork."
+                        imageUrl="/team/Angelita.jpg"
                         tags={['design', 'illustration', 'uiux']}
                         photoPosition="right"
                         socialLinks={{
@@ -63,15 +64,14 @@ export default async function CredtsPage() {
                         }}
                     />
                     <CreditsCard
-                        name="Niva Sharma"
-                        role="Creative Head"
-                        bio="Designs UI/UX with emotion. Creates interfaces that speak to users."
+                        name="6234 Niva"
+                        role="HeadDesigner"
+                        bio="Designed the logo for parewa."
                         imageUrl="/notification_icon.png"
                         tags={['design', 'illustration', 'uiux']}
                         photoPosition="left"
                         socialLinks={{
-                            github: 'https://github.com/niva',
-                            linkedin: 'https://linkedin.com/in/nivasharma',
+                            instagram: 'https://www.instagram.com/nivaaaa__/',
                         }}
                     />
                     <CreditsCard
