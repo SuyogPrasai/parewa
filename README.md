@@ -118,15 +118,17 @@ Built-in logging via error_log() helps track sync events and quickly identify an
 
 ---
 **The List of Plugins Being Used in the wordpress site is**
-| Serial Number | Plugin Name                     | Version | Author                |
-|---------------|---------------------------------|---------|-----------------------|
-| 1             | [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) | 6.3.12  | WP Engine             |
-| 2             | [Classic Editor](https://wordpress.org/plugins/classic-editor/) | 1.6.7   | WordPress Contributors |
-| 3             | [Members](https://wordpress.org/plugins/members/) | 3.2.18  | MemberPress           |
-| 4             | [Post and User Sync Plugin](https://github.com/SuyogPrasai/parewa_cms/releases/tag/parewa) | 1.62    | Suyog Prasai    |
-| 5             | [Ultimate Dashboard](https://wordpress.org/plugins/ultimate-dashboard/) | 3.8.9   | David Vongries        |
-
-
+| Serial Number | Plugin Name                     | Version | Author                | Link                                      |
+|---------------|---------------------------------|---------|-----------------------|-------------------------------------------|
+| 1             | [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/)          | 6.3.12   | WP Engine             | https://wordpress.org/plugins/advanced-custom-fields/ |
+| 2             | [Classic Editor](https://wordpress.org/plugins/classic-editor/)                  | 1.6.7    | WordPress Contributors | https://wordpress.org/plugins/classic-editor/ |
+| 3             | [All-in-One WP Migration](https://wordpress.org/plugins/all-in-one-wp-migration/)         | 7.81     | ServMask              | https://wordpress.org/plugins/all-in-one-wp-migration/ |
+| 4             | [Members](https://wordpress.org/plugins/members/)                         | 3.2.18   | MemberPress           | https://wordpress.org/plugins/members/ |
+| 5             | [Post and User Sync Plugin](https://github.com/SuyogPrasai/parewa_cms/releases/tag/parewa)       | 1.6.3     | Suyog Prasai          | https://github.com/SuyogPrasai/parewa_cms/releases/tag/parewa |
+| 6             | [Ultimate Dashboard](https://wordpress.org/plugins/ultimate-dashboard/)              | 3.8.9    | David Vongries        | https://wordpress.org/plugins/ultimate-dashboard/ |
+| 7             | [White Label](https://wordpress.org/plugins/white-label/)                     | 3.2.1    | WPManageNinja         | https://wordpress.org/plugins/white-label/ |
+| 8             | [Widget Disable](https://wordpress.org/plugins/widget-disable/)                  | 2.0.1    | WpDevArt              | https://wordpress.org/plugins/widget-disable/ |
+| 9             | [WP Custom Admin Interface](https://wordpress.org/plugins/wp-custom-admin-interface/)       | 7.9      | Martin Gibson         | https://wordpress.org/plugins/wp-custom-admin-interface/ |
 
 ## Usage Tutorials
 If you have any concerns exploring the full-scale usage of Parewa, please kindly refer to our [YouTube page](https://www.youtube.com/@parewa_bnks) here. 
