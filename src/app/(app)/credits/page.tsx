@@ -41,7 +41,7 @@ export default async function CredtsPage() {
                     <CreditsCard
                         name="6223 Adish"
                         role="Video Logistics"
-                        bio="Aspiring Mathematician"
+                        bio="A valuable helper since the initial stages of development of Parewa.  A well-rounded spokesperson who is always there for any sorts of presentation to support the project. From documentation to Wordpress UI to new ideas, truly a reliable person, you can lean back on."
                         imageUrl="/team/Adish.jpg"
                         tags={['video', 'youtube', 'uiux']}
                         photoPosition="left"
@@ -67,7 +67,7 @@ export default async function CredtsPage() {
                         name="6234 Niva"
                         role="HeadDesigner"
                         bio="Designed the logo for parewa."
-                        imageUrl="/notification_icon.png"
+                        imageUrl="/team/Niva.jpeg"
                         tags={['design', 'illustration', 'uiux']}
                         photoPosition="left"
                         socialLinks={{
@@ -75,7 +75,7 @@ export default async function CredtsPage() {
                         }}
                     />
                     <CreditsCard
-                        name="Niva Sharma"
+                        name="XXXX Nigma"
                         role="Creative Head"
                         bio="Designs UI/UX with emotion. Creates interfaces that speak to users."
                         imageUrl="/notification_icon.png"

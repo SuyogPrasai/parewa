@@ -90,8 +90,11 @@ You can checkout the scripts on `/scripts` folder on the repository for scripts 
 ## Documentation
 
 Parewa is made primarily as a two server system with next js acting as the main frontend for the website with wordpress as the headless cms for content management of the site. This allows us for using proper management and segregation of the data and the system. 
-![Featured Image](public/github_images/architecture.svg)
-#### Post Sync Plugin 
+[![Featured Image](public/github_images/architecture.svg)](https://www.youtube.com/watch?v=1G9VCFo4SHo)
+
+<p align="center"><i>Click the image for video of the site</i></p>
+
+### Post Sync Plugin 
 
 > [!IMPORTANT]
 >Automatically syncs WordPress posts and user data with a Next.js server whenever a post or user is created, updated, deleted, or restored. Supports custom post types and includes secure API key integration for communication.
