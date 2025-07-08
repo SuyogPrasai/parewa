@@ -87,20 +87,6 @@ export default async function CredtsPage() {
                         }}
                     />
                 </div>
-                <Image
-                    src="/lightning_reversed.png"
-                    alt="Lightning Reversed"
-                    width={150}
-                    height={150}
-                    style={{
-                        userSelect: 'none',
-                        WebkitUserSelect: 'none',
-                        MozUserSelect: 'none',
-                        msUserSelect: 'none',
-                    }}
-                    draggable={false}
-                    className="w-[20%] max-w-[300px] absolute hidden lg:block bottom-0"
-                />
             </div>
         </>
     );
