@@ -119,7 +119,7 @@ Built-in logging via error_log() helps track sync events and quickly identify an
 ---
 **The List of Plugins Being Used in the wordpress site is**
 | Serial Number | Plugin Name                     | Version | Author                | 
-|---------------|---------------------------------|---------|-----------------------|-------------------------------------------|
+|---------------|---------------------------------|---------|-----------------------|
 | 1             | [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/)          | 6.3.12   | WP Engine             |
 | 2             | [Classic Editor](https://wordpress.org/plugins/classic-editor/)                  | 1.6.7    | WordPress Contributors |
 | 3             | [All-in-One WP Migration](https://wordpress.org/plugins/all-in-one-wp-migration/)         | 7.81     | ServMask              |
