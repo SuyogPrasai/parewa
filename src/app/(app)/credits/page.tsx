@@ -59,14 +59,13 @@ export default async function CredtsPage() {
                         tags={['design', 'illustration', 'uiux']}
                         photoPosition="right"
                         socialLinks={{
-                            github: 'https://github.com/niva',
-                            linkedin: 'https://linkedin.com/in/nivasharma',
+                           instagram: 'https://www.instagram.com/sparkles7_spring/'
                         }}
                     />
                     <CreditsCard
                         name="6234 Niva"
                         role="HeadDesigner"
-                        bio="Designed the logo for parewa."
+                        bio="A design contributor at Parewa, Niva has played a key role in shaping the team’s visual identity. She designed the official Parewa logo and continues to support the team with thoughtful and consistent design work. With a keen eye for detail and a strong sense of visual balance, she contributes to creating materials that align with Parewa’s creative vision."
                         imageUrl="/team/Niva.jpeg"
                         tags={['design', 'illustration', 'uiux']}
                         photoPosition="left"
@@ -77,30 +76,15 @@ export default async function CredtsPage() {
                     <CreditsCard
                         name="XXXX Nigma"
                         role="Creative Head"
-                        bio="Designs UI/UX with emotion. Creates interfaces that speak to users."
-                        imageUrl="/notification_icon.png"
+                        bio="Created the custom loading animation for the app and contributed creative feedback to enhance its visual appeal and user experience."
+                        imageUrl="/team/Nigma.jpeg"
                         tags={['design', 'illustration', 'uiux']}
                         photoPosition="right"
                         socialLinks={{
-                            github: 'https://github.com/niva',
-                            linkedin: 'https://linkedin.com/in/nivasharma',
+                            instagram: 'https://www.instagram.com/ningchiling',
                         }}
                     />
                 </div>
-                <Image
-                    src="/lightning_reversed.png"
-                    alt="Lightning Reversed"
-                    width={150}
-                    height={150}
-                    style={{
-                        userSelect: 'none',
-                        WebkitUserSelect: 'none',
-                        MozUserSelect: 'none',
-                        msUserSelect: 'none',
-                    }}
-                    draggable={false}
-                    className="w-[20%] max-w-[300px] absolute hidden lg:block bottom-0"
-                />
             </div>
         </>
     );
