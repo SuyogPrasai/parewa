@@ -5,17 +5,11 @@ import fs from 'fs';
 
 // Initialize Firebase Admin SDK
 if (!admin.apps.length) {
-  let serviceAccount;
-  if (fs.existsSync("@/../service_key.json")) {
-    serviceAccount = require("@/../service_key.json");
-  } else {
-    serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || '{}')
-  }
+  const serviceAccount = require("@/../service_key.json");
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
   });
 }
-
 export async function POST(request: NextRequest) {
   const { token, title, message, link } = await request.json();
 
