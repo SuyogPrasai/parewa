@@ -1,5 +1,6 @@
 
 
+
 <h1 className="text-3xl md:text-4xl font-bold font-sans" align="center">परेवा_</h1>
 <div align="center">
 
@@ -7,7 +8,7 @@
 [![YouTube](https://img.shields.io/badge/YouTube-Subscribe-red?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@parewa_bnks)
 ![GitHub License](https://img.shields.io/github/license/budhanilkanthaschool/parewa?style=for-the-badge&logoColor=white)
 [![Commits](https://img.shields.io/github/commit-activity/m/budhanilkanthaschool/parewa?label=commits&style=for-the-badge)](https://github.com/budhanilkanthaschool/parewa/commits "Commit History")
-[![Last Commit](https://img.shields.io/github/last-commit/budhanilkanthaschool/parewa/master?label=&style=for-the-badge&display_timestamp=committer)](https://github.com/budhanilkanthaschool/parewa/pulse/monthly "Last activity")
+[![Last Commit](https://img.shields.io/github/last-commit/budhanilkanthaschool/parewa/main?label=&style=for-the-badge&display_timestamp=committer)](https://github.com/budhanilkanthaschool/parewa/pulse/monthly "Last activity")
 </div>
 <div align="center">
   
@@ -22,142 +23,192 @@
 ## Table of Contents
 
 - [Introduction](#introduction)
+- [Overview](#overview)
 - [Features](#features)
-- [Installation](#installation)
-- [Documentation](#documentation)
-- [Tutorials](#usage-tutorials)
-- [FAQ's](#common-faqs)
-- [Contribution](#contribution)
+- [Tech Stack](#tech-stack)
+- [Monorepo Structure](#monorepo-structure)
+- [Getting Started](#getting-started)
+- [Deployment](#deployment)
+- [Content Management](#content-management)
+- [Contributing](#contributing)
+- [Maintainers](#maintainers)
+- [License](#license)
 
 ## Introduction
 
-**Parewa** is a student-driven information platform built for the Budhanilkantha School community. We help connect our current students, teachers and alumni together with work that binds the BNKS community together.
+Parewa is a production publishing platform for the Budhanilkantha School (BNKS) community in Nepal, used to publish and read school notices, updates, and student articles.
 
-<br><br>
 [![Featured Image](github/featured.png)](https://www.youtube.com/watch?v=1G9VCFo4SHo)
 <p align="center"><i>Click the image for video of the site</i></p>
 
-# Our Features
-Parewa empowers seamless communication and engagement with a versatile platform designed for schools. From broadcasting targeted announcements to specific groups to publishing polished articles for the entire community, Parewa offers a comprehensive solution for all your communication needs.
 
+## Overview
 
-## Key Functionalities
+Before Parewa, school updates were easier to miss, harder to archive, and less structured for long-term reference. This repository replaces that kind of ad-hoc notice flow with a CMS-backed publishing system: editors manage content in Sanity Studio, and the public site delivers articles, announcements, navigation, and event data through a single Next.js application.
 
-- **Instant Notice Delivery**  
-  Effortlessly send real-time announcements to the entire school community through a user-friendly input portal.
+The project is already in active use at BNKS. It is not a prototype or classroom demo; it is a working platform intended to be maintained and extended by future student teams.
 
-- **Targeted Announcements**  
-  Deliver messages to specific grades, clubs, or sections, ensuring relevant communication without unnecessary clutter.
+## Features
 
-- **Article Publishing**  
-  Enable students to share well-crafted articles directly on the platform, fostering creativity and community engagement.
+- CMS-backed publishing for school notices and student articles
+- Searchable, category-based article browsing on the public site
+- Centralized content management in Sanity Studio for editors and moderators
+- Event and newsletter support through Sanity-backed frontend APIs
 
-- **School-Wide Message Archiving**  
-  Keep all communications organized and accessible with a searchable archive, ensuring no notice is ever lost.
+## Tech Stack
 
-- **School Calendar Integration**  
-  Stay informed with a centralized view of all scheduled events, seamlessly aligned with the school calendar.
+| Layer | Technology | Version / Notes |
+| --- | --- | --- |
+| Frontend | Next.js | 16.2.10 |
+| Language | TypeScript | `^5` in `apps/web`, `^5.8` in `apps/studio` |
+| UI | React | 19.2.7 |
+| CMS | Sanity Studio | `^6.5.0` |
+| Content API | next-sanity | `^13.1.1` |
+| Styling | Tailwind CSS | `^4` |
+| Component primitives | shadcn/ui | configured via `apps/web/components.json` |
+| Icons | lucide-react, Iconify | `^1.24.0`, `^6.0.2` |
+| Validation | Zod | `^4.4.3` |
+| Package management | pnpm workspaces | root `devEngines.packageManager.version: ^11.12.0` |
 
-## Installation
+## Monorepo Structure
 
-To properly install parewa, you need two things for now. First is the wordpress docker image for the backend cms and this repo for hosting the main platform. You may access the docker image and deploy it and connect it to this server.
-
-The installation procedure for this next js application is simple. You can follow the steps below to run a sample of this code in your machine. 
-<brs>
-> **Prerequesites**
-> You need to make sure that you have node and npm installed in your local machine for running this, also make sure to have docker and python installation for running other componemts
-
-
-  1. **Clone the Repository**
-```bash
-git clone https://github.com/budhanilkanthaschool/parewa
-```
-2. **Install the Required Dependecies**
-```bash
-npm install
-```
-3. **Run the server on your Machine**
-```bash
-npm run dev
+```text
+parewa/
+├── apps/
+│   ├── web/                # Public-facing Next.js application
+│   └── studio/             # Sanity Studio for editors and moderators
+├── packages/
+│   └── sanity-config/      # Shared Sanity schema package (@parewa/sanity-config)
+├── package.json            # Root workspace scripts
+└── pnpm-workspace.yaml     # Workspace package definitions
 ```
 
-You can checkout the scripts on `/scripts` folder on the repository for scripts relating to populating the database using random testing data.
+- `apps/web`: Renders the homepage, article index, article detail pages, about page, newsletter actions, and event query endpoints.
+- `apps/studio`: Hosts the editorial CMS where content, categories, links, events, users, and settings are managed.
+- `packages/sanity-config`: Defines the shared Sanity schemas for content, users, organization metadata, and settings.
 
+## Getting Started
 
-## Documentation
+### Prerequisites
 
-Parewa is made primarily as a two server system with next js acting as the main frontend for the website with wordpress as the headless cms for content management of the site. This allows us for using proper management and segregation of the data and the system. 
+- Node.js 20+
+- pnpm 11+
+- Access to the BNKS Sanity project
 
-<br/>
+### 1. Clone and install
 
-![Featured Image](public/github_images/architecture.svg)
+```bash
+git clone https://github.com/suyogprasai/parewa.git
+cd parewa
+pnpm install
+```
 
+### 2. Configure environment variables
 
-### Post Sync Plugin 
+Create local environment files for the apps you are running and provide the same Sanity project details to both applications.
 
-> [!IMPORTANT]
->Automatically syncs WordPress posts and user data with a Next.js server whenever a post or user is created, updated, deleted, or restored. Supports custom post types and includes secure API key integration for communication.
+Required variable names used in the codebase:
 
-1. 🔁 **Auto Sync on Events**
-It automatically syncs posts and users with a Next.js server on creation, update, deletion, or restoration—no manual actions required.
+```bash
+SANITY_STUDIO_PROJECT_ID=
+SANITY_STUDIO_DATASET=
+SANITY_STUDIO_API_VERSION=
+SANITY_STUDIO_TOKEN=
+```
 
-2. 🧠 **Supports Custom Post Types**
-Built specifically for news, article, and announcement post types with tailored payload structures for each.
+Notes:
 
-3. 🔐 **Secure Communication**
-All sync requests use a secure API key in the header, ensuring only authorized connections with the Next.js server.
+- `apps/studio` reads `SANITY_STUDIO_PROJECT_ID`, `SANITY_STUDIO_DATASET`, and `SANITY_STUDIO_API_VERSION`.
+- `apps/web` reads the same three values and also uses `SANITY_STUDIO_TOKEN` for server-side Sanity access, including newsletter subscription mutations and event queries.
+- The web app and Studio must point to the same Sanity project and dataset or your local content will not match.
 
-4. 📦 **Rich, Structured Payloads**
-Sends detailed JSON data including titles, content, tags, images, author names, roles, and even custom ACF fields like position.
+### 3. Run the applications
 
-5. 🛠️ **Error Logging for Debugging**
-Built-in logging via error_log() helps track sync events and quickly identify any issues during data transfer.
+Run both apps together from the repository root:
 
----
-**The List of Plugins Being Used in the wordpress site is**
-| Serial Number | Plugin Name                     | Version | Author                | 
-|---------------|---------------------------------|---------|-----------------------|
-| 1             | [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/)          | 6.3.12   | WP Engine             |
-| 2             | [Classic Editor](https://wordpress.org/plugins/classic-editor/)                  | 1.6.7    | WordPress Contributors |
-| 3             | [All-in-One WP Migration](https://wordpress.org/plugins/all-in-one-wp-migration/)         | 7.81     | ServMask              |
-| 4             | [Members](https://wordpress.org/plugins/members/)                         | 3.2.18   | MemberPress           | https://wordpress.org/plugins/members/ |
-| 5             | [Post and User Sync Plugin](https://github.com/budhanilkanthaschool/parewa_cms/releases/tag/parewa)       | 1.6.3     | Suyog Prasai          |parewa |
-| 6             | [Ultimate Dashboard](https://wordpress.org/plugins/ultimate-dashboard/)              | 3.8.9    | David Vongries        |
-| 7             | [White Label](https://wordpress.org/plugins/white-label/)                     | 3.2.1    | WPManageNinja         |
-| 8             | [Widget Disable](https://wordpress.org/plugins/widget-disable/)                  | 2.0.1    | WpDevArt              | 
-| 9             | [WP Custom Admin Interface](https://wordpress.org/plugins/wp-custom-admin-interface/)       | 7.9      | Martin Gibson         |
+```bash
+pnpm dev
+```
 
-## Usage Tutorials
-If you have any concerns exploring the full-scale usage of Parewa, please kindly refer to our [YouTube page](https://www.youtube.com/@parewa_bnks) here. 
-It consits of videos on how to use the entire website to the fullest. 
+Or run them individually:
 
+```bash
+pnpm dev:web
+pnpm dev:studio
+```
 
+Useful app-level commands:
 
+```bash
+pnpm --filter @parewa/web build
+pnpm --filter @parewa/web lint
+pnpm --filter @parewa/studio build
+pnpm --filter @parewa/studio deploy
+```
 
+Default local URLs are typically:
 
+- Web: `http://localhost:3000`
+- Studio: `http://localhost:3333`
 
+## Deployment
+
+Parewa is a live production platform, but the repository currently does not include checked-in CI workflows or host-specific deployment configuration under `.github/` or `.vercel/`. That means the exact production host, auto-deploy trigger, and merge-to-live process are not documented in code in this repository today.
+
+What is documented in the repo:
+
+- The web app builds with `next build`
+- The Studio builds with `sanity build`
+- The Studio can be deployed with `pnpm --filter @parewa/studio deploy`
+
+Recommended maintainer action:
+
+- Add a short internal operations note once the team confirms the production host, who has access, and whether merges to `main` deploy automatically.
+
+## Content Management
+
+For editors and moderators using Sanity Studio:
+
+1. Open the Studio locally or at the production Studio URL and sign in with your authorized Sanity account.
+2. Go to `Content` and open `Articles` to create or edit a post.
+3. Fill in the required fields: title, slug, one-liner, content, category, image description, and published date.
+4. If the post is a school notice, publish it under the appropriate category used for notices in your content model.
+5. Click `Publish` when the post is ready to appear on the public site.
+6. To remove a published post, open the document actions menu in Studio and use `Unpublish`.
+
+Other important Studio areas:
+
+- `Events` for calendar-style items with date and location
+- `Categories`, `Links`, `Social Links`, and `General` for navigation and site settings
+- `Students`, `Teachers`, `Alumni`, and `Guests` for author attribution
 
 > [!IMPORTANT]
 > Whether you have feedback on features, have encountered any bugs, or have suggestions for enhancements, we're eager to hear from you. Your insights help us make the PAREWA more robust and user-friendly.
 
+## Contributing
 
-## Common FAQ's
+For new student maintainers:
 
-- **Does Parewa require the user to sign in?** 
-Signing in is really optional and its upto you! You won't need an account to view the general notices, but you will need to sign in (with a bnks domain id) specifically if you want to carry out actiivies like voting and polling.
+1. Create a branch from `main` using a clear name such as `feat/article-search`, `fix/newsletter-api`, or `docs/readme-refresh`.
+2. Make focused changes and verify them locally before opening a pull request.
+3. Open a pull request with a short summary, screenshots for UI changes, and any setup notes reviewers need.
+4. Use GitHub Issues for bugs and feature requests, and use the repository Projects or issue labels for roadmap tracking if your team enables them.
 
-- **Can Parewa be accessed within school only?**
-Well yes, Parewa's website can only be accessed within school's intranet. However, if you are out of the boundries of school, you can subscribe to the newsletter on our website, which delivers the notices to you, no matter where you are in the world. 
-
-
-- **Can Parewa be accessed without a working internet conncetion?**
-Absolutely, since parewa's server is hosted in the school's intranet, within the confines of school you could access it even when there is no working internet connection. Note however, that you still need to be connected to the internet even though is is not working.
+There are currently no checked-in CI workflow files in this repository, so review and local verification remain especially important.
 
 **If you encounter and come across any sorts of issues be sure to contact us at:**
 ```bash
 bnks.parewa.moderator@gmail.com
 ```
 
-## Contribution
+## Maintainers
 
-You can make pull requests to the repo and you should also follow the proper guidelines of github and the community for making the commits. Make sure to follow the code convention so far. The code will be reiviewed and if does good will be implemented in the system.
+- [Name - Technical Lead]
+- [Name - Web Maintainer]
+- [Name - Studio / CMS Maintainer]
+- [Name - Editorial Lead]
+- [Name - Faculty Advisor]
+
+## License
+
+GPL-3.0-only
