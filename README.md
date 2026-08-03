@@ -98,7 +98,7 @@ parewa/
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/suyogprasai/parewa.git
+git clone https://github.com/budhanilkanthaschool/parewa.git
 cd parewa
 pnpm install
 ```
@@ -211,4 +211,4 @@ bnks.parewa.moderator@gmail.com
 
 ## License
 
-GPL-3.0-only
+Released under GPL-3.0-only; see the [LICENSE](LICENSE) file or [GNU overview](https://www.gnu.org/licenses/gpl-3.0.en.html) for permissions and redistribution requirements.
