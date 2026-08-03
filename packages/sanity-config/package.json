@@ -1,0 +1,18 @@
+{
+  "name": "@parewa/sanity-config",
+  "version": "1.1.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "GPL-3.0-only",
+  "type": "module",
+  "dependencies": {
+    "lucide-react": "^1.24.0",
+    "sanity": "^6.4.0",
+    "sanity-plugin-iconify": "^4.0.1"
+  }
+}
