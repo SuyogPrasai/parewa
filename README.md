@@ -22,7 +22,6 @@
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Installation and Usage](#installation-and-usage)
 - [Features](#features)
 - [Installation](#installation)
 - [Documentation](#documentation)
@@ -32,11 +31,10 @@
 
 ## Introduction
 
-**Parewa** is a student-driven information delivery platform developed entirely by the students of Budhanilkantha School (BNKS).  
-Designed to digitalize internal communication within the school and ensure an effective way to deliver essential notices, it serves as the school’s official system for announcements, updates, and articles.
+**Parewa** is a student-driven information platform built for the Budhanilkantha School community. We help connect our current students, teachers and alumni together with work that binds the BNKS community together.
 
 <br><br>
-[![Featured Image](./featured_image.png)](https://www.youtube.com/watch?v=1G9VCFo4SHo)
+[![Featured Image](github/featured.png)](https://www.youtube.com/watch?v=1G9VCFo4SHo)
 <p align="center"><i>Click the image for video of the site</i></p>
 
 # Our Features
