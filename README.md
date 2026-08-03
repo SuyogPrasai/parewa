@@ -6,8 +6,8 @@
 [![Donate](https://img.shields.io/badge/_-Donate-red.svg?logo=githubsponsors&labelColor=555555&style=for-the-badge)](https://sebsna.org/donate/ "Donate")
 [![YouTube](https://img.shields.io/badge/YouTube-Subscribe-red?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@parewa_bnks)
 ![GitHub License](https://img.shields.io/github/license/budhanilkanthaschool/parewa?style=for-the-badge&logoColor=white)
-[![Commits](https://img.shields.io/github/commit-activity/m/suyogprasai/parewa?label=commits&style=for-the-badge)](https://github.com/suyogprasai/parewa/commits "Commit History")
-[![Last Commit](https://img.shields.io/github/last-commit/suyogprasai/parewa/master?label=&style=for-the-badge&display_timestamp=committer)](https://github.com/suyogprasai/parewa/pulse/monthly "Last activity")
+[![Commits](https://img.shields.io/github/commit-activity/m/budhanilkanthaschool/parewa?label=commits&style=for-the-badge)](https://github.com/budhanilkanthaschool/parewa/commits "Commit History")
+[![Last Commit](https://img.shields.io/github/last-commit/budhanilkanthaschool/parewa/master?label=&style=for-the-badge&display_timestamp=committer)](https://github.com/budhanilkanthaschool/parewa/pulse/monthly "Last activity")
 </div>
 <div align="center">
   
@@ -72,7 +72,7 @@ The installation procedure for this next js application is simple. You can follo
 
   1. **Clone the Repository**
 ```bash
-git clone https://github.com/suyogprasai/parewa
+git clone https://github.com/budhanilkanthaschool/parewa
 ```
 2. **Install the Required Dependecies**
 ```bash
@@ -123,7 +123,7 @@ Built-in logging via error_log() helps track sync events and quickly identify an
 | 2             | [Classic Editor](https://wordpress.org/plugins/classic-editor/)                  | 1.6.7    | WordPress Contributors |
 | 3             | [All-in-One WP Migration](https://wordpress.org/plugins/all-in-one-wp-migration/)         | 7.81     | ServMask              |
 | 4             | [Members](https://wordpress.org/plugins/members/)                         | 3.2.18   | MemberPress           | https://wordpress.org/plugins/members/ |
-| 5             | [Post and User Sync Plugin](https://github.com/SuyogPrasai/parewa_cms/releases/tag/parewa)       | 1.6.3     | Suyog Prasai          |parewa |
+| 5             | [Post and User Sync Plugin](https://github.com/budhanilkanthaschool/parewa_cms/releases/tag/parewa)       | 1.6.3     | Suyog Prasai          |parewa |
 | 6             | [Ultimate Dashboard](https://wordpress.org/plugins/ultimate-dashboard/)              | 3.8.9    | David Vongries        |
 | 7             | [White Label](https://wordpress.org/plugins/white-label/)                     | 3.2.1    | WPManageNinja         |
 | 8             | [Widget Disable](https://wordpress.org/plugins/widget-disable/)                  | 2.0.1    | WpDevArt              | 
