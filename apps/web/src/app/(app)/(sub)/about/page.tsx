@@ -25,8 +25,8 @@ const architecture = [
 const projectValues = [
   "Student-led development with practical ownership of the platform.",
   "Clear, reliable communication for the school community.",
-  "A maintainable content workflow instead of ad-hoc notice sharing.",
-  "A codebase that can keep evolving as editorial and school needs change.",
+  "Expression of unique and original ideas from our community.",
+  "Becoming the front face news platform of our school.",
 ];
 
 export default function Page() {
@@ -36,25 +36,18 @@ export default function Page() {
         <div className="font-heading text-3xl uppercase underline decoration-1 decoration-muted underline-offset-4 sm:text-4xl lg:text-5xl">
           About Parewa
         </div>
-        <div className="mt-3 font-secondary text-base leading-relaxed text-foreground/70 sm:mt-4 sm:text-lg">
-          Parewa is a student-driven information platform built for the Budhanilkantha School community. We help connect our current students, teachers and alumni together with work that binds the BNKS community together.
-        </div>
+        <div className="mt-6 font-secondary text-base leading-relaxed text-foreground/70 sm:mt-4 sm:text-xl">
+          Parewa is a student-led publishing platform built for showcasing news, articles, and student writing at Budhanilkantha School. Our mission is to connect students, alumni, and associates of Budhanilkantha School with original and impactful journalism.        </div>
 
-        <div className="mt-10 flex flex-col gap-8 sm:mt-12 sm:gap-10 lg:mt-16 lg:gap-12">
+        <div className="mt-6 flex flex-col gap-8 ">
           <section>
             <h2 className="font-heading text-xl uppercase sm:text-2xl lg:text-3xl">Why It Exists</h2>
             <div className="mt-3 space-y-4 font-serif text-base leading-relaxed text-foreground sm:mt-4 sm:space-y-5 sm:text-lg sm:leading-loose">
               <p>
-                The original idea behind Parewa was to create an official system for announcements, updates, and
-                student writing inside the school ecosystem. Instead of scattered messages or hard-to-track notice
-                flows, the platform gives editors and moderators a central place to publish information while giving
-                readers a cleaner, more structured experience.
+                The original idea behind Parewa was to create a digital system for sending and receiving student notices across the school, replacing the paper-based notice system with the initiative launched by the 6000E batch in 2024.
               </p>
               <p>
-                The project remains grounded in that same goal. What changed is the implementation: this workspace is
-                now organized as a modern monorepo with a Next.js frontend and a Sanity-powered editorial backend,
-                making the publishing workflow more maintainable and better aligned with long-term content
-                operations.
+                Now, the project has evolved into a platform for bringing together current students, alumni, and associates of BNKS. We showcase top tier work from some of the brightest minds of our school for the world to see.
               </p>
             </div>
           </section>
@@ -95,8 +88,8 @@ export default function Page() {
               </p>
               <p>
                 For moderation or project-related issues, contact{" "}
-                <a href="mailto:bnks.parewa.moderator@gmail.com" className="font-medium underline underline-offset-4">
-                  bnks.parewa.moderator@gmail.com
+                <a href="mailto:parewa@bnks.edu.np" className="font-medium underline underline-offset-4">
+                  parewa@bnks.edu.np
                 </a>
                 .
               </p>
@@ -112,7 +105,7 @@ export default function Page() {
                 </a>
                 . The public project history is available on{" "}
                 <a
-                  href="https://github.com/suyogprasai/parewa"
+                  href="https://github.com/budhanilkanthaschool/parewa"
                   target="_blank"
                   rel="noreferrer"
                   className="font-medium underline underline-offset-4"
