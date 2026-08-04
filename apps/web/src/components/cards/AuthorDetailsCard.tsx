@@ -38,10 +38,10 @@ function AuthorDetailsCard({
               alt={displayName}
               width={48}
               height={48}
-              className="h-[4.5rem] w-[4.5rem] shrink-0 rounded-full object-cover"
+              className="h-18 w-18 shrink-0 rounded-full object-cover"
             />
           ) : (
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-lg font-medium text-foreground">
+            <div className="flex h-18 w-18 shrink-0 items-center justify-center rounded-full bg-primary text-lg font-medium text-foreground">
               {displayName.charAt(0).toUpperCase()}
             </div>
           )}
