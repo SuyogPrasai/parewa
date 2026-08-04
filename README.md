@@ -24,7 +24,7 @@
 
 - [Introduction](#introduction)
 - [Overview](#overview)
-- [Features](#features)
+- [Project Values](#project-values)
 - [Tech Stack](#tech-stack)
 - [Monorepo Structure](#monorepo-structure)
 - [Getting Started](#getting-started)
@@ -36,7 +36,7 @@
 
 ## Introduction
 
-Parewa is a production publishing platform for the Budhanilkantha School (BNKS) community in Nepal, used to publish and read school notices, updates, and student articles.
+Parewa is a student-led publishing platform built for showcasing news, articles, and student writing at Budhanilkantha School. Our mission is to connect students, alumni, and associates of Budhanilkantha School with original and impactful journalism.
 
 [![Featured Image](github/featured.png)](https://www.youtube.com/watch?v=1G9VCFo4SHo)
 <p align="center"><i>Click the image for video of the site</i></p>
@@ -44,16 +44,16 @@ Parewa is a production publishing platform for the Budhanilkantha School (BNKS) 
 
 ## Overview
 
-Before Parewa, school updates were easier to miss, harder to archive, and less structured for long-term reference. This repository replaces that kind of ad-hoc notice flow with a CMS-backed publishing system: editors manage content in Sanity Studio, and the public site delivers articles, announcements, navigation, and event data through a single Next.js application.
+The original idea behind Parewa was to create a digital system for sending and receiving student notices across the school, replacing the paper-based notice system with the initiative launched by the 6000E batch in 2024.
 
-The project is already in active use at BNKS. It is not a prototype or classroom demo; it is a working platform intended to be maintained and extended by future student teams.
+Now, the project has evolved into a platform for bringing together current students, alumni, and associates of BNKS. We showcase top tier work from some of the brightest minds of our school for the world to see.
 
-## Features
+## Project Values
 
-- CMS-backed publishing for school notices and student articles
-- Searchable, category-based article browsing on the public site
-- Centralized content management in Sanity Studio for editors and moderators
-- Event and newsletter support through Sanity-backed frontend APIs
+- Student-led development with practical ownership of the platform
+- Clear, reliable communication for the school community.
+- Expression of unique and original ideas from our community.
+- Becoming the front face news platform of our school.
 
 ## Tech Stack
 
@@ -198,15 +198,14 @@ There are currently no checked-in CI workflow files in this repository, so revie
 
 **If you encounter and come across any sorts of issues be sure to contact us at:**
 ```bash
-bnks.parewa.moderator@gmail.com
+parewa@bnks.edu.np
 ```
 
 ## Maintainers
 
 - [Name - Technical Lead]
-- [Name - Web Maintainer]
-- [Name - Studio / CMS Maintainer]
-- [Name - Editorial Lead]
+- [Name - Design / Marketing Lead]
+- [Name - Editor]
 - [Name - Faculty Advisor]
 
 ## License

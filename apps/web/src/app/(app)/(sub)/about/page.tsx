@@ -37,7 +37,8 @@ export default function Page() {
           About Parewa
         </div>
         <div className="mt-6 font-secondary text-base leading-relaxed text-foreground/70 sm:mt-4 sm:text-xl">
-          Parewa is a student-led publishing platform built for showcasing news, articles, and student writing at Budhanilkantha School. Our mission is to connect students, alumni, and associates of Budhanilkantha School with original and impactful journalism.        </div>
+          Parewa is a student-led publishing platform built for showcasing news, articles, and student writing at Budhanilkantha School. Our mission is to connect students, alumni, and associates of Budhanilkantha School with original and impactful journalism.
+        </div>
 
         <div className="mt-6 flex flex-col gap-8 ">
           <section>
