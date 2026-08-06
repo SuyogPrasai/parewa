@@ -146,6 +146,13 @@ pnpm --filter @parewa/studio build
 pnpm --filter @parewa/studio deploy
 ```
 
+Since parewa uses sanity for schemas and types, we can use sanity's typegens in the nextjs application through the following commands
+```bash
+cd apps/studio
+pnpm dlx sanity schema extract
+pnpm dlx sanity typegen generate
+```
+
 Default local URLs are typically:
 
 - Web: `http://localhost:3000`
