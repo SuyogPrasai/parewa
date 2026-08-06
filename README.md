@@ -203,7 +203,7 @@ parewa@bnks.edu.np
 
 ## Maintainers
 
-- [Aarohan, Sulav and Himshikha - Technical Leads]
+- [Aarohan, Sulav and Himshikhar - Technical Leads]
 - [Bibhu and Ashlesha - Design / Marketing Leads]
 - [Sabikshya and Shishtata - Editors]
 - [PDC - Faculty Advisor]
